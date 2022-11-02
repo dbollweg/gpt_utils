@@ -26,8 +26,8 @@ parameters = {
     "pzmin" : 0,
     "pzmax" : 5,
     "width" : 2.2,
-    "pos_boost" : [0,0,3],
-    "neg_boost" : [0,0,-3],
+    "pos_boost" : [1,1,1],
+    "neg_boost" : [-1,-1,-1],
     "save_propagators" : True
 }
 
@@ -35,7 +35,7 @@ parameters = {
 jobs = {
     "polaris_exact_0": {
         "exact": 1,
-        "sloppy": 10,
+        "sloppy": 0,
         "low": 0,
     },
     "polaris_sloppy_0": {
@@ -146,12 +146,12 @@ for group, job, conf, jid, n in run_jobs:
     job_seed = job.split("_correlated")[0]
     rng = g.random(f"TMD-ensemble-{conf}-{job_seed}")
 
-    source_positions_sloppy = [[11,11,11,11],[0,1,0,14],[0,0,0,0]]
-#    source_positions_sloppy = [
-#        [rng.uniform_int(min=0, max=L[i] - 1) for i in range(4)]
-#        for j in range(jobs[job]["sloppy"])
-#    ]
-    source_positions_exact = [[0,0,5,0]]
+#    source_positions_sloppy = [[11,11,11,11],[0,1,0,14],[0,0,0,0]]
+    source_positions_sloppy = [
+        [rng.uniform_int(min=0, max=L[i] - 1) for i in range(4)]
+        for j in range(jobs[job]["sloppy"])
+    ]
+    source_positions_exact = [[0,0,0,0]]
     #source_positions_exact = [
     #    [rng.uniform_int(min=0, max=L[i] - 1) for i in range(4)]
     #    for j in range(jobs[job]["exact"])

@@ -42,6 +42,239 @@ class pion_measurement:
         self.output.flush()
         g.message("Propagator IO done")
 
+    def make_24D_inverter(self, U, evec_file):
+        l_exact = g.qcd.fermion.mobius(
+            U,
+            {
+                #24D params
+                "mass": 0.00107,
+                "M5": 1.8,
+                "b": 2.5,
+                "c": 1.5,
+                "Ls": 24,
+                "boundary_phases": [1.0, 1.0, 1.0, -1.0],
+                },
+                    
+        )
+
+        l_sloppy = l_exact.converted(g.single)
+        g.message(f"Loading eigenvectors from {evec_file}")
+        g.mem_report(details=False)
+        eig = g.load(evec_file, grids=l_sloppy.F_grid_eo)
+        #g.message("pinning coarse evs to device memory")
+        g.mem_report(details=False)
+        pin = g.pin(eig[1], g.accelerator)
+        g.message("creating deflated solvers")
+        light_innerL_inverter = g.algorithms.inverter.preconditioned(
+            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
+            g.algorithms.inverter.sequence(
+                g.algorithms.inverter.coarse_deflate(
+                    eig[1],
+                    eig[0],
+                    eig[2],
+                    block=400, 
+                    fine_block=4,
+                    linear_combination_block=32,
+                ),
+                g.algorithms.inverter.split(
+                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 10000}),
+                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
+                ),
+            ),
+        )
+
+        light_innerH_inverter = g.algorithms.inverter.preconditioned(
+            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
+            g.algorithms.inverter.sequence(
+                g.algorithms.inverter.coarse_deflate(
+                    eig[1],
+                    eig[0],
+                    eig[2],
+                    block=400, 
+                    fine_block=4,
+                    linear_combination_block=32,
+                ),
+                g.algorithms.inverter.split(
+                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 10000}),
+                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
+                ),
+            ),
+        )
+        g.mem_report(details=False)
+#        light_exact_inverter = g.algorithms.inverter.defect_correcting(
+#            g.algorithms.inverter.mixed_precision(light_innerH_inverter, g.single, g.double),
+#            eps=1e-8,
+#            maxiter=10,
+#        )
+
+#        light_sloppy_inverter = g.algorithms.inverter.defect_correcting(
+#            g.algorithms.inverter.mixed_precision(light_innerL_inverter, g.single, g.double),
+#            eps=1e-8,
+#            maxiter=2,#
+#        )
+
+
+        ############### final inverter definitions
+        prop_l_sloppy = l_sloppy.propagator(light_innerL_inverter).grouped(4)#light_sloppy_inverter).grouped(4)
+        prop_l_exact = l_exact.propagator(light_innerH_inverter).grouped(4)
+
+        return prop_l_exact, prop_l_sloppy, pin
+
+
+        
+    def make_64I_inverter(self, U, evec_file):
+        l_exact = g.qcd.fermion.mobius(
+            U,
+            {
+                #64I params
+                "mass": 0.000678,
+                "M5": 1.8,
+                "b": 1.5,
+                "c": 0.5,
+                "Ls": 12,
+                "boundary_phases": [1.0, 1.0, 1.0, 1.0],
+                },
+                    
+        )
+
+        l_sloppy = l_exact.converted(g.single)
+        g.message(f"Loading eigenvectors from {evec_file}")
+        g.mem_report(details=False)
+        eig = g.load(evec_file, grids=l_sloppy.F_grid_eo)
+
+        g.mem_report(details=False)
+        pin = g.pin(eig[1], g.accelerator)
+        g.message("creating deflated solvers")
+
+        
+        
+        light_innerL_inverter = g.algorithms.inverter.preconditioned(
+           g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
+           g.algorithms.inverter.sequence(
+               g.algorithms.inverter.coarse_deflate(
+                   eig[1],
+                   eig[0],
+                   eig[2],
+                   block=400, 
+                   fine_block=4,
+                   linear_combination_block=32,
+               ),
+               g.algorithms.inverter.split(
+                   g.algorithms.inverter.cg({"eps": 1e-7, "maxiter": 300}),
+                   mpi_split=g.default.get_ivec("--mpi_split", None, 4),
+               ),
+           ),
+        )
+
+        light_innerH_inverter = g.algorithms.inverter.preconditioned(
+            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
+            g.algorithms.inverter.sequence(
+                g.algorithms.inverter.coarse_deflate(
+                    eig[1],
+                    eig[0],
+                    eig[2],
+                    block=400, 
+                    fine_block=4,
+                    linear_combination_block=32,
+                ),
+                g.algorithms.inverter.split(
+                    g.algorithms.inverter.cg({"eps": 1e-7, "maxiter": 300}),
+                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
+                ),
+            ),
+        )
+        g.mem_report(details=False)
+        light_exact_inverter = g.algorithms.inverter.defect_correcting(
+            g.algorithms.inverter.mixed_precision(light_innerL_inverter, g.single, g.double),
+            eps=1e-7,
+            maxiter=12,
+        )
+
+        light_sloppy_inverter = g.algorithms.inverter.defect_correcting(
+            g.algorithms.inverter.mixed_precision(light_innerL_inverter, g.single, g.double),
+            eps=1e-7,
+            maxiter=2,
+        )
+
+
+        ############### final inverter definitions
+        prop_l_sloppy = l_sloppy.propagator(light_sloppy_inverter).grouped(4)
+        prop_l_exact = l_exact.propagator(light_exact_inverter).grouped(4)
+
+        return prop_l_exact, prop_l_sloppy, pin
+
+    def make_48I_inverter(self, U, evec_file):
+        l_exact = g.qcd.fermion.mobius(
+            U,
+            {
+                #48I params
+                "mass": 0.00078,
+                "M5": 1.8,
+                "b": 1.5,
+                "c": 0.5,
+                "Ls": 14,
+                "boundary_phases": [1.0, 1.0, 1.0, -1.0],
+                },
+                    
+        )
+
+        l_sloppy = l_exact.converted(g.single)
+        g.message(f"Loading eigenvectors from {evec_file}")
+        g.mem_report(details=False)
+        eig = g.load(evec_file, grids=l_sloppy.F_grid_eo)
+        g.message("pinning coarse evs to device memory")
+        g.mem_report(details=False)
+        pin = g.pin(eig[1], g.accelerator)
+        g.message("creating deflated solvers")
+        light_innerL_inverter = g.algorithms.inverter.preconditioned(
+            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
+            g.algorithms.inverter.sequence(
+                g.algorithms.inverter.coarse_deflate(
+                    eig[1],
+                    eig[0],
+                    eig[2]
+                ),
+                g.algorithms.inverter.split(
+                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 200}),
+                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
+                ),
+            ),
+        )
+
+        light_innerH_inverter = g.algorithms.inverter.preconditioned(
+            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
+            g.algorithms.inverter.sequence(
+                g.algorithms.inverter.coarse_deflate(
+                    eig[1],
+                    eig[0],
+                    eig[2]
+                ),
+                g.algorithms.inverter.split(
+                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 300}),
+                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
+                ),
+            ),
+        )
+        g.mem_report(details=False)
+        light_exact_inverter = g.algorithms.inverter.defect_correcting(
+            g.algorithms.inverter.mixed_precision(light_innerH_inverter, g.single, g.double),
+            eps=1e-8,
+            maxiter=10,
+        )
+
+        light_sloppy_inverter = g.algorithms.inverter.defect_correcting(
+            g.algorithms.inverter.mixed_precision(light_innerL_inverter, g.single, g.double),
+            eps=1e-8,
+            maxiter=2,
+        )
+
+
+        ############### final inverter definitions
+        prop_l_sloppy = l_exact.propagator(light_sloppy_inverter).grouped(4)
+        prop_l_exact = l_exact.propagator(light_exact_inverter).grouped(4)
+
+        return prop_l_exact, prop_l_sloppy, pin
+
 
     #make the inverters needed for the 96I lattices
     def make_96I_inverter(self, U, evec_file):
@@ -117,8 +350,8 @@ class pion_measurement:
 
 
         ############### final inverter definitions
-        prop_l_sloppy = l_exact.propagator(light_sloppy_inverter).grouped(6)
-        prop_l_exact = l_exact.propagator(light_exact_inverter).grouped(6)
+        prop_l_sloppy = l_exact.propagator(light_sloppy_inverter).grouped(4)
+        prop_l_exact = l_exact.propagator(light_exact_inverter).grouped(4)
 
         return prop_l_exact, prop_l_sloppy, pin
 
@@ -136,18 +369,18 @@ class pion_measurement:
                 #"boundary_phases": [1.0, 1.0, 1.0, -1.0],},
 #MDWF_2+1f_64nt128_IWASAKI_b2.25_ls12b+c2_M1.8_ms0.02661_mu0.000678_rhmc_HR_G
                 #64I params
-                "mass": 0.1,
+                "mass": 0.000678,
                 "M5": 1.8,
-                "b": 1.0,
-                "c": 0.0,
-                "Ls": 24,
-                "boundary_phases": [1.0, 1.0, 1.0, -1.0],},
+                "b": 1.5,
+                "c": 0.5,
+                "Ls": 12,
+                "boundary_phases": [1.0, 1.0, 1.0, 1.0],},
         )
 
         l_sloppy = l_exact.converted(g.single)
 
-        light_innerL_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-4, maxiter = 7000))
-        light_innerH_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-4, maxiter = 5000))
+        light_innerL_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-4, maxiter = 5000))
+        light_innerH_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-3, maxiter = 5000))
 
         light_exact_inverter = g.algorithms.inverter.defect_correcting(
             g.algorithms.inverter.mixed_precision(light_innerH_inverter, g.single, g.double),
@@ -161,8 +394,8 @@ class pion_measurement:
             maxiter=200,
         )
 
-        prop_l_sloppy = l_exact.propagator(light_innerH_inverter).grouped(6)
-        prop_l_exact = l_exact.propagator(light_innerL_inverter).grouped(6)
+        prop_l_sloppy = l_exact.propagator(light_innerH_inverter).grouped(4)
+        prop_l_exact = l_exact.propagator(light_innerL_inverter).grouped(4)
         return prop_l_exact, prop_l_sloppy
 
 
@@ -220,7 +453,7 @@ class pion_measurement:
         
         g.create.point(srcD, pos)
         #g.create.point(srcD, [0,0,0,0])
-       # g.message("point src set")
+        g.message("point src set")
         #srcDm = srcD
         srcDm = g.create.smear.boosted_smearing(trafo, srcD, w=self.width, boost=self.neg_boost)
         g.message("pos. boosted src done")
@@ -629,8 +862,8 @@ class proton_measurement:
             maxiter=2,
         )
 
-        prop_l_sloppy = l_exact.propagator(light_sloppy_inverter).grouped(6)
-        prop_l_exact = l_exact.propagator(light_exact_inverter).grouped(6)
+        prop_l_sloppy = l_exact.propagator(light_sloppy_inverter).grouped(4)
+        prop_l_exact = l_exact.propagator(light_exact_inverter).grouped(4)
         return prop_l_exact, prop_l_sloppy
     
     # define transitions between grids (setup)

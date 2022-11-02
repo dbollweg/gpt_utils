@@ -19,14 +19,16 @@ groups = {
             "1260",
         ],
         #"evec_fmt": "/p/scratch/gm2dwf/evecs/96I/%s/lanczos.output",
-	    "evec_fmt": "/p/project/chbi21/gpt_test/96I/lanczos.output",
-        "conf_fmt": "/home/bollwegd/testconf/ckpoint_lat.%s",
+	    "evec_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/ckpoint_lat.%s.evecs",
+        #"evec_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/debug_%s_evecs",
+        "conf_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/Coulomb/ckpoint_lat.Coulomb.%s",
+        
     },
 
 }
 parameters = {
     "plist" : [[0,0,0,0]],#,[0,0,3,0]],
-    "width" : 1.0,
+    "width" : 2.0,
     "pos_boost" : [1,1,1],
     "neg_boost" : [-1,-1,-1],
     "save_propagators" : True
@@ -102,13 +104,13 @@ group = run_jobs[0][0]
 
 
 ##### small dummy used for testing
-grid = g.grid([8,8,8,8], g.double)
-rng = g.random("seed text")
-U = g.qcd.gauge.random(grid, rng)
+#grid = g.grid([8,8,8,8], g.double)
+#rng = g.random("seed text")
+#U = g.qcd.gauge.random(grid, rng)
 
 # loading gauge configuration
-#U = g.load(groups[group]["conf_fmt"] % conf)
-#rng = g.random("seed text")
+U = g.load(groups[group]["conf_fmt"] % conf)
+rng = g.random("seed text")
 g.message("finished loading gauge config")
 
 
@@ -123,7 +125,8 @@ Measurement = pion_measurement(parameters)
 
 #prop_exact, prop_sloppy, pin = Measurement.make_96I_inverter(U, groups[group]["evec_fmt"])
 
-prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
+#prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
+prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
 g.message("making mom_phases")
 phases = Measurement.make_mom_phases(U[0].grid)
 
@@ -154,11 +157,11 @@ for group, job, conf, jid, n in run_jobs:
         [rng.uniform_int(min=0, max=L[i] - 1) for i in range(4)]
         for j in range(jobs[job]["sloppy"])
     ]
-    source_positions_exact = [
-        [rng.uniform_int(min=0, max=L[i] - 1) for i in range(4)]
-        for j in range(jobs[job]["exact"])
-    ]
-
+    #source_positions_exact = [
+     #   [rng.uniform_int(min=0, max=L[i] - 1) for i in range(4)]
+      #  for j in range(jobs[job]["exact"])
+    #]
+    source_positions_exact = [[0,0,0,0]]
 
 
     g.message(f" positions_sloppy = {source_positions_sloppy}")
@@ -265,5 +268,5 @@ for group, job, conf, jid, n in run_jobs:
    
         g.message("sloppy positions done")
         
-#del pin
+del pin
 
