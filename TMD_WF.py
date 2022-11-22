@@ -170,7 +170,7 @@ for group, job, conf, jid, n in run_jobs:
     Measurement.set_output_facilites(f"{root_job}/correlators",f"{root_job}/propagators")
 
     g.message("Starting modified Wilson loops")
-    W = Measurement.create_mod_WL(U)
+    W = Measurement.create_TMD_WL(U)
 
     # exact positions
     for pos in source_positions_exact:
@@ -190,7 +190,7 @@ for group, job, conf, jid, n in run_jobs:
 
         tag = "%s/%s" % ("exact", str(pos)) 
 
-        prop_b = Measurement.constr_backw_prop_for_TMD(prop_exact_b,W)
+        prop_b = Measurement.constr_TMD_bprop(prop_exact_b,W)
         g.message("Start TMD contractions")
         Measurement.contract_TMD(prop_exact_f, prop_b, phases, tag)
         del prop_b
@@ -223,7 +223,7 @@ for group, job, conf, jid, n in run_jobs:
         del srcDp
         del srcDm
     
-        prop_b = Measurement.constr_backw_prop_for_TMD(prop_sloppy_b,W)
+        prop_b = Measurement.constr_TMD_bprop(prop_sloppy_b,W)
 
         g.message("Start TMD contractions")
         Measurement.contract_TMD(prop_sloppy_f, prop_b, phases, tag)

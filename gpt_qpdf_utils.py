@@ -607,12 +607,9 @@ class TMD_WF_measurement(pion_measurement):
 
     def contract_TMD(self, prop_f, prop_b, phases, tag):
 
-        # create and save correlators
-        # I think we might not need a slice_trTMD function in cgpt?
         corr = g.slice_trDA(prop_b,prop_f,phases, 3)
 
-        # corr = g.slice(
-        #      g.trace(g.adj(prop_b) * W * g.gamma["Z"] * P * prop_f), 3)
+        #TODO ad io function from utils/tools
 
         g.message("Starting IO")       
         for z, corr_p in enumerate(corr):
@@ -629,53 +626,72 @@ class TMD_WF_measurement(pion_measurement):
         srcD = g.mspincolor(grid)
         srcD[:] = 0
         
-        #srcB_perp = g.mspincolor(grid)
-        #srcB_perp[:] = 0
-
         g.create.point(srcD, pos)
-        #pos_bp = pos
-        #pos_bp[0] += b_perp
-        #pos_bp[0] = pos_bp[0] % L[0]
-        g.message(f"placing src_m at {pos}")
-        g.message(f"placing src_p at {pos}")
-        g.message("point src set")
+        
         srcDm = g.create.smear.boosted_smearing(trafo, srcD, w=self.width, boost=self.neg_boost)
-        g.message("pos. boosted src done")
-        g.message(srcDm)
         srcDp = g.create.smear.boosted_smearing(trafo, srcD, w=self.width, boost=self.pos_boost)
-        g.message("neg. boosted src done")
-        g.message(srcDp)
+        
         del srcD
-        g.message("deleted pt. src, now returning")
-
         return srcDp, srcDm
 
-    def constr_backw_prop_for_TMD(self, prop_b, W):
-        g.message("Creating list of W*prop_b for all z+b_perp-z+b_z")
+    # def constr_backw_prop_for_TMD(self, prop_b, W):
+    #     g.message("Creating list of W*prop_b for all z+b_perp-z+b_z")
+    #     prop_list = [prop_b,]
+
+    #     for z in range(1,self.eta+self.b_z//2):
+    #         prop_list.append(g.eval(g.adj(W[z] * g.cshift(prop_b,2,z))))
+    #     for x in range(0,self.b_T):
+    #         prop_list.append(g.eval(g.adj(W[self.eta + self.b_z//2 + x] * g.cshift(prop_b,0,x))))
+    #     for z in range(0,self.eta-self.b_z//2):
+    #         prop_list.append(g.eval(g.adj(W[self.eta + self.b_z//2 + self.b_T + z] * g.cshift(prop_b,2,-z))))
+        
+    #     return prop_list
+
+
+    def constr_TMD_bprop(self, prop_B, W):
         prop_list = [prop_b,]
 
-        for z in range(1,self.eta+self.b_z//2):
-            prop_list.append(g.eval(g.adj(W[z] * g.cshift(prop_b,2,z))))
-        for x in range(0,self.b_T):
-            prop_list.append(g.eval(g.adj(W[self.eta + self.b_z//2 + x] * g.cshift(prop_b,0,x))))
-        for z in range(0,self.eta-self.b_z//2):
-            prop_list.append(g.eval(g.adj(W[self.eta + self.b_z//2 + self.b_T + z] * g.cshift(prop_b,2,-z))))
-        
+        for current_bz in range(0, self.b_z):
+            for current_b_T in range(0, self.b_T):
+                prop_xshifted = g.cshift(prop_b,0,current_b_T)
+                prop_list.append(g.eval(g.adj(W[current_bz*self.b_T+current_b_T] * g.cshift(prop_xshifted,2,current_bz))))
+
         return prop_list
+        
+    def create_TMD_WL(self, U):
+        W = []
+        tmp_wl_list = []
+        tmp_wl_list.append(g.qcd.gauge.unit(U[2].grid)[0])
+        
+        for current_bz in range(0, self.b_z):
+            for current_b_T in range (0, self.b_T):
+                
+                for dz in range(0, self.eta+current_bz//2):
+                    tmp_wl_list.append(g.eval(tmp_wl_list[dz-1] * g.cshift(U[2],2, dz)))
+                
+                offset = self.eta+current_bz//2
+                for dx in range(0, current_b_T):
+                    tmp_wl_list.append(g.eval(tmp_wl_list[offset + dx-1] * g.cshift(U[0],0, dx)))
+
+                offset += current_b_T
+                for dz in range(0, self.eta-current_bz//2):
+                    tmp_wl_list.append(g.eval(tmp_wl_list[offset + dz-1] * g.cshift(U[2],2,-dz)))
+
+                W.append(tmp_wl_list[-1])
 
     # create Wilson lines from all to all + eta + b_perp - eta - b_z
     # fixing b_perp direction to be x for now
-    def create_mod_WL(self, U):
-        W = []
-        W.append(g.qcd.gauge.unit(U[2].grid)[0])
-        for dz in range(0, self.eta+self.b_z//2):
-            W.append(g.eval(W[dz-1] * g.cshift(U[2], 2, dz)))
-        for dx in range(0,self.b_T):
-            W.append(g.eval(W[self.eta+self.b_z//2+dx-1] * g.cshift(U[0], 0, dx)))
-        for dz in range(0, self.eta-self.b_z//2):
-            W.append(g.eval(W[self.eta+self.b_z//2+self.b_T+dz-1] * g.cshift(U[2], 2, -dz)))
+    # def create_mod_WL(self, U):
+    #     W = []
+    #     W.append(g.qcd.gauge.unit(U[2].grid)[0])
+    #     for dz in range(0, self.eta+self.b_z//2):
+    #         W.append(g.eval(W[dz-1] * g.cshift(U[2], 2, dz)))
+    #     for dx in range(0,self.b_T):
+    #         W.append(g.eval(W[self.eta+self.b_z//2+dx-1] * g.cshift(U[0], 0, dx)))
+    #     for dz in range(0, self.eta-self.b_z//2):
+    #         W.append(g.eval(W[self.eta+self.b_z//2+self.b_T+dz-1] * g.cshift(U[2], 2, -dz)))
 
-        return W
+    #     return W
     
 class pion_ff_measurement(pion_measurement):
     def __init__(self, parameters):

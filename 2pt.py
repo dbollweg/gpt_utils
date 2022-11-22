@@ -157,10 +157,6 @@ for group, job, conf, jid, n in run_jobs:
         [rng.uniform_int(min=0, max=L[i] - 1) for i in range(4)]
         for j in range(jobs[job]["sloppy"])
     ]
-    #source_positions_exact = [
-     #   [rng.uniform_int(min=0, max=L[i] - 1) for i in range(4)]
-      #  for j in range(jobs[job]["exact"])
-    #]
     source_positions_exact = [[0,0,0,0]]
 
 
