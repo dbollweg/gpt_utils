@@ -401,12 +401,17 @@ class pion_measurement:
 
     ############## make list of complex phases for momentum proj.
     def make_mom_phases(self, grid):    
+        g.message("Create ones")
         one = g.identity(g.complex(grid))
+        g.message("create exp factor")
         pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
        
+        g.message("exponentiate")
         P = g.exp_ixp(pp)
        
+        g.message("create momenta")
         mom = [g.eval(pp*one) for pp in P]
+        g.message("return")
         return mom
 
     # create Wilson lines from all --> all + dz for all dz in 0,zmax
@@ -510,7 +515,6 @@ class pion_DA_measurement(pion_measurement):
 class TMD_WF_measurement(pion_measurement):
     def __init__(self,parameters):
         self.eta = parameters["eta"]
-        self.b_perp = parameters["b_perp"]
         self.b_z = parameters["b_z"]
         self.b_T = parameters["b_T"]
         self.pzmin = parameters["pzmin"]

@@ -9,18 +9,21 @@ root_output  = "."
 
 
 groups = {
-    "polaris_batch_0": {
+    "booster_batch_0": {
         "confs": [
-            "1260"
+            "1310",
         ],
-        "evec_fmt": "~/64I/lanczos.output",
-        "conf_fmt":  "/home/bollwegd/testconf/ckpoint_lat.%s",
+        #"evec_fmt": "/p/scratch/gm2dwf/evecs/96I/%s/lanczos.output",
+	    "evec_fmt": "/pscratch/sd/d/dbollweg/64I/%s.evecs/lanczos.output",
+        #"evec_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/debug_%s_evecs",
+        "conf_fmt": "/pscratch/sd/d/dbollweg/64I/ckpoint_lat.Coulomb.%s",
+        
     },
+
 }
 
 parameters = {
     "eta" : 4,
-    "b_perp" : 8,
     "b_T": 8,
     "b_z" : 8,
     "pzmin" : 0,
@@ -99,7 +102,7 @@ group = run_jobs[0][0]
 #U = g.qcd.gauge.random(grid, rng)
 
 # loading gauge configuration
-print("just testing sth")
+
 print(groups[group]["conf_fmt"] % conf)
 U = g.load(groups[group]["conf_fmt"] % conf)
 rng = g.random("seed text")
@@ -119,7 +122,7 @@ L = U[0].grid.fdimensions
 
 Measurement = TMD_WF_measurement(parameters)
 
-prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
+prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
 
 phases = Measurement.make_mom_phases(U[0].grid)
 
@@ -197,33 +200,7 @@ for group, job, conf, jid, n in run_jobs:
         del prop_exact_f
         del prop_exact_b
 
-        g.message("STARTING SLOPPY MEASUREMENTS")
-
-        g.message("Starting TMD wavefunction")
-    
-        g.message("Starting prop sloppy")
-        prop_sloppy_f = g.eval(prop_sloppy * srcDp)
-        g.message("forward prop done")
-        prop_sloppy_b = g.eval(prop_sloppy * srcDm)
-        g.message("backward prop done")
-
-        del srcDp
-        del srcDm
-
-        tag = "%s/%s" % ("sloppy", str(pos))
-
-        prop_b = Measurement.constr_backw_prop_for_TMD(prop_sloppy_b,W)
-
-        g.message("Start TMD contractions")
-        Measurement.contract_TMD(prop_sloppy_f, prop_b, phases, tag)
-        del prop_b
-        g.message("TMD done")
-
         
-
-        del prop_sloppy_f
-        del prop_sloppy_b
-     
     g.message("exact positions done")
 
     # sloppy positions
@@ -259,4 +236,4 @@ for group, job, conf, jid, n in run_jobs:
     
     g.message("sloppy positions done")
         
-#del pin
+del pin

@@ -16,12 +16,12 @@ root_output ="."
 groups = {
     "booster_batch_0": {
         "confs": [
-            "1260",
+            "1310",
         ],
         #"evec_fmt": "/p/scratch/gm2dwf/evecs/96I/%s/lanczos.output",
-	    "evec_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/ckpoint_lat.%s.evecs",
+	    "evec_fmt": "/pscratch/sd/d/dbollweg/64I/%s.evecs/lanczos.output",
         #"evec_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/debug_%s_evecs",
-        "conf_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/Coulomb/ckpoint_lat.Coulomb.%s",
+        "conf_fmt": "/pscratch/sd/d/dbollweg/64I/ckpoint_lat.Coulomb.%s",
         
     },
 
