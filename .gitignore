@@ -4,3 +4,4 @@
 *.fls
 *.ax1 
 *.fdb_latexmk
+__pycache__/
