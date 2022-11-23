@@ -651,16 +651,16 @@ class TMD_WF_measurement(pion_measurement):
     def constr_TMD_bprop(self, prop_b, W):
         prop_list = [prop_b,]
 
-        td_offset = self.b_T*self.b_z*len(eta)
+        td_offset = self.b_T*self.b_z*len(self.eta)
         eta_offset = self.b_T*self.b_z
         bz_offset = self.b_T
         
         for transverse_direction in [0,1]: 
-            for current_eta in self.eta:
+            for eta_idx, current_eta in enumerate(self.eta):
                 for current_bz in range(0, self.b_z):
                     for current_b_T in range(0, self.b_T):
 
-                        W_index = current_b_T + bz_offset*current_bz + eta_offset*current_eta + td_offset*transverse_direction
+                        W_index = current_b_T + bz_offset*current_bz + eta_offset*eta_idx + td_offset*transverse_direction
 
                         prop_list.append(g.eval(g.adj(W[W_index] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,2*current_bz))))
 

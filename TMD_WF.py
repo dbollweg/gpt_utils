@@ -97,7 +97,7 @@ group = run_jobs[0][0]
 
 
 ##### small dummy used for testing
-#grid = g.grid([16,16,16,16], g.double)
+#grid = g.grid([8,8,8,8], g.double)
 #rng = g.random("seed text")
 #U = g.qcd.gauge.random(grid, rng)
 
@@ -124,7 +124,9 @@ Measurement = TMD_WF_measurement(parameters)
 
 prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
 
-phases = Measurement.make_mom_phases(U[0].grid)
+#prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
+
+
 
 # show available memory
 g.mem_report(details=False)
@@ -174,7 +176,7 @@ for group, job, conf, jid, n in run_jobs:
 
     # exact positions
     for pos in source_positions_exact:
-
+        phases = Measurement.make_mom_phases(U[0].grid,pos)     
         g.message("STARTING EXACT MEASUREMENTS")
 
         g.message("Starting TMD wavefunction")
@@ -206,6 +208,7 @@ for group, job, conf, jid, n in run_jobs:
     # sloppy positions
     for pos in source_positions_sloppy:
 
+        phases = Measurement.make_mom_phases(U[0].grid,pos)  
         g.message("STARTING SLOPPY MEASUREMENTS")
         tag = "%s/%s" % ("sloppy", str(pos))
 
