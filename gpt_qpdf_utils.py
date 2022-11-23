@@ -654,7 +654,7 @@ class TMD_WF_measurement(pion_measurement):
         for current_bz in range(0, self.b_z):
             for current_b_T in range(0, self.b_T):
                 prop_xshifted = g.cshift(prop_b,0,current_b_T)
-                prop_list.append(g.eval(g.adj(W[current_bz*self.b_T+current_b_T] * g.cshift(prop_xshifted,2,current_bz))))
+                prop_list.append(g.eval(g.adj(W[2*current_bz*self.b_T+current_b_T] * g.cshift(prop_xshifted,2,2*current_bz))))
 
         return prop_list
         
@@ -666,15 +666,15 @@ class TMD_WF_measurement(pion_measurement):
         for current_bz in range(0, self.b_z):
             for current_b_T in range (0, self.b_T):
                 
-                for dz in range(0, self.eta+current_bz//2):
+                for dz in range(0, self.eta+current_bz):
                     tmp_wl_list.append(g.eval(tmp_wl_list[dz-1] * g.cshift(U[2],2, dz)))
                 
-                offset = self.eta+current_bz//2
+                offset = self.eta+current_bz
                 for dx in range(0, current_b_T):
                     tmp_wl_list.append(g.eval(tmp_wl_list[offset + dx-1] * g.cshift(U[0],0, dx)))
 
                 offset += current_b_T
-                for dz in range(0, self.eta-current_bz//2):
+                for dz in range(0, self.eta-current_bz):
                     tmp_wl_list.append(g.eval(tmp_wl_list[offset + dz-1] * g.cshift(U[2],2,-dz)))
 
                 W.append(tmp_wl_list[-1])
