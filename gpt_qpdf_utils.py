@@ -648,13 +648,13 @@ class TMD_WF_measurement(pion_measurement):
     #     return prop_list
 
 
-    def constr_TMD_bprop(self, prop_B, W):
+    def constr_TMD_bprop(self, prop_b, W):
         prop_list = [prop_b,]
 
         for current_bz in range(0, self.b_z):
             for current_b_T in range(0, self.b_T):
-                prop_xshifted = g.cshift(prop_b,0,current_b_T)
-                prop_list.append(g.eval(g.adj(W[2*current_bz*self.b_T+current_b_T] * g.cshift(prop_xshifted,2,2*current_bz))))
+                print(type(prop_list))
+                prop_list.append(g.eval(g.adj(W[current_bz*self.b_T+current_b_T] * g.cshift(g.cshift(prop_b,0,current_b_T),2,current_bz))))
 
         return prop_list
         
@@ -678,7 +678,7 @@ class TMD_WF_measurement(pion_measurement):
                     tmp_wl_list.append(g.eval(tmp_wl_list[offset + dz-1] * g.cshift(U[2],2,-dz)))
 
                 W.append(tmp_wl_list[-1])
-
+        return W
     # create Wilson lines from all to all + eta + b_perp - eta - b_z
     # fixing b_perp direction to be x for now
     # def create_mod_WL(self, U):
