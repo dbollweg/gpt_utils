@@ -23,9 +23,9 @@ groups = {
 }
 
 parameters = {
-    "eta" : 4,
-    "b_T": 8,
-    "b_z" : 8,
+    "eta" : [4,5,6],
+    "b_T": 3,
+    "b_z" : 3,
     "pzmin" : 0,
     "pzmax" : 5,
     "width" : 2.2,

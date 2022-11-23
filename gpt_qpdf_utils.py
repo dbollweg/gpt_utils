@@ -651,34 +651,46 @@ class TMD_WF_measurement(pion_measurement):
     def constr_TMD_bprop(self, prop_b, W):
         prop_list = [prop_b,]
 
-        for current_bz in range(0, self.b_z):
-            for current_b_T in range(0, self.b_T):
-                print(type(prop_list))
-                prop_list.append(g.eval(g.adj(W[current_bz*self.b_T+current_b_T] * g.cshift(g.cshift(prop_b,0,current_b_T),2,current_bz))))
+        td_offset = self.b_T*self.b_z*len(eta)
+        eta_offset = self.b_T*self.b_z
+        bz_offset = self.b_T
+        
+        for transverse_direction in [0,1]: 
+            for current_eta in self.eta:
+                for current_bz in range(0, self.b_z):
+                    for current_b_T in range(0, self.b_T):
+
+                        W_index = current_b_T + bz_offset*current_bz + eta_offset*current_eta + td_offset*transverse_direction
+
+                        prop_list.append(g.eval(g.adj(W[W_index] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,2*current_bz))))
 
         return prop_list
         
     def create_TMD_WL(self, U):
+
         W = []
         tmp_wl_list = []
         tmp_wl_list.append(g.qcd.gauge.unit(U[2].grid)[0])
-        
-        for current_bz in range(0, self.b_z):
-            for current_b_T in range (0, self.b_T):
-                
-                for dz in range(0, self.eta+current_bz):
-                    tmp_wl_list.append(g.eval(tmp_wl_list[dz-1] * g.cshift(U[2],2, dz)))
-                
-                offset = self.eta+current_bz
-                for dx in range(0, current_b_T):
-                    tmp_wl_list.append(g.eval(tmp_wl_list[offset + dx-1] * g.cshift(U[0],0, dx)))
 
-                offset += current_b_T
-                for dz in range(0, self.eta-current_bz):
-                    tmp_wl_list.append(g.eval(tmp_wl_list[offset + dz-1] * g.cshift(U[2],2,-dz)))
+        for transverse_direction in [0,1]:
+            for current_eta in self.eta:
+                for current_bz in range(0, self.b_z):
+                    for current_b_T in range (0, self.b_T):
+                        
+                        for dz in range(0, current_eta+current_bz):
+                            tmp_wl_list.append(g.eval(tmp_wl_list[dz-1] * g.cshift(U[2],2, dz)))
+                        
+                        offset = current_eta+current_bz
+                        for dx in range(0, current_b_T):
+                            tmp_wl_list.append(g.eval(tmp_wl_list[offset + dx-1] * g.cshift(U[transverse_direction],transverse_direction, dx)))
 
-                W.append(tmp_wl_list[-1])
+                        offset += current_b_T
+                        for dz in range(0, current_eta-current_bz):
+                            tmp_wl_list.append(g.eval(tmp_wl_list[offset + dz-1] * g.cshift(U[2],2,-dz)))
+
+                        W.append(tmp_wl_list[-1])
         return W
+
     # create Wilson lines from all to all + eta + b_perp - eta - b_z
     # fixing b_perp direction to be x for now
     # def create_mod_WL(self, U):
