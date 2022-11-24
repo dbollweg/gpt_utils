@@ -97,8 +97,8 @@ group = run_jobs[0][0]
 
 
 ##### small dummy used for testing
-#grid = g.grid([8,8,8,8], g.double)
-#rng = g.random("seed text")
+# grid = g.grid([8,8,8,8], g.double)
+# rng = g.random("seed text")
 #U = g.qcd.gauge.random(grid, rng)
 
 # loading gauge configuration

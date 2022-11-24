@@ -527,7 +527,7 @@ class pion_measurement:
         prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
         prop_b = g.create.smear.boosted_smearing(tmp_trafo, prop_b, w=self.width, boost=self.neg_boost)
      
-        corr = g.slice_trDA(prop_f,g.adj(prop_b),phases, 3) 
+        corr = g.slice_trDA(prop_f,g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),phases, 3) 
         
         if g.rank() == 0:
             save_c2pt_hdf5(corr, tag, my_gammas, self.plist)
@@ -569,7 +569,7 @@ class pion_DA_measurement(pion_measurement):
         prop_list = [prop_b,]
 
         for z in range(1,self.zmax):
-            prop_list.append(g.eval(g.adj(W[z] * g.cshift(prop_b,2,z))))
+            prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[z] * g.cshift(prop_b,2,z))*g.gamma[5])))
         
         return prop_list
 
@@ -661,8 +661,10 @@ class TMD_WF_measurement(pion_measurement):
                     for current_b_T in range(0, self.b_T):
 
                         W_index = current_b_T + bz_offset*current_bz + eta_offset*eta_idx + td_offset*transverse_direction
-
-                        prop_list.append(g.eval(g.adj(W[W_index] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,2*current_bz))))
+                        
+                        #g_{src}*adj(g5*WL*bprop*g5), to be contracted with fprop and phases
+                        
+                        prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[W_index] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,2*current_bz))*g.gamma[5])))
 
         return prop_list
         
