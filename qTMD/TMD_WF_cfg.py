@@ -1,22 +1,11 @@
 #!/usr/bin/env python3
-#
-# Authors: Christoph Lehner 2020 / Philipp Scior 2021
-#
-# Calculate pion DA with A2A method
-#
+
 import gpt as g
 import os
-import numpy as np
-from gpt_qpdf_utils import pion_DA_measurement
+
+from gpt_qpdf_utils import TMD_WF_measurement
 from tools import *
 from io_corr import *
-
-
-"""
-================================================================================
-                                Config setup
-================================================================================
-"""
 
 # configure
 root_output ="."
@@ -36,26 +25,31 @@ groups = {
     },
 
 }
+
 # momenta setup
 parameters = {
-    "zmax"  : 0,
-    "pzmin" : -10,
-    "pzmax" : 11,
+    "eta" : [4,5,6],
+    "b_T": 3,
+    "b_z" : 3,
+    "pzmin" : 0,
+    "pzmax" : 5,
     "width" : 4.0,
-    "pos_boost" : [0,0,6],
-    "neg_boost" : [0,0,-6],
+    "pos_boost" : [0,0,0],
+    "neg_boost" : [0,0,0],
     "save_propagators" : False
 }
+
 # tags
-sm_tag = "GSRC_W40_kp6kn-6"
+sm_tag = "GSRC_W40_k0"
 lat_tag = "64I"
+
 # AMA setup
 jobs = {
     "booster_exact_0": {
         "exact": 1,
-        "sloppy": 64,
+        "sloppy": 16,
         "low": 0,
-    },  
+    },
 }
 
 """
@@ -100,7 +94,6 @@ else:
     run_jobs = bytes()
 run_jobs = eval(g.broadcast(0, run_jobs).decode("utf-8"))
 
-
 """ 
 ================================================================================
             Every node now knows what to do -> Now initialization
@@ -111,7 +104,6 @@ run_jobs = eval(g.broadcast(0, run_jobs).decode("utf-8"))
 # configuration needs to be the same for all jobs, so load eigenvectors and configuration
 conf = run_jobs[0][2]
 group = run_jobs[0][0]
-
 
 ##### small dummy used for testing
 #grid = g.grid([8,8,8,8], g.double)
@@ -127,7 +119,7 @@ U_prime, trafo = g.gauge_fix(U, maxiter=500)
 del U_prime
 L = U[0].grid.fdimensions
 
-Measurement = pion_DA_measurement(parameters)
+Measurement = TMD_WF_measurement(parameters)
 prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
 #prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
 
@@ -136,14 +128,15 @@ g.mem_report(details=False)
 g.message(
 """
 ================================================================================
-       2pt run on booster ;  this run will attempt:
+       TMD run on polaris ;  this run will attempt:
 ================================================================================
 """
 )
+
 # per job
 for group, job, conf, jid, n in run_jobs:
-
-    g.message(f"""Job {jid} / {n} :  configuration {conf}, job tag {job}""")
+    g.message(f"""Job {jid} / {n} :  configuration {conf}, job tag {job}"""
+    )
 
     # the original point for source creation which shift by conf number
     src_origin = np.array([int(conf)%L[i] for i in range(4)]) + src_shift
@@ -152,27 +145,31 @@ for group, job, conf, jid, n in run_jobs:
     source_positions_sloppy = source_positions[:jobs[job]["sloppy"]]
     source_positions_exact = source_positions[:jobs[job]["exact"]]
 
-    #root_job = data_dir + "/c2pt"
+    g.message(f" positions_sloppy = {source_positions_sloppy}")
+    g.message(f" positions_exact = {source_positions_exact}")
+
+    #root_job = f"{root_output}/{conf}/{job}"
     #Measurement.set_output_facilites(f"{root_job}/correlators",f"{root_job}/propagators")
-    
+
     sample_log_file = data_dir + "/sample_log/" + conf
     #if g.rank() == 0:
     f = open(sample_log_file, "w")
     f.close()
 
+    g.message("Starting modified Wilson loops")
+    W = Measurement.create_TMD_WL(U)
+
     # exact positions
     g.message(f" positions_exact = {source_positions_exact}")
     for pos in source_positions_exact:
-        phases = Measurement.make_mom_phases(U[0].grid, pos)
+        phases = Measurement.make_mom_phases(U[0].grid,pos)     
         sample_log_tag = get_sample_log_tag("ex", pos, sm_tag)
         g.message(f"START: {sample_log_tag}")
         with open(sample_log_file) as f:
             if sample_log_tag in f.read():
                 g.message("SKIP: " + sample_log_tag)
                 continue
-        
-        #g.message("STARTING EXACT MEASUREMENTS")
-        g.message("Starting 2pt function")
+
         g.message("Generatring boosted src's")
         srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)
 
@@ -182,27 +179,35 @@ for group, job, conf, jid, n in run_jobs:
         prop_exact_b = g.eval(prop_exact * srcDm)
         g.message("backward prop done")
 
+        del srcDp
+        del srcDm
+
         tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "ex", pos, sm_tag)
         g.message("Starting 2pt contraction (includes sink smearing)")
         Measurement.contract_2pt(prop_exact_f, prop_exact_b, phases, trafo, tag)
         g.message("2pt contraction done")
 
-        if(parameters["save_propagators"]):
-            Measurement.propagator_output(tag, prop_exact_f, prop_exact_b)
-
-        del prop_exact_f
-        del prop_exact_b
+        prop_b = Measurement.constr_TMD_bprop(prop_exact_b,W)
+        g.message("Start TMD contractions")
+        Measurement.contract_TMD(prop_exact_f, prop_b, phases, tag)
+        del prop_b
+        g.message("TMD contractions done")
 
         with open(sample_log_file, "a") as f:
             if g.rank() == 0:
                 f.write(sample_log_tag+"\n")
         g.message("DONE: " + sample_log_tag)
-    
-    # sloppy positions
+
+        del prop_exact_f
+        del prop_exact_b
+        
+    g.message("exact positions done")
     del prop_exact
-    g.message(f" positions_sloppy = {source_positions_sloppy}")
+
+    # sloppy positions
     for pos in source_positions_sloppy:
-        phases = Measurement.make_mom_phases(U[0].grid, pos)
+
+        phases = Measurement.make_mom_phases(U[0].grid,pos)  
         sample_log_tag = get_sample_log_tag("sl", pos, sm_tag)
         g.message(f"START: {sample_log_tag}")
         with open(sample_log_file) as f:
@@ -213,13 +218,16 @@ for group, job, conf, jid, n in run_jobs:
         #g.message("STARTING SLOPPY MEASUREMENTS")
         g.message("Starting 2pt function")
         g.message("Generatring boosted src's")
-        srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)  
+        srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)
 
-        g.message("Starting prop sloppy")
+        g.message("Starting prop exact")
         prop_sloppy_f = g.eval(prop_sloppy * srcDp)
         g.message("forward prop done")
         prop_sloppy_b = g.eval(prop_sloppy * srcDm)
         g.message("backward prop done")
+
+        del srcDp
+        del srcDm
 
         g.message("Starting pion 2pt function")
         tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "sl", pos, sm_tag)
@@ -227,16 +235,18 @@ for group, job, conf, jid, n in run_jobs:
         Measurement.contract_2pt(prop_sloppy_f, prop_sloppy_b, phases, trafo, tag)
         g.message("pion contraction done")
 
-        if(parameters["save_propagators"]):
-            Measurement.propagator_output(tag, prop_sloppy_f, prop_sloppy_b)
-
+        prop_b = Measurement.constr_TMD_bprop(prop_sloppy_b,W)
+        g.message("Start TMD contractions")
+        Measurement.contract_TMD(prop_sloppy_f, prop_b, phases, tag)
+        del prop_b
+        g.message("TMD contractions done")
+       
         del prop_sloppy_f
         del prop_sloppy_b      
-
+    
         with open(sample_log_file, "a") as f:
             if g.rank() == 0:
                 f.write(sample_log_tag+"\n")
         g.message("DONE: " + sample_log_tag)
-        
-del pin
 
+del pin
