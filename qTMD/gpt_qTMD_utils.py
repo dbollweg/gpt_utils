@@ -1,8 +1,8 @@
-TMD_WF_measurementfrom cmath import phase
+from cmath import phase
 from math import gamma
 import gpt as g
 import numpy as np
-from io_corr import *
+from utils.io_corr import *
 
 #ordered list of gamma matrix identifiers, needed for the tag in the correlator output
 my_gammas = ["5", "T", "T5", "X", "X5", "Y", "Y5", "Z", "Z5", "I", "SXT", "SXY", "SXZ", "SYT", "SYZ", "SZT"]
@@ -41,271 +41,6 @@ class pion_measurement:
         self.output.write({prop_b_tag: prop_b})
         self.output.flush()
         g.message("Propagator IO done")
-
-    def make_24D_inverter(self, U, evec_file):
-        l_exact = g.qcd.fermion.mobius(
-            U,
-            {
-                #24D params
-                "mass": 0.00107,
-                "M5": 1.8,
-                "b": 2.5,
-                "c": 1.5,
-                "Ls": 24,
-                "boundary_phases": [1.0, 1.0, 1.0, -1.0],
-                },
-                    
-        )
-
-        l_sloppy = l_exact.converted(g.single)
-        g.message(f"Loading eigenvectors from {evec_file}")
-        g.mem_report(details=False)
-        eig = g.load(evec_file, grids=l_sloppy.F_grid_eo)
-        #g.message("pinning coarse evs to device memory")
-        g.mem_report(details=False)
-        pin = g.pin(eig[1], g.accelerator)
-        g.message("creating deflated solvers")
-        light_innerL_inverter = g.algorithms.inverter.preconditioned(
-            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
-            g.algorithms.inverter.sequence(
-                g.algorithms.inverter.coarse_deflate(
-                    eig[1],
-                    eig[0],
-                    eig[2],
-                    block=400, 
-                    fine_block=4,
-                    linear_combination_block=32,
-                ),
-                g.algorithms.inverter.split(
-                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 10000}),
-                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
-                ),
-            ),
-        )
-
-        light_innerH_inverter = g.algorithms.inverter.preconditioned(
-            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
-            g.algorithms.inverter.sequence(
-                g.algorithms.inverter.coarse_deflate(
-                    eig[1],
-                    eig[0],
-                    eig[2],
-                    block=400, 
-                    fine_block=4,
-                    linear_combination_block=32,
-                ),
-                g.algorithms.inverter.split(
-                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 10000}),
-                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
-                ),
-            ),
-        )
-        g.mem_report(details=False)
-#        light_exact_inverter = g.algorithms.inverter.defect_correcting(
-#            g.algorithms.inverter.mixed_precision(light_innerH_inverter, g.single, g.double),
-#            eps=1e-8,
-#            maxiter=10,
-#        )
-
-#        light_sloppy_inverter = g.algorithms.inverter.defect_correcting(
-#            g.algorithms.inverter.mixed_precision(light_innerL_inverter, g.single, g.double),
-#            eps=1e-8,
-#            maxiter=2,#
-#        )
-
-
-        ############### final inverter definitions
-        prop_l_sloppy = l_sloppy.propagator(light_innerL_inverter).grouped(4)#light_sloppy_inverter).grouped(4)
-        prop_l_exact = l_exact.propagator(light_innerH_inverter).grouped(4)
-
-        return prop_l_exact, prop_l_sloppy, pin
-        
-    def make_48I_inverter(self, U, evec_file):
-        l_exact = g.qcd.fermion.mobius(
-            U,
-            {
-                #48I params
-                "mass": 0.00078,
-                "M5": 1.8,
-                "b": 1.5,
-                "c": 0.5,
-                "Ls": 14,
-                "boundary_phases": [1.0, 1.0, 1.0, -1.0],
-                },
-                    
-        )
-
-        l_sloppy = l_exact.converted(g.single)
-        g.message(f"Loading eigenvectors from {evec_file}")
-        g.mem_report(details=False)
-        eig = g.load(evec_file, grids=l_sloppy.F_grid_eo)
-        g.message("pinning coarse evs to device memory")
-        g.mem_report(details=False)
-        pin = g.pin(eig[1], g.accelerator)
-        g.message("creating deflated solvers")
-        light_innerL_inverter = g.algorithms.inverter.preconditioned(
-            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
-            g.algorithms.inverter.sequence(
-                g.algorithms.inverter.coarse_deflate(
-                    eig[1],
-                    eig[0],
-                    eig[2]
-                ),
-                g.algorithms.inverter.split(
-                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 200}),
-                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
-                ),
-            ),
-        )
-
-        light_innerH_inverter = g.algorithms.inverter.preconditioned(
-            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
-            g.algorithms.inverter.sequence(
-                g.algorithms.inverter.coarse_deflate(
-                    eig[1],
-                    eig[0],
-                    eig[2]
-                ),
-                g.algorithms.inverter.split(
-                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 300}),
-                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
-                ),
-            ),
-        )
-        g.mem_report(details=False)
-        light_exact_inverter = g.algorithms.inverter.defect_correcting(
-            g.algorithms.inverter.mixed_precision(light_innerH_inverter, g.single, g.double),
-            eps=1e-8,
-            maxiter=10,
-        )
-
-        light_sloppy_inverter = g.algorithms.inverter.defect_correcting(
-            g.algorithms.inverter.mixed_precision(light_innerL_inverter, g.single, g.double),
-            eps=1e-8,
-            maxiter=2,
-        )
-
-
-        ############### final inverter definitions
-        prop_l_sloppy = l_exact.propagator(light_sloppy_inverter).grouped(4)
-        prop_l_exact = l_exact.propagator(light_exact_inverter).grouped(4)
-
-        return prop_l_exact, prop_l_sloppy, pin
-
-
-    #make the inverters needed for the 96I lattices
-    def make_96I_inverter(self, U, evec_file):
-
-        l_exact = g.qcd.fermion.mobius(
-            U,
-            {
-                #96I params
-                "mass": 0.00054,
-                "M5": 1.8,
-                "b": 1.5,
-                "c": 0.5,
-                "Ls": 12,
-                "boundary_phases": [1.0, 1.0, 1.0, -1.0],
-            },
-
-        )
-
-        l_sloppy = l_exact.converted(g.single)
-
-        eig = g.load(evec_file, grids=l_sloppy.F_grid_eo)
-        # ## pin coarse eigenvectors to GPU memory
-        pin = g.pin(eig[1], g.accelerator)
-
-
-        light_innerL_inverter = g.algorithms.inverter.preconditioned(
-            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
-            g.algorithms.inverter.sequence(
-                g.algorithms.inverter.coarse_deflate(
-                    eig[1],
-                    eig[0],
-                    eig[2],
-                    block=400,
-                    fine_block=4,
-                    linear_combination_block=32,
-                ),
-                g.algorithms.inverter.split(
-                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 200}),
-                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
-                ),
-            ),
-        )
-
-        light_innerH_inverter = g.algorithms.inverter.preconditioned(
-            g.qcd.fermion.preconditioner.eo1_ne(parity=g.odd),
-            g.algorithms.inverter.sequence(
-                g.algorithms.inverter.coarse_deflate(
-                    eig[1],
-                    eig[0],
-                    eig[2],
-                    block=400,
-                    fine_block=4,
-                    linear_combination_block=32,
-                ),
-                g.algorithms.inverter.split(
-                    g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 300}),
-                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
-                ),
-            ),
-        )
-
-        light_exact_inverter = g.algorithms.inverter.defect_correcting(
-            g.algorithms.inverter.mixed_precision(light_innerH_inverter, g.single, g.double),
-            eps=1e-8,
-            maxiter=10,
-        )
-
-        light_sloppy_inverter = g.algorithms.inverter.defect_correcting(
-            g.algorithms.inverter.mixed_precision(light_innerL_inverter, g.single, g.double),
-            eps=1e-8,
-            maxiter=2,
-        )
-
-
-        ############### final inverter definitions
-        prop_l_sloppy = l_exact.propagator(light_sloppy_inverter).grouped(4)
-        prop_l_exact = l_exact.propagator(light_exact_inverter).grouped(4)
-
-        return prop_l_exact, prop_l_sloppy, pin
-
-    def make_debugging_inverter_mixed(self, U):
-
-        l_exact = g.qcd.fermion.mobius(
-            U,
-            {
-                #48I params
-                "mass": 0.00078,
-                "M5": 1.8,
-                "b": 1.5,
-                "c": 0.5,
-                "Ls": 24,
-                "boundary_phases": [1.0, 1.0, 1.0, 1.0],},
-        )
-
-        l_sloppy = l_exact.converted(g.single)
-
-        light_innerL_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-4, maxiter = 5000))
-        light_innerH_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-3, maxiter = 5000))
-
-        light_exact_inverter = g.algorithms.inverter.defect_correcting(
-            g.algorithms.inverter.mixed_precision(light_innerH_inverter, g.single, g.double),
-            eps=1e-4,
-            maxiter=1000,
-        )
-
-        light_sloppy_inverter = g.algorithms.inverter.defect_correcting(
-            g.algorithms.inverter.mixed_precision(light_innerL_inverter, g.single, g.double),
-            eps=1e-4,
-            maxiter=200,
-        )
-
-        prop_l_sloppy = l_exact.propagator(light_sloppy_inverter).grouped(6)
-        prop_l_exact = l_exact.propagator(light_exact_inverter).grouped(6)
-        return prop_l_exact, prop_l_sloppy
 
     def make_64I_inverter(self, U, evec_file):
         l_exact = g.qcd.fermion.mobius(
@@ -448,7 +183,7 @@ class pion_measurement:
         
         if g.rank() == 0:
             save_c2pt_hdf5(corr, tag, my_gammas, self.plist)
-       
+        del corr 
 
     #function that creates boosted, smeared src.
     def create_src_2pt(self, pos, trafo, grid):
@@ -483,9 +218,12 @@ class TMD_WF_measurement(pion_measurement):
     def contract_TMD(self, prop_f, prop_b, phases, tag):
 
         corr = g.slice_trDA(prop_b,prop_f,phases, 3)
-
+        if g.rank() == 0:
+            #self.save_qTMDWF_hdf5(corr, tag, my_gammas)
+            save_qTMDWF_hdf5(corr, tag, my_gammas, self.plist, self.eta, self.b_T, self.b_z)
+        del corr
         #TODO ad io function from utils/tools
-
+        '''
         g.message("Starting IO")       
         for z, corr_p in enumerate(corr):
             corr_tag = "%s/TMD/z%s" % (tag, str(z))
@@ -495,7 +233,7 @@ class TMD_WF_measurement(pion_measurement):
                     out_tag = f"{p_tag}/{my_gammas[j]}"
                     self.output_correlator.write(out_tag, corr_t)
                     g.message("Correlator %s\n" % out_tag, corr_t)
-                    
+        '''            
     def create_src_TMD(self, pos, trafo, grid):
         
         srcD = g.mspincolor(grid)
@@ -509,22 +247,10 @@ class TMD_WF_measurement(pion_measurement):
         del srcD
         return srcDp, srcDm
 
-    # def constr_backw_prop_for_TMD(self, prop_b, W):
-    #     g.message("Creating list of W*prop_b for all z+b_perp-z+b_z")
-    #     prop_list = [prop_b,]
-
-    #     for z in range(1,self.eta+self.b_z//2):
-    #         prop_list.append(g.eval(g.adj(W[z] * g.cshift(prop_b,2,z))))
-    #     for x in range(0,self.b_T):
-    #         prop_list.append(g.eval(g.adj(W[self.eta + self.b_z//2 + x] * g.cshift(prop_b,0,x))))
-    #     for z in range(0,self.eta-self.b_z//2):
-    #         prop_list.append(g.eval(g.adj(W[self.eta + self.b_z//2 + self.b_T + z] * g.cshift(prop_b,2,-z))))
-        
-    #     return prop_list
-
-
     def constr_TMD_bprop(self, prop_b, W):
-        prop_list = [prop_b,]
+        # prop_list = [prop_b,]
+        # FIXME: temporarily remove the no Wilson line contraction
+        prop_list = []
 
         td_offset = self.b_T*self.b_z*len(self.eta)
         eta_offset = self.b_T*self.b_z
@@ -547,13 +273,16 @@ class TMD_WF_measurement(pion_measurement):
 
         W = []
         tmp_wl_list = []
+        # FIXME: here need to be added in the loop below?
         tmp_wl_list.append(g.qcd.gauge.unit(U[2].grid)[0])
 
+        # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
                 for current_bz in range(0, self.b_z):
                     for current_b_T in range (0, self.b_T):
-                        
+                       
+                        # FIXME: phase need to be corrected due to source position
                         for dz in range(0, current_eta+current_bz):
                             tmp_wl_list.append(g.eval(tmp_wl_list[dz-1] * g.cshift(U[2],2, dz)))
                         
@@ -566,6 +295,7 @@ class TMD_WF_measurement(pion_measurement):
                             tmp_wl_list.append(g.eval(tmp_wl_list[offset + dz-1] * g.cshift(U[2],2,-dz)))
 
                         W.append(tmp_wl_list[-1])
+        del tmp_wl_list
         return W
 
     # create Wilson lines from all to all + eta + b_perp - eta - b_z

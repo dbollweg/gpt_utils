@@ -3,9 +3,9 @@
 import gpt as g
 import os
 
-from gpt_qpdf_utils import TMD_WF_measurement
-from tools import *
-from io_corr import *
+from qTMD.gpt_qTMD_utils import TMD_WF_measurement
+from utils.tools import *
+from utils.io_corr import *
 
 # configure
 root_output ="."
@@ -28,7 +28,7 @@ groups = {
 
 # momenta setup
 parameters = {
-    "eta" : [4,5,6],
+    "eta" : [0,5,6],
     "b_T": 3,
     "b_z" : 3,
     "pzmin" : 0,
@@ -47,7 +47,7 @@ lat_tag = "64I"
 jobs = {
     "booster_exact_0": {
         "exact": 1,
-        "sloppy": 16,
+        "sloppy": 1,
         "low": 0,
     },
 }
@@ -187,9 +187,10 @@ for group, job, conf, jid, n in run_jobs:
         Measurement.contract_2pt(prop_exact_f, prop_exact_b, phases, trafo, tag)
         g.message("2pt contraction done")
 
+        qTMDWF_tag = get_qTMDWF_file_tag(data_dir, lat_tag, conf, "ex", pos, sm_tag)
         prop_b = Measurement.constr_TMD_bprop(prop_exact_b,W)
         g.message("Start TMD contractions")
-        Measurement.contract_TMD(prop_exact_f, prop_b, phases, tag)
+        Measurement.contract_TMD(prop_exact_f, prop_b, phases, qTMDWF_tag)
         del prop_b
         g.message("TMD contractions done")
 
@@ -235,9 +236,10 @@ for group, job, conf, jid, n in run_jobs:
         Measurement.contract_2pt(prop_sloppy_f, prop_sloppy_b, phases, trafo, tag)
         g.message("pion contraction done")
 
+        qTMDWF_tag = get_qTMDWF_file_tag(data_dir, lat_tag, conf, "sl", pos, sm_tag)
         prop_b = Measurement.constr_TMD_bprop(prop_sloppy_b,W)
         g.message("Start TMD contractions")
-        Measurement.contract_TMD(prop_sloppy_f, prop_b, phases, tag)
+        Measurement.contract_TMD(prop_sloppy_f, prop_b, phases, qTMDWF_tag)
         del prop_b
         g.message("TMD contractions done")
        
@@ -249,4 +251,5 @@ for group, job, conf, jid, n in run_jobs:
                 f.write(sample_log_tag+"\n")
         g.message("DONE: " + sample_log_tag)
 
+del prop_sloppy
 del pin
