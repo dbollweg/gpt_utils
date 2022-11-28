@@ -527,8 +527,9 @@ class pion_measurement:
         prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
         prop_b = g.create.smear.boosted_smearing(tmp_trafo, prop_b, w=self.width, boost=self.neg_boost)
      
-        corr = g.slice_trDA(prop_f,g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),phases, 3) 
-        
+        #corr = g.slice_trDA(prop_f,g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),phases, 3) 
+        corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),prop_f,phases, 3) 
+
         if g.rank() == 0:
             save_c2pt_hdf5(corr, tag, my_gammas, self.plist)
        
@@ -649,7 +650,8 @@ class TMD_WF_measurement(pion_measurement):
 
 
     def constr_TMD_bprop(self, prop_b, W):
-        prop_list = [prop_b,]
+        #prop_list = [prop_b,]
+        prop_list = []
 
         td_offset = self.b_T*self.b_z*len(self.eta)
         eta_offset = self.b_T*self.b_z
@@ -671,14 +673,15 @@ class TMD_WF_measurement(pion_measurement):
     def create_TMD_WL(self, U):
 
         W = []
-        tmp_wl_list = []
-        tmp_wl_list.append(g.qcd.gauge.unit(U[2].grid)[0])
 
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
                 for current_bz in range(0, self.b_z):
                     for current_b_T in range (0, self.b_T):
                         
+                        tmp_wl_list = []
+                        tmp_wl_list.append(g.qcd.gauge.unit(U[2].grid)[0])
+
                         for dz in range(0, current_eta+current_bz):
                             tmp_wl_list.append(g.eval(tmp_wl_list[dz-1] * g.cshift(U[2],2, dz)))
                         

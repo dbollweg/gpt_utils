@@ -6,3 +6,8 @@
 *.fdb_latexmk
 __pycache__/
 utils/__pycache__/
+qPDF/__pycache__/
+qTMD/__pycache__/
+DeltaG/__pycache__/
+FFs/__pycache__/
+stubs/__pycache__/
