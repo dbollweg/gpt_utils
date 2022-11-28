@@ -679,36 +679,24 @@ class TMD_WF_measurement(pion_measurement):
                 for current_bz in range(0, self.b_z):
                     for current_b_T in range (0, self.b_T):
                         
-                        tmp_wl_list = []
-                        tmp_wl_list.append(g.qcd.gauge.unit(U[2].grid)[0])
-
+                        prv_link = g.qcd.gauge.unit(U[2].grid[0])
+                        current_link = prv_link
                         for dz in range(0, current_eta+current_bz):
-                            tmp_wl_list.append(g.eval(tmp_wl_list[dz-1] * g.cshift(U[2],2, dz)))
-                        
-                        offset = current_eta+current_bz
+                            current_link=g.eval(prv_link * g.cshift(U[2],2, dz))
+                            prv_link=current_link
+                            
                         for dx in range(0, current_b_T):
-                            tmp_wl_list.append(g.eval(tmp_wl_list[offset + dx-1] * g.cshift(U[transverse_direction],transverse_direction, dx)))
+                            current_link=g.eval(prv_link * g.cshift(U[transverse_direction],transverse_direction, dx))
+                            prv_link=current_link
 
-                        offset += current_b_T
+                        
                         for dz in range(0, current_eta-current_bz):
-                            tmp_wl_list.append(g.eval(tmp_wl_list[offset + dz-1] * g.cshift(U[2],2,-dz)))
-
-                        W.append(tmp_wl_list[-1])
+                            current_link=g.eval(prv_link * g.cshift(U[2],2,-dz))
+                            prv_link=current_link
+                            
+                        W.append(current_link)
         return W
 
-    # create Wilson lines from all to all + eta + b_perp - eta - b_z
-    # fixing b_perp direction to be x for now
-    # def create_mod_WL(self, U):
-    #     W = []
-    #     W.append(g.qcd.gauge.unit(U[2].grid)[0])
-    #     for dz in range(0, self.eta+self.b_z//2):
-    #         W.append(g.eval(W[dz-1] * g.cshift(U[2], 2, dz)))
-    #     for dx in range(0,self.b_T):
-    #         W.append(g.eval(W[self.eta+self.b_z//2+dx-1] * g.cshift(U[0], 0, dx)))
-    #     for dz in range(0, self.eta-self.b_z//2):
-    #         W.append(g.eval(W[self.eta+self.b_z//2+self.b_T+dz-1] * g.cshift(U[2], 2, -dz)))
-
-    #     return W
     
 class pion_ff_measurement(pion_measurement):
     def __init__(self, parameters):
