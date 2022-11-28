@@ -179,8 +179,9 @@ class pion_measurement:
         prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
         prop_b = g.create.smear.boosted_smearing(tmp_trafo, prop_b, w=self.width, boost=self.neg_boost)
      
-        corr = g.slice_trDA(prop_f,g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),phases, 3) 
-        
+        #corr = g.slice_trDA(prop_f,g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),phases, 3) 
+        corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]), prop_f, phases, 3) 
+        #corr = g.slice_trDA(prop_f,g.adj(prop_b),phases, 3)
         if g.rank() == 0:
             save_c2pt_hdf5(corr, tag, my_gammas, self.plist)
         del corr 
@@ -272,9 +273,6 @@ class TMD_WF_measurement(pion_measurement):
     def create_TMD_WL(self, U):
 
         W = []
-        tmp_wl_list = []
-        # FIXME: here need to be added in the loop below?
-        tmp_wl_list.append(g.qcd.gauge.unit(U[2].grid)[0])
 
         # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
         for transverse_direction in [0,1]:
@@ -282,6 +280,9 @@ class TMD_WF_measurement(pion_measurement):
                 for current_bz in range(0, self.b_z):
                     for current_b_T in range (0, self.b_T):
                        
+                        tmp_wl_list = []
+                        tmp_wl_list.append(g.qcd.gauge.unit(U[2].grid)[0])
+
                         # FIXME: phase need to be corrected due to source position
                         for dz in range(0, current_eta+current_bz):
                             tmp_wl_list.append(g.eval(tmp_wl_list[dz-1] * g.cshift(U[2],2, dz)))
