@@ -270,7 +270,7 @@ class TMD_WF_measurement(pion_measurement):
 
         return prop_list
         
-def create_TMD_WL(self, U):
+    def create_TMD_WL(self, U):
 
         W = []
 
@@ -280,7 +280,7 @@ def create_TMD_WL(self, U):
                 for current_bz in range(0, self.b_z):
                     for current_b_T in range (0, self.b_T):
                         
-                        prv_link = g.qcd.gauge.unit(U[2].grid[0])
+                        prv_link = g.qcd.gauge.unit(U[2].grid)[0]
                         current_link = prv_link
                         # FIXME: phase need to be corrected due to source position
                         for dz in range(0, current_eta+current_bz):
