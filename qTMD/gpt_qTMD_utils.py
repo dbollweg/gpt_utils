@@ -96,7 +96,7 @@ class pion_measurement:
                    linear_combination_block=32,
                ),
                g.algorithms.inverter.split(
-                   g.algorithms.inverter.cg({"eps": 1e-4, "maxiter": 200}),
+                   g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 200}),
                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
                ),
            ),
@@ -109,7 +109,7 @@ class pion_measurement:
         )
 
         light_sloppy_inverter = g.algorithms.inverter.defect_correcting(g.algorithms.inverter.mixed_precision(light_innerH_inverter, g.single, g.double),
-            eps=1e-4,
+            eps=1e-8,
             maxiter=12,
         )
 
@@ -216,25 +216,14 @@ class TMD_WF_measurement(pion_measurement):
         self.neg_boost = parameters["neg_boost"]
         self.save_propagators = parameters["save_propagators"]
 
-    def contract_TMD(self, prop_f, prop_b, phases, tag):
+    def contract_TMD(self, prop_f, prop_b, phases, tag, W_index_list, i_sub):
 
         corr = g.slice_trDA(prop_b,prop_f,phases, 3)
         if g.rank() == 0:
             #self.save_qTMDWF_hdf5(corr, tag, my_gammas)
-            save_qTMDWF_hdf5(corr, tag, my_gammas, self.plist, self.eta, self.b_T, self.b_z)
+            save_qTMDWF_hdf5_subset(corr, tag, my_gammas, self.plist, W_index_list, i_sub)
         del corr
-        #TODO ad io function from utils/tools
-        '''
-        g.message("Starting IO")       
-        for z, corr_p in enumerate(corr):
-            corr_tag = "%s/TMD/z%s" % (tag, str(z))
-            for i, corr_mu in enumerate(corr_p):
-                p_tag = f"{corr_tag}/p{self.plist[i]}"
-                for j, corr_t in enumerate(corr_mu):
-                    out_tag = f"{p_tag}/{my_gammas[j]}"
-                    self.output_correlator.write(out_tag, corr_t)
-                    g.message("Correlator %s\n" % out_tag, corr_t)
-        '''            
+
     def create_src_TMD(self, pos, trafo, grid):
         
         srcD = g.mspincolor(grid)
@@ -248,67 +237,52 @@ class TMD_WF_measurement(pion_measurement):
         del srcD
         return srcDp, srcDm
 
-    def constr_TMD_bprop(self, prop_b, W):
+    def constr_TMD_bprop(self, prop_b, W, W_index_list):
         # prop_list = [prop_b,]
         # FIXME: temporarily remove the no Wilson line contraction
         prop_list = []
-
-        td_offset = self.b_T*self.b_z*len(self.eta)
-        eta_offset = self.b_T*self.b_z
-        bz_offset = self.b_T
-        
-        for transverse_direction in [0,1]: 
-            for eta_idx, current_eta in enumerate(self.eta):
-                for current_bz in range(0, self.b_z):
-                    for current_b_T in range(0, self.b_T):
-
-                        W_index = current_b_T + bz_offset*current_bz + eta_offset*eta_idx + td_offset*transverse_direction
-                        
-                        #g_{src}*adj(g5*WL*bprop*g5), to be contracted with fprop and phases
-                        
-                        prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[W_index] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,2*current_bz))*g.gamma[5])))
-
+        # W_index_list[i] = [bT, bz, eta, Tdir]
+        for i, idx in enumerate(W_index_list):
+            current_b_T = idx[0]
+            current_bz = idx[1]
+            current_eta = idx[2]
+            transverse_direction = idx[3]
+            #g.mem_report(details=False)
+            prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[i] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,2*current_bz))*g.gamma[5])))
+            #g.mem_report(details=False)
         return prop_list
-        
+
     def create_TMD_WL(self, U):
 
         W = []
+        index_list = []
 
         # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
                 for current_bz in range(0, self.b_z):
                     for current_b_T in range (0, self.b_T):
-                       
-                        tmp_wl_list = []
-                        tmp_wl_list.append(g.qcd.gauge.unit(U[2].grid)[0])
 
+                        prv_link = g.qcd.gauge.unit(U[2].grid)[0]
+                        current_link = prv_link
                         # FIXME: phase need to be corrected due to source position
                         for dz in range(0, current_eta+current_bz):
-                            tmp_wl_list.append(g.eval(tmp_wl_list[dz-1] * g.cshift(U[2],2, dz)))
-                        
-                        offset = current_eta+current_bz
+                            current_link=g.eval(prv_link * g.cshift(U[2],2, dz))
+                            prv_link=current_link
+
                         for dx in range(0, current_b_T):
-                            tmp_wl_list.append(g.eval(tmp_wl_list[offset + dx-1] * g.cshift(U[transverse_direction],transverse_direction, dx)))
+                            current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction], 2, current_eta+current_bz),transverse_direction, dx))
+                            prv_link=current_link
 
-                        offset += current_b_T
+
                         for dz in range(0, current_eta-current_bz):
-                            tmp_wl_list.append(g.eval(tmp_wl_list[offset + dz-1] * g.cshift(U[2],2,-dz)))
+                            current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-dz)))
+                            prv_link=current_link
 
-                        W.append(tmp_wl_list[-1])
-        del tmp_wl_list
-        return W
-
-    # create Wilson lines from all to all + eta + b_perp - eta - b_z
-    # fixing b_perp direction to be x for now
-    # def create_mod_WL(self, U):
-    #     W = []
-    #     W.append(g.qcd.gauge.unit(U[2].grid)[0])
-    #     for dz in range(0, self.eta+self.b_z//2):
-    #         W.append(g.eval(W[dz-1] * g.cshift(U[2], 2, dz)))
-    #     for dx in range(0,self.b_T):
-    #         W.append(g.eval(W[self.eta+self.b_z//2+dx-1] * g.cshift(U[0], 0, dx)))
-    #     for dz in range(0, self.eta-self.b_z//2):
-    #         W.append(g.eval(W[self.eta+self.b_z//2+self.b_T+dz-1] * g.cshift(U[2], 2, -dz)))
-
-    #     return W
+                        W.append(current_link)
+                        index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
+                        if current_eta==4 and current_bz==1 and current_b_T==0:
+                            g.message(f"WL, {index_list[-1]}, {W[-1]}")
+                            #g.message(f"Udz0, {U[2]}")
+                            g.message(f"Ushift, {g.eval(g.cshift(U[2],2, 0) * g.cshift(U[2],2, 1))}")
+        return W, index_list

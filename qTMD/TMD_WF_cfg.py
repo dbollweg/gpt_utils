@@ -2,6 +2,7 @@
 
 import gpt as g
 import os
+import math
 
 from qTMD.gpt_qTMD_utils import TMD_WF_measurement
 from utils.tools import *
@@ -10,7 +11,7 @@ from utils.io_corr import *
 # configure
 root_output ="."
 src_shift = np.array([0,0,0,0]) + np.array([1,3,5,7])
-data_dir = "/home/gaox/latwork/DWF/64I/prod/data/"
+data_dir = "/home/gaox/latwork/DWF/64I/prod/data/GSRC_W40_k0"
 
 # configuration setup
 groups = {
@@ -28,11 +29,11 @@ groups = {
 
 # momenta setup
 parameters = {
-    "eta" : [0,5,6],
-    "b_T": 3,
-    "b_z" : 3,
+    "eta" : [15, 20, 25],
+    "b_T": 16,
+    "b_z" : 16,
     "pzmin" : 0,
-    "pzmax" : 5,
+    "pzmax" : 4,
     "width" : 4.0,
     "pos_boost" : [0,0,0],
     "neg_boost" : [0,0,0],
@@ -40,7 +41,7 @@ parameters = {
 }
 
 # tags
-sm_tag = "GSRC_W40_k0"
+sm_tag = "GSRC_W40_k0_TEST-new"
 lat_tag = "64I"
 
 # AMA setup
@@ -157,7 +158,13 @@ for group, job, conf, jid, n in run_jobs:
     f.close()
 
     g.message("Starting modified Wilson loops")
-    W = Measurement.create_TMD_WL(U)
+    W, W_index_list = Measurement.create_TMD_WL(U)
+    W_count = len(W_index_list)
+    W_subset_len = 50
+    W_subset_count = math.ceil(W_count/W_subset_len)
+    if g.rank() == 0:
+        print("W_count, W_subset_len, W_subset_count", W_count, W_subset_len, W_subset_count)
+        print("W_index_list:",W_index_list)
 
     # exact positions
     g.message(f" positions_exact = {source_positions_exact}")
@@ -187,12 +194,15 @@ for group, job, conf, jid, n in run_jobs:
         Measurement.contract_2pt(prop_exact_f, prop_exact_b, phases, trafo, tag)
         g.message("2pt contraction done")
 
+        g.message(f"Start TMD contraction with N_W = {W_count}, divided into {W_subset_count} subsets.")
         qTMDWF_tag = get_qTMDWF_file_tag(data_dir, lat_tag, conf, "ex", pos, sm_tag)
-        prop_b = Measurement.constr_TMD_bprop(prop_exact_b,W)
-        g.message("Start TMD contractions")
-        Measurement.contract_TMD(prop_exact_f, prop_b, phases, qTMDWF_tag)
-        del prop_b
-        g.message("TMD contractions done")
+        for i_sub in range(0, W_subset_count):
+            g.message(f"Start TMD backward propagator subset of {i_sub} / {W_subset_count}")
+            prop_b = Measurement.constr_TMD_bprop(prop_exact_b,W[i_sub*W_subset_len:(i_sub+1)*W_subset_len], W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len])
+            g.message("  Start TMD contractions")
+            Measurement.contract_TMD(prop_exact_f, prop_b, phases, qTMDWF_tag, W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub)
+            del prop_b
+            g.message("  TMD contractions done")
 
         with open(sample_log_file, "a") as f:
             if g.rank() == 0:
@@ -236,12 +246,15 @@ for group, job, conf, jid, n in run_jobs:
         Measurement.contract_2pt(prop_sloppy_f, prop_sloppy_b, phases, trafo, tag)
         g.message("pion contraction done")
 
+        g.message(f"Start TMD contraction with N_W = {W_count}, divided into {W_subset_count} subsets.")
         qTMDWF_tag = get_qTMDWF_file_tag(data_dir, lat_tag, conf, "sl", pos, sm_tag)
-        prop_b = Measurement.constr_TMD_bprop(prop_sloppy_b,W)
-        g.message("Start TMD contractions")
-        Measurement.contract_TMD(prop_sloppy_f, prop_b, phases, qTMDWF_tag)
-        del prop_b
-        g.message("TMD contractions done")
+        for i_sub in range(0, W_subset_count):
+            g.message(f"Start TMD backward propagator subset of {i_sub} / {W_subset_count}")
+            prop_b = Measurement.constr_TMD_bprop(prop_sloppy_b,W[i_sub*W_subset_len:(i_sub+1)*W_subset_len], W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len])
+            g.message("  Start TMD contractions")
+            Measurement.contract_TMD(prop_sloppy_f, prop_b, phases, qTMDWF_tag, W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub)
+            del prop_b
+            g.message("  TMD contractions done")
        
         del prop_sloppy_f
         del prop_sloppy_b      
