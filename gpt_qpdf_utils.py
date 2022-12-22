@@ -24,12 +24,17 @@ class pion_measurement:
         self.neg_boost = parameters["neg_boost"]
         self.save_propagators = parameters["save_propagators"]
 
-    def set_output_facilites(self, corr_file, prop_file):
+    def set_output_facilities(self, corr_file, prop_file):
         self.output_correlator = g.corr_io.writer(corr_file)
         
         if(self.save_propagators):
             self.output = g.gpt_io.writer(prop_file)
 
+
+    def set_input_facilities(self, corr_file):
+        self.input_correlator = g.corr_io.reader(corr_file)
+
+        
     def propagator_output(self, tag, prop_f, prop_b):
 
         g.message("Saving forward propagator")
@@ -492,7 +497,7 @@ class pion_measurement:
         l_sloppy = l_exact.converted(g.single)
 
         light_innerL_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-2, maxiter = 10000))
-        light_innerH_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-8, maxiter = 200))
+        light_innerH_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-2, maxiter = 200))
 
         prop_l_sloppy = l_exact.propagator(light_innerH_inverter).grouped(6)
         prop_l_exact = l_exact.propagator(light_innerL_inverter).grouped(6)
@@ -530,8 +535,29 @@ class pion_measurement:
         #corr = g.slice_trDA(prop_f,g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),phases, 3) 
         corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),prop_f,phases, 3) 
 
-        if g.rank() == 0:
+        if "test" not in tag and g.rank() == 0:
             save_c2pt_hdf5(corr, tag, my_gammas, self.plist)
+
+        if "test" in tag:
+            corr_tag = "./2pt"
+            corr_p = corr[0]
+            for i, corr_mu in enumerate(corr_p):
+                out_tag = f"{corr_tag}/p{self.plist[i]}"
+                for j, corr_t in enumerate(corr_mu):
+                    g_tag = f"{out_tag}/{my_gammas[j]}"
+                    self.output_correlator.write(g_tag, corr_t)
+                    
+                    if "exact" in tag:
+                        self.set_input_facilities("./correlators_exact_reference")
+                    else:
+                        self.set_input_facilities("./correlators_sloppy_reference")
+            
+                    test_list = self.input_correlator.tags[g_tag]
+                    deviations = test_list-corr_t
+                    
+                    assert (abs(deviations) < 1e-12).all()
+                    
+            g.message(f"\033[1;32m Correlator {tag} is correct! \033[1;37;0m")
        
 
     #function that creates boosted, smeared src.
