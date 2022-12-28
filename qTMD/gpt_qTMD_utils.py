@@ -96,7 +96,7 @@ class pion_measurement:
                    linear_combination_block=32,
                ),
                g.algorithms.inverter.split(
-                   g.algorithms.inverter.cg({"eps": 1e-8, "maxiter": 200}),
+                   g.algorithms.inverter.cg({"eps": 1e-4, "maxiter": 200}),
                    mpi_split=g.default.get_ivec("--mpi_split", None, 4),
                ),
            ),
@@ -109,7 +109,7 @@ class pion_measurement:
         )
 
         light_sloppy_inverter = g.algorithms.inverter.defect_correcting(g.algorithms.inverter.mixed_precision(light_innerH_inverter, g.single, g.double),
-            eps=1e-8,
+            eps=1e-4,
             maxiter=12,
         )
 

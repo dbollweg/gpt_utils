@@ -5,8 +5,10 @@ import os
 import math
 
 from qTMD.gpt_qTMD_utils import TMD_WF_measurement
-from utils.tools import *
-from utils.io_corr import *
+from tools import *
+from io_corr import *
+#from utils.tools import *
+#from utils.io_corr import *
 
 # configure
 root_output ="."
@@ -29,7 +31,7 @@ groups = {
 
 # momenta setup
 parameters = {
-    "eta" : [15, 20, 25],
+    "eta" : [10, 15, 20, 25],
     "b_T": 16,
     "b_z" : 16,
     "pzmin" : 0,
@@ -41,14 +43,14 @@ parameters = {
 }
 
 # tags
-sm_tag = "GSRC_W40_k0_TEST-new"
+sm_tag = "GSRC_W40_k0"
 lat_tag = "64I"
 
 # AMA setup
 jobs = {
     "booster_exact_0": {
         "exact": 1,
-        "sloppy": 1,
+        "sloppy": 64,
         "low": 0,
     },
 }
@@ -154,8 +156,8 @@ for group, job, conf, jid, n in run_jobs:
 
     sample_log_file = data_dir + "/sample_log/" + conf
     #if g.rank() == 0:
-    f = open(sample_log_file, "w")
-    f.close()
+    #f = open(sample_log_file, "w")
+    #f.close()
 
     g.message("Starting modified Wilson loops")
     W, W_index_list = Measurement.create_TMD_WL(U)
@@ -231,7 +233,7 @@ for group, job, conf, jid, n in run_jobs:
         g.message("Generatring boosted src's")
         srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)
 
-        g.message("Starting prop exact")
+        g.message("Starting prop sloppy")
         prop_sloppy_f = g.eval(prop_sloppy * srcDp)
         g.message("forward prop done")
         prop_sloppy_b = g.eval(prop_sloppy * srcDm)
