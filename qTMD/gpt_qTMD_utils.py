@@ -24,7 +24,7 @@ class pion_measurement:
         self.neg_boost = parameters["neg_boost"]
         self.save_propagators = parameters["save_propagators"]
 
-    def set_output_facilites(self, corr_file, prop_file):
+    def set_output_facilities(self, corr_file, prop_file):
         self.output_correlator = g.corr_io.writer(corr_file)
         
         if(self.save_propagators):
@@ -288,12 +288,12 @@ class TMD_WF_measurement(pion_measurement):
                             prv_link=current_link
                             
                         for dx in range(0, current_b_T):
-                            current_link=g.eval(prv_link * g.cshift(U[transverse_direction],transverse_direction, dx))
+                            current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction],2,current_eta+current_bz-1),transverse_direction, dx))
                             prv_link=current_link
 
                         
-                        for dz in range(0, current_eta-current_bz):
-                            current_link=g.eval(prv_link * g.cshift(U[2],2,-dz))
+                        for dz in reversed(range(0, current_eta-current_bz)):
+                            current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2],2,current_eta+current_bz-1),transverse_direction, current_b_T-1),2,dz)))
                             prv_link=current_link
                             
                         W.append(current_link)
