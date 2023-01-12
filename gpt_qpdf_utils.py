@@ -540,30 +540,41 @@ class pion_measurement:
         #corr = g.slice_trDA(prop_f,g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),phases, 3) 
         corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),prop_f,phases, 3) 
 
-        if "test" not in tag and g.rank() == 0:
+        if g.rank() == 0:
             save_c2pt_hdf5(corr, tag, my_gammas, self.plist)
 
-        if "test" in tag:
-            corr_tag = "./2pt"
-            corr_p = corr[0]
-            for i, corr_mu in enumerate(corr_p):
-                out_tag = f"{corr_tag}/p{self.plist[i]}"
-                for j, corr_t in enumerate(corr_mu):
-                    g_tag = f"{out_tag}/{my_gammas[j]}"
-                    self.output_correlator.write(g_tag, corr_t)
-                    
-                    if "exact" in tag:
-                        self.set_input_facilities("./correlators_exact_reference")
-                    else:
-                        self.set_input_facilities("./correlators_sloppy_reference")
-            
-                    test_list = self.input_correlator.tags[g_tag]
-                    deviations = test_list-corr_t
-                    
-                    assert (abs(deviations) < 1e-12).all()
-                    
-            g.message(f"\033[1;32m Correlator {tag} is correct! \033[1;37;0m")
-       
+    def contract_2pt_test(self, prop_f, prop_b, phases, trafo, tag):
+        
+        tmp_trafo = g.convert(trafo, prop_f.grid.precision)
+
+        prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
+        prop_b = g.create.smear.boosted_smearing(tmp_trafo, prop_b, w=self.width, boost=self.neg_boost)
+     
+        #corr = g.slice_trDA(prop_f,g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),phases, 3) 
+        corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),prop_f,phases, 3) 
+
+        corr_tag = "./2pt"
+        corr_p = corr[0]
+        for i, corr_mu in enumerate(corr_p):
+            out_tag = f"{corr_tag}/p{self.plist[i]}"
+            for j, corr_t in enumerate(corr_mu):
+                g_tag = f"{out_tag}/{my_gammas[j]}"
+                self.output_correlator.write(g_tag, corr_t)
+                
+                if "exact" in tag:
+                    self.set_input_facilities("./correlators_exact_reference")
+                elif "sloppy1" in tag:
+                    self.set_input_facilities("./correlators_sloppy1_reference")
+                else:
+                    self.set_input_facilities("./correlators_sloppy2_reference")
+
+                test_list = self.input_correlator.tags[g_tag]
+                deviations = test_list-corr_t
+               # g.message(test_list)
+                assert (abs(deviations) < 1e-12).all()
+                
+        g.message(f"\033[1;32m Correlator {tag} is correct! \033[1;37;0m")
+    
 
     #function that creates boosted, smeared src.
     def create_src_2pt(self, pos, trafo, grid):

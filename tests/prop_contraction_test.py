@@ -57,6 +57,10 @@ source_positions_sloppy = [
 Measurement.set_output_facilities("./correlators_exact","./propagators_exact")	
 
 # exact positions
+props_exact = {}
+for p in Measurement.propagator_input("./propagators_exact"):
+    props_exact.update(p)
+
 g.message(f" positions_exact = {source_positions_exact}")
 for pos in source_positions_exact:
     phases = Measurement.make_mom_phases(U[0].grid, pos)
@@ -66,37 +70,33 @@ for pos in source_positions_exact:
     tag = "%s/%s" % ("test_exact", str(pos))
     g.message(tag)
 
-    props_exact = {}
-    for p in Measurement.propagator_input("./propagators_exact"):
-        props_exact.update(p)
-
-    g.message(props_exact)
     prop_f_tag = "%s/%s" % (tag, Measurement.pos_boost)
     prop_b_tag = "%s/%s" % (tag, Measurement.neg_boost)
 
     prop_f = props_exact[prop_f_tag]
     prop_b = props_exact[prop_b_tag]
 
-    Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
+    Measurement.contract_2pt_test(prop_f, prop_b, phases, trafo, tag)
     del prop_f, prop_b
+del props_exact
 
-for pos in source_positions_sloppy:
+props_sloppy = {}
+for p in Measurement.propagator_input("./propagators_sloppy"):
+    props_sloppy.update(p)
+
+for count,pos in enumerate(source_positions_sloppy):
     phases = Measurement.make_mom_phases(U[0].grid, pos)
 
-    tag = "%s/%s" % ("test_sloppy", str(pos))
+    tag = "%s/%s" % ("test_sloppy" + str(count+1), str(pos))
 
-    props_sloppy = {}
-    for p in Measurement.propagator_input("./propagators_sloppy"):
-        props_sloppy.update(p)
-        
     prop_f_tag = "%s/%s" % (tag, Measurement.pos_boost)
     prop_b_tag = "%s/%s" % (tag, Measurement.neg_boost)
 
     prop_f = props_sloppy[prop_f_tag]
     prop_b = props_sloppy[prop_b_tag]
 
-    Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
+    Measurement.contract_2pt_test(prop_f, prop_b, phases, trafo, tag)
 
     del prop_f, prop_b
-
+del props_sloppy
 

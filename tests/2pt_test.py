@@ -83,7 +83,7 @@ for pos in source_positions_exact:
     if(parameters["save_propagators"]):
         Measurement.propagator_output(tag, prop_exact_f, prop_exact_b)
     
-    Measurement.contract_2pt(prop_exact_f, prop_exact_b, phases, trafo, tag)
+    Measurement.contract_2pt_test(prop_exact_f, prop_exact_b, phases, trafo, tag)
     g.message("2pt contraction done")
 
     del prop_exact_f
@@ -94,7 +94,7 @@ for pos in source_positions_exact:
 del prop_exact
 Measurement.set_output_facilities("./correlators_sloppy","./propagators_sloppy")
 g.message(f" positions_sloppy = {source_positions_sloppy}")
-for pos in source_positions_sloppy:
+for count,pos in enumerate(source_positions_sloppy):
     phases = Measurement.make_mom_phases(U[0].grid, pos)
 
     g.message("Starting 2pt function")
@@ -107,14 +107,14 @@ for pos in source_positions_sloppy:
     prop_sloppy_b = g.eval(prop_sloppy * srcDm)
     g.message("backward prop done")
     g.message("Starting pion contraction (includes sink smearing)")
-    tag = "%s/%s" % ("test_sloppy", str(pos))
+    tag = "%s/%s" % ("test_sloppy" + str(count+1), str(pos))
     g.message(tag)
 
 
     if(parameters["save_propagators"]):
         Measurement.propagator_output(tag, prop_sloppy_f, prop_sloppy_b)
 
-    Measurement.contract_2pt(prop_sloppy_f, prop_sloppy_b, phases, trafo, tag)
+    Measurement.contract_2pt_test(prop_sloppy_f, prop_sloppy_b, phases, trafo, tag)
     g.message("pion contraction done")
 
 

@@ -11,3 +11,7 @@ qTMD/__pycache__/
 DeltaG/__pycache__/
 FFs/__pycache__/
 stubs/__pycache__/
+tests/correlators_exact
+tests/correlators_sloppy
+tests/propagators_exact/
+tests/propagators_sloppy/
