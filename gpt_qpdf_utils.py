@@ -35,17 +35,10 @@ class pion_measurement:
         self.input_correlator = g.corr_io.reader(corr_file)
 
         
-    def propagator_input(self, prop_file, tag):
-        g.message("Reading forward propagator")
-        props = g.load(prop_file)
-        prop_f_tag = "%s/%s" % (tag, str(self.pos_boost))
-        prop_f = props[0][prop_f_tag]
-
-        prop_b_tag = "%s/%s" % (tag, str(self.neg_boost))
-        prop_b = props[1][prop_b_tag]
-
-        return prop_f, prop_b
-
+    def propagator_input(self, prop_file):
+        g.message(f"Reading propagator file {prop_file}")
+        read_props = g.load(prop_file)
+        return read_props
 
     def propagator_output(self, tag, prop_f, prop_b):
 

@@ -1,7 +1,7 @@
 import gpt as g
 
 from gpt_qpdf_utils import pion_measurement
-
+from collections import ChainMap
 
 # momenta setup
 parameters = {
@@ -16,7 +16,7 @@ parameters = {
 jobs = {
     "test_exact_0": {
         "exact": 1,
-        "sloppy": 1,
+        "sloppy": 2,
         "low": 0,
     },  
 }
@@ -54,7 +54,8 @@ source_positions_sloppy = [
     for j in range(jobs["test_exact_0"]["sloppy"])
 ]
 
-Measurement.set_output_facilities("./correlators_exact","./propagators_exact")		    
+Measurement.set_output_facilities("./correlators_exact","./propagators_exact")	
+
 # exact positions
 g.message(f" positions_exact = {source_positions_exact}")
 for pos in source_positions_exact:
@@ -65,7 +66,16 @@ for pos in source_positions_exact:
     tag = "%s/%s" % ("test_exact", str(pos))
     g.message(tag)
 
-    prop_f, prop_b = Measurement.propagator_input("./propagators_exact", tag)
+    props_exact = {}
+    for p in Measurement.propagator_input("./propagators_exact"):
+        props_exact.update(p)
+
+    g.message(props_exact)
+    prop_f_tag = "%s/%s" % (tag, Measurement.pos_boost)
+    prop_b_tag = "%s/%s" % (tag, Measurement.neg_boost)
+
+    prop_f = props_exact[prop_f_tag]
+    prop_b = props_exact[prop_b_tag]
 
     Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
     del prop_f, prop_b
@@ -75,7 +85,15 @@ for pos in source_positions_sloppy:
 
     tag = "%s/%s" % ("test_sloppy", str(pos))
 
-    prop_f, prop_b = Measurement.propagator_input("./propagators_sloppy", tag)
+    props_sloppy = {}
+    for p in Measurement.propagator_input("./propagators_sloppy"):
+        props_sloppy.update(p)
+        
+    prop_f_tag = "%s/%s" % (tag, Measurement.pos_boost)
+    prop_b_tag = "%s/%s" % (tag, Measurement.neg_boost)
+
+    prop_f = props_sloppy[prop_f_tag]
+    prop_b = props_sloppy[prop_b_tag]
 
     Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
 

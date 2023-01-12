@@ -16,7 +16,7 @@ parameters = {
 jobs = {
     "test_exact_0": {
         "exact": 1,
-        "sloppy": 1,
+        "sloppy": 2,
         "low": 0,
     },  
 }
