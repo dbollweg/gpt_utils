@@ -10,7 +10,7 @@ parameters = {
     "width" : 2.0,
     "pos_boost" : [0,0,2],
     "neg_boost" : [0,0,-2],
-    "save_propagators" : True
+    "save_propagators" : False,
 }
 
 jobs = {
@@ -60,64 +60,25 @@ g.message(f" positions_exact = {source_positions_exact}")
 for pos in source_positions_exact:
     phases = Measurement.make_mom_phases(U[0].grid, pos)
     
-    g.message("Starting 2pt function")
-    g.message("Generatring boosted src's")
-    srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)
+    g.message("Contracting propagators for 2pt function")
 
-    g.message("Starting prop exact")
-
-
-    prop_exact_f = g.eval(prop_exact * srcDp)
-    g.message("forward prop done")
-
-
-    prop_exact_b = g.eval(prop_exact * srcDm)
-    g.message("backward prop done")
-
-
-
-    g.message("Starting 2pt contraction (includes sink smearing)")
     tag = "%s/%s" % ("test_exact", str(pos))
     g.message(tag)
-    
-    if(parameters["save_propagators"]):
-        Measurement.propagator_output(tag, prop_exact_f, prop_exact_b)
-    
-    Measurement.contract_2pt(prop_exact_f, prop_exact_b, phases, trafo, tag)
-    g.message("2pt contraction done")
 
-    del prop_exact_f
-    del prop_exact_b
+    prop_f, prop_b = Measurement.propagator_input("./propagators_exact", tag)
 
+    Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
+    del prop_f, prop_b
 
-# sloppy positions
-del prop_exact
-Measurement.set_output_facilities("./correlators_sloppy","./propagators_sloppy")
-g.message(f" positions_sloppy = {source_positions_sloppy}")
 for pos in source_positions_sloppy:
     phases = Measurement.make_mom_phases(U[0].grid, pos)
 
-    g.message("Starting 2pt function")
-    g.message("Generatring boosted src's")
-    srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)  
-
-    g.message("Starting prop sloppy")
-    prop_sloppy_f = g.eval(prop_sloppy * srcDp)
-    g.message("forward prop done")
-    prop_sloppy_b = g.eval(prop_sloppy * srcDm)
-    g.message("backward prop done")
-    g.message("Starting pion contraction (includes sink smearing)")
     tag = "%s/%s" % ("test_sloppy", str(pos))
-    g.message(tag)
 
+    prop_f, prop_b = Measurement.propagator_input("./propagators_sloppy", tag)
 
-    if(parameters["save_propagators"]):
-        Measurement.propagator_output(tag, prop_sloppy_f, prop_sloppy_b)
+    Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
 
-    Measurement.contract_2pt(prop_sloppy_f, prop_sloppy_b, phases, trafo, tag)
-    g.message("pion contraction done")
+    del prop_f, prop_b
 
-
-    del prop_sloppy_f
-    del prop_sloppy_b      
 

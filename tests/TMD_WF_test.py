@@ -1,14 +1,12 @@
 import gpt as g
-from gpt_qTMD_utils import TMD_WF_measurement
+
+from gpt_qpdf_utils import pion_measurement
+
 
 # momenta setup
 parameters = {
-    "eta"   : [4],
-    "pzmin" : 1,
-    "pzmax" : 2,
-    "b_z"   : 1,
-    "b_T"   : 1,
     "zmax"  : 0,
+    "plist" : [[0,0, 2, 0]],
     "width" : 2.0,
     "pos_boost" : [0,0,2],
     "neg_boost" : [0,0,-2],
@@ -23,7 +21,6 @@ jobs = {
     },  
 }
 
-
 ##### small dummy used for testing
 grid = g.grid([8,8,8,8], g.double)
 rng = g.random("seed text")
@@ -36,10 +33,10 @@ U_prime, trafo = g.gauge_fix(U, maxiter=500)
 del U_prime
 L = U[0].grid.fdimensions
 
-Measurement = TMD_WF_measurement(parameters)
+Measurement = pion_measurement(parameters)
 prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
 
-
+# show available memory
 g.mem_report(details=False)
 g.message(
 """
@@ -57,67 +54,55 @@ source_positions_sloppy = [
     for j in range(jobs["test_exact_0"]["sloppy"])
 ]
 
-Measurement.set_output_facilities("./TMD_corr_exact","./propagators")
+Measurement.set_output_facilities("./correlators_exact","./propagators")		    
+# exact positions
+g.message(f" positions_exact = {source_positions_exact}")
+for pos in source_positions_exact:
+    phases = Measurement.make_mom_phases(U[0].grid, pos)
+    
+    g.message("Starting 2pt function")
+    g.message("Generatring boosted src's")
+    srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)
+
+    g.message("Starting prop exact")
+    prop_exact_f = g.eval(prop_exact * srcDp)
+    g.message("forward prop done")
+    prop_exact_b = g.eval(prop_exact * srcDm)
+    g.message("backward prop done")
+
+    g.message("Starting 2pt contraction (includes sink smearing)")
+    tag = "%s/%s" % ("test_exact", str(pos))
+    g.message(tag)
+    Measurement.contract_2pt(prop_exact_f, prop_exact_b, phases, trafo, tag)
+    g.message("2pt contraction done")
+
+    del prop_exact_f
+    del prop_exact_b
 
 
-#testing correctness of staple shaped wilson lines
-staples = Measurement.create_TMD_WL(U)
+# sloppy positions
+del prop_exact
+Measurement.set_output_facilities("./correlators_sloppy",".propagators")
+g.message(f" positions_sloppy = {source_positions_sloppy}")
+for pos in source_positions_sloppy:
+    phases = Measurement.make_mom_phases(U[0].grid, pos)
 
-# # W = []
+    g.message("Starting 2pt function")
+    g.message("Generatring boosted src's")
+    srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)  
 
-
-# prv_link = g.qcd.gauge.unit(U[2].grid)[0]
-# current_link = prv_link
-# for dz in range(0,2):
-#     g.message(f"stepping {dz} from origin")
-#     current_link=g.eval(prv_link * g.cshift(U[2],2,dz))
-#     prv_link = current_link
-
-# test_link = current_link
-# prv_link = test_link
-# for dz in reversed(range(1,2)):
-#     test_link=g.eval(prv_link * g.adj(g.cshift(U[2],2,dz)))
-#     prv_link = test_link
-
-# g.message(g.eval((test_link-g.cshift(U[2],2,0))))
-
-td_offset = parameters["b_T"]*parameters["b_z"]*len(parameters["eta"])
-eta_offset = parameters["b_T"]*parameters["b_z"]
-bz_offset = parameters["b_T"]
-
-for transverse_direction in [0,1]:
-    for eta_idx,current_eta in enumerate(parameters["eta"]):
-        for current_bz in range(0, parameters["b_z"]):
-            for current_b_T in range (0, parameters["b_T"]):
-
-                WL_index = current_b_T + bz_offset*current_bz + eta_offset*eta_idx + td_offset*transverse_direction
-
-                #unwind wilson loop except last step:
-
-                #start from end
-                prv_link = staples[WL_index]
-                
-                current_link = prv_link
-
-                #reverse order and take adjoint
-                for dz in range(0, current_eta-current_bz):
-                    current_link=g.eval(prv_link * g.cshift(g.cshift(g.cshift(U[2],2,current_eta+current_bz-1),transverse_direction, current_b_T-1),2,dz))
-                    prv_link=current_link
-
-                            
-                for dx in reversed(range(0, current_b_T)):
-                    current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(U[transverse_direction],2,current_eta+current_bz-1),transverse_direction, dx)))
-                    prv_link=current_link
+    g.message("Starting prop sloppy")
+    prop_sloppy_f = g.eval(prop_sloppy * srcDp)
+    g.message("forward prop done")
+    prop_sloppy_b = g.eval(prop_sloppy * srcDm)
+    g.message("backward prop done")
+    g.message("Starting pion contraction (includes sink smearing)")
+    tag = "%s/%s" % ("test_sloppy", str(pos))
+    g.message(tag)
+    Measurement.contract_2pt(prop_sloppy_f, prop_sloppy_b, phases, trafo, tag)
+    g.message("pion contraction done")
 
 
-                for dz in reversed(range(1, current_eta+current_bz)):
-                    current_link=g.eval(prv_link * g.adj(g.cshift(U[2],2, dz)))
-                    prv_link=current_link                        
-
-                
-                
-                g.message("Testing: Current link - first link = ")
-                g.message(g.eval(g.sum(current_link - g.cshift(U[2],2,0))))
-
-
+    del prop_sloppy_f
+    del prop_sloppy_b      
 
