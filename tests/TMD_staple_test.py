@@ -117,7 +117,7 @@ for transverse_direction in [0,1]:
                 
                 
                 g.message("Testing: Current link - first link = ")
-                g.message(g.eval(g.sum(current_link - g.cshift(U[2],2,0))))
+                g.message(g.sum(current_link - g.cshift(U[2],2,0)))
 
 
 

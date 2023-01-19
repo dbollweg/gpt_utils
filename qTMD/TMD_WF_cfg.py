@@ -2,6 +2,7 @@
 
 import gpt as g
 import os
+import sys
 
 from qTMD.gpt_qTMD_utils import TMD_WF_measurement
 from utils.tools import *
@@ -13,10 +14,12 @@ src_shift = np.array([0,0,0,0]) + np.array([1,3,5,7])
 data_dir = "/home/gaox/latwork/DWF/64I/prod/data/"
 
 # configuration setup
+cfg = str(sys.argv)
+
 groups = {
     "booster_batch_0": {
         "confs": [
-            "cfg",
+            cfg,
         ],
         #"evec_fmt": "/p/scratch/gm2dwf/evecs/96I/%s/lanczos.output",
         #"evec_fmt": "/home/gaox/latwork/DWF/64I/prod/gauge/%s.evecs/lanczos.output"
@@ -120,7 +123,7 @@ del U_prime
 L = U[0].grid.fdimensions
 
 Measurement = TMD_WF_measurement(parameters)
-prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+#prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf) #Don't need inversion anymore
 #prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
 
 # show available memory
@@ -161,6 +164,11 @@ for group, job, conf, jid, n in run_jobs:
 
     # exact positions
     g.message(f" positions_exact = {source_positions_exact}")
+    
+    props_exact = {}
+    for p in Measurement.propagator_input("./propagators_exact"): #TODO Proper file paths
+        props_exact.update(p)
+        
     for pos in source_positions_exact:
         phases = Measurement.make_mom_phases(U[0].grid,pos)     
         sample_log_tag = get_sample_log_tag("ex", pos, sm_tag)
@@ -170,18 +178,26 @@ for group, job, conf, jid, n in run_jobs:
                 g.message("SKIP: " + sample_log_tag)
                 continue
 
-        g.message("Generatring boosted src's")
-        srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)
+        # g.message("Generatring boosted src's")
+        # srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)
 
-        g.message("Starting prop exact")
-        prop_exact_f = g.eval(prop_exact * srcDp)
-        g.message("forward prop done")
-        prop_exact_b = g.eval(prop_exact * srcDm)
-        g.message("backward prop done")
+        # g.message("Starting prop exact")
+        # prop_exact_f = g.eval(prop_exact * srcDp)
+        # g.message("forward prop done")
+        # prop_exact_b = g.eval(prop_exact * srcDm)
+        # g.message("backward prop done")
 
-        del srcDp
-        del srcDm
-
+        # del srcDp
+        # del srcDm
+        prop_tag = "%s/%s" % ("test_exact", str(pos))
+        prop_f_tag = "%s/%s" % (prop_tag, Measurement.pos_boost)
+        prop_b_tag = "%s/%s" % (prop_tag, Measurement.neg_boost)
+        
+        
+        
+        prop_exact_f = props_exact[prop_f_tag]
+        prop_exact_b = props_exact[prop_b_tag]
+        
         tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "ex", pos, sm_tag)
         g.message("Starting 2pt contraction (includes sink smearing)")
         Measurement.contract_2pt(prop_exact_f, prop_exact_b, phases, trafo, tag)
@@ -203,9 +219,15 @@ for group, job, conf, jid, n in run_jobs:
         del prop_exact_b
         
     g.message("exact positions done")
-    del prop_exact
+    del props_exact
+    #del prop_exact
 
     # sloppy positions
+    
+    props_sloppy = {}
+    for p in Measurement.propagator_input("./propagators_sloppy"):
+        props_sloppy.update(p)
+        
     for pos in source_positions_sloppy:
 
         phases = Measurement.make_mom_phases(U[0].grid,pos)  
@@ -218,18 +240,26 @@ for group, job, conf, jid, n in run_jobs:
 
         #g.message("STARTING SLOPPY MEASUREMENTS")
         g.message("Starting 2pt function")
-        g.message("Generatring boosted src's")
-        srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)
+        # g.message("Generatring boosted src's")
+        # srcDp, srcDm = Measurement.create_src_2pt(pos, trafo, U[0].grid)
 
-        g.message("Starting prop exact")
-        prop_sloppy_f = g.eval(prop_sloppy * srcDp)
-        g.message("forward prop done")
-        prop_sloppy_b = g.eval(prop_sloppy * srcDm)
-        g.message("backward prop done")
+        # g.message("Starting prop exact")
+        # prop_sloppy_f = g.eval(prop_sloppy * srcDp)
+        # g.message("forward prop done")
+        # prop_sloppy_b = g.eval(prop_sloppy * srcDm)
+        # g.message("backward prop done")
 
-        del srcDp
-        del srcDm
-
+        # del srcDp
+        # del srcDm
+        
+        prop_tag = "%s/%s" % ("test_sloppy", str(pos))
+        
+        prop_f_tag = "%s/%s" % (prop_tag, Measurement.pos_boost)
+        prop_b_tag = "%s/%s" % (prop_tag, Measurement.neg_boost)
+        
+        prop_sloppy_f = props_sloppy[prop_f_tag]
+        prop_sloppy_b = props_sloppy[prop_b_tag]
+        
         g.message("Starting pion 2pt function")
         tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "sl", pos, sm_tag)
         g.message("Starting pion contraction (includes sink smearing)")
