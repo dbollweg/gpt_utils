@@ -15,3 +15,4 @@ tests/correlators_exact
 tests/correlators_sloppy
 tests/propagators_exact/
 tests/propagators_sloppy/
+prev_outputs/

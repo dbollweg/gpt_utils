@@ -1,7 +1,8 @@
 import gpt as g
 
 from gpt_qpdf_utils import pion_measurement
-from collections import ChainMap
+import h5py
+import sys
 
 # momenta setup
 parameters = {
@@ -19,6 +20,19 @@ jobs = {
         "sloppy": 2,
         "low": 0,
     },  
+}
+
+groups = {
+    "booster_batch_0": {
+        "confs": [
+            1890,
+        ],
+        #"evec_fmt": "/p/scratch/gm2dwf/evecs/96I/%s/lanczos.output",
+        #"evec_fmt": "/home/gaox/latwork/DWF/64I/prod/gauge/%s.evecs/lanczos.output"
+        "evec_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/%s.evecs/lanczos.output",
+        "conf_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/Coulomb/ckpoint_lat.Coulomb.%s",
+    },
+
 }
 
 ##### small dummy used for testing

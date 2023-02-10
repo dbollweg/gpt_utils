@@ -11,7 +11,7 @@ from utils.io_corr import *
 # configure
 root_output ="."
 src_shift = np.array([0,0,0,0]) + np.array([1,3,5,7])
-data_dir = "/home/gaox/latwork/DWF/64I/prod/data/"
+data_dir = "/lus/grand/projects/StructNGB/bollwegd/64I/Coulomb/"
 
 # configuration setup
 cfg = str(sys.argv)
@@ -23,8 +23,8 @@ groups = {
         ],
         #"evec_fmt": "/p/scratch/gm2dwf/evecs/96I/%s/lanczos.output",
         #"evec_fmt": "/home/gaox/latwork/DWF/64I/prod/gauge/%s.evecs/lanczos.output"
-        "evec_fmt": "/home/gaox/latwork/DWF/64I/prod/gauge/%s.evecs/lanczos.output",
-        "conf_fmt": "/home/gaox/latwork/DWF/64I/prod/gauge/Coulomb/ckpoint_lat.Coulomb.%s",
+        "evec_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/%s.evecs/lanczos.output",
+        "conf_fmt": "/lus/grand/projects/StructNGB/bollwegd/64I/Coulomb/ckpoint_lat.Coulomb.%s",
     },
 
 }
@@ -39,7 +39,7 @@ parameters = {
     "width" : 4.0,
     "pos_boost" : [0,0,0],
     "neg_boost" : [0,0,0],
-    "save_propagators" : False
+    "save_propagators" : True
 }
 
 # tags
