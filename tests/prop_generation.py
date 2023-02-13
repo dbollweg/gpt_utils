@@ -157,6 +157,7 @@ for group, job, conf, jid, n in run_jobs:
 
     del prop_exact
     
+    Measurement.set_output_facilities("/lus/grand/projects/StructNGB/bollwegd/testrun/polaris_correlators_sloppy","/lus/grand/projects/StructNGB/bollwegd/testrun/polaris_propagators_sloppy")		    
     for pos in source_positions_sloppy:
         
         g.message("Starting 2pt function")
