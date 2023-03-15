@@ -24,11 +24,27 @@ class pion_measurement:
         self.neg_boost = parameters["neg_boost"]
         self.save_propagators = parameters["save_propagators"]
 
-    def set_output_facilites(self, corr_file, prop_file):
+    def set_input_facilities(self, corr_file):
+        self.input_correlator = g.corr_io.reader(corr_file)
+
+    def set_output_facilities(self, corr_file, prop_file):
         self.output_correlator = g.corr_io.writer(corr_file)
         
         if(self.save_propagators):
             self.output = g.gpt_io.writer(prop_file)
+
+    def propagator_input(self, prop_file):
+        g.message(f"Reading propagator file {prop_file}")
+        read_props = g.load(prop_file)
+        return read_props
+
+    def propagator_output_k0(self, tag, prop_f):
+
+        g.message("Saving forward propagator")
+        prop_f_tag = "%s/%s" % (tag, str(self.pos_boost))
+        self.output.write({prop_f_tag: prop_f})
+        self.output.flush()
+        g.message("Propagator IO done")
 
     def propagator_output(self, tag, prop_f, prop_b):
 
