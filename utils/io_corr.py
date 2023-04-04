@@ -51,6 +51,35 @@ def save_c2pt_hdf5(corr, tag, gammalist, plist):
             g.create_dataset(dataset_tag, data=np.roll(corr[0][ip][ig], roll, axis=0))
     f.close()
 
+def save_qTMDWF_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub):
+
+    roll = -int(tag.split(".")[4].split('t')[1])
+    bT_list = ['b_X', 'b_Y']
+
+    if g.rank() == 0:
+        print("-->>",W_index_list)
+
+    save_h5 = tag + ".h5"
+    if i_sub == 0:
+        f = h5py.File(save_h5, 'w')
+    else:
+        f = h5py.File(save_h5, 'a')
+    sm = f.require_group("SP")
+    for ig, gm in enumerate(gammalist):
+        g_gm = sm.require_group(gm)
+        for ip, p in enumerate(plist):
+            p_tag = "PX"+str(p[0])+"PY"+str(p[1])+"PZ"+str(p[2])
+            g_p = g_gm.require_group(p_tag)
+            for i, idx in enumerate(W_index_list):
+                path = bT_list[idx[3]] + '/' + 'eta'+str(idx[2]) + '/' + 'bT'+str(idx[0])
+                g_data = g_p.require_group(path)
+                if g.rank() == 0 and ig == 0 and ip == 0:
+                    #g_p.keys()
+                    #g_data.keys()
+                    print("Want to save", path+'bz'+str(idx[1]))
+                g_data.create_dataset('bz'+str(idx[1]), data=np.roll(corr[i][ip][ig], roll, axis=0))
+    f.close()
+
 def save_qTMDWF_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z):
 
     roll = -int(tag.split(".")[4].split('t')[1])
@@ -60,7 +89,7 @@ def save_qTMDWF_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z):
     bT_list = ['b_X', 'b_Y']
 
     save_h5 = tag + ".h5"
-    f = h5py.File(save_h5, 'w')
+    f = h5py.File(save_h5, 'a')
     sm = f.create_group("SP")
     for ig, gm in enumerate(gammalist):
         g_gm = sm.create_group(gm)
