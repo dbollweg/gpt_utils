@@ -561,17 +561,17 @@ class pion_measurement:
                 g_tag = f"{out_tag}/{my_gammas[j]}"
                 self.output_correlator.write(g_tag, corr_t)
                     
-               if "exact" in tag:   
+                if "exact" in tag:   
                    self.set_input_facilities("./correlators_exact_reference")
-               elif "sloppy1" in tag:
+                elif "sloppy1" in tag:
                    self.set_input_facilities("./correlators_sloppy1_reference")
-               else:
+                else:
                    self.set_input_facilities("./correlators_sloppy2_reference")
 
-               test_list = self.input_correlator.tags[g_tag]
-               deviations = test_list-corr_t
-               g.message(deviations)
-               assert (abs(deviations) < 1e-10).all()
+                test_list = self.input_correlator.tags[g_tag]
+                deviations = test_list-corr_t
+                g.message(deviations)
+                assert (abs(deviations) < 1e-10).all()
                     
         g.message(f"\033[1;32m Correlator {tag} is correct! \033[1;37;0m")
     

@@ -71,24 +71,16 @@ class TMD_WF_measurement(gpt_qpdf_utils.pion_measurement):
                             current_link=g.eval(prv_link * g.cshift(U[2],2, dz))
                             prv_link=current_link
 
-                        shifted_U = g.cshift(U[transverse_direction], 2, current_eta+current_bz-1)
+                        shifted_U = g.cshift(U[transverse_direction], 2, current_eta+current_bz)
+                        
                         for dx in range(0, current_b_T):
                             current_link=g.eval(prv_link * g.cshift(shifted_U,transverse_direction, dx))
                             prv_link=current_link
                         
-                        #Merge conflict
-                        #I think it should be reverse(range(0,current_eta-current_bz)) in for loop and +dz in outermost cshift!
-                        #
-                        #|                  |
-                        #|         |        |
-                        #|---------|   vs.  |----------|
-                        #                              |  ?
-
                         shifted_U = g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T)
-                        #for dz in range(0, current_eta-current_bz):
-                        for dz in reversed(range(0, current_eta-current_bz)):
-                            current_link==g.eval(prv_link * g.adj(g.cshift(shifted_U,2,dz)))
-                            #current_link=g.eval(prv_link * g.adj(g.cshift(shifted_U,2,-dz)))
+                        
+                        for dz in range(0, current_eta-current_bz):
+                            current_link=g.eval(prv_link * g.adj(g.cshift(shifted_U,2,-dz)))
                             prv_link=current_link
 
                         W.append(current_link)
