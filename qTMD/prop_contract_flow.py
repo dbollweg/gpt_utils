@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-
-
 import gpt as g
 import os
 import sys
 import math
+import numpy as np
 
 from qTMD.gpt_qTMD_utils import TMD_WF_measurement
 from tools import *
@@ -14,17 +13,15 @@ from io_corr import *
 
 root_output="."
 src_shift = np.array([0,0,0,0]) + np.array([1,3,5,7])
-data_dir = "/home/gaox/latwork/DWF/64I/contraction/data/GSRC_W40_k0/"
+data_dir = "/home/gaox/latwork/DWF/64I/contraction/data/GSRC_W40_k6/"
+
+# Wilson flow or HYP smearing
+#smear_list = [['flow', '01eps01', 1], ['flow', '05eps01', 5], ['flow', '10eps01', 10], ['flow', '20eps01', 20]]
+smear_list = [['flow', '05eps01', 5]]
 
 # tags
-sm_tag = "GSRC_W40_k0"
+sm_tag = "GSRC_W40_k6"
 lat_tag = "64I"
-contract_tag = "flow05ep01"
-
-hyp=False
-flow=True
-n_hyp=3
-n_flow=5
 
 # configuration setup
 groups = {
@@ -42,19 +39,19 @@ parameters = {
     "eta" : [8],
     "b_T": 9,
     "b_z" : 9,
-    "pzmin" : 0,
-    "pzmax" : 4,
+    "pzmin" : 4,
+    "pzmax" : 10,
     "width" : 4.0,
-    "pos_boost" : [0,0,0],
-    "neg_boost" : [0,0,0],
+    "pos_boost" : [0,0,6],
+    "neg_boost" : [0,0,-6],
     "save_propagators" : True
 }
 
 # AMA setup
 jobs = {
     "test_exact_0": {
-        "exact": 1,
-        "sloppy": 32,
+        "exact": 2,
+        "sloppy": 128,
         "low": 0,
     },
 }
@@ -106,34 +103,7 @@ run_jobs = eval(g.broadcast(0, run_jobs).decode("utf-8"))
 conf = run_jobs[0][2]
 group = run_jobs[0][0]
 
-##### small dummy used for testing
-#grid = g.grid([8,8,8,8], g.double)
-#rng = g.random("seed text")
-#U = g.qcd.gauge.random(grid, rng)
-
-# loading gauge configuration
-U = g.load(groups[group]["conf_fmt"] % conf)
-g.message("finished loading gauge config")
-
-g.message("Doing some kind of smearing")
-if hyp:
-    import numpy as np
-    for i in range(n_hyp):
-        U = g.qcd.gauge.smear.hyp(U, alpha = np.array([0.75, 0.6, 0.3]))
-
-if flow:
-    for i in range(n_flow):
-        U = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
-g.message("Smearing/Flow finishe")
-
-# do gauge fixing
-#U_prime, trafo = g.gauge_fix(U, maxiter=500)
-#del U_prime
-L = U[0].grid.fdimensions
-
 Measurement = TMD_WF_measurement(parameters)
-#prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
-#prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
 
 # show available memory
 g.mem_report(details=False)
@@ -145,142 +115,164 @@ g.message(
 """
 )
 
-for group, job, conf, jid, n in run_jobs:
-    
-    g.message(f"""Job {jid} / {n} :  configuration {conf}, job tag {job}""")
-    
-    src_origin = np.array([int(conf)%L[i] for i in range(4)]) + src_shift
-    source_positions = srcLoc_distri_eq(L, src_origin)
-    
-    source_positions_sloppy = source_positions[:jobs[job]["sloppy"]]
-    source_positions_exact = source_positions[:jobs[job]["exact"]]
+for ism, smear in enumerate(smear_list):
 
-    g.message(f" positions_sloppy = {source_positions_sloppy}")
-    g.message(f" positions_exact = {source_positions_exact}")
+    g.message(f"Gauge: start {smear}")
 
-    sample_log_file = data_dir + "/sample_log/" + contract_tag + conf
-    if g.rank() == 0:
-        f = open(sample_log_file, "a")
-        f.close()
+    # loading gauge configuration
+    U = g.load(groups[group]["conf_fmt"] % conf)
+    g.message("Gauge: finished loading gauge config")
 
+    # do gauge smearing
+    contract_tag, n_sm = smear[0]+smear[1], smear[2]
+    if smear[0] == 'hyp':
+        for i in range(n_sm):
+            U = g.qcd.gauge.smear.hyp(U, alpha = np.array([0.75, 0.6, 0.3]))
+    if smear[0] == 'flow':
+        for i in range(n_sm):
+            U = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
+    g.message("Gauge: Smearing/Flow finished")
 
+    # do gauge fixing
+    U_prime, trafo = g.gauge_fix(U, maxiter=1)
+    del U_prime
+    g.message("Gauge: No gauge fixing")
+    L = U[0].grid.fdimensions
 
-    g.message("Starting modified Wilson loops")
-    g.mem_report(details=False)
-    W, W_index_list = Measurement.create_TMD_WL(U)
-    W_count = len(W_index_list)
-    W_subset_len = 50
-    W_subset_count = math.ceil(W_count/W_subset_len)
-    if g.rank() == 0:
-        print("W_count, W_subset_len, W_subset_count", W_count, W_subset_len, W_subset_count)
-        print("W_index_list:",W_index_list)
-    g.message("Wilson loops are ready")
-    g.mem_report(details=False)
-
-
-    ################################ exact sources ###################################
-    g.message("Starting contraction: exact")
-    g.message(f" positions_exact = {source_positions_exact}")
-    # exact positions
-    props_exact = {}
-    prop_dir = data_dir + "prop_ex/" + conf
-    #prop_dir = data_dir + "prop_ex"
-    propagator_read = Measurement.propagator_input(prop_dir)
-    g.mem_report(details=False)
-    for p in [propagator_read]:
-        props_exact.update(p)
-    g.mem_report(details=False)
-
-    for pos in source_positions_exact:
-
-        sample_log_tag = get_sample_log_tag("ex", pos, sm_tag)
-        g.message(f"START: {sample_log_tag}")
-        with open(sample_log_file) as f:
-            if sample_log_tag in f.read():
-                g.message("SKIP: " + sample_log_tag)
-                continue
-
-        phases = Measurement.make_mom_phases(U[0].grid, pos)
+    # looping
+    for group, job, conf, jid, n in run_jobs:
         
-        prop_tag_exact = "%s/%s/%s/%s_%s" % ("exact", lat_tag, sm_tag, str(conf), str(pos))
-        g.message(prop_tag_exact)
-        prop_f_tag = "%s/%s" % (prop_tag_exact, Measurement.pos_boost)
-        prop_b_tag = "%s/%s" % (prop_tag_exact, Measurement.neg_boost)
-        prop_f = props_exact[prop_f_tag]
-        prop_b = props_exact[prop_b_tag]
+        g.message(f"""Job {jid} / {n} :  configuration {conf}, job tag {job}""")
+        
+        src_origin = np.array([int(conf)%L[i] for i in range(4)]) + src_shift
+        source_positions = srcLoc_distri_eq(L, src_origin)
+        
+        source_positions_sloppy = source_positions[:jobs[job]["sloppy"]]
+        source_positions_exact = source_positions[:jobs[job]["exact"]]
 
-        g.message("Starting 2pt contraction (includes sink smearing)")
-        tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "ex", pos, sm_tag)
-        #Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
-        g.message("2pt contraction done")
+        g.message(f" positions_sloppy = {source_positions_sloppy}")
+        g.message(f" positions_exact = {source_positions_exact}")
 
-        g.message(f"Start TMD contraction with N_W = {W_count}, divided into {W_subset_count} subsets.")
-        qTMDWF_tag = get_qTMDWF_file_tag(data_dir, lat_tag, conf, "ex", pos, sm_tag+'_'+contract_tag)
-        for i_sub in range(0, W_subset_count):
-            g.message(f"Start TMD backward propagator subset of {i_sub} / {W_subset_count}")
-            prop_b_W = Measurement.constr_TMD_bprop(prop_b,W[i_sub*W_subset_len:(i_sub+1)*W_subset_len], W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len])
-            g.message("  Start TMD contractions")
-            Measurement.contract_TMD(prop_f, prop_b_W, phases, qTMDWF_tag, W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub)
-            del prop_b_W
-        g.message("  TMD contractions done")
+        sample_log_file = data_dir + "/sample_log/" + contract_tag + conf
+        if g.rank() == 0:
+            f = open(sample_log_file, "a")
+            f.close()
 
-        with open(sample_log_file, "a") as f:
-            if g.rank() == 0:
-                f.write(sample_log_tag+"\n")
-        g.message("DONE: " + sample_log_tag)
+        g.message("Wilson Link: Start")
+        g.mem_report(details=False)
+        W, W_index_list = Measurement.create_TMD_WL(U)
+        W_count = len(W_index_list)
+        W_subset_len = 20
+        W_subset_count = math.ceil(W_count/W_subset_len)
+        if g.rank() == 0:
+            print("Wilson Link: W_count, W_subset_len, W_subset_count", W_count, W_subset_len, W_subset_count)
+            print("Wilson Link: W_index_list:",W_index_list)
+        g.mem_report(details=False)
+        g.message("Wilson Link: Done")
 
-        del prop_f, prop_b
-    del props_exact
 
-    ################################ sloppy sources ###################################
-    g.message("Starting contraction: sloppy")
-    g.message(f" positions_sloppy = {source_positions_sloppy}")
-    # sloppy positions
-    props_sloppy = {}
-    prop_dir = data_dir + "prop_sl/" + conf
-    #prop_dir = data_dir + "prop_sl"
-    g.mem_report(details=False)
-    for p in Measurement.propagator_input(prop_dir):
-        props_sloppy.update(p)
-    g.mem_report(details=False)
+        ################################ exact sources ###################################
+        g.message("Contraction Start: exact")
+        g.message(f"Contraction: positions_exact = {source_positions_exact}")
 
-    for pos in source_positions_sloppy:
+        for ipos, pos in enumerate(source_positions_exact):
 
-        sample_log_tag = get_sample_log_tag("sl", pos, sm_tag)
-        g.message(f"START: {sample_log_tag}")
-        with open(sample_log_file) as f:
-            if sample_log_tag in f.read():
-                g.message("SKIP: " + sample_log_tag)
-                continue
+            g.message(f"Contraction: exact[{ipos}] = {pos}")
+            props_exact = {}
+            prop_dir = data_dir + "prop_ex/" + conf + "/" + "x"+str(pos[0]) + "y"+str(pos[1]) + "z"+str(pos[2]) + "t"+str(pos[3])
+            propagator_read = Measurement.propagator_input(prop_dir)
+            for p in propagator_read:
+                props_exact.update(p)
+            #g.mem_report(details=False)
 
-        phases = Measurement.make_mom_phases(U[0].grid, pos)
+            sample_log_tag = get_sample_log_tag("ex", pos, sm_tag)
+            g.message(f"Contraction START: {sample_log_tag}")
+            with open(sample_log_file) as f:
+                if sample_log_tag in f.read():
+                    g.message("Contraction SKIP: " + sample_log_tag)
+                    continue
 
-        prop_tag_sloppy = "%s/%s/%s/%s_%s" % ("sloppy", lat_tag, sm_tag, str(conf), str(pos))
-        g.message(prop_tag_sloppy)
-        prop_f_tag = "%s/%s" % (prop_tag_sloppy, Measurement.pos_boost)
-        prop_b_tag = "%s/%s" % (prop_tag_sloppy, Measurement.neg_boost)
-        prop_f = props_sloppy[prop_f_tag]
-        prop_b = props_sloppy[prop_b_tag]
+            phases = Measurement.make_mom_phases(U[0].grid, pos)
+            
+            prop_tag_exact = "%s/%s/%s/%s_%s" % ("exact", lat_tag, sm_tag, str(conf), str(pos))
+            g.message(f"Contraction Read Propagators: {prop_tag_exact}")
+            prop_f_tag = "%s/%s" % (prop_tag_exact, Measurement.pos_boost)
+            prop_b_tag = "%s/%s" % (prop_tag_exact, Measurement.neg_boost)
+            prop_f = props_exact[prop_f_tag]
+            prop_b = props_exact[prop_b_tag]
 
-        g.message("Starting 2pt contraction (includes sink smearing)")
-        tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "sl", pos, sm_tag)
-        #Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
-        g.message("2pt contraction done")
+            g.message("Contraction: Starting 2pt (includes sink smearing)")
+            tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "ex", pos, sm_tag)
+            Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
+            g.message("Contraction: Done 2pt (includes sink smearing)")
 
-        g.message(f"Start TMD contraction with N_W = {W_count}, divided into {W_subset_count} subsets.")
-        qTMDWF_tag = get_qTMDWF_file_tag(data_dir, lat_tag, conf, "sl", pos, sm_tag+'_'+contract_tag)
-        for i_sub in range(0, W_subset_count):
-            g.message(f"Start TMD backward propagator subset of {i_sub} / {W_subset_count}")
-            prop_b_W = Measurement.constr_TMD_bprop(prop_b,W[i_sub*W_subset_len:(i_sub+1)*W_subset_len], W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len])
-            g.message("  Start TMD contractions")
-            Measurement.contract_TMD(prop_f, prop_b_W, phases, qTMDWF_tag, W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub)
-            del prop_b_W
-        g.message("  TMD contractions done")
+            g.message(f"Contraction: Start TMD with N_W = {W_count}, divided into {W_subset_count} subsets.")
+            qTMDWF_tag = get_qTMDWF_file_tag(data_dir, lat_tag, conf, "ex", pos, sm_tag+'_'+contract_tag)
+            for i_sub in range(0, W_subset_count):
+                g.message(f"Start TMD backward propagator subset of {i_sub} / {W_subset_count}")
+                prop_b_W = Measurement.constr_TMD_bprop(prop_b,W[i_sub*W_subset_len:(i_sub+1)*W_subset_len], W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len])
+                g.message("  Start TMD contractions")
+                Measurement.contract_TMD(prop_f, prop_b_W, phases, qTMDWF_tag, W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub)
+                del prop_b_W
+            g.message("Contraction: Done TMD")
 
-        with open(sample_log_file, "a") as f:
-            if g.rank() == 0:
-                f.write(sample_log_tag+"\n")
-        g.message("DONE: " + sample_log_tag)
+            with open(sample_log_file, "a") as f:
+                if g.rank() == 0:
+                    f.write(sample_log_tag+"\n")
+            g.message("Contraction DONE: " + sample_log_tag)
 
-        del prop_f, prop_b
-    del props_sloppy
+            del prop_f, prop_b
+        del props_exact
+
+        ################################ sloppy sources ###################################
+        g.message("Contraction Start: sloppy")
+        g.message(f"Contraction: positions_sloppy = {source_positions_sloppy}")
+
+        for ipos, pos in enumerate(source_positions_sloppy):
+
+            g.message(f"Contraction START: sloppy[{ipos}] = {pos}")
+            props_sloppy = {}
+            prop_dir = data_dir + "prop_sl/" + conf + "/" + "x"+str(pos[0]) + "y"+str(pos[1]) + "z"+str(pos[2]) + "t"+str(pos[3])
+            propagator_read = Measurement.propagator_input(prop_dir)
+            for p in propagator_read:
+                props_sloppy.update(p)
+            #g.mem_report(details=False)
+
+            sample_log_tag = get_sample_log_tag("sl", pos, sm_tag)
+            #g.message(f"Contraction do: {sample_log_tag}")
+            with open(sample_log_file) as f:
+                if sample_log_tag in f.read():
+                    g.message("Contraction SKIP: " + sample_log_tag)
+                    continue
+
+            phases = Measurement.make_mom_phases(U[0].grid, pos)
+            
+            prop_tag_sloppy = "%s/%s/%s/%s_%s" % ("sloppy", lat_tag, sm_tag, str(conf), str(pos))
+            g.message(f"Contraction Read Propagators: {prop_tag_sloppy}")
+            prop_f_tag = "%s/%s" % (prop_tag_sloppy, Measurement.pos_boost)
+            prop_b_tag = "%s/%s" % (prop_tag_sloppy, Measurement.neg_boost)
+            prop_f = props_sloppy[prop_f_tag]
+            prop_b = props_sloppy[prop_b_tag]
+
+            g.message("Contraction: Starting 2pt (includes sink smearing)")
+            tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "sl", pos, sm_tag)
+            Measurement.contract_2pt(prop_f, prop_b, phases, trafo, tag)
+            g.message("Contraction: Done 2pt (includes sink smearing)")
+
+            g.message(f"Contraction: Start TMD with N_W = {W_count}, divided into {W_subset_count} subsets.")
+            qTMDWF_tag = get_qTMDWF_file_tag(data_dir, lat_tag, conf, "sl", pos, sm_tag+'_'+contract_tag)
+            for i_sub in range(0, W_subset_count):
+                g.message(f"Start TMD backward propagator subset of {i_sub} / {W_subset_count}")
+                prop_b_W = Measurement.constr_TMD_bprop(prop_b,W[i_sub*W_subset_len:(i_sub+1)*W_subset_len], W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len])
+                g.message("  Start TMD contractions")
+                Measurement.contract_TMD(prop_f, prop_b_W, phases, qTMDWF_tag, W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub)
+                del prop_b_W
+            g.message("Contraction: Done TMD")
+
+            with open(sample_log_file, "a") as f:
+                if g.rank() == 0:
+                    f.write(sample_log_tag+"\n")
+            g.message("Contraction DONE: " + sample_log_tag)
+
+            del prop_f, prop_b
+        del props_sloppy

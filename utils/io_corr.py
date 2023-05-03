@@ -27,6 +27,16 @@ def get_qTMDWF_file_tag(data_dir, lat, cfg, ama, src, sm):
 
     return data_dir + "/qTMDWF/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + "." + sm_tag
 
+def get_qDA_file_tag(data_dir, lat, cfg, ama, src, sm):
+
+    cfg_tag = str(cfg)
+    lat_tag = str(lat) + ".qDA"
+    ama_tag = str(ama)
+    src_tag = "x"+str(src[0]) + "y"+str(src[1]) + "z"+str(src[2]) + "t"+str(src[3])
+    sm_tag  = str(sm)
+
+    return data_dir + "/qDA/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + "." + sm_tag
+
 def get_sample_log_tag(ama, src, sm):
 
     ama_tag = str(ama)
