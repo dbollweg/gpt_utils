@@ -315,8 +315,7 @@ class TMD_WF_measurement(pion_measurement):
         return srcDp, srcDm
 
     def constr_TMD_bprop(self, prop_b, W, W_index_list):
-        # prop_list = [prop_b,]
-        # FIXME: temporarily remove the no Wilson line contraction
+
         prop_list = []
         # W_index_list[i] = [bT, bz, eta, Tdir]
         for i, idx in enumerate(W_index_list):
@@ -325,7 +324,7 @@ class TMD_WF_measurement(pion_measurement):
             current_eta = idx[2]
             transverse_direction = idx[3]
             #g.mem_report(details=False)
-            prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[i] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,2*current_bz))*g.gamma[5])))
+            prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[i] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,round(2*current_bz)))*g.gamma[5])))
             #g.mem_report(details=False)
         return prop_list
 
@@ -351,7 +350,6 @@ class TMD_WF_measurement(pion_measurement):
                             current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction], 2, current_eta+current_bz),transverse_direction, dx))
                             prv_link=current_link
 
-
                         for dz in range(0, current_eta-current_bz):
                             current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-dz)))
                             prv_link=current_link
@@ -359,134 +357,63 @@ class TMD_WF_measurement(pion_measurement):
                         W.append(current_link)
                         index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
         return W, index_list
-
-    def create_TMD_WL_sequential(self, U):
+    
+    # This one include the odd z beyond z=2b_z. Also include a eta'=eta+1 with b_z=0.
+    def create_TMD_WL_odd(self, U):
 
         W = []
         index_list = []
 
-        # create Wilson lines from (all - bz) to (all + eta + b_perp + b_z)
+        # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
-                for current_b_T in range (0, self.b_T):
-                    for current_bz in range(0, self.b_z):
-                        
-                        if current_bz == 0:
-                            prv_link = g.qcd.gauge.unit(U[2].grid)[0]
-                            for dz in range(0, current_eta+current_bz):
-                                current_link=g.eval(prv_link * g.cshift(U[2],2, dz))
-                                prv_link=current_link
-                            for dx in range(0, current_b_T):
-                                current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction], 2, current_eta+current_bz),transverse_direction, dx))
-                                prv_link=current_link
-                            for dz in range(0, current_eta-current_bz):
-                                current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-dz)))
-                                prv_link=current_link
-                        else:
-                            forward_link = g.cshift(g.cshift(U[2], transverse_direction, current_b_T), 2, current_bz-1)
-                            bckward_link = g.cshift(U[2], 2, -current_bz)
-                            current_link = g.eval(bckward_link * prv_link * forward_link)
-                            prv_link = current_link
+                for current_bz in range(0, self.b_z):
+                    for current_b_T in range (0, self.b_T):
+
+                        prv_link = g.qcd.gauge.unit(U[2].grid)[0]
+                        current_link = prv_link
+                        # FIXME: phase need to be corrected due to source position
+                        for dz in range(0, current_eta+current_bz):
+                            current_link=g.eval(prv_link * g.cshift(U[2],2, dz))
+                            prv_link=current_link
+
+                        for dx in range(0, current_b_T):
+                            current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction], 2, current_eta+current_bz),transverse_direction, dx))
+                            prv_link=current_link
+
+                        for dz in range(0, current_eta-current_bz):
+                            current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-dz)))
+                            prv_link=current_link
 
                         W.append(current_link)
                         index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
-        return W, index_list
 
-
-    def create_TMD_WL_sequential_Dir(self, U):
-
-        W = []
-        index_list = []
-
-
-        # create Wilson lines from (all - bz) to (all + eta + b_perp + b_z)
-        for transverse_direction in [0,1]:
-            for current_eta in self.eta:
-
-                # ------------------------------------------------#
-                # --------------- possitive eta ------------------#
-                # ------------------------------------------------#
-                if current_eta > 0:
-                    for current_b_T in range (-self.b_T, self.b_T):
-
-                        # bz = 0
-                        prv_link = g.qcd.gauge.unit(U[2].grid)[0]
-                        for dz in range(0, current_eta):
-                            current_link=g.eval(prv_link * g.cshift(U[2],2, dz))
-                            prv_link=current_link
-                        if current_b_T >= 0:
-                            for dx in range(0, current_b_T):
-                                current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction], 2, current_eta),transverse_direction, dx))
-                                prv_link=current_link
-                        else:
-                            for dx in range(-1, current_b_T-1, -1):
-                                current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(U[transverse_direction], 2, current_eta),transverse_direction, dx)))
-                                prv_link=current_link
-                        for dz in range(0, current_eta):
-                            current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta-1), transverse_direction, current_b_T),2,-dz)))
-                            prv_link=current_link
+                        # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z+1)
+                        current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-(current_eta-current_bz))))
                         W.append(current_link)
-                        index_list.append([current_b_T, 0, current_eta, transverse_direction])
+                        index_list.append([current_b_T, current_bz-0.5, current_eta+0.5, transverse_direction])
 
-                        # bz > 0
-                        for current_bz in range(1, self.b_z):
-                            forward_link = g.cshift(g.cshift(U[2], transverse_direction, current_b_T), 2, current_bz-1)
-                            bckward_link = g.cshift(U[2], 2, -current_bz)
-                            current_link = g.eval(bckward_link * prv_link * forward_link)
-                            prv_link = current_link
-                            W.append(current_link)
-                            index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
+                # create Wilson lines from all to all + (eta+1+0) + b_perp - (eta+1-0)
+                current_eta += 1
+                current_bz = 0
+                for current_b_T in range (0, self.b_T):
 
-                        # bz < 0
-                        for current_bz in range(-1, -self.b_z, -1):
-                            forward_link = g.adj(g.cshift(g.cshift(U[2], transverse_direction, current_b_T), 2, current_bz))
-                            bckward_link = g.adj(g.cshift(U[2], 2, -current_bz-1))
-                            current_link = g.eval(bckward_link * prv_link * forward_link)
-                            prv_link = current_link
-                            W.append(current_link)
-                            index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
+                    prv_link = g.qcd.gauge.unit(U[2].grid)[0]
+                    current_link = prv_link
+                    # FIXME: phase need to be corrected due to source position
+                    for dz in range(0, current_eta+current_bz):
+                        current_link=g.eval(prv_link * g.cshift(U[2],2, dz))
+                        prv_link=current_link
 
-                # ------------------------------------------------#
-                # ---------------- negative eta ------------------#
-                # ------------------------------------------------#
-                elif current_eta < 0:
-                    for current_b_T in range (-self.b_T, self.b_T):
+                    for dx in range(0, current_b_T):
+                        current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction], 2, current_eta+current_bz),transverse_direction, dx))
+                        prv_link=current_link
 
-                        # bz = 0
-                        prv_link = g.qcd.gauge.unit(U[2].grid)[0]
-                        for dz in range(0, current_eta-1, -1):
-                            current_link=g.eval(prv_link * g.adj(g.cshift(U[2],2, dz)))
-                            prv_link=current_link
-                        if current_b_T >= 0:
-                            for dx in range(0, current_b_T):
-                                current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction], 2, current_eta),transverse_direction, dx))
-                                prv_link=current_link
-                        else:
-                            for dx in range(-1, current_b_T-1, -1):
-                                current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(U[transverse_direction], 2, current_eta),transverse_direction, dx)))
-                                prv_link=current_link
-                        for dz in range(0, current_eta, -1):
-                            current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta), transverse_direction, current_b_T),2,-dz)))
-                            prv_link=current_link
-                        W.append(current_link)
-                        index_list.append([current_b_T, 0, current_eta, transverse_direction])
+                    for dz in range(0, current_eta-current_bz):
+                        current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-dz)))
+                        prv_link=current_link
 
-                        # bz > 0
-                        for current_bz in range(1, self.b_z):
-                            forward_link = g.cshift(g.cshift(U[2], transverse_direction, current_b_T), 2, current_bz-1)
-                            bckward_link = g.cshift(U[2], 2, -current_bz)
-                            current_link = g.eval(bckward_link * prv_link * forward_link)
-                            prv_link = current_link
-                            W.append(current_link)
-                            index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
-
-                        # bz < 0
-                        for current_bz in range(-1, -self.b_z, -1):
-                            forward_link = g.adj(g.cshift(g.cshift(U[2], transverse_direction, current_b_T), 2, current_bz))
-                            bckward_link = g.adj(g.cshift(U[2], 2, -current_bz-1))
-                            current_link = g.eval(bckward_link * prv_link * forward_link)
-                            prv_link = current_link
-                            W.append(current_link)
-                            index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
+                    W.append(current_link)
+                    index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
 
         return W, index_list
