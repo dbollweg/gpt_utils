@@ -1,0 +1,19 @@
+propagator generating:
+
+	1, pion two point functions:
+		1), prop_generation_k0.py, 
+		2), prop_generation_k6.py,
+	2,
+
+
+
+contraction:
+
+	0, prop_contract_flow.py
+
+	1, 2pt and pion DA:
+		1), prop_contract_DA_k0.py
+		2), prop_contract_DA_k6.py
+
+	2, 2pt and pion TMDWF:
+		1),

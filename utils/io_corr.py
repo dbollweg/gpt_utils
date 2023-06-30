@@ -47,6 +47,20 @@ def get_sample_log_tag(ama, src, sm):
 
     return log_sample
 
+def save_proton_c2pt_hdf5(corr, tag, gammalist, plist):
+
+    roll = -int(tag.split(".")[4].split('t')[1])
+
+    save_h5 = tag + ".h5"
+    f = h5py.File(save_h5, 'w')
+    sm = f.create_group("SS")
+    for ig, gm in enumerate(gammalist):
+        g = sm.create_group(gm)
+        for ip, p in enumerate(plist):
+            dataset_tag = "PX"+str(p[0])+"PY"+str(p[1])+"PZ"+str(p[2])
+            g.create_dataset(dataset_tag, data=np.roll(corr[ig][ip], roll, axis=0))
+    f.close()
+
 def save_c2pt_hdf5(corr, tag, gammalist, plist):
 
     roll = -int(tag.split(".")[4].split('t')[1])
