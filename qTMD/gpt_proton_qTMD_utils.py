@@ -6,7 +6,8 @@ from io_corr import *
 
 #ordered list of gamma matrix identifiers, needed for the tag in the correlator output
 my_gammas = ["5", "T", "T5", "X", "X5", "Y", "Y5", "Z", "Z5", "I", "SXT", "SXY", "SXZ", "SYT", "SYZ", "SZT"]
-my_proton_proj = ["P+_Sz+","P+_Sx+","P+_Sx-"]
+#my_proton_proj = ["P+","P+_Sz+","P+_Sx+","P+_Sx-"]
+my_proton_proj = ["P+"]
 
 ordered_list_of_gammas = [g.gamma[5], g.gamma["T"], g.gamma["T"]*g.gamma[5],
                                       g.gamma["X"], g.gamma["X"]*g.gamma[5], 
@@ -16,6 +17,15 @@ ordered_list_of_gammas = [g.gamma[5], g.gamma["T"], g.gamma["T"]*g.gamma[5],
                                       g.gamma["SigmaXY"], g.gamma["SigmaXZ"], 
                                       g.gamma["SigmaZT"]
                             ]
+
+def uud_two_point(Q1, Q2, kernel):
+    dq = g.qcd.baryon.diquark(g(Q1 * kernel), g(kernel * Q2))
+    return g(g.color_trace(g.spin_trace(dq) * Q1 + dq * Q1))
+def proton_contr(Q1, Q2):
+    C = 1j * g.gamma[1].tensor() * g.gamma[3].tensor()
+    Gamma = C * g.gamma[5].tensor()
+    Pp = (g.gamma["I"].tensor() + g.gamma[3].tensor()) * 0.25
+    return g(g.trace(uud_two_point(Q1, Q2, Gamma) * Pp))
 
 class proton_measurement:
     def __init__(self, parameters):
@@ -251,15 +261,14 @@ class proton_measurement:
                 #"Ls": 12,
                 #"boundary_phases": [1.0, 1.0, 1.0, 1.0],},
                 #48I params
-                #"mass": 0.00078,
-                #"M5": 1.8,
-                #"b": 1.5,
-                #"c": 0.5,
-                #"Ls": 24,
-                #"boundary_phases": [1.0, 1.0, 1.0, -1.0],},
+                "mass": 0.00078,
+                "M5": 1.8,
+                "b": 1.5,
+                "c": 0.5,
+                "Ls": 24,
+                "boundary_phases": [1.0, 1.0, 1.0, -1.0],},
         )
         '''
-
         l_exact = g.qcd.fermion.zmobius(
             #g.convert(U, g.single),
             U,
@@ -285,23 +294,22 @@ class proton_measurement:
                 "boundary_phases": [1.0, 1.0, 1.0, -1.0],
             },
         )
-
+        
         l_sloppy = l_exact.converted(g.single)
 
-        light_innerL_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-2, maxiter = 10000))
-        light_innerH_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-8, maxiter = 200))
+        light_innerL_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-4, maxiter = 10000))
+        light_innerH_inverter = g.algorithms.inverter.preconditioned(g.qcd.fermion.preconditioner.eo2_ne(), g.algorithms.inverter.cg(eps = 1e-4, maxiter = 200))
 
         prop_l_sloppy = l_exact.propagator(light_innerH_inverter).grouped(6)
         prop_l_exact = l_exact.propagator(light_innerL_inverter).grouped(6)
         return prop_l_exact, prop_l_sloppy
-        
+
     ############## make list of complex phases for momentum proj.
     def make_mom_phases(self, grid, origin=None):    
         one = g.identity(g.complex(grid))
         pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
        
         P = g.exp_ixp(pp, origin)
-       
         mom = [g.eval(pp*one) for pp in P]
         return mom
 
@@ -314,42 +322,41 @@ class proton_measurement:
                 
         return W
 
-    #function that does the contractions for the smeared-smeared pion 2pt function
-    def contract_2pt_old(self, prop_f, phases, trafo, tag):
-
-        g.message("Begin sink smearing")
-        tmp_trafo = g.convert(trafo, prop_f.grid.precision)
-
-        prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
-        g.message("Sink smearing completed")
-
-        #This ans the IO still need work
-        corr = g.slice_proton(prop_f, phases, 3) 
-
-        #do correlator output 
-        corr_tag = "%s/2pt" % (tag)
-        for i, corr_pol in enumerate(corr):
-            out_tag = f"{corr_tag}/Pol{self.pol_list[i]}"
-            for j, corr_p in enumerate(corr_pol):
-                out_tag = f"{corr_tag}/p{self.plist[j]}"
-                self.output_correlator.write(out_tag, corr_p)
-                #g.message("Correlator %s\n" % out_tag, corr_t)
 
     #function that does the contractions for the smeared-smeared pion 2pt function
     def contract_2pt(self, prop_f, phases, trafo, tag):
 
+        #g.message("Begin sink smearing")
+        #tmp_trafo = g.convert(trafo, prop_f.grid.precision)
+
+        #prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
+        #g.message("Sink smearing completed")
+
+        corr = g.slice_proton(prop_f, phases, 3) 
+        
+        if g.rank() == 0:
+            save_proton_c2pt_hdf5(corr, tag, my_proton_proj, self.plist)
+        del corr 
+
+
+
+    #function that does the contractions for the smeared-smeared pion 2pt function
+    def contract_2pt_SRC(self, prop_f, phases, trafo, tag):
+
         g.message("Begin sink smearing")
         tmp_trafo = g.convert(trafo, prop_f.grid.precision)
 
         prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
         g.message("Sink smearing completed")
 
-        #This ans the IO still need work
-        corr = g.slice_proton(prop_f, phases, 3) 
-
+        proton1 = proton_contr(prop_f, prop_f)
+        corr = [g.slice(g.eval(proton1*pp),3) for pp in phases]
+        
         if g.rank() == 0:
-            save_proton_c2pt_hdf5(corr, tag, my_proton_proj, self.plist)
+            save_proton_c2pt_hdf5([corr], tag, my_proton_proj, self.plist)
         del corr 
+
+
 
     #function that creates boosted, smeared src.
     def create_src_2pt(self, pos, trafo, grid):

@@ -375,11 +375,11 @@ class pion_DA_measurement(pion_measurement):
         for dz in range(0, self.zmax-1):
             W.append(g.eval(W[dz] * g.cshift(U[2], 2, dz))) # z from 1 to zmax-1
         index_list = [[0,i,0,0] for i in range(0, self.zmax)]
-        # z in [-1, -(zmax-1)]
+        # z in [-1, -(zmax-1)] NOTE: V[dz] is just corrected, may need double check
         V = []
         V.append(g.qcd.gauge.unit(U[2].grid)[0])
         for dz in range(-1, -self.zmax, -1):
-            V.append(g.eval(V[dz] * g.adj(g.cshift(U[2], 2, dz))))
+            V.append(g.eval(V[-dz-1] * g.adj(g.cshift(U[2], 2, dz))))
         index_list += [[0,i,0,0] for i in range(-1, -self.zmax, -1)]
                 
         return W+V[1:], index_list
@@ -481,9 +481,19 @@ class pion_TMDWF_measurement(pion_measurement):
         # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
-                for current_bz in range(0, self.b_z):
-                    for current_b_T in range (0, self.b_T):
-
+                if current_eta == 12:
+                    #b_z_min, b_z_max = 0, self.b_z
+                    b_T_min, b_T_max = 0, self.b_T
+                    bzlist = [i for i in range(0, self.b_z)]
+                else:
+                    #b_z_min, b_z_max = 8, 9
+                    b_T_min, b_T_max = 8, 9
+                    bzlist = [0, 8]
+                #for current_bz in range(0, self.b_z):
+                #for current_bz in range(b_z_min, b_z_max):
+                for current_bz in bzlist:
+                    #for current_b_T in range (0, self.b_T):
+                    for current_b_T in range (b_T_min, b_T_max):
                         prv_link = g.qcd.gauge.unit(U[2].grid)[0]
                         current_link = prv_link
                         # FIXME: phase need to be corrected due to source position
@@ -501,6 +511,9 @@ class pion_TMDWF_measurement(pion_measurement):
 
                         W.append(current_link)
                         index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
+                        if current_eta == 12:
+                            W.append(g.qcd.gauge.unit(U[2].grid)[0])
+                            index_list.append([current_b_T, current_bz, 0, transverse_direction])
         return W, index_list
     
     # This one include the odd z beyond z=2b_z. Also include a eta'=eta+1 with b_z=0.
