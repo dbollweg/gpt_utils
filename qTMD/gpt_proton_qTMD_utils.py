@@ -21,6 +21,7 @@ ordered_list_of_gammas = [g.gamma[5], g.gamma["T"], g.gamma["T"]*g.gamma[5],
 def uud_two_point(Q1, Q2, kernel):
     dq = g.qcd.baryon.diquark(g(Q1 * kernel), g(kernel * Q2))
     return g(g.color_trace(g.spin_trace(dq) * Q1 + dq * Q1))
+
 def proton_contr(Q1, Q2):
     C = 1j * g.gamma[1].tensor() * g.gamma[3].tensor()
     Gamma = C * g.gamma[5].tensor()
@@ -241,7 +242,7 @@ class proton_measurement:
 
     def make_debugging_inverter(self, U):
 
-        '''
+        
         l_exact = g.qcd.fermion.mobius(
             U,
             {
@@ -253,47 +254,47 @@ class proton_measurement:
                 #"Ls": 12,
                 #"boundary_phases": [1.0, 1.0, 1.0, -1.0],},
         #MDWF_2+1f_64nt128_IWASAKI_b2.25_ls12b+c2_M1.8_ms0.02661_mu0.000678_rhmc_HR_G
-                #64I params
-                #"mass": 0.0006203,
-                #"M5": 1.8,
-                #"b": 1.5,
-                #"c": 0.5,
-                #"Ls": 12,
-                #"boundary_phases": [1.0, 1.0, 1.0, 1.0],},
-                #48I params
-                "mass": 0.00078,
+                # 64I params
+                "mass": 0.0006203,
                 "M5": 1.8,
                 "b": 1.5,
                 "c": 0.5,
-                "Ls": 24,
-                "boundary_phases": [1.0, 1.0, 1.0, -1.0],},
+                "Ls": 12,
+                "boundary_phases": [1.0, 1.0, 1.0, 1.0],},
+                #48I params
+                # "mass": 0.00078,
+                # "M5": 1.8,
+                # "b": 1.5,
+                # "c": 0.5,
+                # "Ls": 24,
+                # "boundary_phases": [1.0, 1.0, 1.0, -1.0],},
         )
-        '''
-        l_exact = g.qcd.fermion.zmobius(
-            #g.convert(U, g.single),
-            U,
-            {
-                "mass": 0.00107,
-                "M5": 1.8,
-                "b": 1.0,
-                "c": 0.0,
-                "omega": [
-                    1.0903256131299373,
-                    0.9570283702230611,
-                    0.7048886040934104,
-                    0.48979921782791747,
-                    0.328608311201356,
-                    0.21664245377015995,
-                    0.14121112711957107,
-                    0.0907785101745156,
-                    0.05608303440064219 - 0.007537158177840385j,
-                    0.05608303440064219 + 0.007537158177840385j,
-                    0.0365221637144842 - 0.03343945161367745j,
-                    0.0365221637144842 + 0.03343945161367745j,
-                ],
-                "boundary_phases": [1.0, 1.0, 1.0, -1.0],
-            },
-        )
+        
+        # l_exact = g.qcd.fermion.zmobius(
+        #     #g.convert(U, g.single),
+        #     U,
+        #     {
+        #         "mass": 0.00107,
+        #         "M5": 1.8,
+        #         "b": 1.0,
+        #         "c": 0.0,
+        #         "omega": [
+        #             1.0903256131299373,
+        #             0.9570283702230611,
+        #             0.7048886040934104,
+        #             0.48979921782791747,
+        #             0.328608311201356,
+        #             0.21664245377015995,
+        #             0.14121112711957107,
+        #             0.0907785101745156,
+        #             0.05608303440064219 - 0.007537158177840385j,
+        #             0.05608303440064219 + 0.007537158177840385j,
+        #             0.0365221637144842 - 0.03343945161367745j,
+        #             0.0365221637144842 + 0.03343945161367745j,
+        #         ],
+        #         "boundary_phases": [1.0, 1.0, 1.0, -1.0],
+        #     },
+        # )
         
         l_sloppy = l_exact.converted(g.single)
 
@@ -356,7 +357,12 @@ class proton_measurement:
             save_proton_c2pt_hdf5([corr], tag, my_proton_proj, self.plist)
         del corr 
 
-
+    def contract_proton_2pt(self,prop_f,phases,trafo):
+        proton1 = proton_contr(prop_f, prop_f)
+        
+        corr = [g.slice(g.eval(proton1*pp),3) for pp in phases]
+        
+        return corr
 
     #function that creates boosted, smeared src.
     def create_src_2pt(self, pos, trafo, grid):
