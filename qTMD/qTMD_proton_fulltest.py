@@ -16,9 +16,6 @@ parameters = {
     "t_insert": 2,
 }
 
-#skip job and run nonsense (want to re-write the mess)
-
-
 #1. load config, load eigenvectors
 #U = g.load("/lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output")
 grid = g.grid([8,8,8,8], g.double)
