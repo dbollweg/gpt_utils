@@ -75,6 +75,62 @@ class proton_TMD(proton_measurement):
     
         return corr
     
+    def create_TMD_Wilsonline_index_list(self):
+        index_list = []
+        
+        for transverse_direction in [0,1]:
+            for current_eta in self.eta:
+                
+                for current_bz in range(0,min([self.b_z, current_eta])):
+                    for current_b_T in range(0, self.b_T):
+                        
+                        # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
+                        index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
+                        
+                        # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
+                        index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
+                        
+                        # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z+1)
+                        #index_list.append([current_b_T, current_bz-0.5, current_eta+0.5, transverse_direction])
+                        
+                        # create Wilson lines from all to all - (eta+bz) + b_perp + (eta-b_z+1)
+                        #index_list.append([current_b_T, -(current_bz-0.5), -(current_eta+0.5), transverse_direction])
+
+                # create Wilson lines from all to all +/- (eta+1+0) + b_perp - (eta+1-0)
+                current_eta += 1
+                current_bz = 0
+                for current_b_T in range(0, self.b_T):
+                    index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
+                    
+                    index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
+                    
+        return index_list
+    
+    def create_TMD_Wilsonline(self, U, index_set):
+        assert len(index_set) == 4
+        bt_index = index_set[0]
+        bz_index = index_set[1]
+        eta_index = index_set[2]
+        transverse_dir = index_set[3]
+        
+        prv_link = g.qcd.gauge.unit(U[2].grid)[0]
+        WL = prv_link
+        
+        for dz in range(0, eta_index+bz_index):
+            WL = g.eval(prv_link * g.cshift(U[2], 2, dz))
+            prv_link = WL
+            
+        for dx in range(0, bt_index):
+            WL=g.eval(prv_link * g.cshift(g.cshift(U[transverse_dir], 2, eta_index+bz_index),transverse_dir, dx))
+            prv_link=WL
+
+        for dz in range(0, eta_index-bz_index):
+            WL=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, eta_index+bz_index-1), transverse_dir, bt_index),2,-dz)))
+            prv_link=WL
+
+        return WL
+            
+    
     def create_TMD_WL(self,U):
         W = []
         index_list = []

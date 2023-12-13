@@ -290,7 +290,7 @@ test_down_wick = w(TMD_down_insertion, verbose = True, separate_diagrams=False)
 test_down_gpt = g(g.trace(bw_prop_down_test))
 
 eps4 = abs(test_down_wick - test_down_gpt[0,0,0,0]) / abs(test_down_gpt[0,0,0,0])
-g.message(f"Proton 2pt test TMD bprop (down) gpt vs wick: {eps4}")
+g.message(f"Test TMD bprop (down) gpt vs wick: {eps4}")
 g.message(test_down_wick)
 g.message(test_down_gpt[0,0,0,0])
 
@@ -299,7 +299,7 @@ test_up_wick = w(TMD_up_insertion, verbose = True, separate_diagrams=False)
 test_up_gpt = g(g.trace(bw_prop_up_test))
 
 eps5 = abs(test_up_wick - test_up_gpt[0,0,0,0]) / abs(test_up_gpt[0,0,0,0])
-g.message(f"Proton 2pt test TMD bprop (up) gpt vs wick: {eps5}")
+g.message(f"Test TMD bprop (up) gpt vs wick: {eps5}")
 g.message(test_up_wick)
 g.message(test_up_gpt[0,0,0,0])
 
