@@ -20,9 +20,9 @@ sm_tag = "GSRC_W80_k3"
 lat_tag = "64I"
 
 parameters = {
-    "eta": [8,10,12,16],
-    "b_z": 14,
-    "b_T": 14,
+    "eta": [8,10],
+    "b_z": 6,
+    "b_T": 6,
     "pzmin": 0,
     "pzmax": 6,
     "boost_in": [0,0,3],
@@ -110,6 +110,7 @@ group = run_jobs[0][0]
 g.message("Loading ")
 print(groups[group]["conf_fmt"] % conf)
 U = g.load(groups[group]["conf_fmt"] % conf)
+U_smear = g.copy(U)
 g.message("finished loading gauge config")
 
 # do gauge fixing
@@ -120,7 +121,7 @@ L = U[0].grid.fdimensions
 Measurement = proton_TMD(parameters)
 prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
 
-
+W_index_list = Measurement.create_TMD_Wilsonline_index_list()
 
 # show available memory
 g.mem_report(details=False)
@@ -188,22 +189,16 @@ for group, job, conf, jid, n in run_jobs:
             contract_tag, n_sm = smear[0]+smear[1], smear[2]
             if smear[0] == 'hyp':
                 for i in range(n_sm):
-                    U = g.qcd.gauge.smear.hyp(U, alpha = np.array([0.75, 0.6, 0.3]))
+                    U_smear = g.qcd.gauge.smear.hyp(U, alpha = np.array([0.75, 0.6, 0.3]))
             if smear[0] == 'flow':
                 for i in range(n_sm):
-                    U = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
+                    U_smear = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
             g.message("Gauge: Smearing/Flow finished")
-            g.mem_report(details=False)
-            W, W_index_list = Measurement.create_TMD_WL(U)
-            W_count = len(W_index_list)
-            W_subset_len = 5
-            W_subset_count = math.ceil(W_count/W_subset_len)
-            if g.rank() == 0:
-                print("Wilson Link: W_count, W_subset_len, W_subset_count", W_count, W_subset_len, W_subset_count)
-                print("Wilson Link: W_index_list:",W_index_list)
             
-            for i_sub in range(0, W_subset_count):
-                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_exact_f, W[i_sub*W_subset_len:(i_sub+1)*W_subset_len], W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len])
+            for WL_indices in W_index_list:
+                W = Measurement.create_TMD_Wilsonline(U_smear,WL_indices)
+
+                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_exact_f, W, WL_indices)
                 g.message("TMD forward prop done")
                 phases = Measurement.make_mom_phases(U[0].grid, pos)
                 #production tag should include more config/action details
@@ -211,8 +206,8 @@ for group, job, conf, jid, n in run_jobs:
                 qtmd_tag_exact = "%s/%s/%s/%s_%s" % ("qtmd_exact", lat_tag, sm_tag, str(conf), str(pos))
 
                 g.message("Starting TMD contractions")
-                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases,W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub, qtmd_tag_exact)
-                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases,W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub, qtmd_tag_exact)
+                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases, WL_indices, qtmd_tag_exact)
+                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases, WL_indices, qtmd_tag_exact)
 
                 del tmd_forward_prop
             
@@ -237,11 +232,11 @@ for group, job, conf, jid, n in run_jobs:
                 g.message("SKIP: " + sample_log_tag)
                 continue
 
-        prop_dir = data_dir + "prop_sl_W80_k3/" + conf + "/" + "x"+str(pos[0]) + "y"+str(pos[1]) + "z"+str(pos[2]) + "t"+str(pos[3])
-        if g.rank() == 0:
-            if not prop_dir:
-                os.makedirs(prop_dir)
-        Measurement.set_propagator_output_facilities(prop_dir)
+        # prop_dir = data_dir + "prop_sl_W80_k3/" + conf + "/" + "x"+str(pos[0]) + "y"+str(pos[1]) + "z"+str(pos[2]) + "t"+str(pos[3])
+        # if g.rank() == 0:
+        #     if not prop_dir:
+        #         os.makedirs(prop_dir)
+        # Measurement.set_propagator_output_facilities(prop_dir)
 
         g.message("Generatring boosted src's")
         srcDp = Measurement.create_src_2pt(pos, trafo, U[0].grid)
@@ -258,31 +253,24 @@ for group, job, conf, jid, n in run_jobs:
             contract_tag, n_sm = smear[0]+smear[1], smear[2]
             if smear[0] == 'hyp':
                 for i in range(n_sm):
-                    U = g.qcd.gauge.smear.hyp(U, alpha = np.array([0.75, 0.6, 0.3]))
+                    U_smear = g.qcd.gauge.smear.hyp(U, alpha = np.array([0.75, 0.6, 0.3]))
             if smear[0] == 'flow':
                 for i in range(n_sm):
-                    U = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
+                    U_smear = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
             g.message("Gauge: Smearing/Flow finished")
             
-            W, W_index_list = Measurement.create_TMD_WL(U)
+            for WL_indices in W_index_list:
+                W = Measurement.create_TMD_Wilsonline(U_smear, WL_indices)
             
-            W_count = len(W_index_list)
-            W_subset_len = 5
-            W_subset_count = math.ceil(W_count/W_subset_len)
-            if g.rank() == 0:
-                print("Wilson Link: W_count, W_subset_len, W_subset_count", W_count, W_subset_len, W_subset_count)
-                print("Wilson Link: W_index_list:",W_index_list)
-            
-            for i_sub in range(0, W_subset_count):
-                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_sloppy_f, W[i_sub*W_subset_len:(i_sub+1)*W_subset_len], W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len])
+                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_sloppy_f, W, WL_indices)
                 g.message("TMD forward prop done")
                 phases = Measurement.make_mom_phases(U[0].grid, pos)
             
                 qtmd_tag_sloppy = "%s/%s/%s/%s_%s" % ("qtmd_sloppy", lat_tag, sm_tag, str(conf), str(pos))
 
                 g.message("Starting TMD contractions")
-                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases, W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub, qtmd_tag_sloppy)
-                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases, W_index_list[i_sub*W_subset_len:(i_sub+1)*W_subset_len], i_sub, qtmd_tag_sloppy)
+                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases, WL_indices, qtmd_tag_sloppy)
+                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases, WL_indices, qtmd_tag_sloppy)
 
                 del tmd_forward_prop
             
