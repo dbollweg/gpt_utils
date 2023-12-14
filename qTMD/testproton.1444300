@@ -1,0 +1,1220 @@
+
+Lmod is automatically replacing "cce/15.0.0" with "gcc/12.2.0".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.3.3" with "PrgEnv-gnu/8.3.3".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.23     2) darshan-runtime/3.4.0
+
+The following have been reloaded with a version change:
+  1) rocm/5.4.0 => rocm/5.3.0
+
+world_rank 0 has 1 devices
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device Number    : 0
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device identifier: 
+AcceleratorHipInit:   totalGlobalMem: 68702699520 
+AcceleratorHipInit:   isMultiGpuBoard: 0 
+AcceleratorHipInit:   warpSize: 64 
+AcceleratorHipInit: using default device 
+AcceleratorHipInit: assume user or srun sets ROCR_VISIBLE_DEVICES and numa binding 
+AcceleratorHipInit: Configure options --enable-setdevice=no 
+local rank 0 device 0 bus id: 0000:c1:00.0
+AcceleratorHipInit: ================================================
+SharedMemoryMpi:  World communicator of size 256
+SharedMemoryMpi:  Node  communicator of size 8
+0SharedMemoryMpi:  SharedMemoryMPI.cc acceleratorAllocDevice 2147483648bytes at 0x7ffded800000 - 7ffe6d7fffff for comms buffers 
+Setting up IPC
+
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|_ |  |  |  |  |  |  |  |  |  |  |  | _|__
+__|_                                    _|__
+__|_   GGGG    RRRR    III    DDDD      _|__
+__|_  G        R   R    I     D   D     _|__
+__|_  G        R   R    I     D    D    _|__
+__|_  G  GG    RRRR     I     D    D    _|__
+__|_  G   G    R  R     I     D   D     _|__
+__|_   GGGG    R   R   III    DDDD      _|__
+__|_                                    _|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+  |  |  |  |  |  |  |  |  |  |  |  |  |  |  
+
+
+Copyright (C) 2015 Peter Boyle, Azusa Yamaguchi, Guido Cossu, Antonin Portelli and other authors
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+Current Grid git commit hash=3e9cc15eb070b9620e4762a8e0db32034f1ead13: (HEAD -> gpt_proton, origin/gpt_proton) clean
+
+Grid : Message : ================================================ 
+Grid : Message : MPI is initialised and logging filters activated 
+Grid : Message : ================================================ 
+Grid : Message : Requested 2147483648 byte stencil comms buffers 
+Grid : Message : MemoryManager Cache 54962159616 bytes 
+Grid : Message : MemoryManager::Init() setting up
+Grid : Message : MemoryManager::Init() cache pool for recent host   allocations: SMALL 8 LARGE 2 HUGE 0
+Grid : Message : MemoryManager::Init() cache pool for recent device allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() cache pool for recent shared allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() Non unified: Caching accelerator data in dedicated memory
+Grid : Message : MemoryManager::Init() Using hipMalloc
+
+=============================================
+              Initialized GPT                
+     Copyright (C) 2020 Christoph Lehner     
+=============================================
+GPT :       6.814989 s : NERSC file format; reading /lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1410
+GPT :       6.815015 s :    BEGIN_HEADER
+GPT :       6.815023 s : 	HDR_VERSION = 1.0
+GPT :       6.815030 s : 	DATATYPE = 4D_SU3_GAUGE
+GPT :       6.815035 s : 	STORAGE_FORMAT = 1.0
+GPT :       6.815040 s : 	DIMENSION_1 = 64
+GPT :       6.815045 s : 	DIMENSION_2 = 64
+GPT :       6.815049 s : 	DIMENSION_3 = 64
+GPT :       6.815056 s : 	DIMENSION_4 = 128
+GPT :       6.815061 s : 	LINK_TRACE = 0.6609024116
+GPT :       6.815065 s : 	PLAQUETTE  = 0.6153199909
+GPT :       6.815070 s : 	BOUNDARY_1 = PERIODIC
+GPT :       6.815074 s : 	BOUNDARY_2 = PERIODIC
+GPT :       6.815078 s : 	BOUNDARY_3 = PERIODIC
+GPT :       6.815083 s : 	BOUNDARY_4 = PERIODIC
+GPT :       6.815087 s : 	CHECKSUM = a63f8ab5
+GPT :       6.815091 s : 	ENSEMBLE_ID = 64I_Coulomb
+GPT :       6.815096 s : 	ENSEMBLE_LABEL = MDWF_2+1f_64nt128_IWASAKI_b2.25_ls12b+c2_M1.8_ms0.02661_mu0.000678_rhmc_HR_G_Coulomb
+GPT :       6.815101 s : 	SEQUENCE_NUMBER = 1410
+GPT :       6.815107 s : 	CREATOR = RBC
+GPT :       6.815111 s : 	CREATOR_HARDWARE = ALCF_COOLEY
+GPT :       6.815116 s : 	CREATION_DATE =
+GPT :       6.815120 s : 	ARCHIVE_DATE = Sun Mar  7 16:55:04 2021
+GPT :       6.815125 s : 	FLOATING_POINT = IEEE64LITTLE
+GPT :       6.815131 s :    END_HEADER
+GPT :      11.511198 s : Read 18 GB at 3.83616 GB/s (7.54223 GB/s for distribution, 8.48759 GB/s for munged read, 123.321 GB/s for checksum, 202.239 GB/s for munging, 256 readers)
+Grid : Message : 13.701502 s :  Gauge fixing to Coulomb gauge time=3 plaq= 0.61532 link trace = 0.660902
+Grid : Message : 14.787455 s :  Iteration 0 plaq= 0.61532 dmuAmu 2.48691e-07
+Grid : Message : 14.820235 s :  Iteration 0 Phi= 7.74714e-13 Omega= 0 trG 1
+Grid : Message : 14.820239 s : Converged ! 
+GPT :      26.715854 s : Loading eigenvectors from /lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output
+GPT :      26.716085 s : ====================================================================================================================================
+GPT :      26.716097 s :                                                  GPT Memory Report                
+GPT :      26.716130 s : ====================================================================================================================================
+GPT :      26.716137 s :  Lattice fields on all ranks             31.5 GB
+GPT :      26.716142 s :  Lattice fields per rank                 0.123047 GB
+GPT :      26.716147 s :  Resident memory per rank                2.20811 GB
+GPT :      26.716151 s :  Total memory available (host)           465.978 GB
+GPT :      26.716156 s :  Total memory available (accelerator)    0 GB
+GPT :      26.716160 s : ====================================================================================================================================
+GPT :      27.510297 s : Loading /lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output with 1 views per node
+GPT :      28.001496 s : Read blocks 8
+GPT :      65.474797 s : * read 225 GB: fread at 167.841 GB/s, crc32 at 238.188 GB/s, munge at 915.322 GB/s, distribute at 6.50306 GB/s; available = 386.129 GB
+GPT :      97.906966 s : * read 450 GB: fread at 55.6516 GB/s, crc32 at 238.114 GB/s, munge at 920.007 GB/s, distribute at 8.56359 GB/s; available = 385.391 GB
+GPT :     119.929344 s : * read 675 GB: fread at 70.575 GB/s, crc32 at 237.765 GB/s, munge at 920.608 GB/s, distribute at 9.41761 GB/s; available = 384.74 GB
+GPT :     144.533037 s : * read 900 GB: fread at 82.4831 GB/s, crc32 at 238.328 GB/s, munge at 921.126 GB/s, distribute at 9.78762 GB/s; available = 384.073 GB
+GPT :     164.468910 s : * read 1125 GB: fread at 91.9265 GB/s, crc32 at 238.405 GB/s, munge at 920.406 GB/s, distribute at 10.3161 GB/s; available = 383.708 GB
+GPT :     189.920376 s : * read 1350 GB: fread at 97.3383 GB/s, crc32 at 238.542 GB/s, munge at 920.094 GB/s, distribute at 10.4481 GB/s; available = 383.168 GB
+GPT :     206.697189 s : * read 1575 GB: fread at 104.13 GB/s, crc32 at 238.493 GB/s, munge at 919.266 GB/s, distribute at 11.0183 GB/s; available = 382.578 GB
+GPT :     233.940621 s : * read 1800 GB: fread at 110.376 GB/s, crc32 at 238.652 GB/s, munge at 919.229 GB/s, distribute at 11.1915 GB/s; available = 381.971 GB
+GPT :     294.041836 s : * read 1975.78 GB: fread at 114.414 GB/s, crc32 at 237.652 GB/s, munge at 908.878 GB/s, distribute at 9.22719 GB/s, fp16 at 2210.58 GB/s; available = 284.028 GB
+GPT :     324.584683 s : * read 2151.56 GB: fread at 117.36 GB/s, crc32 at 236.581 GB/s, munge at 907.713 GB/s, distribute at 8.91551 GB/s, fp16 at 1197.67 GB/s; available = 283.539 GB
+GPT :     357.742981 s : * read 2327.34 GB: fread at 120.879 GB/s, crc32 at 235.971 GB/s, munge at 901.552 GB/s, distribute at 8.57849 GB/s, fp16 at 876.194 GB/s; available = 283.035 GB
+GPT :     387.431446 s : * read 2503.12 GB: fread at 124.092 GB/s, crc32 at 235.156 GB/s, munge at 876.98 GB/s, distribute at 8.4085 GB/s, fp16 at 719.787 GB/s; available = 282.558 GB
+GPT :     422.512877 s : * read 2678.91 GB: fread at 125.449 GB/s, crc32 at 234.558 GB/s, munge at 872.59 GB/s, distribute at 8.21509 GB/s, fp16 at 609.137 GB/s; available = 282.402 GB
+GPT :     446.859271 s : * read 2854.69 GB: fread at 127.21 GB/s, crc32 at 234.029 GB/s, munge at 865.785 GB/s, distribute at 8.26862 GB/s, fp16 at 540.355 GB/s; available = 281.929 GB
+GPT :     490.234787 s : * read 3030.47 GB: fread at 129.644 GB/s, crc32 at 233.607 GB/s, munge at 857.117 GB/s, distribute at 8.08544 GB/s, fp16 at 493.506 GB/s; available = 281.456 GB
+GPT :     517.680685 s : * read 3206.25 GB: fread at 130.738 GB/s, crc32 at 233.252 GB/s, munge at 861.255 GB/s, distribute at 8.04323 GB/s, fp16 at 454.193 GB/s; available = 284.691 GB
+GPT :     517.898116 s : Coarse read blocks 5
+GPT :     605.036789 s : * read 3277.54 GB: fread at 130.975 GB/s, crc32 at 231.328 GB/s, munge at 880.405 GB/s, distribute at 6.84975 GB/s, fp16 at 445.531 GB/s; available = 290.894 GB
+GPT :     681.766164 s : * read 3348.83 GB: fread at 132.429 GB/s, crc32 at 229.372 GB/s, munge at 899.554 GB/s, distribute at 6.04634 GB/s, fp16 at 436.797 GB/s; available = 287.638 GB
+GPT :     764.208654 s : * read 3420.12 GB: fread at 133.843 GB/s, crc32 at 227.538 GB/s, munge at 918.704 GB/s, distribute at 5.41616 GB/s, fp16 at 428.376 GB/s; available = 284.426 GB
+GPT :     844.070280 s : * read 3491.41 GB: fread at 134.568 GB/s, crc32 at 225.905 GB/s, munge at 937.853 GB/s, distribute at 4.91915 GB/s, fp16 at 420.707 GB/s; available = 281.245 GB
+GPT :     923.561226 s : * read 3562.7 GB: fread at 135.723 GB/s, crc32 at 224.329 GB/s, munge at 957.003 GB/s, distribute at 4.52388 GB/s, fp16 at 414.891 GB/s; available = 278.083 GB
+GPT :     923.561245 s : * load 3562.7 GB at 3.976 GB/s
+GPT :     923.802776 s : ====================================================================================================================================
+GPT :     923.802798 s :                                                  GPT Memory Report                
+GPT :     923.805654 s : ====================================================================================================================================
+GPT :     923.805665 s :  Lattice fields on all ranks             5019.78 GB
+GPT :     923.805671 s :  Lattice fields per rank                 19.6085 GB
+GPT :     923.805676 s :  Resident memory per rank                24.6153 GB
+GPT :     923.805680 s :  Total memory available (host)           285.551 GB
+GPT :     923.805686 s :  Total memory available (accelerator)    0 GB
+GPT :     923.805689 s : ====================================================================================================================================
+GPT :     924.568576 s : creating deflated solvers
+GPT :     924.821695 s : ====================================================================================================================================
+GPT :     924.821709 s :                                                  GPT Memory Report                
+GPT :     924.824381 s : ====================================================================================================================================
+GPT :     924.824392 s :  Lattice fields on all ranks             5019.78 GB
+GPT :     924.824397 s :  Lattice fields per rank                 19.6085 GB
+GPT :     924.824402 s :  Resident memory per rank                24.6153 GB
+GPT :     924.824406 s :  Total memory available (host)           291.898 GB
+GPT :     924.824411 s :  Total memory available (accelerator)    0 GB
+GPT :     924.824415 s : ====================================================================================================================================
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+ValueError: too many values to unpack (expected 2)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+ValueError: too many values to unpack (expected 2)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+ValueError: too many values to unpack (expected 2)
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+ValueError: too many values to unpack (expected 2)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 95, in <module>
+    prop_exact, prop_sloppy = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+ValueError: too many values to unpack (expected 2)
+=============================================
+               Finalized GPT                 
+=============================================
+srun: error: frontier07035: tasks 144-151: Exited with exit code 1
+srun: Terminating StepId=1444300.0
+srun: error: frontier06013: tasks 96-103: Exited with exit code 1
+srun: error: frontier03839: tasks 24-31: Exited with exit code 1
+srun: error: frontier07729: tasks 192-199: Exited with exit code 1
+srun: error: frontier06908: tasks 136-143: Exited with exit code 1
+srun: error: frontier03584: tasks 8-15: Exited with exit code 1
+srun: error: frontier06139: tasks 104-111: Exited with exit code 1
+srun: error: frontier07934: tasks 200-207: Exited with exit code 1
+srun: error: frontier06267: tasks 112-119: Exited with exit code 1
+srun: error: frontier07620: tasks 184-191: Exited with exit code 1
+srun: error: frontier05629: tasks 80-87: Exited with exit code 1
+srun: error: frontier08672: tasks 216-223: Exited with exit code 1
+srun: error: frontier08801: tasks 224-231: Exited with exit code 1
+srun: error: frontier06780: tasks 128-135: Exited with exit code 1
+srun: error: frontier09026: tasks 240-247: Exited with exit code 1
+srun: error: frontier07241: tasks 160-167: Exited with exit code 1
+srun: error: frontier07480: tasks 176-183: Exited with exit code 1
+srun: error: frontier08516: tasks 208-215: Exited with exit code 1
+srun: error: frontier07100: tasks 152-159: Exited with exit code 1
+srun: error: frontier03710: tasks 16-23: Exited with exit code 1
+srun: error: frontier04864: tasks 32-39: Exited with exit code 1
+srun: error: frontier05116: tasks 48-55: Exited with exit code 1
+srun: error: frontier03455: tasks 0-7: Exited with exit code 1
+srun: error: frontier04987: tasks 40-47: Exited with exit code 1
+srun: error: frontier05371: tasks 64-71: Exited with exit code 1
+srun: error: frontier05883: tasks 88-95: Exited with exit code 1
+srun: error: frontier10181: tasks 248-255: Exited with exit code 1
+srun: error: frontier06654: tasks 120-127: Exited with exit code 1
+srun: error: frontier07363: tasks 168-175: Exited with exit code 1
+srun: error: frontier08917: tasks 232-239: Exited with exit code 1
+srun: error: frontier05499: tasks 72-79: Exited with exit code 1
+srun: error: frontier05246: tasks 56-63: Exited with exit code 1

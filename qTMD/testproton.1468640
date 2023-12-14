@@ -1,0 +1,1136 @@
+
+Lmod is automatically replacing "cce/15.0.0" with "gcc/12.2.0".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.3.3" with "PrgEnv-gnu/8.3.3".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.23     2) darshan-runtime/3.4.0     3) hdf5/1.14.0
+
+The following have been reloaded with a version change:
+  1) rocm/5.4.0 => rocm/5.3.0
+
+world_rank 0 has 1 devices
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device Number    : 0
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device identifier: 
+AcceleratorHipInit:   totalGlobalMem: 68702699520 
+AcceleratorHipInit:   isMultiGpuBoard: 0 
+AcceleratorHipInit:   warpSize: 64 
+AcceleratorHipInit: using default device 
+AcceleratorHipInit: assume user or srun sets ROCR_VISIBLE_DEVICES and numa binding 
+AcceleratorHipInit: Configure options --enable-setdevice=no 
+local rank 0 device 0 bus id: 0000:c1:00.0
+AcceleratorHipInit: ================================================
+SharedMemoryMpi:  World communicator of size 256
+SharedMemoryMpi:  Node  communicator of size 8
+0SharedMemoryMpi:  SharedMemoryMPI.cc acceleratorAllocDevice 2147483648bytes at 0x7ffde8a00000 - 7ffe689fffff for comms buffers 
+Setting up IPC
+
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|_ |  |  |  |  |  |  |  |  |  |  |  | _|__
+__|_                                    _|__
+__|_   GGGG    RRRR    III    DDDD      _|__
+__|_  G        R   R    I     D   D     _|__
+__|_  G        R   R    I     D    D    _|__
+__|_  G  GG    RRRR     I     D    D    _|__
+__|_  G   G    R  R     I     D   D     _|__
+__|_   GGGG    R   R   III    DDDD      _|__
+__|_                                    _|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+  |  |  |  |  |  |  |  |  |  |  |  |  |  |  
+
+
+Copyright (C) 2015 Peter Boyle, Azusa Yamaguchi, Guido Cossu, Antonin Portelli and other authors
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+Current Grid git commit hash=3e9cc15eb070b9620e4762a8e0db32034f1ead13: (HEAD -> gpt_proton, origin/gpt_proton) clean
+
+Grid : Message : ================================================ 
+Grid : Message : MPI is initialised and logging filters activated 
+Grid : Message : ================================================ 
+Grid : Message : Requested 2147483648 byte stencil comms buffers 
+Grid : Message : MemoryManager Cache 54962159616 bytes 
+Grid : Message : MemoryManager::Init() setting up
+Grid : Message : MemoryManager::Init() cache pool for recent host   allocations: SMALL 8 LARGE 2 HUGE 0
+Grid : Message : MemoryManager::Init() cache pool for recent device allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() cache pool for recent shared allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() Non unified: Caching accelerator data in dedicated memory
+Grid : Message : MemoryManager::Init() Using hipMalloc
+
+=============================================
+              Initialized GPT                
+     Copyright (C) 2020 Christoph Lehner     
+=============================================
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+=============================================
+               Finalized GPT                 
+=============================================
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+Traceback (most recent call last):
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 107, in <module>
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+TypeError: not all arguments converted during string formatting
+    g.message("Loading ", str(groups[group]["conf_fmt" % conf]))
+TypeError: not all arguments converted during string formatting
+srun: error: frontier03892: tasks 208-215: Exited with exit code 1
+srun: Terminating StepId=1468640.0
+srun: error: frontier02626: tasks 136-143: Exited with exit code 1
+srun: error: frontier00496: tasks 16-23: Exited with exit code 1
+srun: error: frontier01135: tasks 48-55: Exited with exit code 1
+srun: error: frontier02363: tasks 120-127: Exited with exit code 1
+srun: error: frontier03763: tasks 200-207: Exited with exit code 1
+srun: error: frontier00110: tasks 0-7: Exited with exit code 1
+srun: error: frontier04793: tasks 248-255: Exited with exit code 1
+srun: error: frontier04407: tasks 232-239: Exited with exit code 1
+srun: error: frontier01003: tasks 40-47: Exited with exit code 1
+srun: error: frontier01910: tasks 88-95: Exited with exit code 1
+srun: error: frontier03264: tasks 176-183: Exited with exit code 1
+srun: error: frontier03631: tasks 192-199: Exited with exit code 1
+srun: error: frontier02992: tasks 160-167: Exited with exit code 1
+srun: error: frontier04270: tasks 224-231: Exited with exit code 1
+srun: error: frontier02735: tasks 144-151: Exited with exit code 1
+srun: error: frontier02022: tasks 96-103: Exited with exit code 1
+srun: error: frontier03118: tasks 168-175: Exited with exit code 1
+srun: error: frontier04523: tasks 240-247: Exited with exit code 1
+srun: error: frontier03509: tasks 184-191: Exited with exit code 1
+srun: error: frontier02928: tasks 152-159: Exited with exit code 1
+srun: error: frontier00239: tasks 8-15: Exited with exit code 1
+srun: error: frontier00623: tasks 24-31: Exited with exit code 1
+srun: error: frontier01517: tasks 72-79: Exited with exit code 1
+srun: error: frontier01380: tasks 64-71: Exited with exit code 1
+srun: error: frontier02544: tasks 128-135: Exited with exit code 1
+srun: error: frontier01641: tasks 80-87: Exited with exit code 1
+srun: error: frontier01261: tasks 56-63: Exited with exit code 1
+srun: error: frontier02293: tasks 112-119: Exited with exit code 1
+srun: error: frontier02153: tasks 104-111: Exited with exit code 1
+srun: error: frontier04017: tasks 216-223: Exited with exit code 1
+srun: error: frontier00876: tasks 32-39: Exited with exit code 1
