@@ -1,0 +1,1344 @@
+
+Lmod is automatically replacing "cce/15.0.0" with "gcc/12.2.0".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.3.3" with "PrgEnv-gnu/8.3.3".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.23     2) darshan-runtime/3.4.0
+
+The following have been reloaded with a version change:
+  1) rocm/5.4.0 => rocm/5.3.0
+
+world_rank 0 has 1 devices
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device Number    : 0
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device identifier: 
+AcceleratorHipInit:   totalGlobalMem: 68702699520 
+AcceleratorHipInit:   isMultiGpuBoard: 0 
+AcceleratorHipInit:   warpSize: 64 
+AcceleratorHipInit: using default device 
+AcceleratorHipInit: assume user or srun sets ROCR_VISIBLE_DEVICES and numa binding 
+AcceleratorHipInit: Configure options --enable-setdevice=no 
+local rank 0 device 0 bus id: 0000:c1:00.0
+AcceleratorHipInit: ================================================
+SharedMemoryMpi:  World communicator of size 256
+SharedMemoryMpi:  Node  communicator of size 8
+0SharedMemoryMpi:  SharedMemoryMPI.cc acceleratorAllocDevice 2147483648bytes at 0x7ffde8a00000 - 7ffe689fffff for comms buffers 
+Setting up IPC
+
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|_ |  |  |  |  |  |  |  |  |  |  |  | _|__
+__|_                                    _|__
+__|_   GGGG    RRRR    III    DDDD      _|__
+__|_  G        R   R    I     D   D     _|__
+__|_  G        R   R    I     D    D    _|__
+__|_  G  GG    RRRR     I     D    D    _|__
+__|_  G   G    R  R     I     D   D     _|__
+__|_   GGGG    R   R   III    DDDD      _|__
+__|_                                    _|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+  |  |  |  |  |  |  |  |  |  |  |  |  |  |  
+
+
+Copyright (C) 2015 Peter Boyle, Azusa Yamaguchi, Guido Cossu, Antonin Portelli and other authors
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+Current Grid git commit hash=3e9cc15eb070b9620e4762a8e0db32034f1ead13: (HEAD -> gpt_proton, origin/gpt_proton) clean
+
+Grid : Message : ================================================ 
+Grid : Message : MPI is initialised and logging filters activated 
+Grid : Message : ================================================ 
+Grid : Message : Requested 2147483648 byte stencil comms buffers 
+Grid : Message : MemoryManager Cache 54962159616 bytes 
+Grid : Message : MemoryManager::Init() setting up
+Grid : Message : MemoryManager::Init() cache pool for recent host   allocations: SMALL 8 LARGE 2 HUGE 0
+Grid : Message : MemoryManager::Init() cache pool for recent device allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() cache pool for recent shared allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() Non unified: Caching accelerator data in dedicated memory
+Grid : Message : MemoryManager::Init() Using hipMalloc
+
+=============================================
+              Initialized GPT                
+     Copyright (C) 2020 Christoph Lehner     
+=============================================
+GPT :       7.163218 s : NERSC file format; reading /lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1410
+GPT :       7.163245 s :    BEGIN_HEADER
+GPT :       7.163253 s : 	HDR_VERSION = 1.0
+GPT :       7.163259 s : 	DATATYPE = 4D_SU3_GAUGE
+GPT :       7.163265 s : 	STORAGE_FORMAT = 1.0
+GPT :       7.163270 s : 	DIMENSION_1 = 64
+GPT :       7.163275 s : 	DIMENSION_2 = 64
+GPT :       7.163279 s : 	DIMENSION_3 = 64
+GPT :       7.163283 s : 	DIMENSION_4 = 128
+GPT :       7.163287 s : 	LINK_TRACE = 0.6609024116
+GPT :       7.163292 s : 	PLAQUETTE  = 0.6153199909
+GPT :       7.163297 s : 	BOUNDARY_1 = PERIODIC
+GPT :       7.163301 s : 	BOUNDARY_2 = PERIODIC
+GPT :       7.163306 s : 	BOUNDARY_3 = PERIODIC
+GPT :       7.163311 s : 	BOUNDARY_4 = PERIODIC
+GPT :       7.163315 s : 	CHECKSUM = a63f8ab5
+GPT :       7.163319 s : 	ENSEMBLE_ID = 64I_Coulomb
+GPT :       7.163324 s : 	ENSEMBLE_LABEL = MDWF_2+1f_64nt128_IWASAKI_b2.25_ls12b+c2_M1.8_ms0.02661_mu0.000678_rhmc_HR_G_Coulomb
+GPT :       7.163329 s : 	SEQUENCE_NUMBER = 1410
+GPT :       7.163334 s : 	CREATOR = RBC
+GPT :       7.163338 s : 	CREATOR_HARDWARE = ALCF_COOLEY
+GPT :       7.163344 s : 	CREATION_DATE =
+GPT :       7.163348 s : 	ARCHIVE_DATE = Sun Mar  7 16:55:04 2021
+GPT :       7.163353 s : 	FLOATING_POINT = IEEE64LITTLE
+GPT :       7.163359 s :    END_HEADER
+GPT :      11.943599 s : Read 18 GB at 3.77929 GB/s (7.24202 GB/s for distribution, 8.42634 GB/s for munged read, 123.318 GB/s for checksum, 197.74 GB/s for munging, 256 readers)
+Grid : Message : 14.189493 s :  Gauge fixing to Coulomb gauge time=3 plaq= 0.61532 link trace = 0.660902
+Grid : Message : 15.285240 s :  Iteration 0 plaq= 0.61532 dmuAmu 2.48691e-07
+Grid : Message : 15.308889 s :  Iteration 0 Phi= 7.74714e-13 Omega= 0 trG 1
+Grid : Message : 15.308893 s : Converged ! 
+GPT :      27.037989 s : Loading eigenvectors from /lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output
+GPT :      27.038215 s : ====================================================================================================================================
+GPT :      27.038228 s :                                                  GPT Memory Report                
+GPT :      27.038263 s : ====================================================================================================================================
+GPT :      27.038270 s :  Lattice fields on all ranks             31.5 GB
+GPT :      27.038276 s :  Lattice fields per rank                 0.123047 GB
+GPT :      27.038281 s :  Resident memory per rank                2.18122 GB
+GPT :      27.038286 s :  Total memory available (host)           465.39 GB
+GPT :      27.038292 s :  Total memory available (accelerator)    0 GB
+GPT :      27.038296 s : ====================================================================================================================================
+GPT :      27.816205 s : Loading /lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output with 1 views per node
+GPT :      28.301976 s : Read blocks 8
+GPT :      70.620130 s : * read 225 GB: fread at 206.916 GB/s, crc32 at 240.391 GB/s, munge at 920.647 GB/s, distribute at 5.67158 GB/s; available = 385.629 GB
+GPT :      93.757657 s : * read 450 GB: fread at 183.131 GB/s, crc32 at 240.777 GB/s, munge at 926.613 GB/s, distribute at 7.50801 GB/s; available = 384.751 GB
+GPT :     115.788229 s : * read 675 GB: fread at 178.557 GB/s, crc32 at 240.961 GB/s, munge at 926.714 GB/s, distribute at 8.53399 GB/s; available = 384.088 GB
+GPT :     132.247075 s : * read 900 GB: fread at 180.586 GB/s, crc32 at 241.383 GB/s, munge at 927.774 GB/s, distribute at 9.73834 GB/s; available = 383.448 GB
+GPT :     160.440241 s : * read 1125 GB: fread at 168.378 GB/s, crc32 at 241.49 GB/s, munge at 927.424 GB/s, distribute at 10.1504 GB/s; available = 383.088 GB
+GPT :     183.375879 s : * read 1350 GB: fread at 170.788 GB/s, crc32 at 241.271 GB/s, munge at 927.886 GB/s, distribute at 10.3147 GB/s; available = 382.539 GB
+GPT :     201.405369 s : * read 1575 GB: fread at 173.217 GB/s, crc32 at 241.096 GB/s, munge at 927.736 GB/s, distribute at 10.7784 GB/s; available = 381.953 GB
+GPT :     227.465528 s : * read 1800 GB: fread at 177.313 GB/s, crc32 at 241.104 GB/s, munge at 927.685 GB/s, distribute at 10.9543 GB/s; available = 381.122 GB
+GPT :     287.235685 s : * read 1975.78 GB: fread at 179.032 GB/s, crc32 at 240.004 GB/s, munge at 914.307 GB/s, distribute at 8.97969 GB/s, fp16 at 2455.11 GB/s; available = 283.403 GB
+GPT :     316.310610 s : * read 2151.56 GB: fread at 180.448 GB/s, crc32 at 239.127 GB/s, munge at 906.223 GB/s, distribute at 8.74683 GB/s, fp16 at 1303.87 GB/s; available = 282.92 GB
+GPT :     355.941588 s : * read 2327.34 GB: fread at 134.06 GB/s, crc32 at 238.359 GB/s, munge at 897.276 GB/s, distribute at 8.44714 GB/s, fp16 at 923.524 GB/s; available = 282.412 GB
+GPT :     386.936293 s : * read 2503.12 GB: fread at 136.379 GB/s, crc32 at 237.704 GB/s, munge at 889.391 GB/s, distribute at 8.25602 GB/s, fp16 at 741.746 GB/s; available = 281.942 GB
+GPT :     421.485916 s : * read 2678.91 GB: fread at 138.107 GB/s, crc32 at 237.258 GB/s, munge at 885.057 GB/s, distribute at 8.03973 GB/s, fp16 at 633.475 GB/s; available = 281.784 GB
+GPT :     451.363706 s : * read 2854.69 GB: fread at 140.396 GB/s, crc32 at 236.777 GB/s, munge at 867.527 GB/s, distribute at 7.93408 GB/s, fp16 at 563.887 GB/s; available = 281.318 GB
+GPT :     486.026299 s : * read 3030.47 GB: fread at 143.063 GB/s, crc32 at 236.285 GB/s, munge at 867.009 GB/s, distribute at 7.77856 GB/s, fp16 at 511.378 GB/s; available = 280.85 GB
+GPT :     517.383528 s : * read 3206.25 GB: fread at 145.093 GB/s, crc32 at 235.913 GB/s, munge at 865.826 GB/s, distribute at 7.68343 GB/s, fp16 at 475.55 GB/s; available = 280.364 GB
+GPT :     517.696707 s : Coarse read blocks 5
+GPT :     595.207582 s : * read 3277.54 GB: fread at 146.005 GB/s, crc32 at 233.857 GB/s, munge at 885.077 GB/s, distribute at 6.66463 GB/s, fp16 at 466.153 GB/s; available = 290.326 GB
+GPT :     677.683671 s : * read 3348.83 GB: fread at 146.814 GB/s, crc32 at 231.937 GB/s, munge at 904.328 GB/s, distribute at 5.89401 GB/s, fp16 at 455.472 GB/s; available = 287.073 GB
+GPT :     747.750516 s : * read 3420.12 GB: fread at 147.07 GB/s, crc32 at 230.289 GB/s, munge at 923.579 GB/s, distribute at 5.39057 GB/s, fp16 at 446.817 GB/s; available = 283.815 GB
+GPT :     836.868023 s : * read 3491.41 GB: fread at 147.863 GB/s, crc32 at 228.684 GB/s, munge at 942.831 GB/s, distribute at 4.92008 GB/s, fp16 at 440.204 GB/s; available = 280.561 GB
+GPT :     916.625738 s : * read 3562.7 GB: fread at 149.387 GB/s, crc32 at 227.284 GB/s, munge at 962.082 GB/s, distribute at 4.54008 GB/s, fp16 at 431.978 GB/s; available = 277.516 GB
+GPT :     916.625755 s : * load 3562.7 GB at 4.00839 GB/s
+GPT :     916.858347 s : ====================================================================================================================================
+GPT :     916.858367 s :                                                  GPT Memory Report                
+GPT :     916.861148 s : ====================================================================================================================================
+GPT :     916.861157 s :  Lattice fields on all ranks             5019.78 GB
+GPT :     916.861162 s :  Lattice fields per rank                 19.6085 GB
+GPT :     916.861166 s :  Resident memory per rank                24.633 GB
+GPT :     916.861169 s :  Total memory available (host)           281.562 GB
+GPT :     916.861174 s :  Total memory available (accelerator)    0 GB
+GPT :     916.861179 s : ====================================================================================================================================
+GPT :     917.616532 s : creating deflated solvers
+GPT :     917.872010 s : ====================================================================================================================================
+GPT :     917.872024 s :                                                  GPT Memory Report                
+GPT :     917.925912 s : ====================================================================================================================================
+GPT :     917.925922 s :  Lattice fields on all ranks             5019.78 GB
+GPT :     917.925927 s :  Lattice fields per rank                 19.6085 GB
+GPT :     917.925932 s :  Resident memory per rank                24.633 GB
+GPT :     917.925936 s :  Total memory available (host)           291.346 GB
+GPT :     917.925941 s :  Total memory available (accelerator)    0 GB
+GPT :     917.925945 s : ====================================================================================================================================
+GPT :     968.993755 s : Mode-representation applied to 4 vector(s) in 1.47098 s (0.750348 s for rank_inner_product, 0.269618 s for global sum, 0.451019 s for linear combinations)
+GPT :     987.525751 s : cg: NOT converged in 200 iterations;  squared residual 7.177239e-10 / 5.963423e-18
+GPT :     992.929445 s : cg: NOT converged in 200 iterations;  squared residual 3.869896e-10 / 5.755459e-18
+GPT :    1004.144848 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 12.637649774551392 s (split), 10.98588752746582 s (operation), 11.215331315994263 s (unsplit)
+GPT :    1005.826602 s : Mode-representation applied to 4 vector(s) in 1.23021 s (0.766849 s for rank_inner_product, 0.00606465 s for global sum, 0.457301 s for linear combinations)
+GPT :    1012.745882 s : cg: NOT converged in 200 iterations;  squared residual 5.371940e-12 / 7.180528e-26
+GPT :    1018.125234 s : cg: NOT converged in 200 iterations;  squared residual 2.971558e-12 / 3.872800e-26
+GPT :    1018.705840 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1216070652008057 s (split), 10.840529203414917 s (operation), 0.5805377960205078 s (unsplit)
+GPT :    1020.317193 s : Mode-representation applied to 4 vector(s) in 1.21548 s (0.750122 s for rank_inner_product, 0.0156639 s for global sum, 0.44969 s for linear combinations)
+GPT :    1027.152882 s : cg: NOT converged in 200 iterations;  squared residual 4.891992e-14 / 5.707123e-28
+GPT :    1032.541629 s : cg: NOT converged in 200 iterations;  squared residual 3.122808e-14 / 3.284492e-28
+GPT :    1033.138663 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1338696479797363 s (split), 10.804561614990234 s (operation), 0.5969698429107666 s (unsplit)
+GPT :    1034.756930 s : Mode-representation applied to 4 vector(s) in 1.21734 s (0.755764 s for rank_inner_product, 0.0108089 s for global sum, 0.450767 s for linear combinations)
+GPT :    1041.583215 s : cg: NOT converged in 200 iterations;  squared residual 6.108986e-16 / 5.230884e-30
+GPT :    1046.945351 s : cg: NOT converged in 200 iterations;  squared residual 4.207294e-16 / 3.468942e-30
+GPT :    1047.605201 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1428372859954834 s (split), 10.7731192111969 s (operation), 0.6597833633422852 s (unsplit)
+GPT :    1049.207016 s : Mode-representation applied to 4 vector(s) in 1.21866 s (0.747687 s for rank_inner_product, 0.0199747 s for global sum, 0.451001 s for linear combinations)
+GPT :    1056.033067 s : cg: NOT converged in 200 iterations;  squared residual 8.878653e-18 / 6.558306e-32
+GPT :    1061.401923 s : cg: NOT converged in 200 iterations;  squared residual 7.425875e-18 / 4.691469e-32
+GPT :    1062.066668 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.121685266494751 s (split), 10.802268028259277 s (operation), 0.6646866798400879 s (unsplit)
+GPT :    1063.654855 s : Mode-representation applied to 4 vector(s) in 1.20556 s (0.747638 s for rank_inner_product, 0.00845551 s for global sum, 0.449465 s for linear combinations)
+GPT :    1070.491637 s : cg: NOT converged in 200 iterations;  squared residual 1.266042e-19 / 9.587195e-34
+GPT :    1075.860297 s : cg: NOT converged in 200 iterations;  squared residual 1.112449e-19 / 8.196923e-34
+GPT :    1076.520039 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0956058502197266 s (split), 10.813134908676147 s (operation), 0.6596810817718506 s (unsplit)
+GPT :    1078.109328 s : Mode-representation applied to 4 vector(s) in 1.20616 s (0.754818 s for rank_inner_product, 0.00113845 s for global sum, 0.450207 s for linear combinations)
+GPT :    1084.965815 s : cg: NOT converged in 200 iterations;  squared residual 2.334992e-21 / 1.381943e-35
+GPT :    1090.331878 s : cg: NOT converged in 200 iterations;  squared residual 2.151761e-21 / 1.238977e-35
+GPT :    1091.018592 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.087266206741333 s (split), 10.817546606063843 s (operation), 0.686652421951294 s (unsplit)
+GPT :    1092.621004 s : Mode-representation applied to 4 vector(s) in 1.20658 s (0.752166 s for rank_inner_product, 0.00215626 s for global sum, 0.452262 s for linear combinations)
+GPT :    1099.432526 s : cg: NOT converged in 200 iterations;  squared residual 3.695980e-23 / 2.528793e-37
+GPT :    1104.798021 s : cg: NOT converged in 200 iterations;  squared residual 3.733653e-23 / 2.365202e-37
+GPT :    1105.517330 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1093952655792236 s (split), 10.796922445297241 s (operation), 0.7192444801330566 s (unsplit)
+GPT :    1105.686524 s : defect_correcting: converged after 8 iterations
+GPT :    1111.092103 s : Mode-representation applied to 4 vector(s) in 1.20212 s (0.749825 s for rank_inner_product, 0.00250411 s for global sum, 0.449792 s for linear combinations)
+GPT :    1117.946081 s : cg: NOT converged in 200 iterations;  squared residual 1.260185e-09 / 6.094811e-18
+GPT :    1123.335902 s : cg: NOT converged in 200 iterations;  squared residual 3.894383e-10 / 5.889106e-18
+GPT :    1124.017588 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.116687536239624 s (split), 10.851855993270874 s (operation), 0.6816179752349854 s (unsplit)
+GPT :    1125.619302 s : Mode-representation applied to 4 vector(s) in 1.2063 s (0.752664 s for rank_inner_product, 0.00466299 s for global sum, 0.448974 s for linear combinations)
+GPT :    1132.476091 s : cg: NOT converged in 200 iterations;  squared residual 1.034194e-11 / 1.260808e-25
+GPT :    1137.850602 s : cg: NOT converged in 200 iterations;  squared residual 2.668714e-12 / 3.896885e-26
+GPT :    1138.567177 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1371421813964844 s (split), 10.80996584892273 s (operation), 0.7165098190307617 s (unsplit)
+GPT :    1140.183215 s : Mode-representation applied to 4 vector(s) in 1.21437 s (0.754724 s for rank_inner_product, 0.00468135 s for global sum, 0.454969 s for linear combinations)
+GPT :    1147.002303 s : cg: NOT converged in 200 iterations;  squared residual 9.716078e-14 / 1.098055e-27
+GPT :    1152.364255 s : cg: NOT converged in 200 iterations;  squared residual 2.530183e-14 / 2.914820e-28
+GPT :    1153.131171 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1334342956542969 s (split), 10.767048358917236 s (operation), 0.7668490409851074 s (unsplit)
+GPT :    1154.719252 s : Mode-representation applied to 4 vector(s) in 1.20117 s (0.749831 s for rank_inner_product, 0.00235081 s for global sum, 0.448987 s for linear combinations)
+GPT :    1161.548389 s : cg: NOT converged in 200 iterations;  squared residual 1.265416e-15 / 1.039954e-29
+GPT :    1166.911528 s : cg: NOT converged in 200 iterations;  squared residual 3.271430e-16 / 2.778178e-30
+GPT :    1167.652951 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.133392572402954 s (split), 10.773515462875366 s (operation), 0.7413558959960938 s (unsplit)
+GPT :    1169.245970 s : Mode-representation applied to 4 vector(s) in 1.20126 s (0.750456 s for rank_inner_product, 0.00109649 s for global sum, 0.449706 s for linear combinations)
+GPT :    1176.094731 s : cg: NOT converged in 200 iterations;  squared residual 1.876359e-17 / 1.359833e-31
+GPT :    1181.479747 s : cg: NOT converged in 200 iterations;  squared residual 5.214999e-18 / 3.591317e-32
+GPT :    1182.117491 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1305406093597412 s (split), 10.825273752212524 s (operation), 0.6376814842224121 s (unsplit)
+GPT :    1183.713098 s : Mode-representation applied to 4 vector(s) in 1.20611 s (0.751552 s for rank_inner_product, 0.00256157 s for global sum, 0.451995 s for linear combinations)
+GPT :    1190.553328 s : cg: NOT converged in 200 iterations;  squared residual 2.712515e-19 / 2.030322e-33
+GPT :    1195.919197 s : cg: NOT converged in 200 iterations;  squared residual 7.442554e-20 / 5.695582e-34
+GPT :    1196.576741 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1419603824615479 s (split), 10.793720483779907 s (operation), 0.6574792861938477 s (unsplit)
+GPT :    1198.179912 s : Mode-representation applied to 4 vector(s) in 1.21183 s (0.745946 s for rank_inner_product, 0.0154839 s for global sum, 0.450396 s for linear combinations)
+GPT :    1205.076727 s : cg: NOT converged in 200 iterations;  squared residual 5.092228e-21 / 2.971753e-35
+GPT :    1210.447294 s : cg: NOT converged in 200 iterations;  squared residual 1.387667e-21 / 8.192916e-36
+GPT :    1211.080208 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.154595136642456 s (split), 10.833358526229858 s (operation), 0.6328516006469727 s (unsplit)
+GPT :    1212.683918 s : Mode-representation applied to 4 vector(s) in 1.21498 s (0.743491 s for rank_inner_product, 0.0151932 s for global sum, 0.456296 s for linear combinations)
+GPT :    1219.529597 s : cg: NOT converged in 200 iterations;  squared residual 8.104667e-23 / 5.537120e-37
+GPT :    1224.907105 s : cg: NOT converged in 200 iterations;  squared residual 2.216218e-23 / 1.508748e-37
+GPT :    1225.538244 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.122267723083496 s (split), 10.828076362609863 s (operation), 0.6310718059539795 s (unsplit)
+GPT :    1225.703619 s : defect_correcting: converged after 8 iterations
+GPT :    1231.124241 s : Mode-representation applied to 4 vector(s) in 1.21577 s (0.743492 s for rank_inner_product, 0.0176549 s for global sum, 0.454621 s for linear combinations)
+GPT :    1237.956246 s : cg: NOT converged in 200 iterations;  squared residual 8.819210e-10 / 6.067227e-18
+GPT :    1243.329465 s : cg: NOT converged in 200 iterations;  squared residual 4.512399e-10 / 6.052586e-18
+GPT :    1243.923856 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0637907981872559 s (split), 10.859496116638184 s (operation), 0.5943219661712646 s (unsplit)
+GPT :    1245.530652 s : Mode-representation applied to 4 vector(s) in 1.21196 s (0.742425 s for rank_inner_product, 0.0185251 s for global sum, 0.45101 s for linear combinations)
+GPT :    1252.374639 s : cg: NOT converged in 200 iterations;  squared residual 8.529120e-12 / 8.827712e-26
+GPT :    1257.747485 s : cg: NOT converged in 200 iterations;  squared residual 4.059588e-12 / 4.515251e-26
+GPT :    1258.344656 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1238412857055664 s (split), 10.808180093765259 s (operation), 0.5971090793609619 s (unsplit)
+GPT :    1259.958176 s : Mode-representation applied to 4 vector(s) in 1.21466 s (0.745289 s for rank_inner_product, 0.0178282 s for global sum, 0.451546 s for linear combinations)
+GPT :    1266.857412 s : cg: NOT converged in 200 iterations;  squared residual 9.263531e-14 / 9.495698e-28
+GPT :    1272.257226 s : cg: NOT converged in 200 iterations;  squared residual 3.972808e-14 / 4.363419e-28
+GPT :    1272.834667 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1612880229949951 s (split), 10.854270696640015 s (operation), 0.5773794651031494 s (unsplit)
+GPT :    1274.436211 s : Mode-representation applied to 4 vector(s) in 1.21199 s (0.742741 s for rank_inner_product, 0.017972 s for global sum, 0.451278 s for linear combinations)
+GPT :    1281.262381 s : cg: NOT converged in 200 iterations;  squared residual 1.328720e-15 / 1.024031e-29
+GPT :    1286.636778 s : cg: NOT converged in 200 iterations;  squared residual 5.433024e-16 / 4.265318e-30
+GPT :    1287.241004 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.124852180480957 s (split), 10.793926477432251 s (operation), 0.6041631698608398 s (unsplit)
+GPT :    1288.843048 s : Mode-representation applied to 4 vector(s) in 1.21391 s (0.743371 s for rank_inner_product, 0.0171461 s for global sum, 0.453396 s for linear combinations)
+GPT :    1295.703474 s : cg: NOT converged in 200 iterations;  squared residual 2.135444e-17 / 1.450984e-31
+GPT :    1301.082853 s : cg: NOT converged in 200 iterations;  squared residual 7.757588e-18 / 5.775683e-32
+GPT :    1301.679197 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1069862842559814 s (split), 10.84845495223999 s (operation), 0.5962846279144287 s (unsplit)
+GPT :    1303.319702 s : Mode-representation applied to 4 vector(s) in 1.24819 s (0.743139 s for rank_inner_product, 0.0497863 s for global sum, 0.455267 s for linear combinations)
+GPT :    1310.163139 s : cg: NOT converged in 200 iterations;  squared residual 3.062538e-19 / 2.309085e-33
+GPT :    1315.522299 s : cg: NOT converged in 200 iterations;  squared residual 1.067010e-19 / 8.231242e-34
+GPT :    1316.115111 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0969231128692627 s (split), 10.824157476425171 s (operation), 0.5927493572235107 s (unsplit)
+GPT :    1317.744049 s : Mode-representation applied to 4 vector(s) in 1.23848 s (0.743885 s for rank_inner_product, 0.0444887 s for global sum, 0.450106 s for linear combinations)
+GPT :    1324.598578 s : cg: NOT converged in 200 iterations;  squared residual 5.415263e-21 / 3.319029e-35
+GPT :    1329.964661 s : cg: NOT converged in 200 iterations;  squared residual 1.799440e-21 / 1.135986e-35
+GPT :    1330.539920 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1093783378601074 s (split), 10.829260110855103 s (operation), 0.5751967430114746 s (unsplit)
+GPT :    1332.176859 s : Mode-representation applied to 4 vector(s) in 1.23785 s (0.748036 s for rank_inner_product, 0.0401459 s for global sum, 0.449667 s for linear combinations)
+GPT :    1339.012569 s : cg: NOT converged in 200 iterations;  squared residual 8.445970e-23 / 5.806362e-37
+GPT :    1344.374764 s : cg: NOT converged in 200 iterations;  squared residual 2.698692e-23 / 1.902972e-37
+GPT :    1344.964224 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1454503536224365 s (split), 10.774426460266113 s (operation), 0.5893962383270264 s (unsplit)
+GPT :    1345.131672 s : defect_correcting: converged after 8 iterations
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 106, in <module>
+    correlator = Measurement.contract_2pt_plain(prop_exact_f, phases, trafo)
+TypeError: contract_2pt_plain() takes 3 positional arguments but 4 were given
+=============================================
+               Finalized GPT                 
+=============================================
+srun: error: frontier07920: tasks 56-63: Exited with exit code 1
+srun: Terminating StepId=1456294.0
+slurmstepd: error: *** STEP 1456294.0 ON frontier07778 CANCELLED AT 2023-10-04T12:53:10 ***
+srun: error: frontier08163: tasks 112-119: Exited with exit code 1
+srun: error: frontier08432: tasks 200-207: Exited with exit code 1
+srun: error: frontier07780: tasks 8-15: Exited with exit code 1
+srun: error: frontier08036: tasks 80-87: Exited with exit code 1
+srun: error: frontier07916: tasks 40-47: Exited with exit code 1
+srun: error: frontier08301: tasks 144-151: Exited with exit code 1
+srun: error: frontier07785: tasks 24-31: Exited with exit code 1
+srun: error: frontier08307: tasks 160-167: Exited with exit code 1
+srun: error: frontier08173: tasks 136-143: Exited with exit code 1
+srun: error: frontier08559: tasks 224-231: Exited with exit code 1
+srun: error: frontier08431: tasks 192-199: Exited with exit code 1
+srun: error: frontier07781: tasks 16-23: Exited with exit code 1
+srun: error: frontier07778: tasks 0-7: Exited with exit code 1
+srun: error: frontier08042: tasks 104-111: Exited with exit code 1
+srun: error: frontier08041: tasks 96-103: Exited with exit code 1
+srun: error: frontier07921: tasks 64-71: Exited with exit code 1
+srun: error: frontier08429: tasks 176-183: Exited with exit code 1
+srun: error: frontier08313: tasks 168-175: Exited with exit code 1
+srun: error: frontier08305: tasks 152-159: Exited with exit code 1
+srun: error: frontier08037: tasks 88-95: Exited with exit code 1
+srun: error: frontier08695: tasks 248-255: Exited with exit code 1
+srun: error: frontier08558: tasks 216-223: Exited with exit code 1
+srun: error: frontier07922: tasks 72-79: Exited with exit code 1
+srun: error: frontier08561: tasks 232-239: Exited with exit code 1
+srun: error: frontier08166: tasks 120-127: Exited with exit code 1
+srun: error: frontier08557: tasks 208-215: Exited with exit code 1
+srun: error: frontier07918: tasks 48-55: Exited with exit code 1
+srun: error: frontier08169: tasks 128-135: Exited with exit code 1
+srun: error: frontier08430: tasks 184-191: Exited with exit code 1
+srun: error: frontier08691: tasks 240-247: Exited with exit code 1
+srun: error: frontier07787: tasks 32-39: Exited with exit code 1

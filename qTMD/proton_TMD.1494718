@@ -1,0 +1,1387 @@
+
+Lmod is automatically replacing "cce/15.0.0" with "gcc/12.2.0".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.3.3" with "PrgEnv-gnu/8.3.3".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.23     2) darshan-runtime/3.4.0
+
+The following have been reloaded with a version change:
+  1) rocm/5.4.0 => rocm/5.3.0
+
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+srun: error: frontier06733: tasks 0-7: Exited with exit code 1
+srun: Terminating StepId=1494718.0
+srun: error: frontier06858: tasks 88-95: Exited with exit code 1
+srun: error: frontier06852: tasks 40-47: Exited with exit code 1
+srun: error: frontier06859: tasks 96-103: Exited with exit code 1
+srun: error: frontier07034: tasks 176-183: Terminated
+srun: error: frontier07079: tasks 224-231: Terminated
+srun: error: frontier07025: tasks 128-135: Terminated
+srun: error: frontier06863: tasks 120-127: Terminated
+srun: error: frontier07029: tasks 160-167: Terminated
+srun: error: frontier07080: tasks 232-239: Terminated
+srun: error: frontier06860: tasks 104-111: Terminated
+srun: error: frontier07035: tasks 184-191: Terminated
+srun: error: frontier07167: tasks 240-247: Terminated
+srun: error: frontier06783: tasks 8-15: Terminated
+srun: error: frontier06855: tasks 64-71: Terminated
+srun: error: frontier07027: tasks 144-151: Terminated
+srun: error: frontier07040: tasks 200-207: Terminated
+srun: error: frontier07068: tasks 208-215: Terminated
+srun: error: frontier07039: tasks 192-199: Terminated
+srun: error: frontier07030: tasks 168-175: Terminated
+srun: error: frontier06851: tasks 32-39: Terminated
+srun: error: frontier06861: tasks 112-119: Terminated
+srun: error: frontier07935: tasks 248-255: Terminated
+srun: error: frontier06857: tasks 80-87: Terminated
+srun: error: frontier07028: tasks 152-159: Terminated
+srun: error: frontier06854: tasks 56-63: Terminated
+srun: error: frontier06856: tasks 72-79: Terminated
+srun: error: frontier06853: tasks 48-55: Terminated
+srun: error: frontier06784: tasks 16-23: Terminated
+srun: error: frontier07026: tasks 136-143: Terminated
+srun: error: frontier07078: tasks 216-223: Terminated
+srun: error: frontier06850: tasks 24-31: Terminated
+srun: Force Terminated StepId=1494718.0
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+IndentationError: unexpected indent
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+srun: error: frontier08698: tasks 120-127: Exited with exit code 1
+srun: Terminating StepId=1494718.1
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+srun: error: frontier08538: tasks 32-39: Exited with exit code 1
+IndentationError: unexpected indent
+slurmstepd: error: *** STEP 1494718.1 ON frontier08441 CANCELLED AT 2023-11-07T01:07:48 ***
+srun: error: frontier09081: tasks 168-175: Exited with exit code 1
+srun: error: frontier08536: tasks 24-31: Exited with exit code 1
+srun: error: frontier08545: tasks 40-47: Exited with exit code 1
+srun: error: frontier08546: tasks 48-55: Exited with exit code 1
+srun: error: frontier09082: tasks 176-183: Exited with exit code 1
+srun: error: frontier10143: tasks 224-231: Exited with exit code 1
+srun: error: frontier10145: tasks 240-247: Exited with exit code 1
+srun: error: frontier08530: tasks 16-21,23: Exited with exit code 1
+srun: error: frontier08530: task 22: Terminated
+srun: error: frontier08828: tasks 152-159: Terminated
+srun: error: frontier08552: tasks 96-103: Terminated
+srun: error: frontier08441: tasks 0-7: Terminated
+srun: error: frontier10142: tasks 216-223: Terminated
+srun: error: frontier10146: tasks 248-255: Terminated
+srun: error: frontier08529: tasks 8-15: Terminated
+srun: error: frontier08551: tasks 88-95: Terminated
+srun: error: frontier10144: tasks 232-239: Terminated
+srun: error: frontier08547: tasks 56-63: Terminated
+srun: error: frontier08550: tasks 80-87: Terminated
+srun: error: frontier08687: tasks 112-119: Terminated
+srun: error: frontier10139: tasks 192-199: Terminated
+srun: error: frontier08549: tasks 72-79: Terminated
+srun: error: frontier08701: tasks 144-151: Terminated
+srun: error: frontier10138: tasks 184-191: Terminated
+srun: error: frontier08699: tasks 128-135: Terminated
+srun: error: frontier10141: tasks 208-215: Terminated
+srun: error: frontier09075: tasks 160-167: Terminated
+srun: error: frontier08683: tasks 104-111: Terminated
+srun: error: frontier08548: tasks 64-71: Terminated
+srun: error: frontier08700: tasks 136-143: Terminated
+srun: error: frontier10140: tasks 200-207: Terminated
+srun: Force Terminated StepId=1494718.1
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+srun: error: frontier10150: tasks 24-31: Exited with exit code 1
+srun: Terminating StepId=1494718.2
+srun: error: frontier10158: tasks 48-55: Exited with exit code 1
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+srun: error: frontier10166: tasks 104-111: Exited with exit code 1
+srun: error: frontier10168: tasks 120-127: Exited with exit code 1
+srun: error: frontier10147: tasks 0-7: Exited with exit code 1
+srun: error: frontier10165: tasks 96-103: Exited with exit code 1
+srun: error: frontier10174: tasks 160-167: Exited with exit code 1
+srun: error: frontier10148: tasks 8-15: Exited with exit code 1
+srun: error: frontier10149: tasks 16-23: Exited with exit code 1
+srun: error: frontier10197: tasks 200-207: Exited with exit code 1
+srun: error: frontier10167: tasks 112-119: Exited with exit code 1
+srun: error: frontier10247: tasks 248-255: Exited with exit code 1
+srun: error: frontier10169: tasks 128-135: Exited with exit code 1
+srun: error: frontier10173: tasks 152-159: Exited with exit code 1
+srun: error: frontier10242: tasks 216-223: Terminated
+srun: error: frontier10245: tasks 240-247: Terminated
+srun: error: frontier10176: tasks 168-175: Terminated
+srun: error: frontier10195: tasks 184-191: Terminated
+srun: error: frontier10164: tasks 88-95: Exited with exit code 1
+srun: error: frontier10243: tasks 224-231: Terminated
+srun: error: frontier10244: tasks 232-239: Terminated
+srun: error: frontier10196: tasks 192-199: Terminated
+srun: error: frontier10177: tasks 176-183: Terminated
+srun: error: frontier10241: tasks 208-215: Terminated
+srun: error: frontier10151: tasks 32-39: Terminated
+srun: error: frontier10161: tasks 64-71: Terminated
+srun: error: frontier10172: tasks 144-151: Terminated
+srun: error: frontier10171: tasks 136-143: Terminated
+srun: error: frontier10152: tasks 40-47: Terminated
+srun: error: frontier10162: tasks 72-79: Terminated
+srun: error: frontier10160: tasks 56-63: Terminated
+srun: error: frontier10163: tasks 80-87: Terminated
+srun: Force Terminated StepId=1494718.2
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+srun: error: frontier10255: tasks 56-63: Exited with exit code 1
+srun: Terminating StepId=1494718.3
+srun: error: frontier10251: tasks 24-31: Exited with exit code 1
+slurmstepd: error: *** STEP 1494718.3 ON frontier10248 CANCELLED AT 2023-11-07T01:07:53 ***
+srun: error: frontier10325: tasks 216-223: Exited with exit code 1
+srun: error: frontier10284: tasks 192-199: Exited with exit code 1
+srun: error: frontier10254: tasks 48-55: Exited with exit code 1
+srun: error: frontier10264: tasks 128-135: Exited with exit code 1
+srun: error: frontier10260: tasks 96-103: Exited with exit code 1
+srun: error: frontier10253: tasks 40-47: Exited with exit code 1
+srun: error: frontier10256: tasks 64-71: Exited with exit code 1
+srun: error: frontier10257: tasks 72-79: Exited with exit code 1
+srun: error: frontier10266: tasks 144-151: Exited with exit code 1
+srun: error: frontier10248: tasks 0-7: Exited with exit code 1
+srun: error: frontier10249: tasks 8-15: Exited with exit code 1
+srun: error: frontier10321: tasks 208-215: Terminated
+srun: error: frontier10269: tasks 168-175: Terminated
+srun: error: frontier10261: tasks 104-111: Terminated
+srun: error: frontier10326: tasks 224-231: Terminated
+srun: error: frontier10262: tasks 112-119: Terminated
+srun: error: frontier10270: tasks 176-183: Terminated
+srun: error: frontier10399: tasks 240-247: Terminated
+srun: error: frontier10265: tasks 136-143: Terminated
+srun: error: frontier10259: tasks 88-95: Terminated
+srun: error: frontier10398: tasks 232-239: Terminated
+srun: error: frontier10283: tasks 184-191: Terminated
+srun: error: frontier10401: tasks 248-255: Terminated
+srun: error: frontier10258: tasks 80-87: Terminated
+srun: error: frontier10267: tasks 152-159: Terminated
+srun: error: frontier10263: tasks 120-127: Terminated
+srun: error: frontier10285: tasks 200-207: Terminated
+srun: error: frontier10268: tasks 160-167: Terminated
+srun: error: frontier10250: tasks 16-23: Terminated
+srun: error: frontier10252: tasks 32-39: Terminated
+srun: Force Terminated StepId=1494718.3
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+IndentationError: unexpected indent
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+srun: error: frontier10410: tasks 48-55: Exited with exit code 1
+srun: Terminating StepId=1494718.4
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_tmd_calc.py", line 159
+    sample_log_file = data_dir + "/sample_log/" + conf + "_W80_k3"
+IndentationError: unexpected indent
+IndentationError: unexpected indent
+slurmstepd: error: *** STEP 1494718.4 ON frontier10402 CANCELLED AT 2023-11-07T01:07:55 ***
+srun: error: frontier10432: tasks 160-167: Exited with exit code 1
+srun: error: frontier10408: tasks 32-39: Exited with exit code 1
+srun: error: frontier10407: tasks 24-31: Exited with exit code 1
+srun: error: frontier10417: tasks 96-103: Exited with exit code 1
+srun: error: frontier10402: tasks 0-7: Exited with exit code 1
+srun: error: frontier10409: tasks 40-47: Exited with exit code 1
+srun: error: frontier10413: tasks 72-79: Exited with exit code 1
+srun: error: frontier10437: tasks 200-207: Terminated
+srun: error: frontier10430: tasks 144-151: Terminated
+srun: error: frontier10433: tasks 168-175: Terminated
+srun: error: frontier10436: tasks 192-199: Terminated
+srun: error: frontier10404: tasks 16-23: Terminated
+srun: error: frontier10411: tasks 56-63: Terminated
+srun: error: frontier10435: tasks 184-191: Terminated
+srun: error: frontier10434: tasks 176-183: Terminated
+srun: error: frontier10403: tasks 8-15: Terminated
+srun: error: frontier10448: tasks 232-239: Terminated
+srun: error: frontier10425: tasks 120-127: Terminated
+srun: error: frontier10447: tasks 224-231: Terminated
+srun: error: frontier10446: tasks 216-223: Terminated
+srun: error: frontier10431: tasks 152-159: Terminated
+srun: error: frontier10428: tasks 136-143: Terminated
+srun: error: frontier10415: tasks 88-95: Terminated
+srun: error: frontier10424: tasks 112-119: Terminated
+srun: error: frontier10412: tasks 64-71: Terminated
+srun: error: frontier10449: tasks 240-247: Terminated
+srun: error: frontier10439: tasks 208-215: Terminated
+srun: error: frontier10426: tasks 128-135: Terminated
+srun: error: frontier10414: tasks 80-87: Terminated
+srun: error: frontier10418: tasks 104-111: Terminated
+srun: error: frontier10450: tasks 248-255: Terminated
+srun: Force Terminated StepId=1494718.4

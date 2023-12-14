@@ -4,7 +4,9 @@ import gpt as g
 
 import numpy as np
 from qTMD.gpt_proton_qTMD_utils import proton_measurement
+my_gammas = ["5", "T", "T5", "X", "X5", "Y", "Y5", "Z", "Z5", "I", "SXT", "SXY", "SXZ", "SYT", "SYZ", "SZT"]
 
+my_projections=["PpSzp", "PpSxp", "PpSxm"]
 Cg5 = (1j * g.gamma[1].tensor() * g.gamma[3].tensor()) * g.gamma[5].tensor()
 
 
@@ -83,8 +85,7 @@ class proton_TMD(proton_measurement):
                 raise Exception("Unknown flavor for backward sequential src construction")
             
         
-            # sequential solve through t=8
-            
+            # sequential solve through t=t_insert
             src_seq_t = g.lattice(src_seq[i])
             src_seq_t[:] = 0
             src_seq_t[:, :, :, self.t_insert] = src_seq[i][:, :, :, self.t_insert]
@@ -102,12 +103,13 @@ class proton_TMD(proton_measurement):
         g.message("bw. seq propagator done")
         return dst_seq
     
-    def contract_TMD(self, prop_f, prop_bw_seq, phases, tag):
-        corr = []
-        for fixed_pol_bwprop in prop_bw_seq:
-            corr.append(g.slice_trQPDF(prop_f,fixed_pol_bwprop,phases,3))
-    
-        return corr
+    def contract_TMD(self, prop_f, prop_bw_seq, phases, W_index_list, i_sub, tag):
+        
+        for pol_index,fixed_pol_bwprop in enumerate(prop_bw_seq):
+            corr = g.slice_trQPDF(prop_f,fixed_pol_bwprop,phases,3)
+            tag = tag + my_projections[pol_index]
+            save_qTMD_proton_hdf5_subset(corr, tag, my_gammas, self.plist,W_index_list, i_sub)
+        #return corr
     
     def create_TMD_Wilsonline_index_list(self):
         index_list = []
@@ -196,9 +198,10 @@ class proton_TMD(proton_measurement):
                             current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-dz)))
                             prv_link=current_link
 
+                        g.message("Appending link with current_eta: ", current_eta, " current_bz: ", current_bz, " current_b_T: ", current_b_T, " transverse_dir: ", transverse_direction)
                         W.append(current_link)
                         index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
-
+                        g.message("Appending successful")
                         # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z+1)
                         current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-(current_eta-current_bz))))
                         W.append(current_link)

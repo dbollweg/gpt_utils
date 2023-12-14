@@ -3,23 +3,23 @@ import gpt as g
 from proton_qTMD_draft import proton_TMD
 
 parameters = {
-    "eta": [2],
-    "b_z": 1,
+    "eta": [8],
+    "b_z": 4,
     "b_T": 2,
     "pzmin": 0,
-    "pzmax": 3,
-    "width": 2,
+    "pzmax": 1,
+    "width": 8,
     "boost_in": [0,0,0],
     "boost_out": [0,0,0],
     "pf": [1,1,0,0],
     "save_propagators": False,
-    "t_insert": 2,
+    "t_insert": 10,
 }
 
 #1. load config, load eigenvectors
-#U = g.load("/lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output")
-grid = g.grid([8,8,8,8], g.double)
-U = g.qcd.gauge.unit(grid)
+U = g.load("/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1410")
+#grid = g.grid([8,8,8,8], g.double)
+
 L = U[0].grid.fdimensions
 
 Measurement = proton_TMD(parameters)
@@ -28,8 +28,8 @@ U_prime, trafo = g.gauge_fix(U, maxiter=10000)
 
 del U_prime
 
-#prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, "/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1410")
-prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
+prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, "/lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output")
+#prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
 
 #Create list of staple shaped Wilson-lines
 W, W_index_list = Measurement.create_TMD_WL(U)

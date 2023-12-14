@@ -1,0 +1,2369 @@
+
+Lmod is automatically replacing "cce/15.0.0" with "gcc/12.2.0".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.3.3" with "PrgEnv-gnu/8.3.3".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.23     2) darshan-runtime/3.4.0
+
+The following have been reloaded with a version change:
+  1) rocm/5.4.0 => rocm/5.3.0
+
+world_rank 0 has 1 devices
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device Number    : 0
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device identifier: 
+AcceleratorHipInit:   totalGlobalMem: 68702699520 
+AcceleratorHipInit:   isMultiGpuBoard: 0 
+AcceleratorHipInit:   warpSize: 64 
+AcceleratorHipInit: using default device 
+AcceleratorHipInit: assume user or srun sets ROCR_VISIBLE_DEVICES and numa binding 
+AcceleratorHipInit: Configure options --enable-setdevice=no 
+local rank 0 device 0 bus id: 0000:c1:00.0
+AcceleratorHipInit: ================================================
+SharedMemoryMpi:  World communicator of size 256
+SharedMemoryMpi:  Node  communicator of size 8
+0SharedMemoryMpi:  SharedMemoryMPI.cc acceleratorAllocDevice 2147483648bytes at 0x7ffde7e00000 - 7ffe67dfffff for comms buffers 
+Setting up IPC
+
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|_ |  |  |  |  |  |  |  |  |  |  |  | _|__
+__|_                                    _|__
+__|_   GGGG    RRRR    III    DDDD      _|__
+__|_  G        R   R    I     D   D     _|__
+__|_  G        R   R    I     D    D    _|__
+__|_  G  GG    RRRR     I     D    D    _|__
+__|_  G   G    R  R     I     D   D     _|__
+__|_   GGGG    R   R   III    DDDD      _|__
+__|_                                    _|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+  |  |  |  |  |  |  |  |  |  |  |  |  |  |  
+
+
+Copyright (C) 2015 Peter Boyle, Azusa Yamaguchi, Guido Cossu, Antonin Portelli and other authors
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+Current Grid git commit hash=3e9cc15eb070b9620e4762a8e0db32034f1ead13: (HEAD -> gpt_proton, origin/gpt_proton) clean
+
+Grid : Message : ================================================ 
+Grid : Message : MPI is initialised and logging filters activated 
+Grid : Message : ================================================ 
+Grid : Message : Requested 2147483648 byte stencil comms buffers 
+Grid : Message : MemoryManager Cache 54962159616 bytes 
+Grid : Message : MemoryManager::Init() setting up
+Grid : Message : MemoryManager::Init() cache pool for recent host   allocations: SMALL 8 LARGE 2 HUGE 0
+Grid : Message : MemoryManager::Init() cache pool for recent device allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() cache pool for recent shared allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() Non unified: Caching accelerator data in dedicated memory
+Grid : Message : MemoryManager::Init() Using hipMalloc
+
+=============================================
+              Initialized GPT                
+     Copyright (C) 2020 Christoph Lehner     
+=============================================
+GPT :       6.062682 s : NERSC file format; reading /lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1410
+GPT :       6.062706 s :    BEGIN_HEADER
+GPT :       6.062713 s : 	HDR_VERSION = 1.0
+GPT :       6.062719 s : 	DATATYPE = 4D_SU3_GAUGE
+GPT :       6.062725 s : 	STORAGE_FORMAT = 1.0
+GPT :       6.062731 s : 	DIMENSION_1 = 64
+GPT :       6.062735 s : 	DIMENSION_2 = 64
+GPT :       6.062739 s : 	DIMENSION_3 = 64
+GPT :       6.062744 s : 	DIMENSION_4 = 128
+GPT :       6.062747 s : 	LINK_TRACE = 0.6609024116
+GPT :       6.062752 s : 	PLAQUETTE  = 0.6153199909
+GPT :       6.062755 s : 	BOUNDARY_1 = PERIODIC
+GPT :       6.062759 s : 	BOUNDARY_2 = PERIODIC
+GPT :       6.062763 s : 	BOUNDARY_3 = PERIODIC
+GPT :       6.062768 s : 	BOUNDARY_4 = PERIODIC
+GPT :       6.062772 s : 	CHECKSUM = a63f8ab5
+GPT :       6.062776 s : 	ENSEMBLE_ID = 64I_Coulomb
+GPT :       6.062781 s : 	ENSEMBLE_LABEL = MDWF_2+1f_64nt128_IWASAKI_b2.25_ls12b+c2_M1.8_ms0.02661_mu0.000678_rhmc_HR_G_Coulomb
+GPT :       6.062785 s : 	SEQUENCE_NUMBER = 1410
+GPT :       6.062790 s : 	CREATOR = RBC
+GPT :       6.062794 s : 	CREATOR_HARDWARE = ALCF_COOLEY
+GPT :       6.062798 s : 	CREATION_DATE =
+GPT :       6.062802 s : 	ARCHIVE_DATE = Sun Mar  7 16:55:04 2021
+GPT :       6.062809 s : 	FLOATING_POINT = IEEE64LITTLE
+GPT :       6.062815 s :    END_HEADER
+GPT :      10.762950 s : Read 18 GB at 3.83335 GB/s (7.40182 GB/s for distribution, 8.50313 GB/s for munged read, 123.37 GB/s for checksum, 191.541 GB/s for munging, 256 readers)
+Grid : Message : 14.450630 s :  Gauge fixing to Coulomb gauge time=3 plaq= 0.61532 link trace = 0.660902
+Grid : Message : 15.588923 s :  Iteration 0 plaq= 0.61532 dmuAmu 2.48691e-07
+Grid : Message : 15.610829 s :  Iteration 0 Phi= 7.74714e-13 Omega= 0 trG 1
+Grid : Message : 15.610833 s : Converged ! 
+GPT :      26.808320 s : Loading eigenvectors from /lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output
+GPT :      26.808562 s : ====================================================================================================================================
+GPT :      26.808572 s :                                                  GPT Memory Report                
+GPT :      26.808602 s : ====================================================================================================================================
+GPT :      26.808609 s :  Lattice fields on all ranks             31.5 GB
+GPT :      26.808614 s :  Lattice fields per rank                 0.123047 GB
+GPT :      26.808619 s :  Resident memory per rank                2.18449 GB
+GPT :      26.808623 s :  Total memory available (host)           452.918 GB
+GPT :      26.808628 s :  Total memory available (accelerator)    0 GB
+GPT :      26.808632 s : ====================================================================================================================================
+GPT :      27.608346 s : Loading /lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output with 1 views per node
+GPT :      28.100682 s : Read blocks 8
+GPT :      64.206768 s : * read 225 GB: fread at 167.6 GB/s, crc32 at 239.133 GB/s, munge at 896.216 GB/s, distribute at 6.77323 GB/s; available = 372.753 GB
+GPT :      91.423331 s : * read 450 GB: fread at 159.946 GB/s, crc32 at 239.091 GB/s, munge at 910.713 GB/s, distribute at 9.09693 GB/s; available = 371.92 GB
+GPT :     111.619111 s : * read 675 GB: fread at 157.989 GB/s, crc32 at 238.844 GB/s, munge at 893.768 GB/s, distribute at 10.8093 GB/s; available = 371.244 GB
+GPT :     138.352883 s : * read 900 GB: fread at 155.059 GB/s, crc32 at 238.715 GB/s, munge at 898.757 GB/s, distribute at 11.3658 GB/s; available = 370.616 GB
+GPT :     164.483465 s : * read 1125 GB: fread at 154.82 GB/s, crc32 at 238.755 GB/s, munge at 893.9 GB/s, distribute at 11.4332 GB/s; available = 370.294 GB
+GPT :     183.128448 s : * read 1350 GB: fread at 153.499 GB/s, crc32 at 238.571 GB/s, munge at 896.162 GB/s, distribute at 11.9921 GB/s; available = 369.735 GB
+GPT :     209.504644 s : * read 1575 GB: fread at 156.772 GB/s, crc32 at 238.611 GB/s, munge at 896.472 GB/s, distribute at 11.9657 GB/s; available = 369.144 GB
+GPT :     227.520058 s : * read 1800 GB: fread at 160.661 GB/s, crc32 at 238.551 GB/s, munge at 899.592 GB/s, distribute at 12.2958 GB/s; available = 368.494 GB
+GPT :     296.079974 s : * read 1975.78 GB: fread at 162.261 GB/s, crc32 at 237.279 GB/s, munge at 892.66 GB/s, distribute at 9.57797 GB/s, fp16 at 2397.96 GB/s; available = 270.52 GB
+GPT :     329.017206 s : * read 2151.56 GB: fread at 136.327 GB/s, crc32 at 236.404 GB/s, munge at 874.874 GB/s, distribute at 9.22507 GB/s, fp16 at 1299.77 GB/s; available = 270.029 GB
+GPT :     362.474731 s : * read 2327.34 GB: fread at 139.123 GB/s, crc32 at 235.664 GB/s, munge at 873.881 GB/s, distribute at 8.93155 GB/s, fp16 at 922.772 GB/s; available = 269.557 GB
+GPT :     395.551859 s : * read 2503.12 GB: fread at 140.981 GB/s, crc32 at 235.105 GB/s, munge at 867.291 GB/s, distribute at 8.65442 GB/s, fp16 at 739.045 GB/s; available = 269.069 GB
+GPT :     428.327765 s : * read 2678.91 GB: fread at 143.822 GB/s, crc32 at 234.456 GB/s, munge at 870.122 GB/s, distribute at 8.43134 GB/s, fp16 at 623.558 GB/s; available = 268.899 GB
+GPT :     460.621395 s : * read 2854.69 GB: fread at 146.093 GB/s, crc32 at 233.896 GB/s, munge at 867.188 GB/s, distribute at 8.26869 GB/s, fp16 at 552.982 GB/s; available = 268.436 GB
+GPT :     494.384359 s : * read 3030.47 GB: fread at 146.587 GB/s, crc32 at 233.44 GB/s, munge at 862.567 GB/s, distribute at 8.07547 GB/s, fp16 at 507.076 GB/s; available = 267.971 GB
+GPT :     518.394032 s : * read 3206.25 GB: fread at 146.734 GB/s, crc32 at 233.176 GB/s, munge at 862.288 GB/s, distribute at 8.10802 GB/s, fp16 at 470.147 GB/s; available = 267.436 GB
+GPT :     518.662655 s : Coarse read blocks 5
+GPT :     611.215427 s : * read 3277.54 GB: fread at 140.438 GB/s, crc32 at 231.474 GB/s, munge at 881.461 GB/s, distribute at 6.89453 GB/s, fp16 at 459.065 GB/s; available = 277.411 GB
+GPT :     677.466074 s : * read 3348.83 GB: fread at 140.975 GB/s, crc32 at 229.556 GB/s, munge at 900.633 GB/s, distribute at 6.1986 GB/s, fp16 at 449.204 GB/s; available = 274.151 GB
+GPT :     768.441386 s : * read 3420.12 GB: fread at 140.97 GB/s, crc32 at 227.885 GB/s, munge at 919.806 GB/s, distribute at 5.55397 GB/s, fp16 at 441.728 GB/s; available = 270.896 GB
+GPT :     848.845984 s : * read 3491.41 GB: fread at 141.125 GB/s, crc32 at 226.261 GB/s, munge at 938.978 GB/s, distribute at 5.03688 GB/s, fp16 at 433.8 GB/s; available = 267.654 GB
+GPT :     911.035114 s : * read 3562.7 GB: fread at 141.579 GB/s, crc32 at 224.69 GB/s, munge at 958.151 GB/s, distribute at 4.7353 GB/s, fp16 at 428.988 GB/s; available = 265.293 GB
+GPT :     911.035130 s : * load 3562.7 GB at 4.03281 GB/s
+GPT :     911.282432 s : ====================================================================================================================================
+GPT :     911.282454 s :                                                  GPT Memory Report                
+GPT :     911.285370 s : ====================================================================================================================================
+GPT :     911.285380 s :  Lattice fields on all ranks             5019.78 GB
+GPT :     911.285386 s :  Lattice fields per rank                 19.6085 GB
+GPT :     911.285391 s :  Resident memory per rank                24.6325 GB
+GPT :     911.285395 s :  Total memory available (host)           276.439 GB
+GPT :     911.285400 s :  Total memory available (accelerator)    0 GB
+GPT :     911.285404 s : ====================================================================================================================================
+GPT :     912.056900 s : creating deflated solvers
+GPT :     912.310326 s : ====================================================================================================================================
+GPT :     912.310340 s :                                                  GPT Memory Report                
+GPT :     912.313076 s : ====================================================================================================================================
+GPT :     912.313088 s :  Lattice fields on all ranks             5019.78 GB
+GPT :     912.313093 s :  Lattice fields per rank                 19.6085 GB
+GPT :     912.313098 s :  Resident memory per rank                24.6325 GB
+GPT :     912.313102 s :  Total memory available (host)           278.429 GB
+GPT :     912.313107 s :  Total memory available (accelerator)    0 GB
+GPT :     912.313111 s : ====================================================================================================================================
+GPT :     970.430792 s : point src set
+GPT :     990.460195 s : neg. boosted src done
+GPT :    1042.925567 s : Mode-representation applied to 4 vector(s) in 1.33524 s (0.751499 s for rank_inner_product, 0.126643 s for global sum, 0.457094 s for linear combinations)
+GPT :    1061.793704 s : cg: NOT converged in 200 iterations;  squared residual 3.064961e-07 / 1.005674e-17
+GPT :    1067.452047 s : cg: NOT converged in 200 iterations;  squared residual 2.883833e-07 / 1.004740e-17
+GPT :    1078.255749 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 12.683307886123657 s (split), 11.545270681381226 s (operation), 10.803632736206055 s (unsplit)
+GPT :    1079.991800 s : Mode-representation applied to 4 vector(s) in 1.2475 s (0.754601 s for rank_inner_product, 0.0276608 s for global sum, 0.46524 s for linear combinations)
+GPT :    1087.134341 s : cg: NOT converged in 200 iterations;  squared residual 2.047901e-09 / 3.065307e-23
+GPT :    1092.756805 s : cg: NOT converged in 200 iterations;  squared residual 1.892363e-09 / 2.884150e-23
+GPT :    1092.807033 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1132879257202148 s (split), 11.354979515075684 s (operation), 0.050158023834228516 s (unsplit)
+GPT :    1094.451304 s : Mode-representation applied to 4 vector(s) in 1.22829 s (0.744237 s for rank_inner_product, 0.0269253 s for global sum, 0.457132 s for linear combinations)
+GPT :    1101.526198 s : cg: NOT converged in 200 iterations;  squared residual 1.067518e-11 / 2.051208e-25
+GPT :    1107.157479 s : cg: NOT converged in 200 iterations;  squared residual 1.049833e-11 / 1.895324e-25
+GPT :    1107.207083 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1401948928833008 s (split), 11.286796569824219 s (operation), 0.04953932762145996 s (unsplit)
+GPT :    1108.836476 s : Mode-representation applied to 4 vector(s) in 1.22881 s (0.739551 s for rank_inner_product, 0.0296612 s for global sum, 0.459602 s for linear combinations)
+GPT :    1115.945797 s : cg: NOT converged in 200 iterations;  squared residual 8.635935e-14 / 1.070854e-27
+GPT :    1121.584896 s : cg: NOT converged in 200 iterations;  squared residual 8.530088e-14 / 1.052934e-27
+GPT :    1121.633946 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1301465034484863 s (split), 11.332972288131714 s (operation), 0.04898834228515625 s (unsplit)
+GPT :    1123.257314 s : Mode-representation applied to 4 vector(s) in 1.22449 s (0.738973 s for rank_inner_product, 0.0294809 s for global sum, 0.456032 s for linear combinations)
+GPT :    1130.343073 s : cg: NOT converged in 200 iterations;  squared residual 8.024180e-16 / 8.689333e-30
+GPT :    1135.989398 s : cg: NOT converged in 200 iterations;  squared residual 8.156539e-16 / 8.582092e-30
+GPT :    1136.039019 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1203563213348389 s (split), 11.33230710029602 s (operation), 0.04955625534057617 s (unsplit)
+GPT :    1137.671951 s : Mode-representation applied to 4 vector(s) in 1.22264 s (0.740594 s for rank_inner_product, 0.0295858 s for global sum, 0.452462 s for linear combinations)
+GPT :    1144.810125 s : cg: NOT converged in 200 iterations;  squared residual 1.190221e-17 / 8.208251e-32
+GPT :    1150.454697 s : cg: NOT converged in 200 iterations;  squared residual 1.232680e-17 / 8.345618e-32
+GPT :    1150.504174 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.152946949005127 s (split), 11.349000453948975 s (operation), 0.04941225051879883 s (unsplit)
+GPT :    1152.142564 s : Mode-representation applied to 4 vector(s) in 1.22691 s (0.741029 s for rank_inner_product, 0.0274272 s for global sum, 0.458452 s for linear combinations)
+GPT :    1159.268782 s : cg: NOT converged in 200 iterations;  squared residual 1.609248e-19 / 1.226994e-33
+GPT :    1164.918612 s : cg: NOT converged in 200 iterations;  squared residual 1.737063e-19 / 1.271927e-33
+GPT :    1164.968119 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1280384063720703 s (split), 11.364405870437622 s (operation), 0.04944181442260742 s (unsplit)
+GPT :    1166.599184 s : Mode-representation applied to 4 vector(s) in 1.2203 s (0.740896 s for rank_inner_product, 0.0249257 s for global sum, 0.454478 s for linear combinations)
+GPT :    1173.703227 s : cg: NOT converged in 200 iterations;  squared residual 2.446536e-21 / 1.673720e-35
+GPT :    1179.343260 s : cg: NOT converged in 200 iterations;  squared residual 2.647175e-21 / 1.807358e-35
+GPT :    1179.392985 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1202282905578613 s (split), 11.347641944885254 s (operation), 0.049664974212646484 s (unsplit)
+GPT :    1179.580363 s : defect_correcting: converged after 8 iterations
+GPT :    1185.019209 s : Mode-representation applied to 4 vector(s) in 1.22808 s (0.738162 s for rank_inner_product, 0.0290623 s for global sum, 0.46086 s for linear combinations)
+GPT :    1192.146335 s : cg: NOT converged in 200 iterations;  squared residual 2.613878e-07 / 1.004639e-17
+GPT :    1197.780961 s : cg: NOT converged in 200 iterations;  squared residual 2.769192e-07 / 1.005703e-17
+GPT :    1197.830333 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1375713348388672 s (split), 11.347628593444824 s (operation), 0.04930591583251953 s (unsplit)
+GPT :    1199.459106 s : Mode-representation applied to 4 vector(s) in 1.22711 s (0.74236 s for rank_inner_product, 0.0255296 s for global sum, 0.459216 s for linear combinations)
+GPT :    1206.556747 s : cg: NOT converged in 200 iterations;  squared residual 1.740068e-09 / 2.614327e-23
+GPT :    1212.188085 s : cg: NOT converged in 200 iterations;  squared residual 1.779947e-09 / 2.769535e-23
+GPT :    1212.237413 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1525909900665283 s (split), 11.299705743789673 s (operation), 0.049263954162597656 s (unsplit)
+GPT :    1213.874907 s : Mode-representation applied to 4 vector(s) in 1.22728 s (0.742309 s for rank_inner_product, 0.0294931 s for global sum, 0.455481 s for linear combinations)
+GPT :    1220.967796 s : cg: NOT converged in 200 iterations;  squared residual 1.014763e-11 / 1.744259e-25
+GPT :    1226.603962 s : cg: NOT converged in 200 iterations;  squared residual 1.036760e-11 / 1.783890e-25
+GPT :    1226.652691 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1586341857910156 s (split), 11.291397094726562 s (operation), 0.04866433143615723 s (unsplit)
+GPT :    1228.269837 s : Mode-representation applied to 4 vector(s) in 1.22327 s (0.74297 s for rank_inner_product, 0.0206175 s for global sum, 0.459679 s for linear combinations)
+GPT :    1235.368596 s : cg: NOT converged in 200 iterations;  squared residual 8.525134e-14 / 1.018897e-27
+GPT :    1241.000997 s : cg: NOT converged in 200 iterations;  squared residual 8.908169e-14 / 1.041384e-27
+GPT :    1241.050008 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1537837982177734 s (split), 11.300076484680176 s (operation), 0.048946380615234375 s (unsplit)
+GPT :    1242.672116 s : Mode-representation applied to 4 vector(s) in 1.22186 s (0.740985 s for rank_inner_product, 0.0225277 s for global sum, 0.458349 s for linear combinations)
+GPT :    1249.719785 s : cg: NOT converged in 200 iterations;  squared residual 8.418961e-16 / 8.589894e-30
+GPT :    1255.335859 s : cg: NOT converged in 200 iterations;  squared residual 9.221019e-16 / 8.984935e-30
+GPT :    1255.385599 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.144007921218872 s (split), 11.241665601730347 s (operation), 0.049674272537231445 s (unsplit)
+GPT :    1257.002373 s : Mode-representation applied to 4 vector(s) in 1.21898 s (0.741726 s for rank_inner_product, 0.0207753 s for global sum, 0.456477 s for linear combinations)
+GPT :    1264.090753 s : cg: NOT converged in 200 iterations;  squared residual 1.233946e-17 / 8.615880e-32
+GPT :    1269.714769 s : cg: NOT converged in 200 iterations;  squared residual 1.321045e-17 / 9.446562e-32
+GPT :    1269.764236 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1233935356140137 s (split), 11.31241750717163 s (operation), 0.04940342903137207 s (unsplit)
+GPT :    1271.383787 s : Mode-representation applied to 4 vector(s) in 1.2153 s (0.742505 s for rank_inner_product, 0.0191956 s for global sum, 0.453605 s for linear combinations)
+GPT :    1278.510395 s : cg: NOT converged in 200 iterations;  squared residual 1.721924e-19 / 1.273322e-33
+GPT :    1284.162543 s : cg: NOT converged in 200 iterations;  squared residual 1.880798e-19 / 1.365981e-33
+GPT :    1284.211507 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1010167598724365 s (split), 11.398616313934326 s (operation), 0.04889631271362305 s (unsplit)
+GPT :    1285.835626 s : Mode-representation applied to 4 vector(s) in 1.222 s (0.742082 s for rank_inner_product, 0.0239244 s for global sum, 0.455989 s for linear combinations)
+GPT :    1292.970258 s : cg: NOT converged in 200 iterations;  squared residual 2.677670e-21 / 1.792274e-35
+GPT :    1298.617123 s : cg: NOT converged in 200 iterations;  squared residual 2.893728e-21 / 1.961647e-35
+GPT :    1298.666197 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1188857555389404 s (split), 11.385122299194336 s (operation), 0.04901289939880371 s (unsplit)
+GPT :    1298.839630 s : defect_correcting: converged after 8 iterations
+GPT :    1304.274766 s : Mode-representation applied to 4 vector(s) in 1.21736 s (0.739567 s for rank_inner_product, 0.0225234 s for global sum, 0.455268 s for linear combinations)
+GPT :    1311.369990 s : cg: NOT converged in 200 iterations;  squared residual 2.752326e-07 / 1.005813e-17
+GPT :    1316.999765 s : cg: NOT converged in 200 iterations;  squared residual 3.012132e-07 / 1.006446e-17
+GPT :    1317.049278 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1157927513122559 s (split), 11.331851482391357 s (operation), 0.04944896697998047 s (unsplit)
+GPT :    1318.675010 s : Mode-representation applied to 4 vector(s) in 1.22161 s (0.741747 s for rank_inner_product, 0.0211713 s for global sum, 0.458695 s for linear combinations)
+GPT :    1325.763277 s : cg: NOT converged in 200 iterations;  squared residual 1.993950e-09 / 2.752616e-23
+GPT :    1331.390519 s : cg: NOT converged in 200 iterations;  squared residual 2.124854e-09 / 3.012430e-23
+GPT :    1331.439563 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1348419189453125 s (split), 11.30248498916626 s (operation), 0.04897880554199219 s (unsplit)
+GPT :    1333.057179 s : Mode-representation applied to 4 vector(s) in 1.21321 s (0.739786 s for rank_inner_product, 0.0171647 s for global sum, 0.456255 s for linear combinations)
+GPT :    1340.186079 s : cg: NOT converged in 200 iterations;  squared residual 1.168021e-11 / 2.000916e-25
+GPT :    1345.818243 s : cg: NOT converged in 200 iterations;  squared residual 1.253841e-11 / 2.131720e-25
+GPT :    1345.867557 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1567332744598389 s (split), 11.326484680175781 s (operation), 0.049251556396484375 s (unsplit)
+GPT :    1347.487478 s : Mode-representation applied to 4 vector(s) in 1.20798 s (0.743482 s for rank_inner_product, 0.00904346 s for global sum, 0.455457 s for linear combinations)
+GPT :    1354.559230 s : cg: NOT converged in 200 iterations;  squared residual 1.015736e-13 / 1.174558e-27
+GPT :    1360.185932 s : cg: NOT converged in 200 iterations;  squared residual 1.125347e-13 / 1.261284e-27
+GPT :    1360.235067 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1528613567352295 s (split), 11.26570749282837 s (operation), 0.0490725040435791 s (unsplit)
+GPT :    1361.835532 s : Mode-representation applied to 4 vector(s) in 1.20434 s (0.74239 s for rank_inner_product, 0.0110757 s for global sum, 0.45088 s for linear combinations)
+GPT :    1368.942914 s : cg: NOT converged in 200 iterations;  squared residual 9.811799e-16 / 1.024344e-29
+GPT :    1374.566105 s : cg: NOT converged in 200 iterations;  squared residual 1.165714e-15 / 1.136343e-29
+GPT :    1374.615444 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1428358554840088 s (split), 11.312379598617554 s (operation), 0.04927396774291992 s (unsplit)
+GPT :    1376.224262 s : Mode-representation applied to 4 vector(s) in 1.21145 s (0.740769 s for rank_inner_product, 0.0136819 s for global sum, 0.457004 s for linear combinations)
+GPT :    1383.314847 s : cg: NOT converged in 200 iterations;  squared residual 1.347154e-17 / 1.002588e-31
+GPT :    1388.933326 s : cg: NOT converged in 200 iterations;  squared residual 1.674702e-17 / 1.194045e-31
+GPT :    1388.982715 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.154944658279419 s (split), 11.279343843460083 s (operation), 0.049324989318847656 s (unsplit)
+GPT :    1390.588633 s : Mode-representation applied to 4 vector(s) in 1.21149 s (0.742829 s for rank_inner_product, 0.0101414 s for global sum, 0.458516 s for linear combinations)
+GPT :    1397.668812 s : cg: NOT converged in 200 iterations;  squared residual 1.780777e-19 / 1.386203e-33
+GPT :    1403.297652 s : cg: NOT converged in 200 iterations;  squared residual 2.306431e-19 / 1.728206e-33
+GPT :    1403.347238 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1410746574401855 s (split), 11.287397384643555 s (operation), 0.04951620101928711 s (unsplit)
+GPT :    1404.959141 s : Mode-representation applied to 4 vector(s) in 1.2084 s (0.745061 s for rank_inner_product, 0.00718808 s for global sum, 0.456153 s for linear combinations)
+GPT :    1412.041810 s : cg: NOT converged in 200 iterations;  squared residual 2.694262e-21 / 1.845590e-35
+GPT :    1417.662834 s : cg: NOT converged in 200 iterations;  squared residual 3.635550e-21 / 2.399261e-35
+GPT :    1417.712416 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.152040719985962 s (split), 11.272124767303467 s (operation), 0.0495142936706543 s (unsplit)
+GPT :    1417.888737 s : defect_correcting: converged after 8 iterations
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton2pttest.py", line 103, in <module>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    phases = Measurement.make_mom_phases(U[0].grid, src_position)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in make_mom_phases
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 310, in <listcomp>
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+    pp = [-2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist]
+ValueError: operands could not be broadcast together with shapes (3,) (4,) 
+=============================================
+               Finalized GPT                 
+=============================================
+srun: error: frontier08037: tasks 16-23: Exited with exit code 1
+srun: Terminating StepId=1447214.0
+srun: error: frontier08430: tasks 96-103: Exited with exit code 1
+srun: error: frontier08038: tasks 24-31: Exited with exit code 1
+srun: error: frontier08152: tasks 48-55: Exited with exit code 1
+srun: error: frontier08555: tasks 144-151: Exited with exit code 1
+srun: error: frontier08161: tasks 56-63: Exited with exit code 1
+srun: error: frontier08432: tasks 112-119: Exited with exit code 1
+srun: error: frontier08554: tasks 136-143: Exited with exit code 1
+srun: error: frontier08035: tasks 0-7: Exited with exit code 1
+srun: error: frontier08162: tasks 64-71: Exited with exit code 1
+srun: error: frontier08556: tasks 152-159: Exited with exit code 1
+srun: error: frontier08431: tasks 104-111: Exited with exit code 1
+srun: error: frontier08391: tasks 80-87: Exited with exit code 1
+srun: error: frontier08163: tasks 72-79: Exited with exit code 1
+srun: error: frontier09072: tasks 240-247: Exited with exit code 1
+srun: error: frontier08036: tasks 8-15: Exited with exit code 1
+srun: error: frontier08890: tasks 184-191: Exited with exit code 1
+srun: error: frontier08039: tasks 32-39: Exited with exit code 1
+srun: error: frontier08954: tasks 200-207: Exited with exit code 1
+srun: error: frontier08689: tasks 160-167: Exited with exit code 1
+srun: error: frontier09068: tasks 232-239: Exited with exit code 1
+srun: error: frontier08889: tasks 176-183: Exited with exit code 1
+srun: error: frontier09073: tasks 248-255: Exited with exit code 1
+srun: error: frontier08518: tasks 128-135: Exited with exit code 1
+srun: error: frontier08953: tasks 192-199: Exited with exit code 1
+srun: error: frontier08517: tasks 120-127: Exited with exit code 1
+srun: error: frontier09042: tasks 216-223: Exited with exit code 1
+srun: error: frontier08392: tasks 88-95: Exited with exit code 1
+srun: error: frontier08151: tasks 40-47: Exited with exit code 1
+srun: error: frontier08693: tasks 168-175: Exited with exit code 1
+srun: error: frontier08960: tasks 208-215: Exited with exit code 1
+srun: error: frontier09045: tasks 224-231: Exited with exit code 1

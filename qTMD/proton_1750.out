@@ -1,0 +1,1304 @@
+world_rank 0 has 1 devices
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device Number    : 0
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device identifier: 
+AcceleratorHipInit:   totalGlobalMem: 68702699520 
+AcceleratorHipInit:   isMultiGpuBoard: 0 
+AcceleratorHipInit:   warpSize: 64 
+AcceleratorHipInit: using default device 
+AcceleratorHipInit: assume user or srun sets ROCR_VISIBLE_DEVICES and numa binding 
+AcceleratorHipInit: Configure options --enable-setdevice=no 
+local rank 0 device 0 bus id: 0000:c1:00.0
+AcceleratorHipInit: ================================================
+SharedMemoryMpi:  World communicator of size 256
+SharedMemoryMpi:  Node  communicator of size 8
+0SharedMemoryMpi:  SharedMemoryMPI.cc acceleratorAllocDevice 2147483648bytes at 0x7ffde8c00000 - 7ffe68bfffff for comms buffers 
+Setting up IPC
+
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|_ |  |  |  |  |  |  |  |  |  |  |  | _|__
+__|_                                    _|__
+__|_   GGGG    RRRR    III    DDDD      _|__
+__|_  G        R   R    I     D   D     _|__
+__|_  G        R   R    I     D    D    _|__
+__|_  G  GG    RRRR     I     D    D    _|__
+__|_  G   G    R  R     I     D   D     _|__
+__|_   GGGG    R   R   III    DDDD      _|__
+__|_                                    _|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+  |  |  |  |  |  |  |  |  |  |  |  |  |  |  
+
+
+Copyright (C) 2015 Peter Boyle, Azusa Yamaguchi, Guido Cossu, Antonin Portelli and other authors
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+Current Grid git commit hash=3e9cc15eb070b9620e4762a8e0db32034f1ead13: (HEAD -> gpt_proton, origin/gpt_proton) clean
+
+Grid : Message : ================================================ 
+Grid : Message : MPI is initialised and logging filters activated 
+Grid : Message : ================================================ 
+Grid : Message : Requested 2147483648 byte stencil comms buffers 
+Grid : Message : MemoryManager Cache 54962159616 bytes 
+Grid : Message : MemoryManager::Init() setting up
+Grid : Message : MemoryManager::Init() cache pool for recent host   allocations: SMALL 8 LARGE 2 HUGE 0
+Grid : Message : MemoryManager::Init() cache pool for recent device allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() cache pool for recent shared allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() Non unified: Caching accelerator data in dedicated memory
+Grid : Message : MemoryManager::Init() Using hipMalloc
+
+=============================================
+              Initialized GPT                
+     Copyright (C) 2020 Christoph Lehner     
+=============================================
+GPT :     127.278163 s : Loading 
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+GPT :     127.811612 s : NERSC file format; reading /lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1750
+GPT :     127.811628 s :    BEGIN_HEADER
+GPT :     127.811635 s : 	HDR_VERSION = 1.0
+GPT :     127.811641 s : 	DATATYPE = 4D_SU3_GAUGE
+GPT :     127.811648 s : 	STORAGE_FORMAT = 1.0
+GPT :     127.811653 s : 	DIMENSION_1 = 64
+GPT :     127.811657 s : 	DIMENSION_2 = 64
+GPT :     127.811661 s : 	DIMENSION_3 = 64
+GPT :     127.811666 s : 	DIMENSION_4 = 128
+GPT :     127.811670 s : 	LINK_TRACE = 0.6612861469
+GPT :     127.811675 s : 	PLAQUETTE  = 0.6153403061
+GPT :     127.811679 s : 	BOUNDARY_1 = PERIODIC
+GPT :     127.811683 s : 	BOUNDARY_2 = PERIODIC
+GPT :     127.811687 s : 	BOUNDARY_3 = PERIODIC
+GPT :     127.811691 s : 	BOUNDARY_4 = PERIODIC
+GPT :     127.811695 s : 	CHECKSUM = 29c4b75a
+GPT :     127.811699 s : 	ENSEMBLE_ID = 64I_Coulomb
+GPT :     127.811703 s : 	ENSEMBLE_LABEL = MDWF_2+1f_64nt128_IWASAKI_b2.25_ls12b+c2_M1.8_ms0.02661_mu0.000678_rhmc_HR_G_Coulomb
+GPT :     127.811708 s : 	SEQUENCE_NUMBER = 1750
+GPT :     127.811712 s : 	CREATOR = RBC
+GPT :     127.811717 s : 	CREATOR_HARDWARE = ALCF_COOLEY
+GPT :     127.811721 s : 	CREATION_DATE =
+GPT :     127.811726 s : 	ARCHIVE_DATE = Sun Mar  7 20:09:51 2021
+GPT :     127.811731 s : 	FLOATING_POINT = IEEE64LITTLE
+GPT :     127.811736 s :    END_HEADER
+GPT :     132.833589 s : Read 18 GB at 3.58733 GB/s (6.19844 GB/s for distribution, 9.02649 GB/s for munged read, 123.26 GB/s for checksum, 197.331 GB/s for munging, 256 readers)
+GPT :     140.000425 s : finished loading gauge config
+Grid : Message : 18.917631 s :  Gauge fixing to Coulomb gauge time=3 plaq= 0.61534 link trace = 0.661286
+Grid : Message : 20.745000 s :  Iteration 0 plaq= 0.61534 dmuAmu 2.48683e-07
+Grid : Message : 20.462970 s :  Iteration 0 Phi= -2.9976e-14 Omega= 0 trG 1
+Grid : Message : 20.463010 s : Converged ! 
+GPT :     147.921486 s : Loading eigenvectors from /lustre/orion/proj-shared/nph159/data/64I/job-01750/lanczos.output
+GPT :     147.921759 s : ====================================================================================================================================
+GPT :     147.921773 s :                                                  GPT Memory Report                
+GPT :     147.921813 s : ====================================================================================================================================
+GPT :     147.921820 s :  Lattice fields on all ranks             31.5 GB
+GPT :     147.921829 s :  Lattice fields per rank                 0.123047 GB
+GPT :     147.921836 s :  Resident memory per rank                2.1989 GB
+GPT :     147.921841 s :  Total memory available (host)           465.175 GB
+GPT :     147.921849 s :  Total memory available (accelerator)    0 GB
+GPT :     147.921856 s : ====================================================================================================================================
+GPT :     148.686898 s : Loading /lustre/orion/proj-shared/nph159/data/64I/job-01750/lanczos.output with 1 views per node
+GPT :     149.170244 s : Read blocks 8
+GPT :     192.881132 s : * read 225 GB: fread at 147.463 GB/s, crc32 at 239.863 GB/s, munge at 922.29 GB/s, distribute at 5.53492 GB/s; available = 384.173 GB
+GPT :     216.889707 s : * read 450 GB: fread at 144.872 GB/s, crc32 at 239.786 GB/s, munge at 919.369 GB/s, distribute at 7.37621 GB/s; available = 383.299 GB
+GPT :     238.543504 s : * read 675 GB: fread at 146.974 GB/s, crc32 at 239.938 GB/s, munge at 919.333 GB/s, distribute at 8.48457 GB/s; available = 382.634 GB
+GPT :     262.260686 s : * read 900 GB: fread at 152.457 GB/s, crc32 at 240.047 GB/s, munge at 920.187 GB/s, distribute at 9.09728 GB/s; available = 381.994 GB
+GPT :     283.217090 s : * read 1125 GB: fread at 153.475 GB/s, crc32 at 239.767 GB/s, munge at 919.057 GB/s, distribute at 9.69089 GB/s; available = 381.63 GB
+GPT :     304.519222 s : * read 1350 GB: fread at 156.122 GB/s, crc32 at 239.583 GB/s, munge at 919.188 GB/s, distribute at 10.1544 GB/s; available = 381.093 GB
+GPT :     326.141542 s : * read 1575 GB: fread at 157.783 GB/s, crc32 at 239.581 GB/s, munge at 918.965 GB/s, distribute at 10.3828 GB/s; available = 380.502 GB
+GPT :     351.362692 s : * read 1800 GB: fread at 143.702 GB/s, crc32 at 239.691 GB/s, munge at 919.371 GB/s, distribute at 10.4769 GB/s; available = 379.851 GB
+GPT :     403.436524 s : * read 1975.78 GB: fread at 146.738 GB/s, crc32 at 238.542 GB/s, munge at 915.486 GB/s, distribute at 9.00224 GB/s, fp16 at 2300.77 GB/s; available = 281.927 GB
+GPT :     443.071260 s : * read 2151.56 GB: fread at 147.481 GB/s, crc32 at 237.561 GB/s, munge at 905.789 GB/s, distribute at 8.827 GB/s, fp16 at 1236.58 GB/s; available = 281.436 GB
+GPT :     481.206505 s : * read 2327.34 GB: fread at 149.704 GB/s, crc32 at 236.761 GB/s, munge at 898.316 GB/s, distribute at 8.50142 GB/s, fp16 at 904.614 GB/s; available = 280.938 GB
+GPT :     511.620708 s : * read 2503.12 GB: fread at 152.024 GB/s, crc32 at 236.108 GB/s, munge at 879.674 GB/s, distribute at 8.32168 GB/s, fp16 at 742.355 GB/s; available = 280.462 GB
+GPT :     539.155935 s : * read 2678.91 GB: fread at 152.907 GB/s, crc32 at 235.384 GB/s, munge at 864.725 GB/s, distribute at 8.31486 GB/s, fp16 at 637.242 GB/s; available = 280.287 GB
+GPT :     578.333024 s : * read 2854.69 GB: fread at 155.321 GB/s, crc32 at 234.866 GB/s, munge at 850.281 GB/s, distribute at 8.17011 GB/s, fp16 at 566.85 GB/s; available = 279.819 GB
+GPT :     608.972475 s : * read 3030.47 GB: fread at 157.591 GB/s, crc32 at 234.452 GB/s, munge at 851.258 GB/s, distribute at 8.06118 GB/s, fp16 at 516.007 GB/s; available = 279.35 GB
+GPT :     644.790860 s : * read 3206.25 GB: fread at 159.714 GB/s, crc32 at 233.954 GB/s, munge at 845.034 GB/s, distribute at 7.90759 GB/s, fp16 at 476.024 GB/s; available = 278.712 GB
+GPT :     645.106503 s : Coarse read blocks 5
+GPT :     719.413826 s : * read 3277.54 GB: fread at 160.754 GB/s, crc32 at 231.812 GB/s, munge at 863.823 GB/s, distribute at 6.8554 GB/s, fp16 at 468.179 GB/s; available = 288.784 GB
+GPT :     805.652755 s : * read 3348.83 GB: fread at 161.667 GB/s, crc32 at 229.958 GB/s, munge at 882.612 GB/s, distribute at 6.02707 GB/s, fp16 at 457.822 GB/s; available = 285.524 GB
+GPT :     885.309274 s : * read 3420.12 GB: fread at 162.85 GB/s, crc32 at 228.113 GB/s, munge at 901.401 GB/s, distribute at 5.39516 GB/s, fp16 at 450.019 GB/s; available = 282.269 GB
+GPT :     964.522604 s : * read 3491.41 GB: fread at 163.679 GB/s, crc32 at 226.67 GB/s, munge at 920.19 GB/s, distribute at 4.90791 GB/s, fp16 at 442.96 GB/s; available = 279.025 GB
+GPT :    1044.345222 s : * read 3562.7 GB: fread at 163.71 GB/s, crc32 at 225.3 GB/s, munge at 938.978 GB/s, distribute at 4.51222 GB/s, fp16 at 435.076 GB/s; available = 275.975 GB
+GPT :    1044.345243 s : * load 3562.7 GB at 3.97774 GB/s
+GPT :    1044.586618 s : ====================================================================================================================================
+GPT :    1044.586641 s :                                                  GPT Memory Report                
+GPT :    1044.589592 s : ====================================================================================================================================
+GPT :    1044.589605 s :  Lattice fields on all ranks             5019.78 GB
+GPT :    1044.589610 s :  Lattice fields per rank                 19.6085 GB
+GPT :    1044.589615 s :  Resident memory per rank                24.6419 GB
+GPT :    1044.589620 s :  Total memory available (host)           282.855 GB
+GPT :    1044.589629 s :  Total memory available (accelerator)    0 GB
+GPT :    1044.589635 s : ====================================================================================================================================
+GPT :    1045.354599 s : creating deflated solvers
+GPT :    1045.610932 s : ====================================================================================================================================
+GPT :    1045.610949 s :                                                  GPT Memory Report                
+GPT :    1045.613670 s : ====================================================================================================================================
+GPT :    1045.613683 s :  Lattice fields on all ranks             5019.78 GB
+GPT :    1045.613689 s :  Lattice fields per rank                 19.6085 GB
+GPT :    1045.613698 s :  Resident memory per rank                24.6419 GB
+GPT :    1045.613705 s :  Total memory available (host)           289.792 GB
+GPT :    1045.613713 s :  Total memory available (accelerator)    0 GB
+GPT :    1045.613717 s : ====================================================================================================================================
+GPT :    1082.380535 s : ====================================================================================================================================
+GPT :    1082.380559 s :                                                  GPT Memory Report                
+GPT :    1082.383591 s : ====================================================================================================================================
+GPT :    1082.383605 s :  Lattice fields on all ranks             5406.78 GB
+GPT :    1082.383611 s :  Lattice fields per rank                 21.8937 GB
+GPT :    1082.383617 s :  Resident memory per rank                24.6419 GB
+GPT :    1082.383624 s :  Total memory available (host)           273.641 GB
+GPT :    1082.383631 s :  Total memory available (accelerator)    0 GB
+GPT :    1082.383635 s : ====================================================================================================================================
+GPT :    1082.383641 s : 
+                       : ================================================================================
+                       :        Propagator generation run:
+                       : ================================================================================
+                       : 
+GPT :    1082.383663 s : Job 0 / 1 :  configuration 1750, job tag proton_TMD_AMA
+GPT :    1082.399754 s :  positions_sloppy = [[23, 25, 27, 93], [23, 25, 27, 125], [23, 25, 27, 29], [23, 25, 27, 61], [23, 25, 43, 93], [23, 25, 43, 125], [23, 25, 43, 29], [23, 25, 43, 61], [23, 25, 59, 93], [23, 25, 59, 125], [23, 25, 59, 29], [23, 25, 59, 61], [23, 25, 11, 93], [23, 25, 11, 125], [23, 25, 11, 29], [23, 25, 11, 61], [23, 41, 27, 93], [23, 41, 27, 125], [23, 41, 27, 29], [23, 41, 27, 61], [23, 41, 43, 93], [23, 41, 43, 125], [23, 41, 43, 29], [23, 41, 43, 61], [23, 41, 59, 93], [23, 41, 59, 125], [23, 41, 59, 29], [23, 41, 59, 61], [23, 41, 11, 93], [23, 41, 11, 125], [23, 41, 11, 29], [23, 41, 11, 61]]
+GPT :    1082.399770 s :  positions_exact = [[23, 25, 27, 93]]
+GPT :    1082.401091 s : START: ex_x23y25z27t93_GSRC_W80_k3
+GPT :    1082.401469 s : Generatring boosted src's
+GPT :    1083.689950 s : point src set
+GPT :    1103.792574 s : neg. boosted src done
+GPT :    1103.800510 s : Starting prop exact
+GPT :    1115.776022 s : Mode-representation applied to 4 vector(s) in 1.33549 s (0.731076 s for rank_inner_product, 0.145817 s for global sum, 0.458592 s for linear combinations)
+GPT :    1134.610030 s : cg: NOT converged in 200 iterations;  squared residual 8.996788e-08 / 1.010691e-17
+GPT :    1140.357121 s : cg: NOT converged in 200 iterations;  squared residual 9.708118e-08 / 1.007526e-17
+GPT :    1151.038714 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 12.64707088470459 s (split), 11.642934799194336 s (operation), 10.681519031524658 s (unsplit)
+GPT :    1152.706187 s : Mode-representation applied to 4 vector(s) in 1.23287 s (0.745942 s for rank_inner_product, 0.015578 s for global sum, 0.471347 s for linear combinations)
+GPT :    1159.879535 s : cg: NOT converged in 200 iterations;  squared residual 5.003989e-10 / 8.998021e-24
+GPT :    1165.590139 s : cg: NOT converged in 200 iterations;  squared residual 6.083842e-10 / 9.709216e-24
+GPT :    1165.639833 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.131896734237671 s (split), 11.47536587715149 s (operation), 0.04961657524108887 s (unsplit)
+GPT :    1167.267387 s : Mode-representation applied to 4 vector(s) in 1.20312 s (0.737789 s for rank_inner_product, 0.00842214 s for global sum, 0.456913 s for linear combinations)
+GPT :    1174.421352 s : cg: NOT converged in 200 iterations;  squared residual 2.984628e-12 / 5.028302e-26
+GPT :    1180.134503 s : cg: NOT converged in 200 iterations;  squared residual 3.921012e-12 / 6.117190e-26
+GPT :    1180.184032 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1405835151672363 s (split), 11.452898502349854 s (operation), 0.04946136474609375 s (unsplit)
+GPT :    1181.795307 s : Mode-representation applied to 4 vector(s) in 1.20459 s (0.734814 s for rank_inner_product, 0.0106065 s for global sum, 0.459171 s for linear combinations)
+GPT :    1188.993022 s : cg: NOT converged in 200 iterations;  squared residual 2.375281e-14 / 3.004397e-28
+GPT :    1194.721589 s : cg: NOT converged in 200 iterations;  squared residual 3.301678e-14 / 3.949921e-28
+GPT :    1194.771101 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1267492771148682 s (split), 11.524270057678223 s (operation), 0.04944419860839844 s (unsplit)
+GPT :    1196.378021 s : Mode-representation applied to 4 vector(s) in 1.20113 s (0.735343 s for rank_inner_product, 0.0105479 s for global sum, 0.455236 s for linear combinations)
+GPT :    1203.565593 s : cg: NOT converged in 200 iterations;  squared residual 2.360235e-16 / 2.397626e-30
+GPT :    1209.297449 s : cg: NOT converged in 200 iterations;  squared residual 3.425512e-16 / 3.337307e-30
+GPT :    1209.346895 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.118342399597168 s (split), 11.527416229248047 s (operation), 0.04937386512756348 s (unsplit)
+GPT :    1210.963150 s : Mode-representation applied to 4 vector(s) in 1.19946 s (0.736087 s for rank_inner_product, 0.00920677 s for global sum, 0.454163 s for linear combinations)
+GPT :    1218.162528 s : cg: NOT converged in 200 iterations;  squared residual 2.995922e-18 / 2.409237e-32
+GPT :    1223.885674 s : cg: NOT converged in 200 iterations;  squared residual 4.407508e-18 / 3.504354e-32
+GPT :    1223.934264 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.153425931930542 s (split), 11.488984107971191 s (operation), 0.04852461814880371 s (unsplit)
+GPT :    1225.546705 s : Mode-representation applied to 4 vector(s) in 1.20243 s (0.738262 s for rank_inner_product, 0.0108078 s for global sum, 0.453363 s for linear combinations)
+GPT :    1232.741266 s : cg: NOT converged in 200 iterations;  squared residual 4.083616e-20 / 3.080129e-34
+GPT :    1238.464138 s : cg: NOT converged in 200 iterations;  squared residual 6.095755e-20 / 4.547020e-34
+GPT :    1238.512418 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1347413063049316 s (split), 11.509804487228394 s (operation), 0.04820680618286133 s (unsplit)
+GPT :    1240.145715 s : Mode-representation applied to 4 vector(s) in 1.20455 s (0.733793 s for rank_inner_product, 0.0105267 s for global sum, 0.460226 s for linear combinations)
+GPT :    1247.322994 s : cg: NOT converged in 200 iterations;  squared residual 5.704040e-22 / 4.218551e-36
+GPT :    1253.049538 s : cg: NOT converged in 200 iterations;  squared residual 8.887894e-22 / 6.326350e-36
+GPT :    1253.099283 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0920820236206055 s (split), 11.541254997253418 s (operation), 0.04967498779296875 s (unsplit)
+GPT :    1253.292411 s : defect_correcting: converged after 8 iterations
+GPT :    1258.734203 s : Mode-representation applied to 4 vector(s) in 1.20407 s (0.735424 s for rank_inner_product, 0.0116577 s for global sum, 0.456984 s for linear combinations)
+GPT :    1265.893093 s : cg: NOT converged in 200 iterations;  squared residual 5.466855e-08 / 1.009151e-17
+GPT :    1271.605668 s : cg: NOT converged in 200 iterations;  squared residual 1.060482e-07 / 1.007699e-17
+GPT :    1271.655130 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1208291053771973 s (split), 11.46864104270935 s (operation), 0.0493929386138916 s (unsplit)
+GPT :    1273.268306 s : Mode-representation applied to 4 vector(s) in 1.20151 s (0.736476 s for rank_inner_product, 0.00847125 s for global sum, 0.456562 s for linear combinations)
+GPT :    1280.440747 s : cg: NOT converged in 200 iterations;  squared residual 2.264270e-10 / 5.467248e-24
+GPT :    1286.171251 s : cg: NOT converged in 200 iterations;  squared residual 6.007091e-10 / 1.060613e-23
+GPT :    1286.220666 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1182053089141846 s (split), 11.499662399291992 s (operation), 0.0493466854095459 s (unsplit)
+GPT :    1287.832057 s : Mode-representation applied to 4 vector(s) in 1.20176 s (0.727117 s for rank_inner_product, 0.0165937 s for global sum, 0.458052 s for linear combinations)
+GPT :    1295.011359 s : cg: NOT converged in 200 iterations;  squared residual 1.328365e-12 / 2.271716e-26
+GPT :    1300.736193 s : cg: NOT converged in 200 iterations;  squared residual 3.623200e-12 / 6.023712e-26
+GPT :    1300.785787 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1133708953857422 s (split), 11.518391847610474 s (operation), 0.04952096939086914 s (unsplit)
+GPT :    1302.390788 s : Mode-representation applied to 4 vector(s) in 1.19765 s (0.725571 s for rank_inner_product, 0.0155969 s for global sum, 0.456483 s for linear combinations)
+GPT :    1309.588201 s : cg: NOT converged in 200 iterations;  squared residual 9.241567e-15 / 1.334088e-28
+GPT :    1315.312882 s : cg: NOT converged in 200 iterations;  squared residual 2.834494e-14 / 3.640007e-28
+GPT :    1315.362403 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1412091255187988 s (split), 11.508888244628906 s (operation), 0.04945230484008789 s (unsplit)
+GPT :    1316.965806 s : Mode-representation applied to 4 vector(s) in 1.19797 s (0.725326 s for rank_inner_product, 0.0156519 s for global sum, 0.456987 s for linear combinations)
+GPT :    1324.146386 s : cg: NOT converged in 200 iterations;  squared residual 8.959950e-17 / 9.308431e-31
+GPT :    1329.872556 s : cg: NOT converged in 200 iterations;  squared residual 2.845752e-16 / 2.857380e-30
+GPT :    1329.922086 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1168067455291748 s (split), 11.516217231750488 s (operation), 0.04946279525756836 s (unsplit)
+GPT :    1331.532555 s : Mode-representation applied to 4 vector(s) in 1.2007 s (0.725355 s for rank_inner_product, 0.0164318 s for global sum, 0.458916 s for linear combinations)
+GPT :    1338.708283 s : cg: NOT converged in 200 iterations;  squared residual 1.117120e-18 / 9.138114e-33
+GPT :    1344.440124 s : cg: NOT converged in 200 iterations;  squared residual 3.824459e-18 / 2.906780e-32
+GPT :    1344.489456 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.124314785003662 s (split), 11.507308006286621 s (operation), 0.04925966262817383 s (unsplit)
+GPT :    1346.094346 s : Mode-representation applied to 4 vector(s) in 1.19543 s (0.725777 s for rank_inner_product, 0.0126925 s for global sum, 0.456964 s for linear combinations)
+GPT :    1353.290854 s : cg: NOT converged in 200 iterations;  squared residual 1.506117e-20 / 1.148759e-34
+GPT :    1359.030328 s : cg: NOT converged in 200 iterations;  squared residual 5.186623e-20 / 3.937047e-34
+GPT :    1359.079872 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1171808242797852 s (split), 11.546028852462769 s (operation), 0.04947638511657715 s (unsplit)
+GPT :    1360.686507 s : Mode-representation applied to 4 vector(s) in 1.19782 s (0.726944 s for rank_inner_product, 0.0142834 s for global sum, 0.456595 s for linear combinations)
+GPT :    1367.902485 s : cg: NOT converged in 200 iterations;  squared residual 2.079514e-22 / 1.555897e-36
+GPT :    1373.640584 s : cg: NOT converged in 200 iterations;  squared residual 7.576563e-22 / 5.375142e-36
+GPT :    1373.690068 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1369802951812744 s (split), 11.544832468032837 s (operation), 0.04941272735595703 s (unsplit)
+GPT :    1373.870922 s : defect_correcting: converged after 8 iterations
+GPT :    1379.259072 s : Mode-representation applied to 4 vector(s) in 1.19567 s (0.726816 s for rank_inner_product, 0.012502 s for global sum, 0.456351 s for linear combinations)
+GPT :    1386.405206 s : cg: NOT converged in 200 iterations;  squared residual 1.423129e-07 / 1.003449e-17
+GPT :    1392.089607 s : cg: NOT converged in 200 iterations;  squared residual 1.011247e-07 / 1.009226e-17
+GPT :    1392.139037 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.140397548675537 s (split), 11.417455673217773 s (operation), 0.04935765266418457 s (unsplit)
+GPT :    1393.744180 s : Mode-representation applied to 4 vector(s) in 1.19659 s (0.725503 s for rank_inner_product, 0.016547 s for global sum, 0.454536 s for linear combinations)
+GPT :    1400.912031 s : cg: NOT converged in 200 iterations;  squared residual 9.753562e-10 / 1.423215e-23
+GPT :    1406.607378 s : cg: NOT converged in 200 iterations;  squared residual 6.964586e-10 / 1.011410e-23
+GPT :    1406.656979 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1476707458496094 s (split), 11.44323182106018 s (operation), 0.04952812194824219 s (unsplit)
+GPT :    1408.268924 s : Mode-representation applied to 4 vector(s) in 1.19933 s (0.725909 s for rank_inner_product, 0.0188136 s for global sum, 0.454603 s for linear combinations)
+GPT :    1415.434317 s : cg: NOT converged in 200 iterations;  squared residual 6.283518e-12 / 9.814544e-26
+GPT :    1421.125995 s : cg: NOT converged in 200 iterations;  squared residual 4.967469e-12 / 7.055165e-26
+GPT :    1421.175477 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0784807205200195 s (split), 11.506081819534302 s (operation), 0.04941558837890625 s (unsplit)
+GPT :    1422.783914 s : Mode-representation applied to 4 vector(s) in 1.19915 s (0.728012 s for rank_inner_product, 0.0135875 s for global sum, 0.457554 s for linear combinations)
+GPT :    1429.928244 s : cg: NOT converged in 200 iterations;  squared residual 5.579260e-14 / 6.340178e-28
+GPT :    1435.621516 s : cg: NOT converged in 200 iterations;  squared residual 4.801253e-14 / 5.058241e-28
+GPT :    1435.670357 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1215789318084717 s (split), 11.44343113899231 s (operation), 0.048772335052490234 s (unsplit)
+GPT :    1437.270633 s : Mode-representation applied to 4 vector(s) in 1.19264 s (0.72479 s for rank_inner_product, 0.0161126 s for global sum, 0.451736 s for linear combinations)
+GPT :    1444.426320 s : cg: NOT converged in 200 iterations;  squared residual 5.743672e-16 / 5.646272e-30
+GPT :    1450.123583 s : cg: NOT converged in 200 iterations;  squared residual 5.674551e-16 / 4.916043e-30
+GPT :    1450.173067 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1137580871582031 s (split), 11.466511249542236 s (operation), 0.04940915107727051 s (unsplit)
+GPT :    1451.774805 s : Mode-representation applied to 4 vector(s) in 1.19697 s (0.727252 s for rank_inner_product, 0.0176017 s for global sum, 0.452116 s for linear combinations)
+GPT :    1458.929403 s : cg: NOT converged in 200 iterations;  squared residual 7.535067e-18 / 5.884406e-32
+GPT :    1464.608692 s : cg: NOT converged in 200 iterations;  squared residual 7.943982e-18 / 5.885181e-32
+GPT :    1464.713699 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1365220546722412 s (split), 11.425442695617676 s (operation), 0.10493707656860352 s (unsplit)
+GPT :    1466.328202 s : Mode-representation applied to 4 vector(s) in 1.19768 s (0.727104 s for rank_inner_product, 0.0145802 s for global sum, 0.455997 s for linear combinations)
+GPT :    1473.446527 s : cg: NOT converged in 200 iterations;  squared residual 1.048273e-19 / 7.786368e-34
+GPT :    1479.126019 s : cg: NOT converged in 200 iterations;  squared residual 1.157102e-19 / 8.306297e-34
+GPT :    1479.236945 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1353721618652344 s (split), 11.392008304595947 s (operation), 0.11085844039916992 s (unsplit)
+GPT :    1480.840089 s : Mode-representation applied to 4 vector(s) in 1.19651 s (0.729779 s for rank_inner_product, 0.0128264 s for global sum, 0.453901 s for linear combinations)
+GPT :    1487.963940 s : cg: NOT converged in 200 iterations;  squared residual 1.550118e-21 / 1.090661e-35
+GPT :    1493.650727 s : cg: NOT converged in 200 iterations;  squared residual 1.775735e-21 / 1.218496e-35
+GPT :    1493.755554 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1561002731323242 s (split), 11.384328365325928 s (operation), 0.10475730895996094 s (unsplit)
+GPT :    1493.928941 s : defect_correcting: converged after 8 iterations
+GPT :    1495.568676 s : forward prop done
+GPT :    1514.932966 s : starting diquark contractions for down quark insertion and Polarization  0
+GPT :    1540.305890 s : diquark contractions for Polarization  0  done
+GPT :    1570.354196 s : Mode-representation applied to 4 vector(s) in 1.22259 s (0.729386 s for rank_inner_product, 0.0172827 s for global sum, 0.475923 s for linear combinations)
+GPT :    1577.547056 s : cg: NOT converged in 200 iterations;  squared residual 2.544475e-07 / 1.005560e-17
+GPT :    1583.237876 s : cg: NOT converged in 200 iterations;  squared residual 2.469644e-07 / 1.006016e-17
+GPT :    1583.325061 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1165008544921875 s (split), 11.486601829528809 s (operation), 0.0870966911315918 s (unsplit)
+GPT :    1584.950216 s : Mode-representation applied to 4 vector(s) in 1.20459 s (0.729379 s for rank_inner_product, 0.0184791 s for global sum, 0.456728 s for linear combinations)
+GPT :    1592.122263 s : cg: NOT converged in 200 iterations;  squared residual 1.643458e-09 / 2.544908e-23
+GPT :    1597.836375 s : cg: NOT converged in 200 iterations;  squared residual 1.497482e-09 / 2.469841e-23
+GPT :    1597.893644 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.125908374786377 s (split), 11.484206914901733 s (operation), 0.0571744441986084 s (unsplit)
+GPT :    1599.530568 s : Mode-representation applied to 4 vector(s) in 1.2024 s (0.728717 s for rank_inner_product, 0.0195351 s for global sum, 0.454148 s for linear combinations)
+GPT :    1606.732408 s : cg: NOT converged in 200 iterations;  squared residual 9.460135e-12 / 1.648047e-25
+GPT :    1612.464844 s : cg: NOT converged in 200 iterations;  squared residual 7.847034e-12 / 1.499429e-25
+GPT :    1612.514690 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1487629413604736 s (split), 11.51066780090332 s (operation), 0.04975557327270508 s (unsplit)
+GPT :    1614.137012 s : Mode-representation applied to 4 vector(s) in 1.20256 s (0.729905 s for rank_inner_product, 0.0175467 s for global sum, 0.455105 s for linear combinations)
+GPT :    1621.314973 s : cg: NOT converged in 200 iterations;  squared residual 8.035078e-14 / 9.512481e-28
+GPT :    1627.039565 s : cg: NOT converged in 200 iterations;  squared residual 5.645385e-14 / 7.863407e-28
+GPT :    1627.089239 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1301119327545166 s (split), 11.498406171798706 s (operation), 0.04958653450012207 s (unsplit)
+GPT :    1628.709509 s : Mode-representation applied to 4 vector(s) in 1.20167 s (0.72923 s for rank_inner_product, 0.0198672 s for global sum, 0.452573 s for linear combinations)
+GPT :    1635.919482 s : cg: NOT converged in 200 iterations;  squared residual 8.400429e-16 / 8.116241e-30
+GPT :    1641.645812 s : cg: NOT converged in 200 iterations;  squared residual 4.942435e-16 / 5.668913e-30
+GPT :    1641.695605 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1396491527557373 s (split), 11.523431777954102 s (operation), 0.04970860481262207 s (unsplit)
+GPT :    1643.315282 s : Mode-representation applied to 4 vector(s) in 1.20411 s (0.729299 s for rank_inner_product, 0.0194447 s for global sum, 0.455365 s for linear combinations)
+GPT :    1650.494952 s : cg: NOT converged in 200 iterations;  squared residual 1.151666e-17 / 8.609721e-32
+GPT :    1656.225412 s : cg: NOT converged in 200 iterations;  squared residual 7.116973e-18 / 5.042557e-32
+GPT :    1656.274840 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0869040489196777 s (split), 11.550821304321289 s (operation), 0.04934048652648926 s (unsplit)
+GPT :    1657.891687 s : Mode-representation applied to 4 vector(s) in 1.20612 s (0.732015 s for rank_inner_product, 0.0145452 s for global sum, 0.459555 s for linear combinations)
+GPT :    1665.105337 s : cg: NOT converged in 200 iterations;  squared residual 1.603133e-19 / 1.190937e-33
+GPT :    1670.830193 s : cg: NOT converged in 200 iterations;  squared residual 9.439198e-20 / 7.319539e-34
+GPT :    1670.879773 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1321113109588623 s (split), 11.533877611160278 s (operation), 0.04949831962585449 s (unsplit)
+GPT :    1672.493120 s : Mode-representation applied to 4 vector(s) in 1.2 s (0.729249 s for rank_inner_product, 0.0175505 s for global sum, 0.4532 s for linear combinations)
+GPT :    1679.679962 s : cg: NOT converged in 200 iterations;  squared residual 2.424791e-21 / 1.671501e-35
+GPT :    1685.400656 s : cg: NOT converged in 200 iterations;  squared residual 1.371746e-21 / 9.783236e-36
+GPT :    1685.450214 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.125523328781128 s (split), 11.508515357971191 s (operation), 0.04947185516357422 s (unsplit)
+GPT :    1685.638738 s : defect_correcting: converged after 8 iterations
+GPT :    1691.059535 s : Mode-representation applied to 4 vector(s) in 1.20804 s (0.727876 s for rank_inner_product, 0.0218043 s for global sum, 0.458361 s for linear combinations)
+GPT :    1698.238493 s : cg: NOT converged in 200 iterations;  squared residual 2.268864e-07 / 1.005048e-17
+GPT :    1703.960376 s : cg: NOT converged in 200 iterations;  squared residual 2.377686e-07 / 1.005215e-17
+GPT :    1704.009580 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1328160762786865 s (split), 11.491880178451538 s (operation), 0.04911684989929199 s (unsplit)
+GPT :    1705.637607 s : Mode-representation applied to 4 vector(s) in 1.1996 s (0.731995 s for rank_inner_product, 0.0141106 s for global sum, 0.453496 s for linear combinations)
+GPT :    1712.832448 s : cg: NOT converged in 200 iterations;  squared residual 1.475815e-09 / 2.269087e-23
+GPT :    1718.554097 s : cg: NOT converged in 200 iterations;  squared residual 1.454359e-09 / 2.377971e-23
+GPT :    1718.603589 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1322846412658691 s (split), 11.509752750396729 s (operation), 0.0494081974029541 s (unsplit)
+GPT :    1720.233003 s : Mode-representation applied to 4 vector(s) in 1.20015 s (0.72902 s for rank_inner_product, 0.0151663 s for global sum, 0.455967 s for linear combinations)
+GPT :    1727.402729 s : cg: NOT converged in 200 iterations;  squared residual 8.843254e-12 / 1.480518e-25
+GPT :    1733.122628 s : cg: NOT converged in 200 iterations;  squared residual 8.109716e-12 / 1.457952e-25
+GPT :    1733.172300 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1508922576904297 s (split), 11.465008974075317 s (operation), 0.04958295822143555 s (unsplit)
+GPT :    1734.798087 s : Mode-representation applied to 4 vector(s) in 1.20433 s (0.728096 s for rank_inner_product, 0.0207748 s for global sum, 0.455461 s for linear combinations)
+GPT :    1741.999040 s : cg: NOT converged in 200 iterations;  squared residual 7.523025e-14 / 8.893023e-28
+GPT :    1747.730955 s : cg: NOT converged in 200 iterations;  squared residual 6.540293e-14 / 8.146662e-28
+GPT :    1747.780352 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1429576873779297 s (split), 11.515625953674316 s (operation), 0.04930472373962402 s (unsplit)
+GPT :    1749.404002 s : Mode-representation applied to 4 vector(s) in 1.20218 s (0.731399 s for rank_inner_product, 0.014662 s for global sum, 0.456115 s for linear combinations)
+GPT :    1756.604634 s : cg: NOT converged in 200 iterations;  squared residual 7.852574e-16 / 7.593788e-30
+GPT :    1762.327534 s : cg: NOT converged in 200 iterations;  squared residual 6.512541e-16 / 6.597561e-30
+GPT :    1762.377127 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1372559070587158 s (split), 11.512561798095703 s (operation), 0.04950213432312012 s (unsplit)
+GPT :    1764.000224 s : Mode-representation applied to 4 vector(s) in 1.20423 s (0.728544 s for rank_inner_product, 0.0191445 s for global sum, 0.456546 s for linear combinations)
+GPT :    1771.185703 s : cg: NOT converged in 200 iterations;  squared residual 1.066979e-17 / 8.034639e-32
+GPT :    1776.909757 s : cg: NOT converged in 200 iterations;  squared residual 9.134836e-18 / 6.679750e-32
+GPT :    1776.959418 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1025044918060303 s (split), 11.532988786697388 s (operation), 0.0495760440826416 s (unsplit)
+GPT :    1778.587514 s : Mode-representation applied to 4 vector(s) in 1.20626 s (0.729791 s for rank_inner_product, 0.0189848 s for global sum, 0.457479 s for linear combinations)
+GPT :    1785.769857 s : cg: NOT converged in 200 iterations;  squared residual 1.498773e-19 / 1.101494e-33
+GPT :    1791.495327 s : cg: NOT converged in 200 iterations;  squared residual 1.269436e-19 / 9.463248e-34
+GPT :    1791.544888 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1381886005401611 s (split), 11.496727228164673 s (operation), 0.049478769302368164 s (unsplit)
+GPT :    1793.168571 s : Mode-representation applied to 4 vector(s) in 1.20197 s (0.728307 s for rank_inner_product, 0.0161417 s for global sum, 0.457524 s for linear combinations)
+GPT :    1800.344135 s : cg: NOT converged in 200 iterations;  squared residual 2.265437e-21 / 1.559007e-35
+GPT :    1806.069999 s : cg: NOT converged in 200 iterations;  squared residual 1.934785e-21 / 1.327634e-35
+GPT :    1806.119427 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.128652811050415 s (split), 11.499782085418701 s (operation), 0.04934263229370117 s (unsplit)
+GPT :    1806.313602 s : defect_correcting: converged after 8 iterations
+GPT :    1811.735628 s : Mode-representation applied to 4 vector(s) in 1.20355 s (0.730307 s for rank_inner_product, 0.0165315 s for global sum, 0.456707 s for linear combinations)
+GPT :    1818.920890 s : cg: NOT converged in 200 iterations;  squared residual 2.638426e-07 / 1.004683e-17
+GPT :    1824.652259 s : cg: NOT converged in 200 iterations;  squared residual 2.616706e-07 / 1.005655e-17
+GPT :    1824.701685 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1447935104370117 s (split), 11.498268127441406 s (operation), 0.04933309555053711 s (unsplit)
+GPT :    1826.341253 s : Mode-representation applied to 4 vector(s) in 1.20674 s (0.727808 s for rank_inner_product, 0.0204186 s for global sum, 0.458515 s for linear combinations)
+GPT :    1833.522382 s : cg: NOT converged in 200 iterations;  squared residual 1.713043e-09 / 2.638777e-23
+GPT :    1839.245487 s : cg: NOT converged in 200 iterations;  squared residual 1.720881e-09 / 2.616927e-23
+GPT :    1839.294949 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1156773567199707 s (split), 11.514020681381226 s (operation), 0.049368858337402344 s (unsplit)
+GPT :    1840.925161 s : Mode-representation applied to 4 vector(s) in 1.20133 s (0.728632 s for rank_inner_product, 0.0151751 s for global sum, 0.457528 s for linear combinations)
+GPT :    1848.109672 s : cg: NOT converged in 200 iterations;  squared residual 9.622301e-12 / 1.717105e-25
+GPT :    1853.834720 s : cg: NOT converged in 200 iterations;  squared residual 9.295287e-12 / 1.724551e-25
+GPT :    1853.884353 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1293680667877197 s (split), 11.507236242294312 s (operation), 0.04954981803894043 s (unsplit)
+GPT :    1855.511404 s : Mode-representation applied to 4 vector(s) in 1.19952 s (0.728315 s for rank_inner_product, 0.0164065 s for global sum, 0.454802 s for linear combinations)
+GPT :    1862.726604 s : cg: NOT converged in 200 iterations;  squared residual 7.848035e-14 / 9.661743e-28
+GPT :    1868.459298 s : cg: NOT converged in 200 iterations;  squared residual 7.685636e-14 / 9.332821e-28
+GPT :    1868.508806 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.134789228439331 s (split), 11.538225889205933 s (operation), 0.04941225051879883 s (unsplit)
+GPT :    1870.133814 s : Mode-representation applied to 4 vector(s) in 1.20679 s (0.72716 s for rank_inner_product, 0.0241272 s for global sum, 0.455499 s for linear combinations)
+GPT :    1877.330039 s : cg: NOT converged in 200 iterations;  squared residual 7.500474e-16 / 7.904134e-30
+GPT :    1883.067552 s : cg: NOT converged in 200 iterations;  squared residual 7.219814e-16 / 7.741703e-30
+GPT :    1883.117341 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1121644973754883 s (split), 11.546172142028809 s (operation), 0.04970693588256836 s (unsplit)
+GPT :    1884.733929 s : Mode-representation applied to 4 vector(s) in 1.2029 s (0.726852 s for rank_inner_product, 0.0183311 s for global sum, 0.457721 s for linear combinations)
+GPT :    1891.946561 s : cg: NOT converged in 200 iterations;  squared residual 1.029916e-17 / 7.662463e-32
+GPT :    1897.679538 s : cg: NOT converged in 200 iterations;  squared residual 1.047739e-17 / 7.391317e-32
+GPT :    1897.729120 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.144390344619751 s (split), 11.51927137374878 s (operation), 0.04949951171875 s (unsplit)
+GPT :    1899.348191 s : Mode-representation applied to 4 vector(s) in 1.20288 s (0.726889 s for rank_inner_product, 0.0195358 s for global sum, 0.456457 s for linear combinations)
+GPT :    1906.531147 s : cg: NOT converged in 200 iterations;  squared residual 1.424237e-19 / 1.060687e-33
+GPT :    1912.247922 s : cg: NOT converged in 200 iterations;  squared residual 1.419800e-19 / 1.081607e-33
+GPT :    1912.297579 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1083629131317139 s (split), 11.516684532165527 s (operation), 0.0495760440826416 s (unsplit)
+GPT :    1913.926998 s : Mode-representation applied to 4 vector(s) in 1.20377 s (0.727471 s for rank_inner_product, 0.0196717 s for global sum, 0.456631 s for linear combinations)
+GPT :    1921.096630 s : cg: NOT converged in 200 iterations;  squared residual 2.048491e-21 / 1.476285e-35
+GPT :    1926.810916 s : cg: NOT converged in 200 iterations;  squared residual 2.154424e-21 / 1.479064e-35
+GPT :    1926.860489 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1460225582122803 s (split), 11.463617324829102 s (operation), 0.0494844913482666 s (unsplit)
+GPT :    1927.048537 s : defect_correcting: converged after 8 iterations
+GPT :    1928.690269 s : starting diquark contractions for down quark insertion and Polarization  1
+GPT :    1934.525669 s : diquark contractions for Polarization  1  done
+GPT :    1963.744531 s : Mode-representation applied to 4 vector(s) in 1.20864 s (0.732027 s for rank_inner_product, 0.0147524 s for global sum, 0.461864 s for linear combinations)
+GPT :    1970.988200 s : cg: NOT converged in 200 iterations;  squared residual 2.589210e-07 / 1.005204e-17
+GPT :    1976.720159 s : cg: NOT converged in 200 iterations;  squared residual 2.591714e-07 / 1.004618e-17
+GPT :    1976.769567 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.150390625 s (split), 11.541379690170288 s (operation), 0.049324750900268555 s (unsplit)
+GPT :    1978.406723 s : Mode-representation applied to 4 vector(s) in 1.20962 s (0.7318 s for rank_inner_product, 0.0176611 s for global sum, 0.460161 s for linear combinations)
+GPT :    1985.604645 s : cg: NOT converged in 200 iterations;  squared residual 1.633676e-09 / 2.589513e-23
+GPT :    1991.325237 s : cg: NOT converged in 200 iterations;  squared residual 1.677691e-09 / 2.591994e-23
+GPT :    1991.374692 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1110398769378662 s (split), 11.526567935943604 s (operation), 0.04936695098876953 s (unsplit)
+GPT :    1992.998977 s : Mode-representation applied to 4 vector(s) in 1.20096 s (0.730396 s for rank_inner_product, 0.0145631 s for global sum, 0.456 s for linear combinations)
+GPT :    2000.194102 s : cg: NOT converged in 200 iterations;  squared residual 8.873724e-12 / 1.636922e-25
+GPT :    2005.929877 s : cg: NOT converged in 200 iterations;  squared residual 9.483706e-12 / 1.681577e-25
+GPT :    2005.979460 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1107394695281982 s (split), 11.534348726272583 s (operation), 0.049509525299072266 s (unsplit)
+GPT :    2007.595261 s : Mode-representation applied to 4 vector(s) in 1.206 s (0.727401 s for rank_inner_product, 0.0184162 s for global sum, 0.460181 s for linear combinations)
+GPT :    2014.769712 s : cg: NOT converged in 200 iterations;  squared residual 7.320250e-14 / 8.911668e-28
+GPT :    2020.500552 s : cg: NOT converged in 200 iterations;  squared residual 7.579652e-14 / 9.520931e-28
+GPT :    2020.550522 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1100754737854004 s (split), 11.520463228225708 s (operation), 0.04988598823547363 s (unsplit)
+GPT :    2022.156180 s : Mode-representation applied to 4 vector(s) in 1.19895 s (0.729891 s for rank_inner_product, 0.0161021 s for global sum, 0.452953 s for linear combinations)
+GPT :    2029.355279 s : cg: NOT converged in 200 iterations;  squared residual 7.441601e-16 / 7.382904e-30
+GPT :    2035.063425 s : cg: NOT converged in 200 iterations;  squared residual 7.402374e-16 / 7.633654e-30
+GPT :    2035.113000 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1424851417541504 s (split), 11.483694076538086 s (operation), 0.049490928649902344 s (unsplit)
+GPT :    2036.728250 s : Mode-representation applied to 4 vector(s) in 1.2092 s (0.730089 s for rank_inner_product, 0.0167277 s for global sum, 0.462385 s for linear combinations)
+GPT :    2043.897711 s : cg: NOT converged in 200 iterations;  squared residual 1.057548e-17 / 7.631912e-32
+GPT :    2049.610097 s : cg: NOT converged in 200 iterations;  squared residual 1.026483e-17 / 7.564333e-32
+GPT :    2049.659558 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1443333625793457 s (split), 11.465243577957153 s (operation), 0.04936647415161133 s (unsplit)
+GPT :    2051.272925 s : Mode-representation applied to 4 vector(s) in 1.20307 s (0.729479 s for rank_inner_product, 0.0156503 s for global sum, 0.457942 s for linear combinations)
+GPT :    2058.439531 s : cg: NOT converged in 200 iterations;  squared residual 1.506796e-19 / 1.095555e-33
+GPT :    2064.142500 s : cg: NOT converged in 200 iterations;  squared residual 1.403300e-19 / 1.057909e-33
+GPT :    2064.192025 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.135636806488037 s (split), 11.458574295043945 s (operation), 0.04943537712097168 s (unsplit)
+GPT :    2065.807592 s : Mode-representation applied to 4 vector(s) in 1.20787 s (0.729854 s for rank_inner_product, 0.0156751 s for global sum, 0.462336 s for linear combinations)
+GPT :    2072.968084 s : cg: NOT converged in 200 iterations;  squared residual 2.285993e-21 / 1.575029e-35
+GPT :    2078.679729 s : cg: NOT converged in 200 iterations;  squared residual 2.109767e-21 / 1.457858e-35
+GPT :    2078.729193 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1081781387329102 s (split), 11.48804497718811 s (operation), 0.049368858337402344 s (unsplit)
+GPT :    2078.914104 s : defect_correcting: converged after 8 iterations
+GPT :    2084.339480 s : Mode-representation applied to 4 vector(s) in 1.19881 s (0.734858 s for rank_inner_product, 0.0108969 s for global sum, 0.453054 s for linear combinations)
+GPT :    2091.503711 s : cg: NOT converged in 200 iterations;  squared residual 2.448856e-07 / 1.004556e-17
+GPT :    2097.209697 s : cg: NOT converged in 200 iterations;  squared residual 2.301572e-07 / 1.005819e-17
+GPT :    2097.259317 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.127030372619629 s (split), 11.468306303024292 s (operation), 0.04953718185424805 s (unsplit)
+GPT :    2098.891262 s : Mode-representation applied to 4 vector(s) in 1.20562 s (0.726991 s for rank_inner_product, 0.0201478 s for global sum, 0.458484 s for linear combinations)
+GPT :    2106.081985 s : cg: NOT converged in 200 iterations;  squared residual 1.595311e-09 / 2.449117e-23
+GPT :    2111.794377 s : cg: NOT converged in 200 iterations;  squared residual 1.414642e-09 / 2.301905e-23
+GPT :    2111.843857 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1126155853271484 s (split), 11.51690411567688 s (operation), 0.04939675331115723 s (unsplit)
+GPT :    2113.470147 s : Mode-representation applied to 4 vector(s) in 1.19957 s (0.730201 s for rank_inner_product, 0.0131536 s for global sum, 0.45622 s for linear combinations)
+GPT :    2120.642926 s : cg: NOT converged in 200 iterations;  squared residual 9.024583e-12 / 1.599735e-25
+GPT :    2126.351161 s : cg: NOT converged in 200 iterations;  squared residual 7.943003e-12 / 1.417822e-25
+GPT :    2126.400083 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.114351749420166 s (split), 11.488659143447876 s (operation), 0.04883623123168945 s (unsplit)
+GPT :    2128.030268 s : Mode-representation applied to 4 vector(s) in 1.20266 s (0.733053 s for rank_inner_product, 0.0147326 s for global sum, 0.454878 s for linear combinations)
+GPT :    2135.188107 s : cg: NOT converged in 200 iterations;  squared residual 7.592425e-14 / 9.070879e-28
+GPT :    2140.899274 s : cg: NOT converged in 200 iterations;  squared residual 6.185249e-14 / 7.972199e-28
+GPT :    2140.947080 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1434545516967773 s (split), 11.451472282409668 s (operation), 0.04772186279296875 s (unsplit)
+GPT :    2142.562265 s : Mode-representation applied to 4 vector(s) in 1.2056 s (0.730483 s for rank_inner_product, 0.0152779 s for global sum, 0.459844 s for linear combinations)
+GPT :    2149.737723 s : cg: NOT converged in 200 iterations;  squared residual 7.612173e-16 / 7.661866e-30
+GPT :    2155.453262 s : cg: NOT converged in 200 iterations;  squared residual 5.864517e-16 / 6.229169e-30
+GPT :    2155.502395 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1100261211395264 s (split), 11.501184701919556 s (operation), 0.04904985427856445 s (unsplit)
+GPT :    2157.117958 s : Mode-representation applied to 4 vector(s) in 1.20476 s (0.728864 s for rank_inner_product, 0.0149541 s for global sum, 0.460941 s for linear combinations)
+GPT :    2164.381094 s : cg: NOT converged in 200 iterations;  squared residual 1.074863e-17 / 7.802036e-32
+GPT :    2170.096248 s : cg: NOT converged in 200 iterations;  squared residual 8.233111e-18 / 6.000430e-32
+GPT :    2170.145796 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.131911039352417 s (split), 11.571337223052979 s (operation), 0.04945659637451172 s (unsplit)
+GPT :    2171.762278 s : Mode-representation applied to 4 vector(s) in 1.20934 s (0.732717 s for rank_inner_product, 0.0151801 s for global sum, 0.461442 s for linear combinations)
+GPT :    2178.945760 s : cg: NOT converged in 200 iterations;  squared residual 1.482544e-19 / 1.111532e-33
+GPT :    2184.676154 s : cg: NOT converged in 200 iterations;  squared residual 1.115189e-19 / 8.495339e-34
+GPT :    2184.725763 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1157755851745605 s (split), 11.525011539459229 s (operation), 0.049523353576660156 s (unsplit)
+GPT :    2186.345655 s : Mode-representation applied to 4 vector(s) in 1.20818 s (0.728897 s for rank_inner_product, 0.0170712 s for global sum, 0.462216 s for linear combinations)
+GPT :    2193.543123 s : cg: NOT converged in 200 iterations;  squared residual 2.289631e-21 / 1.547202e-35
+GPT :    2199.261453 s : cg: NOT converged in 200 iterations;  squared residual 1.651448e-21 / 1.159690e-35
+GPT :    2199.311023 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1181354522705078 s (split), 11.513121843338013 s (operation), 0.04947853088378906 s (unsplit)
+GPT :    2199.498885 s : defect_correcting: converged after 8 iterations
+GPT :    2204.909740 s : Mode-representation applied to 4 vector(s) in 1.20399 s (0.731009 s for rank_inner_product, 0.0133297 s for global sum, 0.45965 s for linear combinations)
+GPT :    2212.089406 s : cg: NOT converged in 200 iterations;  squared residual 2.387048e-07 / 1.005197e-17
+GPT :    2217.834046 s : cg: NOT converged in 200 iterations;  squared residual 2.404766e-07 / 1.005387e-17
+GPT :    2217.883713 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1385343074798584 s (split), 11.51417326927185 s (operation), 0.049582481384277344 s (unsplit)
+GPT :    2219.515275 s : Mode-representation applied to 4 vector(s) in 1.20552 s (0.733156 s for rank_inner_product, 0.0119841 s for global sum, 0.460384 s for linear combinations)
+GPT :    2226.711411 s : cg: NOT converged in 200 iterations;  squared residual 1.492808e-09 / 2.387349e-23
+GPT :    2232.456476 s : cg: NOT converged in 200 iterations;  squared residual 1.617443e-09 / 2.405068e-23
+GPT :    2232.506120 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1220223903656006 s (split), 11.545140266418457 s (operation), 0.0495607852935791 s (unsplit)
+GPT :    2234.129739 s : Mode-representation applied to 4 vector(s) in 1.20161 s (0.730339 s for rank_inner_product, 0.014632 s for global sum, 0.456642 s for linear combinations)
+GPT :    2241.326258 s : cg: NOT converged in 200 iterations;  squared residual 8.060968e-12 / 1.495625e-25
+GPT :    2247.065604 s : cg: NOT converged in 200 iterations;  squared residual 9.155161e-12 / 1.621799e-25
+GPT :    2247.115083 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1224818229675293 s (split), 11.538660049438477 s (operation), 0.04939556121826172 s (unsplit)
+GPT :    2248.726615 s : Mode-representation applied to 4 vector(s) in 1.20022 s (0.731173 s for rank_inner_product, 0.0119464 s for global sum, 0.457096 s for linear combinations)
+GPT :    2255.913594 s : cg: NOT converged in 200 iterations;  squared residual 6.267899e-14 / 8.087939e-28
+GPT :    2261.659086 s : cg: NOT converged in 200 iterations;  squared residual 7.544959e-14 / 9.197121e-28
+GPT :    2261.708499 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1423730850219727 s (split), 11.51497197151184 s (operation), 0.04932904243469238 s (unsplit)
+GPT :    2263.328491 s : Mode-representation applied to 4 vector(s) in 1.20872 s (0.733918 s for rank_inner_product, 0.0120163 s for global sum, 0.462785 s for linear combinations)
+GPT :    2270.482953 s : cg: NOT converged in 200 iterations;  squared residual 5.827807e-16 / 6.308469e-30
+GPT :    2276.207858 s : cg: NOT converged in 200 iterations;  squared residual 7.163571e-16 / 7.603877e-30
+GPT :    2276.257481 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1053807735443115 s (split), 11.498833417892456 s (operation), 0.04954123497009277 s (unsplit)
+GPT :    2277.874436 s : Mode-representation applied to 4 vector(s) in 1.20322 s (0.730718 s for rank_inner_product, 0.0148656 s for global sum, 0.45764 s for linear combinations)
+GPT :    2285.064363 s : cg: NOT converged in 200 iterations;  squared residual 8.273520e-18 / 5.959323e-32
+GPT :    2290.793076 s : cg: NOT converged in 200 iterations;  squared residual 1.005851e-17 / 7.329400e-32
+GPT :    2290.842615 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 0.9957833290100098 s (split), 11.648527383804321 s (operation), 0.0494537353515625 s (unsplit)
+GPT :    2292.446862 s : Mode-representation applied to 4 vector(s) in 1.20082 s (0.73005 s for rank_inner_product, 0.0145361 s for global sum, 0.456232 s for linear combinations)
+GPT :    2299.628399 s : cg: NOT converged in 200 iterations;  squared residual 1.123034e-19 / 8.528198e-34
+GPT :    2305.351308 s : cg: NOT converged in 200 iterations;  squared residual 1.358784e-19 / 1.037155e-33
+GPT :    2305.400891 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1230597496032715 s (split), 11.50709319114685 s (operation), 0.04949831962585449 s (unsplit)
+GPT :    2307.015461 s : Mode-representation applied to 4 vector(s) in 1.2033 s (0.730613 s for rank_inner_product, 0.0137787 s for global sum, 0.458912 s for linear combinations)
+GPT :    2314.185406 s : cg: NOT converged in 200 iterations;  squared residual 1.640005e-21 / 1.166503e-35
+GPT :    2319.907580 s : cg: NOT converged in 200 iterations;  squared residual 2.033503e-21 / 1.411783e-35
+GPT :    2319.957051 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1285271644592285 s (split), 11.477769613265991 s (operation), 0.04938077926635742 s (unsplit)
+GPT :    2320.141084 s : defect_correcting: converged after 8 iterations
+GPT :    2321.866074 s : starting diquark contractions for down quark insertion and Polarization  2
+GPT :    2327.557812 s : diquark contractions for Polarization  2  done
+GPT :    2357.078120 s : Mode-representation applied to 4 vector(s) in 1.21051 s (0.731851 s for rank_inner_product, 0.0118628 s for global sum, 0.466798 s for linear combinations)
+GPT :    2364.293463 s : cg: NOT converged in 200 iterations;  squared residual 2.546964e-07 / 1.004623e-17
+GPT :    2370.037952 s : cg: NOT converged in 200 iterations;  squared residual 2.397437e-07 / 1.005750e-17
+GPT :    2370.087517 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1352596282958984 s (split), 11.53869891166687 s (operation), 0.049477338790893555 s (unsplit)
+GPT :    2371.723882 s : Mode-representation applied to 4 vector(s) in 1.20371 s (0.736373 s for rank_inner_product, 0.00945306 s for global sum, 0.45788 s for linear combinations)
+GPT :    2378.944903 s : cg: NOT converged in 200 iterations;  squared residual 1.673393e-09 / 2.547373e-23
+GPT :    2384.679652 s : cg: NOT converged in 200 iterations;  squared residual 1.462559e-09 / 2.397643e-23
+GPT :    2384.729373 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1126344203948975 s (split), 11.557771682739258 s (operation), 0.049637556076049805 s (unsplit)
+GPT :    2386.356604 s : Mode-representation applied to 4 vector(s) in 1.20211 s (0.732287 s for rank_inner_product, 0.0114243 s for global sum, 0.458403 s for linear combinations)
+GPT :    2393.569607 s : cg: NOT converged in 200 iterations;  squared residual 9.834418e-12 / 1.678966e-25
+GPT :    2399.307833 s : cg: NOT converged in 200 iterations;  squared residual 8.115205e-12 / 1.465790e-25
+GPT :    2399.357449 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1375248432159424 s (split), 11.53862476348877 s (operation), 0.049527645111083984 s (unsplit)
+GPT :    2400.987105 s : Mode-representation applied to 4 vector(s) in 1.20686 s (0.737861 s for rank_inner_product, 0.00867367 s for global sum, 0.460327 s for linear combinations)
+GPT :    2408.185539 s : cg: NOT converged in 200 iterations;  squared residual 8.615754e-14 / 9.896588e-28
+GPT :    2413.921002 s : cg: NOT converged in 200 iterations;  squared residual 6.201473e-14 / 8.142873e-28
+GPT :    2413.970533 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.12449049949646 s (split), 11.534195899963379 s (operation), 0.04944777488708496 s (unsplit)
+GPT :    2415.573357 s : Mode-representation applied to 4 vector(s) in 1.19489 s (0.733998 s for rank_inner_product, 0.00915003 s for global sum, 0.451739 s for linear combinations)
+GPT :    2422.775087 s : cg: NOT converged in 200 iterations;  squared residual 9.042900e-16 / 8.709580e-30
+GPT :    2428.498168 s : cg: NOT converged in 200 iterations;  squared residual 5.679555e-16 / 6.237787e-30
+GPT :    2428.547583 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1342651844024658 s (split), 11.51225471496582 s (operation), 0.04932689666748047 s (unsplit)
+GPT :    2430.160403 s : Mode-representation applied to 4 vector(s) in 1.20143 s (0.732479 s for rank_inner_product, 0.0158303 s for global sum, 0.453123 s for linear combinations)
+GPT :    2437.357172 s : cg: NOT converged in 200 iterations;  squared residual 1.259091e-17 / 9.276576e-32
+GPT :    2443.096411 s : cg: NOT converged in 200 iterations;  squared residual 7.710722e-18 / 5.790850e-32
+GPT :    2443.146015 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1443455219268799 s (split), 11.516178607940674 s (operation), 0.0495147705078125 s (unsplit)
+GPT :    2444.758721 s : Mode-representation applied to 4 vector(s) in 1.20142 s (0.736623 s for rank_inner_product, 0.0107226 s for global sum, 0.454072 s for linear combinations)
+GPT :    2451.991172 s : cg: NOT converged in 200 iterations;  squared residual 1.742765e-19 / 1.303081e-33
+GPT :    2457.722043 s : cg: NOT converged in 200 iterations;  squared residual 1.031207e-19 / 7.917442e-34
+GPT :    2457.771607 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1405889987945557 s (split), 11.546247243881226 s (operation), 0.04947781562805176 s (unsplit)
+GPT :    2459.381263 s : Mode-representation applied to 4 vector(s) in 1.20217 s (0.733938 s for rank_inner_product, 0.0107236 s for global sum, 0.457513 s for linear combinations)
+GPT :    2466.563906 s : cg: NOT converged in 200 iterations;  squared residual 2.705525e-21 / 1.819980e-35
+GPT :    2472.294983 s : cg: NOT converged in 200 iterations;  squared residual 1.441466e-21 / 1.064516e-35
+GPT :    2472.344786 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.130232810974121 s (split), 11.510223150253296 s (operation), 0.049718379974365234 s (unsplit)
+GPT :    2472.529383 s : defect_correcting: converged after 8 iterations
+GPT :    2477.935198 s : Mode-representation applied to 4 vector(s) in 1.20491 s (0.734105 s for rank_inner_product, 0.0117185 s for global sum, 0.459083 s for linear combinations)
+GPT :    2485.122997 s : cg: NOT converged in 200 iterations;  squared residual 2.480178e-07 / 1.003353e-17
+GPT :    2490.854079 s : cg: NOT converged in 200 iterations;  squared residual 2.428524e-07 / 1.004549e-17
+GPT :    2490.903606 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1307101249694824 s (split), 11.508291482925415 s (operation), 0.04944348335266113 s (unsplit)
+GPT :    2492.525149 s : Mode-representation applied to 4 vector(s) in 1.2042 s (0.737709 s for rank_inner_product, 0.00927114 s for global sum, 0.457224 s for linear combinations)
+GPT :    2499.724290 s : cg: NOT converged in 200 iterations;  squared residual 1.643560e-09 / 2.480491e-23
+GPT :    2505.454915 s : cg: NOT converged in 200 iterations;  squared residual 1.638229e-09 / 2.428775e-23
+GPT :    2505.504440 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1410505771636963 s (split), 11.516805410385132 s (operation), 0.04943346977233887 s (unsplit)
+GPT :    2507.133096 s : Mode-representation applied to 4 vector(s) in 1.20623 s (0.732614 s for rank_inner_product, 0.0127475 s for global sum, 0.460865 s for linear combinations)
+GPT :    2514.350688 s : cg: NOT converged in 200 iterations;  squared residual 9.816767e-12 / 1.649579e-25
+GPT :    2520.084430 s : cg: NOT converged in 200 iterations;  squared residual 9.082954e-12 / 1.642530e-25
+GPT :    2520.134500 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1123011112213135 s (split), 11.563552618026733 s (operation), 0.04998326301574707 s (unsplit)
+GPT :    2521.742341 s : Mode-representation applied to 4 vector(s) in 1.20174 s (0.735415 s for rank_inner_product, 0.0109224 s for global sum, 0.455405 s for linear combinations)
+GPT :    2528.945527 s : cg: NOT converged in 200 iterations;  squared residual 8.101675e-14 / 9.867878e-28
+GPT :    2534.678848 s : cg: NOT converged in 200 iterations;  squared residual 7.633924e-14 / 9.126452e-28
+GPT :    2534.727822 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1236560344696045 s (split), 11.539579629898071 s (operation), 0.04889225959777832 s (unsplit)
+GPT :    2536.333843 s : Mode-representation applied to 4 vector(s) in 1.2 s (0.739714 s for rank_inner_product, 0.00760961 s for global sum, 0.45268 s for linear combinations)
+GPT :    2543.530508 s : cg: NOT converged in 200 iterations;  squared residual 7.844792e-16 / 8.165653e-30
+GPT :    2549.263338 s : cg: NOT converged in 200 iterations;  squared residual 7.443441e-16 / 7.699727e-30
+GPT :    2549.312739 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0783462524414062 s (split), 11.566794157028198 s (operation), 0.04930853843688965 s (unsplit)
+GPT :    2550.917760 s : Mode-representation applied to 4 vector(s) in 1.19926 s (0.734431 s for rank_inner_product, 0.0105169 s for global sum, 0.454317 s for linear combinations)
+GPT :    2558.108248 s : cg: NOT converged in 200 iterations;  squared residual 1.030353e-17 / 8.003451e-32
+GPT :    2563.842439 s : cg: NOT converged in 200 iterations;  squared residual 1.064866e-17 / 7.632870e-32
+GPT :    2563.892443 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1426703929901123 s (split), 11.50900650024414 s (operation), 0.04991936683654785 s (unsplit)
+GPT :    2565.504782 s : Mode-representation applied to 4 vector(s) in 1.20255 s (0.73526 s for rank_inner_product, 0.0095458 s for global sum, 0.457741 s for linear combinations)
+GPT :    2572.703429 s : cg: NOT converged in 200 iterations;  squared residual 1.376084e-19 / 1.059565e-33
+GPT :    2578.448169 s : cg: NOT converged in 200 iterations;  squared residual 1.450838e-19 / 1.101810e-33
+GPT :    2578.497811 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1293089389801025 s (split), 11.540241956710815 s (operation), 0.04955649375915527 s (unsplit)
+GPT :    2580.111375 s : Mode-representation applied to 4 vector(s) in 1.20225 s (0.738996 s for rank_inner_product, 0.00898719 s for global sum, 0.45427 s for linear combinations)
+GPT :    2587.323341 s : cg: NOT converged in 200 iterations;  squared residual 2.006239e-21 / 1.425231e-35
+GPT :    2593.065758 s : cg: NOT converged in 200 iterations;  squared residual 2.263071e-21 / 1.516082e-35
+GPT :    2593.115242 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1370477676391602 s (split), 11.54404354095459 s (operation), 0.049410343170166016 s (unsplit)
+GPT :    2593.293818 s : defect_correcting: converged after 8 iterations
+GPT :    2598.706503 s : Mode-representation applied to 4 vector(s) in 1.20308 s (0.735146 s for rank_inner_product, 0.0080781 s for global sum, 0.459853 s for linear combinations)
+GPT :    2605.901355 s : cg: NOT converged in 200 iterations;  squared residual 2.577910e-07 / 1.004504e-17
+GPT :    2611.641699 s : cg: NOT converged in 200 iterations;  squared residual 2.603390e-07 / 1.005854e-17
+GPT :    2611.691397 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1353628635406494 s (split), 11.51985764503479 s (operation), 0.04961419105529785 s (unsplit)
+GPT :    2613.309753 s : Mode-representation applied to 4 vector(s) in 1.20211 s (0.736242 s for rank_inner_product, 0.0101845 s for global sum, 0.455687 s for linear combinations)
+GPT :    2620.534022 s : cg: NOT converged in 200 iterations;  squared residual 1.698614e-09 / 2.578198e-23
+GPT :    2626.273158 s : cg: NOT converged in 200 iterations;  squared residual 1.802984e-09 / 2.603693e-23
+GPT :    2626.322990 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1375055313110352 s (split), 11.547746419906616 s (operation), 0.04974770545959473 s (unsplit)
+GPT :    2627.948039 s : Mode-representation applied to 4 vector(s) in 1.20366 s (0.734693 s for rank_inner_product, 0.00892472 s for global sum, 0.46004 s for linear combinations)
+GPT :    2635.120470 s : cg: NOT converged in 200 iterations;  squared residual 9.114637e-12 / 1.702766e-25
+GPT :    2640.829189 s : cg: NOT converged in 200 iterations;  squared residual 9.872593e-12 / 1.807721e-25
+GPT :    2640.879075 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0586092472076416 s (split), 11.546262979507446 s (operation), 0.049799203872680664 s (unsplit)
+GPT :    2642.488156 s : Mode-representation applied to 4 vector(s) in 1.20455 s (0.739357 s for rank_inner_product, 0.00655603 s for global sum, 0.458641 s for linear combinations)
+GPT :    2649.695288 s : cg: NOT converged in 200 iterations;  squared residual 7.572555e-14 / 9.154855e-28
+GPT :    2655.413120 s : cg: NOT converged in 200 iterations;  squared residual 8.554923e-14 / 9.924733e-28
+GPT :    2655.462896 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1438820362091064 s (split), 11.505887746810913 s (operation), 0.049691200256347656 s (unsplit)
+GPT :    2657.074356 s : Mode-representation applied to 4 vector(s) in 1.20195 s (0.737715 s for rank_inner_product, 0.00851512 s for global sum, 0.455723 s for linear combinations)
+GPT :    2664.246273 s : cg: NOT converged in 200 iterations;  squared residual 7.069214e-16 / 7.629997e-30
+GPT :    2669.954342 s : cg: NOT converged in 200 iterations;  squared residual 8.383624e-16 / 8.634130e-30
+GPT :    2670.004014 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.139784574508667 s (split), 11.46350622177124 s (operation), 0.04958367347717285 s (unsplit)
+GPT :    2671.612170 s : Mode-representation applied to 4 vector(s) in 1.19895 s (0.73669 s for rank_inner_product, 0.00705767 s for global sum, 0.455207 s for linear combinations)
+GPT :    2678.775774 s : cg: NOT converged in 200 iterations;  squared residual 9.862928e-18 / 7.232002e-32
+GPT :    2684.492510 s : cg: NOT converged in 200 iterations;  squared residual 1.182703e-17 / 8.595376e-32
+GPT :    2684.541942 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1435961723327637 s (split), 11.461231470108032 s (operation), 0.04935050010681152 s (unsplit)
+GPT :    2686.144531 s : Mode-representation applied to 4 vector(s) in 1.19709 s (0.73807 s for rank_inner_product, 0.00627518 s for global sum, 0.452744 s for linear combinations)
+GPT :    2693.346527 s : cg: NOT converged in 200 iterations;  squared residual 1.316028e-19 / 1.017246e-33
+GPT :    2699.068936 s : cg: NOT converged in 200 iterations;  squared residual 1.608839e-19 / 1.222754e-33
+GPT :    2699.118484 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1349406242370605 s (split), 11.502508640289307 s (operation), 0.04946160316467285 s (unsplit)
+GPT :    2700.725786 s : Mode-representation applied to 4 vector(s) in 1.19974 s (0.730066 s for rank_inner_product, 0.0141578 s for global sum, 0.455516 s for linear combinations)
+GPT :    2707.902890 s : cg: NOT converged in 200 iterations;  squared residual 1.965903e-21 / 1.368619e-35
+GPT :    2713.624378 s : cg: NOT converged in 200 iterations;  squared residual 2.445332e-21 / 1.677486e-35
+GPT :    2713.673811 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1371796131134033 s (split), 11.485049962997437 s (operation), 0.04934334754943848 s (unsplit)
+GPT :    2713.853053 s : defect_correcting: converged after 8 iterations
+GPT :    2715.526453 s : bw. seq propagator done
+GPT :    2735.151772 s : starting diquark contractions for up quark insertion and Polarization  0
+GPT :    2744.606174 s : diquark contractions for Polarization  0  done
+GPT :    2774.916412 s : Mode-representation applied to 4 vector(s) in 1.20125 s (0.734711 s for rank_inner_product, 0.00818801 s for global sum, 0.458353 s for linear combinations)
+GPT :    2782.167786 s : cg: NOT converged in 200 iterations;  squared residual 2.446818e-07 / 1.005316e-17
+GPT :    2787.908509 s : cg: NOT converged in 200 iterations;  squared residual 2.471767e-07 / 1.004593e-17
+GPT :    2787.957898 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1388819217681885 s (split), 11.550211906433105 s (operation), 0.04930377006530762 s (unsplit)
+GPT :    2789.574111 s : Mode-representation applied to 4 vector(s) in 1.19851 s (0.73359 s for rank_inner_product, 0.00794148 s for global sum, 0.456976 s for linear combinations)
+GPT :    2796.799051 s : cg: NOT converged in 200 iterations;  squared residual 1.679648e-09 / 2.447101e-23
+GPT :    2802.539382 s : cg: NOT converged in 200 iterations;  squared residual 1.467423e-09 / 2.472018e-23
+GPT :    2802.588781 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.142106294631958 s (split), 11.547645807266235 s (operation), 0.04931759834289551 s (unsplit)
+GPT :    2804.209704 s : Mode-representation applied to 4 vector(s) in 1.20148 s (0.730166 s for rank_inner_product, 0.0138335 s for global sum, 0.457477 s for linear combinations)
+GPT :    2811.399261 s : cg: NOT converged in 200 iterations;  squared residual 9.807047e-12 / 1.684812e-25
+GPT :    2817.147970 s : cg: NOT converged in 200 iterations;  squared residual 8.118425e-12 / 1.470151e-25
+GPT :    2817.197361 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.131744384765625 s (split), 11.532023668289185 s (operation), 0.04930830001831055 s (unsplit)
+GPT :    2818.825614 s : Mode-representation applied to 4 vector(s) in 1.20234 s (0.731621 s for rank_inner_product, 0.00986743 s for global sum, 0.460851 s for linear combinations)
+GPT :    2826.015254 s : cg: NOT converged in 200 iterations;  squared residual 8.523625e-14 / 9.863922e-28
+GPT :    2831.755299 s : cg: NOT converged in 200 iterations;  squared residual 6.080029e-14 / 8.142235e-28
+GPT :    2831.803393 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1342172622680664 s (split), 11.51852822303772 s (operation), 0.048007965087890625 s (unsplit)
+GPT :    2833.420984 s : Mode-representation applied to 4 vector(s) in 1.19717 s (0.731693 s for rank_inner_product, 0.00985193 s for global sum, 0.455621 s for linear combinations)
+GPT :    2840.632036 s : cg: NOT converged in 200 iterations;  squared residual 8.786757e-16 / 8.607749e-30
+GPT :    2846.382636 s : cg: NOT converged in 200 iterations;  squared residual 5.665446e-16 / 6.113711e-30
+GPT :    2846.432089 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1302900314331055 s (split), 11.557582139968872 s (operation), 0.049367666244506836 s (unsplit)
+GPT :    2848.057582 s : Mode-representation applied to 4 vector(s) in 1.20225 s (0.733438 s for rank_inner_product, 0.0129502 s for global sum, 0.455858 s for linear combinations)
+GPT :    2855.269392 s : cg: NOT converged in 200 iterations;  squared residual 1.209366e-17 / 8.998355e-32
+GPT :    2861.020160 s : cg: NOT converged in 200 iterations;  squared residual 7.873178e-18 / 5.777861e-32
+GPT :    2861.069739 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1357097625732422 s (split), 11.552570343017578 s (operation), 0.049497365951538086 s (unsplit)
+GPT :    2862.692139 s : Mode-representation applied to 4 vector(s) in 1.20274 s (0.729119 s for rank_inner_product, 0.0152869 s for global sum, 0.458334 s for linear combinations)
+GPT :    2869.899395 s : cg: NOT converged in 200 iterations;  squared residual 1.679585e-19 / 1.248418e-33
+GPT :    2875.646310 s : cg: NOT converged in 200 iterations;  squared residual 1.053293e-19 / 8.087531e-34
+GPT :    2875.695117 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1269521713256836 s (split), 11.552290916442871 s (operation), 0.048720359802246094 s (unsplit)
+GPT :    2877.324913 s : Mode-representation applied to 4 vector(s) in 1.20027 s (0.72711 s for rank_inner_product, 0.0171859 s for global sum, 0.455971 s for linear combinations)
+GPT :    2884.546116 s : cg: NOT converged in 200 iterations;  squared residual 2.492556e-21 / 1.745938e-35
+GPT :    2890.287595 s : cg: NOT converged in 200 iterations;  squared residual 1.527266e-21 / 1.088674e-35
+GPT :    2890.337140 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1296730041503906 s (split), 11.556756496429443 s (operation), 0.04946184158325195 s (unsplit)
+GPT :    2890.537246 s : defect_correcting: converged after 8 iterations
+GPT :    2895.928228 s : Mode-representation applied to 4 vector(s) in 1.20293 s (0.729812 s for rank_inner_product, 0.0140409 s for global sum, 0.459081 s for linear combinations)
+GPT :    2903.153358 s : cg: NOT converged in 200 iterations;  squared residual 2.170663e-07 / 1.005181e-17
+GPT :    2908.893956 s : cg: NOT converged in 200 iterations;  squared residual 2.651221e-07 / 1.005020e-17
+GPT :    2908.943378 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1343817710876465 s (split), 11.552833795547485 s (operation), 0.04933357238769531 s (unsplit)
+GPT :    2910.564144 s : Mode-representation applied to 4 vector(s) in 1.19948 s (0.730715 s for rank_inner_product, 0.0128245 s for global sum, 0.455937 s for linear combinations)
+GPT :    2917.803746 s : cg: NOT converged in 200 iterations;  squared residual 1.386865e-09 / 2.170953e-23
+GPT :    2923.544749 s : cg: NOT converged in 200 iterations;  squared residual 1.772979e-09 / 2.651504e-23
+GPT :    2923.594456 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1432931423187256 s (split), 11.5598783493042 s (operation), 0.04962301254272461 s (unsplit)
+GPT :    2925.220862 s : Mode-representation applied to 4 vector(s) in 1.19617 s (0.729857 s for rank_inner_product, 0.00985789 s for global sum, 0.456456 s for linear combinations)
+GPT :    2932.433115 s : cg: NOT converged in 200 iterations;  squared residual 7.953913e-12 / 1.390449e-25
+GPT :    2938.171718 s : cg: NOT converged in 200 iterations;  squared residual 9.607171e-12 / 1.776741e-25
+GPT :    2938.221196 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1259305477142334 s (split), 11.545511722564697 s (operation), 0.04938793182373047 s (unsplit)
+GPT :    2939.836558 s : Mode-representation applied to 4 vector(s) in 1.19897 s (0.729245 s for rank_inner_product, 0.0144975 s for global sum, 0.455231 s for linear combinations)
+GPT :    2947.037695 s : cg: NOT converged in 200 iterations;  squared residual 6.231607e-14 / 7.983641e-28
+GPT :    2952.773448 s : cg: NOT converged in 200 iterations;  squared residual 7.651632e-14 / 9.642619e-28
+GPT :    2952.821341 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.136559247970581 s (split), 11.526208400726318 s (operation), 0.047807931900024414 s (unsplit)
+GPT :    2954.439465 s : Mode-representation applied to 4 vector(s) in 1.19529 s (0.729289 s for rank_inner_product, 0.0120714 s for global sum, 0.45393 s for linear combinations)
+GPT :    2961.638285 s : cg: NOT converged in 200 iterations;  squared residual 5.693091e-16 / 6.270189e-30
+GPT :    2967.369871 s : cg: NOT converged in 200 iterations;  squared residual 6.979437e-16 / 7.702550e-30
+GPT :    2967.419501 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1290302276611328 s (split), 11.526914596557617 s (operation), 0.049539804458618164 s (unsplit)
+GPT :    2969.045758 s : Mode-representation applied to 4 vector(s) in 1.2038 s (0.729862 s for rank_inner_product, 0.0148418 s for global sum, 0.459101 s for linear combinations)
+GPT :    2976.271196 s : cg: NOT converged in 200 iterations;  squared residual 7.752180e-18 / 5.806438e-32
+GPT :    2982.005610 s : cg: NOT converged in 200 iterations;  squared residual 9.853471e-18 / 7.140315e-32
+GPT :    2982.053492 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1051130294799805 s (split), 11.567140817642212 s (operation), 0.04779767990112305 s (unsplit)
+GPT :    2983.676733 s : Mode-representation applied to 4 vector(s) in 1.20083 s (0.729472 s for rank_inner_product, 0.0154123 s for global sum, 0.455948 s for linear combinations)
+GPT :    2990.877147 s : cg: NOT converged in 200 iterations;  squared residual 1.028339e-19 / 7.967933e-34
+GPT :    2996.612467 s : cg: NOT converged in 200 iterations;  squared residual 1.321852e-19 / 1.017224e-33
+GPT :    2996.662042 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1493921279907227 s (split), 11.511795282363892 s (operation), 0.04949045181274414 s (unsplit)
+GPT :    2998.283593 s : Mode-representation applied to 4 vector(s) in 1.20178 s (0.727686 s for rank_inner_product, 0.0153511 s for global sum, 0.458741 s for linear combinations)
+GPT :    3005.500465 s : cg: NOT converged in 200 iterations;  squared residual 1.493181e-21 / 1.064453e-35
+GPT :    3011.236449 s : cg: NOT converged in 200 iterations;  squared residual 1.965179e-21 / 1.377730e-35
+GPT :    3011.285887 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1395032405853271 s (split), 11.53787875175476 s (operation), 0.04935336112976074 s (unsplit)
+GPT :    3011.488704 s : defect_correcting: converged after 8 iterations
+GPT :    3016.894301 s : Mode-representation applied to 4 vector(s) in 1.19858 s (0.727074 s for rank_inner_product, 0.0149453 s for global sum, 0.456559 s for linear combinations)
+GPT :    3024.099887 s : cg: NOT converged in 200 iterations;  squared residual 2.487283e-07 / 1.005425e-17
+GPT :    3029.840590 s : cg: NOT converged in 200 iterations;  squared residual 2.450027e-07 / 1.004746e-17
+GPT :    3029.890004 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1405935287475586 s (split), 11.53080439567566 s (operation), 0.04932403564453125 s (unsplit)
+GPT :    3031.524541 s : Mode-representation applied to 4 vector(s) in 1.20345 s (0.729597 s for rank_inner_product, 0.0171392 s for global sum, 0.45671 s for linear combinations)
+GPT :    3038.750924 s : cg: NOT converged in 200 iterations;  squared residual 1.700291e-09 / 2.487674e-23
+GPT :    3044.490354 s : cg: NOT converged in 200 iterations;  squared residual 1.595149e-09 / 2.450342e-23
+GPT :    3044.539342 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1278293132781982 s (split), 11.562066316604614 s (operation), 0.04890561103820801 s (unsplit)
+GPT :    3046.164218 s : Mode-representation applied to 4 vector(s) in 1.19957 s (0.73341 s for rank_inner_product, 0.0103321 s for global sum, 0.455828 s for linear combinations)
+GPT :    3053.374400 s : cg: NOT converged in 200 iterations;  squared residual 9.475543e-12 / 1.704834e-25
+GPT :    3059.122105 s : cg: NOT converged in 200 iterations;  squared residual 9.218093e-12 / 1.599518e-25
+GPT :    3059.171636 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1328155994415283 s (split), 11.550082445144653 s (operation), 0.049445152282714844 s (unsplit)
+GPT :    3060.800101 s : Mode-representation applied to 4 vector(s) in 1.19804 s (0.729475 s for rank_inner_product, 0.0129507 s for global sum, 0.455612 s for linear combinations)
+GPT :    3068.002152 s : cg: NOT converged in 200 iterations;  squared residual 8.068522e-14 / 9.524016e-28
+GPT :    3073.721022 s : cg: NOT converged in 200 iterations;  squared residual 7.620282e-14 / 9.261746e-28
+GPT :    3073.768692 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0470824241638184 s (split), 11.60110068321228 s (operation), 0.04757952690124512 s (unsplit)
+GPT :    3075.396497 s : Mode-representation applied to 4 vector(s) in 1.203 s (0.731371 s for rank_inner_product, 0.0144706 s for global sum, 0.457158 s for linear combinations)
+GPT :    3082.562208 s : cg: NOT converged in 200 iterations;  squared residual 8.031923e-16 / 8.144532e-30
+GPT :    3088.281044 s : cg: NOT converged in 200 iterations;  squared residual 7.613109e-16 / 7.685270e-30
+GPT :    3088.358557 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1255483627319336 s (split), 11.484814167022705 s (operation), 0.07742094993591309 s (unsplit)
+GPT :    3089.978645 s : Mode-representation applied to 4 vector(s) in 1.19896 s (0.73061 s for rank_inner_product, 0.01162 s for global sum, 0.456726 s for linear combinations)
+GPT :    3097.240993 s : cg: NOT converged in 200 iterations;  squared residual 1.155478e-17 / 8.242213e-32
+GPT :    3102.985214 s : cg: NOT converged in 200 iterations;  squared residual 1.059003e-17 / 7.794869e-32
+GPT :    3103.034136 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0940353870391846 s (split), 11.636030435562134 s (operation), 0.04883313179016113 s (unsplit)
+GPT :    3104.667681 s : Mode-representation applied to 4 vector(s) in 1.20365 s (0.734694 s for rank_inner_product, 0.0106966 s for global sum, 0.458258 s for linear combinations)
+GPT :    3111.866269 s : cg: NOT converged in 200 iterations;  squared residual 1.586428e-19 / 1.196244e-33
+GPT :    3117.614025 s : cg: NOT converged in 200 iterations;  squared residual 1.470106e-19 / 1.094288e-33
+GPT :    3117.663675 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1387383937835693 s (split), 11.53175663948059 s (operation), 0.04956674575805664 s (unsplit)
+GPT :    3119.292464 s : Mode-representation applied to 4 vector(s) in 1.20414 s (0.73331 s for rank_inner_product, 0.0102875 s for global sum, 0.460543 s for linear combinations)
+GPT :    3126.487654 s : cg: NOT converged in 200 iterations;  squared residual 2.474854e-21 / 1.658421e-35
+GPT :    3132.210326 s : cg: NOT converged in 200 iterations;  squared residual 2.227168e-21 / 1.532300e-35
+GPT :    3132.259569 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1255083084106445 s (split), 11.516595602035522 s (operation), 0.049155235290527344 s (unsplit)
+GPT :    3132.460107 s : defect_correcting: converged after 8 iterations
+GPT :    3134.101843 s : starting diquark contractions for up quark insertion and Polarization  1
+GPT :    3140.541979 s : diquark contractions for Polarization  1  done
+GPT :    3170.133200 s : Mode-representation applied to 4 vector(s) in 1.20286 s (0.731872 s for rank_inner_product, 0.0109653 s for global sum, 0.460027 s for linear combinations)
+GPT :    3177.372603 s : cg: NOT converged in 200 iterations;  squared residual 2.547639e-07 / 1.004114e-17
+GPT :    3183.105769 s : cg: NOT converged in 200 iterations;  squared residual 2.247281e-07 / 1.004658e-17
+GPT :    3183.153864 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1135742664337158 s (split), 11.558476686477661 s (operation), 0.047959089279174805 s (unsplit)
+GPT :    3184.781137 s : Mode-representation applied to 4 vector(s) in 1.20316 s (0.728751 s for rank_inner_product, 0.0178349 s for global sum, 0.456578 s for linear combinations)
+GPT :    3192.005074 s : cg: NOT converged in 200 iterations;  squared residual 1.659305e-09 / 2.547996e-23
+GPT :    3197.750803 s : cg: NOT converged in 200 iterations;  squared residual 1.372123e-09 / 2.247594e-23
+GPT :    3197.800450 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0849463939666748 s (split), 11.604644060134888 s (operation), 0.0495607852935791 s (unsplit)
+GPT :    3199.426185 s : Mode-representation applied to 4 vector(s) in 1.20006 s (0.727501 s for rank_inner_product, 0.0147231 s for global sum, 0.457841 s for linear combinations)
+GPT :    3206.622919 s : cg: NOT converged in 200 iterations;  squared residual 9.116175e-12 / 1.663459e-25
+GPT :    3212.369123 s : cg: NOT converged in 200 iterations;  squared residual 8.063249e-12 / 1.375879e-25
+GPT :    3212.418585 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1315252780914307 s (split), 11.529206991195679 s (operation), 0.04937267303466797 s (unsplit)
+GPT :    3214.020314 s : Mode-representation applied to 4 vector(s) in 1.19292 s (0.728399 s for rank_inner_product, 0.00978351 s for global sum, 0.454741 s for linear combinations)
+GPT :    3221.238715 s : cg: NOT converged in 200 iterations;  squared residual 7.515003e-14 / 9.160397e-28
+GPT :    3226.986327 s : cg: NOT converged in 200 iterations;  squared residual 6.419885e-14 / 8.097997e-28
+GPT :    3227.035813 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1171057224273682 s (split), 11.564672708511353 s (operation), 0.04940199851989746 s (unsplit)
+GPT :    3228.646460 s : Mode-representation applied to 4 vector(s) in 1.19721 s (0.729583 s for rank_inner_product, 0.0106382 s for global sum, 0.456992 s for linear combinations)
+GPT :    3235.858757 s : cg: NOT converged in 200 iterations;  squared residual 7.391158e-16 / 7.582961e-30
+GPT :    3241.601163 s : cg: NOT converged in 200 iterations;  squared residual 6.307560e-16 / 6.469055e-30
+GPT :    3241.650733 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1431047916412354 s (split), 11.534177780151367 s (operation), 0.04948782920837402 s (unsplit)
+GPT :    3243.260200 s : Mode-representation applied to 4 vector(s) in 1.20122 s (0.728642 s for rank_inner_product, 0.0146904 s for global sum, 0.457887 s for linear combinations)
+GPT :    3250.479963 s : cg: NOT converged in 200 iterations;  squared residual 1.042002e-17 / 7.583670e-32
+GPT :    3256.235450 s : cg: NOT converged in 200 iterations;  squared residual 8.474683e-18 / 6.446639e-32
+GPT :    3256.285157 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1009540557861328 s (split), 11.595968008041382 s (operation), 0.04962491989135742 s (unsplit)
+GPT :    3257.892039 s : Mode-representation applied to 4 vector(s) in 1.19239 s (0.727932 s for rank_inner_product, 0.0123737 s for global sum, 0.452087 s for linear combinations)
+GPT :    3265.097175 s : cg: NOT converged in 200 iterations;  squared residual 1.427341e-19 / 1.079400e-33
+GPT :    3270.840242 s : cg: NOT converged in 200 iterations;  squared residual 1.173144e-19 / 8.741740e-34
+GPT :    3270.889845 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.114116907119751 s (split), 11.559468507766724 s (operation), 0.049518585205078125 s (unsplit)
+GPT :    3272.501976 s : Mode-representation applied to 4 vector(s) in 1.19706 s (0.729729 s for rank_inner_product, 0.0100715 s for global sum, 0.457258 s for linear combinations)
+GPT :    3279.714159 s : cg: NOT converged in 200 iterations;  squared residual 2.206569e-21 / 1.493431e-35
+GPT :    3285.450648 s : cg: NOT converged in 200 iterations;  squared residual 1.718897e-21 / 1.219147e-35
+GPT :    3285.500281 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1404948234558105 s (split), 11.53178334236145 s (operation), 0.049546241760253906 s (unsplit)
+GPT :    3285.684976 s : defect_correcting: converged after 8 iterations
+GPT :    3291.055560 s : Mode-representation applied to 4 vector(s) in 1.19819 s (0.729852 s for rank_inner_product, 0.014451 s for global sum, 0.453885 s for linear combinations)
+GPT :    3298.248448 s : cg: NOT converged in 200 iterations;  squared residual 2.390850e-07 / 1.005122e-17
+GPT :    3303.985409 s : cg: NOT converged in 200 iterations;  squared residual 2.584454e-07 / 1.005467e-17
+GPT :    3304.034977 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0979363918304443 s (split), 11.54152226448059 s (operation), 0.049481868743896484 s (unsplit)
+GPT :    3305.655780 s : Mode-representation applied to 4 vector(s) in 1.20115 s (0.72925 s for rank_inner_product, 0.0165987 s for global sum, 0.455306 s for linear combinations)
+GPT :    3312.853000 s : cg: NOT converged in 200 iterations;  squared residual 1.529829e-09 / 2.391207e-23
+GPT :    3318.597233 s : cg: NOT converged in 200 iterations;  squared residual 1.695639e-09 / 2.584723e-23
+GPT :    3318.646906 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1475412845611572 s (split), 11.513768672943115 s (operation), 0.04958391189575195 s (unsplit)
+GPT :    3320.270410 s : Mode-representation applied to 4 vector(s) in 1.20448 s (0.730004 s for rank_inner_product, 0.0143459 s for global sum, 0.46013 s for linear combinations)
+GPT :    3327.448518 s : cg: NOT converged in 200 iterations;  squared residual 9.024031e-12 / 1.534210e-25
+GPT :    3333.181936 s : cg: NOT converged in 200 iterations;  squared residual 9.126725e-12 / 1.699022e-25
+GPT :    3333.234108 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1118133068084717 s (split), 11.525073766708374 s (operation), 0.05208015441894531 s (unsplit)
+GPT :    3334.840440 s : Mode-representation applied to 4 vector(s) in 1.20052 s (0.730628 s for rank_inner_product, 0.0133193 s for global sum, 0.456575 s for linear combinations)
+GPT :    3342.042682 s : cg: NOT converged in 200 iterations;  squared residual 7.364875e-14 / 9.065304e-28
+GPT :    3347.775959 s : cg: NOT converged in 200 iterations;  squared residual 7.270404e-14 / 9.158734e-28
+GPT :    3347.825543 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.124882459640503 s (split), 11.535927295684814 s (operation), 0.049500226974487305 s (unsplit)
+GPT :    3349.436429 s : Mode-representation applied to 4 vector(s) in 1.20291 s (0.729521 s for rank_inner_product, 0.0135272 s for global sum, 0.459867 s for linear combinations)
+GPT :    3356.628572 s : cg: NOT converged in 200 iterations;  squared residual 7.271385e-16 / 7.423388e-30
+GPT :    3362.365767 s : cg: NOT converged in 200 iterations;  squared residual 6.565546e-16 / 7.316331e-30
+GPT :    3362.413697 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1215441226959229 s (split), 11.533010244369507 s (operation), 0.04783797264099121 s (unsplit)
+GPT :    3364.023316 s : Mode-representation applied to 4 vector(s) in 1.20152 s (0.734144 s for rank_inner_product, 0.0124195 s for global sum, 0.454959 s for linear combinations)
+GPT :    3371.263583 s : cg: NOT converged in 200 iterations;  squared residual 9.793312e-18 / 7.431861e-32
+GPT :    3377.001615 s : cg: NOT converged in 200 iterations;  squared residual 9.302128e-18 / 6.712950e-32
+GPT :    3377.051283 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.116579532623291 s (split), 11.574596166610718 s (operation), 0.049577951431274414 s (unsplit)
+GPT :    3378.659176 s : Mode-representation applied to 4 vector(s) in 1.20111 s (0.73127 s for rank_inner_product, 0.0149157 s for global sum, 0.454926 s for linear combinations)
+GPT :    3385.870948 s : cg: NOT converged in 200 iterations;  squared residual 1.353990e-19 / 1.009794e-33
+GPT :    3391.606605 s : cg: NOT converged in 200 iterations;  squared residual 1.236283e-19 / 9.589522e-34
+GPT :    3391.656013 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1480886936187744 s (split), 11.52275037765503 s (operation), 0.04932260513305664 s (unsplit)
+GPT :    3393.262495 s : Mode-representation applied to 4 vector(s) in 1.20091 s (0.731166 s for rank_inner_product, 0.0177469 s for global sum, 0.451993 s for linear combinations)
+GPT :    3400.469867 s : cg: NOT converged in 200 iterations;  squared residual 1.978466e-21 / 1.406114e-35
+GPT :    3406.192493 s : cg: NOT converged in 200 iterations;  squared residual 1.835926e-21 / 1.285517e-35
+GPT :    3406.241910 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.132542371749878 s (split), 11.521495342254639 s (operation), 0.049326419830322266 s (unsplit)
+GPT :    3406.422575 s : defect_correcting: converged after 8 iterations
+GPT :    3412.049873 s : Mode-representation applied to 4 vector(s) in 1.20396 s (0.730379 s for rank_inner_product, 0.014641 s for global sum, 0.458942 s for linear combinations)
+GPT :    3419.237087 s : cg: NOT converged in 200 iterations;  squared residual 2.502459e-07 / 1.005041e-17
+GPT :    3424.960821 s : cg: NOT converged in 200 iterations;  squared residual 2.678446e-07 / 1.004075e-17
+GPT :    3425.010407 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1348340511322021 s (split), 11.501551628112793 s (operation), 0.04949474334716797 s (unsplit)
+GPT :    3426.636243 s : Mode-representation applied to 4 vector(s) in 1.20634 s (0.732424 s for rank_inner_product, 0.0155118 s for global sum, 0.458401 s for linear combinations)
+GPT :    3433.812161 s : cg: NOT converged in 200 iterations;  squared residual 1.688785e-09 / 2.502704e-23
+GPT :    3439.536987 s : cg: NOT converged in 200 iterations;  squared residual 1.778319e-09 / 2.678797e-23
+GPT :    3439.586914 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.140753984451294 s (split), 11.48733115196228 s (operation), 0.049841880798339844 s (unsplit)
+GPT :    3441.208581 s : Mode-representation applied to 4 vector(s) in 1.19859 s (0.730324 s for rank_inner_product, 0.0129745 s for global sum, 0.45529 s for linear combinations)
+GPT :    3448.399500 s : cg: NOT converged in 200 iterations;  squared residual 9.344337e-12 / 1.692699e-25
+GPT :    3454.126544 s : cg: NOT converged in 200 iterations;  squared residual 9.752352e-12 / 1.782425e-25
+GPT :    3454.176198 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1164133548736572 s (split), 11.518782377243042 s (operation), 0.04956626892089844 s (unsplit)
+GPT :    3455.792567 s : Mode-representation applied to 4 vector(s) in 1.19689 s (0.728481 s for rank_inner_product, 0.0124619 s for global sum, 0.45595 s for linear combinations)
+GPT :    3463.041937 s : cg: NOT converged in 200 iterations;  squared residual 7.716330e-14 / 9.384156e-28
+GPT :    3468.785788 s : cg: NOT converged in 200 iterations;  squared residual 8.089880e-14 / 9.795968e-28
+GPT :    3468.835265 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0721814632415771 s (split), 11.64407229423523 s (operation), 0.04939103126525879 s (unsplit)
+GPT :    3470.452357 s : Mode-representation applied to 4 vector(s) in 1.20627 s (0.73416 s for rank_inner_product, 0.0107071 s for global sum, 0.461406 s for linear combinations)
+GPT :    3477.647075 s : cg: NOT converged in 200 iterations;  squared residual 7.354537e-16 / 7.774818e-30
+GPT :    3483.388711 s : cg: NOT converged in 200 iterations;  squared residual 7.884080e-16 / 8.157184e-30
+GPT :    3483.438305 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0892918109893799 s (split), 11.569210767745972 s (operation), 0.049508094787597656 s (unsplit)
+GPT :    3485.044147 s : Mode-representation applied to 4 vector(s) in 1.20083 s (0.731524 s for rank_inner_product, 0.0128951 s for global sum, 0.456409 s for linear combinations)
+GPT :    3492.252009 s : cg: NOT converged in 200 iterations;  squared residual 1.031574e-17 / 7.525657e-32
+GPT :    3497.980122 s : cg: NOT converged in 200 iterations;  squared residual 1.113782e-17 / 8.080102e-32
+GPT :    3498.029750 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1261425018310547 s (split), 11.53351640701294 s (operation), 0.04954099655151367 s (unsplit)
+GPT :    3499.645652 s : Mode-representation applied to 4 vector(s) in 1.20752 s (0.732005 s for rank_inner_product, 0.0125866 s for global sum, 0.462929 s for linear combinations)
+GPT :    3506.820666 s : cg: NOT converged in 200 iterations;  squared residual 1.382879e-19 / 1.064450e-33
+GPT :    3512.538126 s : cg: NOT converged in 200 iterations;  squared residual 1.527561e-19 / 1.152173e-33
+GPT :    3512.586273 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0895118713378906 s (split), 11.528799533843994 s (operation), 0.04806160926818848 s (unsplit)
+GPT :    3514.200279 s : Mode-representation applied to 4 vector(s) in 1.20355 s (0.736396 s for rank_inner_product, 0.00881457 s for global sum, 0.458334 s for linear combinations)
+GPT :    3521.409493 s : cg: NOT converged in 200 iterations;  squared residual 2.099411e-21 / 1.439409e-35
+GPT :    3527.131854 s : cg: NOT converged in 200 iterations;  squared residual 2.340951e-21 / 1.595316e-35
+GPT :    3527.181199 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1239404678344727 s (split), 11.530242681503296 s (operation), 0.04925417900085449 s (unsplit)
+GPT :    3527.361747 s : defect_correcting: converged after 8 iterations
+GPT :    3529.061439 s : starting diquark contractions for up quark insertion and Polarization  2
+GPT :    3537.957537 s : diquark contractions for Polarization  2  done
+GPT :    3567.566162 s : Mode-representation applied to 4 vector(s) in 1.20132 s (0.731555 s for rank_inner_product, 0.0125308 s for global sum, 0.457236 s for linear combinations)
+GPT :    3574.792864 s : cg: NOT converged in 200 iterations;  squared residual 2.667333e-07 / 1.005427e-17
+GPT :    3580.523251 s : cg: NOT converged in 200 iterations;  squared residual 2.441106e-07 / 1.004561e-17
+GPT :    3580.572873 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1498548984527588 s (split), 11.529297351837158 s (operation), 0.04953718185424805 s (unsplit)
+GPT :    3582.188884 s : Mode-representation applied to 4 vector(s) in 1.19791 s (0.729308 s for rank_inner_product, 0.0142975 s for global sum, 0.454304 s for linear combinations)
+GPT :    3589.379164 s : cg: NOT converged in 200 iterations;  squared residual 1.796926e-09 / 2.667680e-23
+GPT :    3595.110067 s : cg: NOT converged in 200 iterations;  squared residual 1.600917e-09 / 2.441407e-23
+GPT :    3595.160512 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1301302909851074 s (split), 11.511536836624146 s (operation), 0.05036187171936035 s (unsplit)
+GPT :    3596.780436 s : Mode-representation applied to 4 vector(s) in 1.19506 s (0.732918 s for rank_inner_product, 0.00912213 s for global sum, 0.453023 s for linear combinations)
+GPT :    3603.978826 s : cg: NOT converged in 200 iterations;  squared residual 1.027543e-11 / 1.801294e-25
+GPT :    3609.715079 s : cg: NOT converged in 200 iterations;  squared residual 8.790976e-12 / 1.604857e-25
+GPT :    3609.764693 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.12278151512146 s (split), 11.535522222518921 s (operation), 0.04952287673950195 s (unsplit)
+GPT :    3611.375350 s : Mode-representation applied to 4 vector(s) in 1.20026 s (0.728602 s for rank_inner_product, 0.0131238 s for global sum, 0.458536 s for linear combinations)
+GPT :    3618.574592 s : cg: NOT converged in 200 iterations;  squared residual 8.261623e-14 / 1.031462e-27
+GPT :    3624.319312 s : cg: NOT converged in 200 iterations;  squared residual 7.332581e-14 / 8.832363e-28
+GPT :    3624.368818 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1382336616516113 s (split), 11.529535055160522 s (operation), 0.049424171447753906 s (unsplit)
+GPT :    3625.978824 s : Mode-representation applied to 4 vector(s) in 1.20166 s (0.727515 s for rank_inner_product, 0.0155928 s for global sum, 0.458557 s for linear combinations)
+GPT :    3633.176276 s : cg: NOT converged in 200 iterations;  squared residual 7.866586e-16 / 8.316496e-30
+GPT :    3638.904490 s : cg: NOT converged in 200 iterations;  squared residual 7.194174e-16 / 7.395258e-30
+GPT :    3638.954016 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1423795223236084 s (split), 11.500558614730835 s (operation), 0.04944014549255371 s (unsplit)
+GPT :    3640.565573 s : Mode-representation applied to 4 vector(s) in 1.20244 s (0.732477 s for rank_inner_product, 0.0120606 s for global sum, 0.457901 s for linear combinations)
+GPT :    3647.794665 s : cg: NOT converged in 200 iterations;  squared residual 1.095804e-17 / 8.029334e-32
+GPT :    3653.528329 s : cg: NOT converged in 200 iterations;  squared residual 1.018408e-17 / 7.369981e-32
+GPT :    3653.577899 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1145243644714355 s (split), 11.558229446411133 s (operation), 0.049484968185424805 s (unsplit)
+GPT :    3655.188080 s : Mode-representation applied to 4 vector(s) in 1.19876 s (0.731104 s for rank_inner_product, 0.0115359 s for global sum, 0.45612 s for linear combinations)
+GPT :    3662.385078 s : cg: NOT converged in 200 iterations;  squared residual 1.471433e-19 / 1.126948e-33
+GPT :    3668.124950 s : cg: NOT converged in 200 iterations;  squared residual 1.379738e-19 / 1.052026e-33
+GPT :    3668.174753 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1372156143188477 s (split), 11.524372577667236 s (operation), 0.0497126579284668 s (unsplit)
+GPT :    3669.786763 s : Mode-representation applied to 4 vector(s) in 1.20222 s (0.733025 s for rank_inner_product, 0.00942922 s for global sum, 0.459767 s for linear combinations)
+GPT :    3676.973988 s : cg: NOT converged in 200 iterations;  squared residual 2.182075e-21 / 1.524304e-35
+GPT :    3682.714180 s : cg: NOT converged in 200 iterations;  squared residual 2.120551e-21 / 1.437944e-35
+GPT :    3682.763773 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1556270122528076 s (split), 11.495802402496338 s (operation), 0.04950594902038574 s (unsplit)
+GPT :    3682.949159 s : defect_correcting: converged after 8 iterations
+GPT :    3688.454667 s : Mode-representation applied to 4 vector(s) in 1.19946 s (0.731611 s for rank_inner_product, 0.0133386 s for global sum, 0.454514 s for linear combinations)
+GPT :    3695.672380 s : cg: NOT converged in 200 iterations;  squared residual 2.292666e-07 / 1.004470e-17
+GPT :    3701.407443 s : cg: NOT converged in 200 iterations;  squared residual 2.400087e-07 / 1.006066e-17
+GPT :    3701.456927 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.148244857788086 s (split), 11.524347305297852 s (operation), 0.04940080642700195 s (unsplit)
+GPT :    3703.085657 s : Mode-representation applied to 4 vector(s) in 1.20124 s (0.733256 s for rank_inner_product, 0.0128925 s for global sum, 0.455087 s for linear combinations)
+GPT :    3710.303638 s : cg: NOT converged in 200 iterations;  squared residual 1.506367e-09 / 2.293020e-23
+GPT :    3716.044368 s : cg: NOT converged in 200 iterations;  squared residual 1.487694e-09 / 2.400369e-23
+GPT :    3716.093945 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1222867965698242 s (split), 11.543864011764526 s (operation), 0.049492597579956055 s (unsplit)
+GPT :    3717.713827 s : Mode-representation applied to 4 vector(s) in 1.19629 s (0.731035 s for rank_inner_product, 0.0118115 s for global sum, 0.453439 s for linear combinations)
+GPT :    3724.878353 s : cg: NOT converged in 200 iterations;  squared residual 8.497186e-12 / 1.510178e-25
+GPT :    3730.592163 s : cg: NOT converged in 200 iterations;  squared residual 8.069318e-12 / 1.490730e-25
+GPT :    3730.644149 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.146477460861206 s (split), 11.455514192581177 s (operation), 0.051895856857299805 s (unsplit)
+GPT :    3732.252279 s : Mode-representation applied to 4 vector(s) in 1.20319 s (0.730562 s for rank_inner_product, 0.0176458 s for global sum, 0.454985 s for linear combinations)
+GPT :    3739.441204 s : cg: NOT converged in 200 iterations;  squared residual 6.910702e-14 / 8.532086e-28
+GPT :    3745.168170 s : cg: NOT converged in 200 iterations;  squared residual 6.353347e-14 / 8.098989e-28
+GPT :    3745.218111 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1226959228515625 s (split), 11.504625797271729 s (operation), 0.04985475540161133 s (unsplit)
+GPT :    3746.823580 s : Mode-representation applied to 4 vector(s) in 1.20221 s (0.733639 s for rank_inner_product, 0.0119982 s for global sum, 0.456576 s for linear combinations)
+GPT :    3754.029433 s : cg: NOT converged in 200 iterations;  squared residual 6.470087e-16 / 6.960257e-30
+GPT :    3759.748132 s : cg: NOT converged in 200 iterations;  squared residual 6.013899e-16 / 6.398595e-30
+GPT :    3759.805947 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1328904628753662 s (split), 11.502643823623657 s (operation), 0.057729482650756836 s (unsplit)
+GPT :    3761.417851 s : Mode-representation applied to 4 vector(s) in 1.20246 s (0.73072 s for rank_inner_product, 0.0126033 s for global sum, 0.459141 s for linear combinations)
+GPT :    3768.599016 s : cg: NOT converged in 200 iterations;  squared residual 9.209527e-18 / 6.617220e-32
+GPT :    3774.319475 s : cg: NOT converged in 200 iterations;  squared residual 8.595546e-18 / 6.159898e-32
+GPT :    3774.368066 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1217617988586426 s (split), 11.492445707321167 s (operation), 0.048505544662475586 s (unsplit)
+GPT :    3775.991978 s : Mode-representation applied to 4 vector(s) in 1.20865 s (0.726667 s for rank_inner_product, 0.021338 s for global sum, 0.46064 s for linear combinations)
+GPT :    3783.161616 s : cg: NOT converged in 200 iterations;  squared residual 1.229560e-19 / 9.498896e-34
+GPT :    3788.874867 s : cg: NOT converged in 200 iterations;  squared residual 1.193044e-19 / 8.888245e-34
+GPT :    3788.929973 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.0685980319976807 s (split), 11.530187845230103 s (operation), 0.055010318756103516 s (unsplit)
+GPT :    3790.546065 s : Mode-representation applied to 4 vector(s) in 1.20224 s (0.729255 s for rank_inner_product, 0.0146587 s for global sum, 0.458327 s for linear combinations)
+GPT :    3797.722676 s : cg: NOT converged in 200 iterations;  squared residual 1.887016e-21 / 1.280348e-35
+GPT :    3803.445238 s : cg: NOT converged in 200 iterations;  squared residual 1.777577e-21 / 1.245005e-35
+GPT :    3803.494727 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.114593505859375 s (split), 11.510782957077026 s (operation), 0.04940295219421387 s (unsplit)
+GPT :    3803.670737 s : defect_correcting: converged after 8 iterations
+GPT :    3809.245811 s : Mode-representation applied to 4 vector(s) in 1.19649 s (0.729461 s for rank_inner_product, 0.0137098 s for global sum, 0.453316 s for linear combinations)
+GPT :    3816.423212 s : cg: NOT converged in 200 iterations;  squared residual 2.494609e-07 / 1.005445e-17
+GPT :    3822.141301 s : cg: NOT converged in 200 iterations;  squared residual 2.500774e-07 / 1.005443e-17
+GPT :    3822.190215 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.138392448425293 s (split), 11.483095645904541 s (operation), 0.04882931709289551 s (unsplit)
+GPT :    3823.877184 s : Mode-representation applied to 4 vector(s) in 1.19825 s (0.729461 s for rank_inner_product, 0.016536 s for global sum, 0.452258 s for linear combinations)
+GPT :    3831.060327 s : cg: NOT converged in 200 iterations;  squared residual 1.590533e-09 / 2.494900e-23
+GPT :    3836.783661 s : cg: NOT converged in 200 iterations;  squared residual 1.601781e-09 / 2.501116e-23
+GPT :    3836.832151 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1249394416809082 s (split), 11.507820844650269 s (operation), 0.04840397834777832 s (unsplit)
+GPT :    3838.454469 s : Mode-representation applied to 4 vector(s) in 1.20007 s (0.72858 s for rank_inner_product, 0.0129051 s for global sum, 0.458587 s for linear combinations)
+GPT :    3845.636552 s : cg: NOT converged in 200 iterations;  squared residual 8.526635e-12 / 1.594113e-25
+GPT :    3851.344453 s : cg: NOT converged in 200 iterations;  squared residual 9.135085e-12 / 1.605407e-25
+GPT :    3851.396112 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1312901973724365 s (split), 11.484328746795654 s (operation), 0.05157303810119629 s (unsplit)
+GPT :    3853.022815 s : Mode-representation applied to 4 vector(s) in 1.20247 s (0.730016 s for rank_inner_product, 0.012907 s for global sum, 0.459552 s for linear combinations)
+GPT :    3860.217847 s : cg: NOT converged in 200 iterations;  squared residual 7.068330e-14 / 8.564029e-28
+GPT :    3865.950846 s : cg: NOT converged in 200 iterations;  squared residual 7.124164e-14 / 9.167112e-28
+GPT :    3866.000316 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1285216808319092 s (split), 11.525183916091919 s (operation), 0.04938340187072754 s (unsplit)
+GPT :    3867.629012 s : Mode-representation applied to 4 vector(s) in 1.20631 s (0.729645 s for rank_inner_product, 0.0176871 s for global sum, 0.458979 s for linear combinations)
+GPT :    3874.787233 s : cg: NOT converged in 200 iterations;  squared residual 6.707003e-16 / 7.125343e-30
+GPT :    3880.507323 s : cg: NOT converged in 200 iterations;  squared residual 6.787205e-16 / 7.170143e-30
+GPT :    3880.568989 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1409692764282227 s (split), 11.461392164230347 s (operation), 0.06158041954040527 s (unsplit)
+GPT :    3882.172395 s : Mode-representation applied to 4 vector(s) in 1.1966 s (0.728252 s for rank_inner_product, 0.0150304 s for global sum, 0.453316 s for linear combinations)
+GPT :    3889.395129 s : cg: NOT converged in 200 iterations;  squared residual 9.599806e-18 / 6.876313e-32
+GPT :    3895.126946 s : cg: NOT converged in 200 iterations;  squared residual 9.471735e-18 / 6.934204e-32
+GPT :    3895.174975 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.133997917175293 s (split), 11.545840978622437 s (operation), 0.0479428768157959 s (unsplit)
+GPT :    3896.782571 s : Mode-representation applied to 4 vector(s) in 1.19922 s (0.731886 s for rank_inner_product, 0.0129848 s for global sum, 0.454352 s for linear combinations)
+GPT :    3903.982741 s : cg: NOT converged in 200 iterations;  squared residual 1.318200e-19 / 9.932663e-34
+GPT :    3909.709871 s : cg: NOT converged in 200 iterations;  squared residual 1.304114e-19 / 9.763637e-34
+GPT :    3909.760445 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.142848014831543 s (split), 11.503791332244873 s (operation), 0.050492048263549805 s (unsplit)
+GPT :    3911.371058 s : Mode-representation applied to 4 vector(s) in 1.19925 s (0.730577 s for rank_inner_product, 0.0145226 s for global sum, 0.454151 s for linear combinations)
+GPT :    3918.571678 s : cg: NOT converged in 200 iterations;  squared residual 1.989982e-21 / 1.377094e-35
+GPT :    3924.299951 s : cg: NOT converged in 200 iterations;  squared residual 1.931711e-21 / 1.355219e-35
+GPT :    3924.347718 s : Split 4 global vectors to 2 local vectors
+                       : Timing: 1.1457653045654297 s (split), 11.509032964706421 s (operation), 0.04768204689025879 s (unsplit)
+GPT :    3924.530909 s : defect_correcting: converged after 8 iterations
+GPT :    3926.207150 s : bw. seq propagator done
+GPT :    3963.731010 s : Gauge: Smearing/Flow finished

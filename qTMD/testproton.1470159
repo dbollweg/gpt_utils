@@ -1,0 +1,195 @@
+
+Lmod is automatically replacing "cce/15.0.0" with "gcc/12.2.0".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.3.3" with "PrgEnv-gnu/8.3.3".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.23     2) darshan-runtime/3.4.0
+
+The following have been reloaded with a version change:
+  1) rocm/5.4.0 => rocm/5.3.0
+
+world_rank 0 has 1 devices
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device Number    : 0
+AcceleratorHipInit: ========================
+AcceleratorHipInit: Device identifier: 
+AcceleratorHipInit:   totalGlobalMem: 68702699520 
+AcceleratorHipInit:   isMultiGpuBoard: 0 
+AcceleratorHipInit:   warpSize: 64 
+AcceleratorHipInit: using default device 
+AcceleratorHipInit: assume user or srun sets ROCR_VISIBLE_DEVICES and numa binding 
+AcceleratorHipInit: Configure options --enable-setdevice=no 
+local rank 0 device 0 bus id: 0000:c1:00.0
+AcceleratorHipInit: ================================================
+SharedMemoryMpi:  World communicator of size 256
+SharedMemoryMpi:  Node  communicator of size 8
+0SharedMemoryMpi:  SharedMemoryMPI.cc acceleratorAllocDevice 2147483648bytes at 0x7f62dec00000 - 7f635ebfffff for comms buffers 
+Setting up IPC
+
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|_ |  |  |  |  |  |  |  |  |  |  |  | _|__
+__|_                                    _|__
+__|_   GGGG    RRRR    III    DDDD      _|__
+__|_  G        R   R    I     D   D     _|__
+__|_  G        R   R    I     D    D    _|__
+__|_  G  GG    RRRR     I     D    D    _|__
+__|_  G   G    R  R     I     D   D     _|__
+__|_   GGGG    R   R   III    DDDD      _|__
+__|_                                    _|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+__|__|__|__|__|__|__|__|__|__|__|__|__|__|__
+  |  |  |  |  |  |  |  |  |  |  |  |  |  |  
+
+
+Copyright (C) 2015 Peter Boyle, Azusa Yamaguchi, Guido Cossu, Antonin Portelli and other authors
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+Current Grid git commit hash=3e9cc15eb070b9620e4762a8e0db32034f1ead13: (HEAD -> gpt_proton, origin/gpt_proton) clean
+
+Grid : Message : ================================================ 
+Grid : Message : MPI is initialised and logging filters activated 
+Grid : Message : ================================================ 
+Grid : Message : Requested 2147483648 byte stencil comms buffers 
+Grid : Message : MemoryManager Cache 54962159616 bytes 
+Grid : Message : MemoryManager::Init() setting up
+Grid : Message : MemoryManager::Init() cache pool for recent host   allocations: SMALL 8 LARGE 2 HUGE 0
+Grid : Message : MemoryManager::Init() cache pool for recent device allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() cache pool for recent shared allocations: SMALL 16 LARGE 8 Huge 0
+Grid : Message : MemoryManager::Init() Non unified: Caching accelerator data in dedicated memory
+Grid : Message : MemoryManager::Init() Using hipMalloc
+
+=============================================
+              Initialized GPT                
+     Copyright (C) 2020 Christoph Lehner     
+=============================================
+GPT :      13.947676 s : Loading 
+/lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1410
+GPT :      18.054750 s : NERSC file format; reading /lustre/orion/proj-shared/nph159/data/64I/ckpoint_lat.Coulomb.1410
+GPT :      18.054773 s :    BEGIN_HEADER
+GPT :      18.054781 s : 	HDR_VERSION = 1.0
+GPT :      18.054789 s : 	DATATYPE = 4D_SU3_GAUGE
+GPT :      18.054794 s : 	STORAGE_FORMAT = 1.0
+GPT :      18.054800 s : 	DIMENSION_1 = 64
+GPT :      18.054804 s : 	DIMENSION_2 = 64
+GPT :      18.054809 s : 	DIMENSION_3 = 64
+GPT :      18.054813 s : 	DIMENSION_4 = 128
+GPT :      18.054818 s : 	LINK_TRACE = 0.6609024116
+GPT :      18.054822 s : 	PLAQUETTE  = 0.6153199909
+GPT :      18.054826 s : 	BOUNDARY_1 = PERIODIC
+GPT :      18.054831 s : 	BOUNDARY_2 = PERIODIC
+GPT :      18.054836 s : 	BOUNDARY_3 = PERIODIC
+GPT :      18.054841 s : 	BOUNDARY_4 = PERIODIC
+GPT :      18.054845 s : 	CHECKSUM = a63f8ab5
+GPT :      18.054850 s : 	ENSEMBLE_ID = 64I_Coulomb
+GPT :      18.054854 s : 	ENSEMBLE_LABEL = MDWF_2+1f_64nt128_IWASAKI_b2.25_ls12b+c2_M1.8_ms0.02661_mu0.000678_rhmc_HR_G_Coulomb
+GPT :      18.054860 s : 	SEQUENCE_NUMBER = 1410
+GPT :      18.054866 s : 	CREATOR = RBC
+GPT :      18.054870 s : 	CREATOR_HARDWARE = ALCF_COOLEY
+GPT :      18.054875 s : 	CREATION_DATE =
+GPT :      18.054880 s : 	ARCHIVE_DATE = Sun Mar  7 16:55:04 2021
+GPT :      18.054885 s : 	FLOATING_POINT = IEEE64LITTLE
+GPT :      18.054892 s :    END_HEADER
+GPT :      22.788419 s : Read 18 GB at 3.81727 GB/s (7.13581 GB/s for distribution, 8.64475 GB/s for munged read, 123.343 GB/s for checksum, 198.415 GB/s for munging, 256 readers)
+GPT :      30.000563 s : finished loading gauge config
+Grid : Message : 21.192029 s :  Gauge fixing to Coulomb gauge time=3 plaq= 0.61532 link trace = 0.660902
+Grid : Message : 22.299559 s :  Iteration 0 plaq= 0.61532 dmuAmu 2.48691e-07
+Grid : Message : 22.328247 s :  Iteration 0 Phi= 7.74714e-13 Omega= 0 trG 1
+Grid : Message : 22.328251 s : Converged ! 
+GPT :      37.999839 s : Loading eigenvectors from /lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output
+GPT :      38.000048 s : ====================================================================================================================================
+GPT :      38.000061 s :                                                  GPT Memory Report                
+GPT :      38.000095 s : ====================================================================================================================================
+GPT :      38.000102 s :  Lattice fields on all ranks             31.5 GB
+GPT :      38.000109 s :  Lattice fields per rank                 0.123047 GB
+GPT :      38.000114 s :  Resident memory per rank                2.1925 GB
+GPT :      38.000119 s :  Total memory available (host)           466.259 GB
+GPT :      38.000126 s :  Total memory available (accelerator)    0 GB
+GPT :      38.000130 s : ====================================================================================================================================
+GPT :      38.733876 s : Loading /lustre/orion/proj-shared/nph159/data/64I/1410.evecs/lanczos.output with 1 views per node
+GPT :      39.168428 s : Read blocks 8
+GPT :      77.582584 s : * read 225 GB: fread at 171.548 GB/s, crc32 at 246.41 GB/s, munge at 926.709 GB/s, distribute at 6.33705 GB/s; available = 386.527 GB
+GPT :     103.733701 s : * read 450 GB: fread at 158.729 GB/s, crc32 at 246.632 GB/s, munge at 923.165 GB/s, distribute at 8.07064 GB/s; available = 385.673 GB
+GPT :     121.799858 s : * read 675 GB: fread at 158.71 GB/s, crc32 at 246.502 GB/s, munge at 924.058 GB/s, distribute at 9.57246 GB/s; available = 385.001 GB
+GPT :     149.070987 s : * read 900 GB: fread at 162.457 GB/s, crc32 at 246.58 GB/s, munge at 922.922 GB/s, distribute at 9.97175 GB/s; available = 384.363 GB
+GPT :     170.735654 s : * read 1125 GB: fread at 162.097 GB/s, crc32 at 246.603 GB/s, munge at 919.814 GB/s, distribute at 10.3315 GB/s; available = 383.993 GB
+GPT :     195.767370 s : * read 1350 GB: fread at 160.185 GB/s, crc32 at 246.659 GB/s, munge at 920.458 GB/s, distribute at 10.4754 GB/s; available = 383.5 GB
+GPT :     219.317123 s : * read 1575 GB: fread at 156.812 GB/s, crc32 at 246.698 GB/s, munge at 920.086 GB/s, distribute at 10.5564 GB/s; available = 382.885 GB
+GPT :     241.900858 s : * read 1800 GB: fread at 160.265 GB/s, crc32 at 246.726 GB/s, munge at 920.572 GB/s, distribute at 10.6613 GB/s; available = 382.265 GB
+GPT :     308.080559 s : * read 1975.78 GB: fread at 161.711 GB/s, crc32 at 245.441 GB/s, munge at 910.852 GB/s, distribute at 8.59171 GB/s, fp16 at 2310.12 GB/s; available = 284.253 GB
+GPT :     340.753925 s : * read 2151.56 GB: fread at 162.747 GB/s, crc32 at 244.305 GB/s, munge at 885.325 GB/s, distribute at 8.29946 GB/s, fp16 at 1291.77 GB/s; available = 283.747 GB
+GPT :     371.798000 s : * read 2327.34 GB: fread at 164.319 GB/s, crc32 at 243.36 GB/s, munge at 879.693 GB/s, distribute at 8.12846 GB/s, fp16 at 949.262 GB/s; available = 283.255 GB
+GPT :     408.369237 s : * read 2503.12 GB: fread at 166.078 GB/s, crc32 at 242.651 GB/s, munge at 879.15 GB/s, distribute at 7.90724 GB/s, fp16 at 756.746 GB/s; available = 282.771 GB
+GPT :     434.441904 s : * read 2678.91 GB: fread at 167.877 GB/s, crc32 at 240.382 GB/s, munge at 877.115 GB/s, distribute at 7.89126 GB/s, fp16 at 634.809 GB/s; available = 282.609 GB
+GPT :     471.237920 s : * read 2854.69 GB: fread at 169.246 GB/s, crc32 at 239.869 GB/s, munge at 872.81 GB/s, distribute at 7.76587 GB/s, fp16 at 563.406 GB/s; available = 282.207 GB
+GPT :     502.322930 s : * read 3030.47 GB: fread at 171.055 GB/s, crc32 at 239.429 GB/s, munge at 862.001 GB/s, distribute at 7.68261 GB/s, fp16 at 515.121 GB/s; available = 281.724 GB
+GPT :     537.799290 s : * read 3206.25 GB: fread at 171.944 GB/s, crc32 at 239.094 GB/s, munge at 867.645 GB/s, distribute at 7.57349 GB/s, fp16 at 476.389 GB/s; available = 281.152 GB
+GPT :     538.029363 s : Coarse read blocks 5
+GPT :     619.363260 s : * read 3277.54 GB: fread at 172.877 GB/s, crc32 at 236.917 GB/s, munge at 886.936 GB/s, distribute at 6.52033 GB/s, fp16 at 466.818 GB/s; available = 291.145 GB
+GPT :     697.473148 s : * read 3348.83 GB: fread at 173.355 GB/s, crc32 at 234.917 GB/s, munge at 906.228 GB/s, distribute at 5.78268 GB/s, fp16 at 457.352 GB/s; available = 287.879 GB
+GPT :     776.140815 s : * read 3420.12 GB: fread at 173.857 GB/s, crc32 at 232.953 GB/s, munge at 925.519 GB/s, distribute at 5.20993 GB/s, fp16 at 449.72 GB/s; available = 284.612 GB
+GPT :     854.688160 s : * read 3491.41 GB: fread at 174.607 GB/s, crc32 at 231.106 GB/s, munge at 944.811 GB/s, distribute at 4.76309 GB/s, fp16 at 442.846 GB/s; available = 281.373 GB
+GPT :     929.082986 s : * read 3562.7 GB: fread at 175.406 GB/s, crc32 at 229.531 GB/s, munge at 964.103 GB/s, distribute at 4.42588 GB/s, fp16 at 434.489 GB/s; available = 279.708 GB
+GPT :     929.083003 s : * load 3562.7 GB at 4.00146 GB/s
+GPT :     929.326421 s : ====================================================================================================================================
+GPT :     929.326444 s :                                                  GPT Memory Report                
+GPT :     929.329333 s : ====================================================================================================================================
+GPT :     929.329343 s :  Lattice fields on all ranks             5019.78 GB
+GPT :     929.329348 s :  Lattice fields per rank                 19.6085 GB
+GPT :     929.329353 s :  Resident memory per rank                24.6306 GB
+GPT :     929.329357 s :  Total memory available (host)           288.377 GB
+GPT :     929.329363 s :  Total memory available (accelerator)    0 GB
+GPT :     929.329366 s : ====================================================================================================================================
+GPT :     930.111264 s : creating deflated solvers
+GPT :     930.364432 s : ====================================================================================================================================
+GPT :     930.364445 s :                                                  GPT Memory Report                
+GPT :     930.396749 s : ====================================================================================================================================
+GPT :     930.396760 s :  Lattice fields on all ranks             5019.78 GB
+GPT :     930.396765 s :  Lattice fields per rank                 19.6085 GB
+GPT :     930.396768 s :  Resident memory per rank                24.6306 GB
+GPT :     930.396772 s :  Total memory available (host)           292.083 GB
+GPT :     930.396777 s :  Total memory available (accelerator)    0 GB
+GPT :     930.396780 s : ====================================================================================================================================
+GPT :     972.266464 s : ====================================================================================================================================
+GPT :     972.266483 s :                                                  GPT Memory Report                
+GPT :     972.269322 s : ====================================================================================================================================
+GPT :     972.269334 s :  Lattice fields on all ranks             5406.78 GB
+GPT :     972.269339 s :  Lattice fields per rank                 21.8937 GB
+GPT :     972.269344 s :  Resident memory per rank                24.6306 GB
+GPT :     972.269349 s :  Total memory available (host)           275.966 GB
+GPT :     972.269354 s :  Total memory available (accelerator)    0 GB
+GPT :     972.269358 s : ====================================================================================================================================
+GPT :     972.269364 s : 
+                       : ================================================================================
+                       :        Propagator generation run:
+                       : ================================================================================
+                       : 
+GPT :     972.269374 s : Job 0 / 1 :  configuration 1410, job tag proton_forward_prop_AMA
+GPT :     972.296959 s :  positions_sloppy = [[3, 5, 7, 9], [3, 5, 7, 41], [3, 5, 7, 73], [3, 5, 7, 105], [3, 5, 23, 9], [3, 5, 23, 41], [3, 5, 23, 73], [3, 5, 23, 105], [3, 5, 39, 9], [3, 5, 39, 41], [3, 5, 39, 73], [3, 5, 39, 105], [3, 5, 55, 9], [3, 5, 55, 41], [3, 5, 55, 73], [3, 5, 55, 105], [3, 21, 7, 9], [3, 21, 7, 41], [3, 21, 7, 73], [3, 21, 7, 105], [3, 21, 23, 9], [3, 21, 23, 41], [3, 21, 23, 73], [3, 21, 23, 105], [3, 21, 39, 9], [3, 21, 39, 41], [3, 21, 39, 73], [3, 21, 39, 105], [3, 21, 55, 9], [3, 21, 55, 41], [3, 21, 55, 73], [3, 21, 55, 105]]
+GPT :     972.296970 s :  positions_exact = [[3, 5, 7, 9]]
+GPT :     972.298716 s : START: ex_x3y5z7t9_GSRC_W80_k3
+Traceback (most recent call last):
+  File "/autofs/nccs-svm1_home1/dbollweg/TMD_work/gpt_utils/qTMD/proton_prop.py", line 171, in <module>
+    Measurement.set_output_facilities(corr_dir, prop_dir)
+  File "/ccs/home/dbollweg/TMD_work/gpt_utils/qTMD/gpt_proton_qTMD_utils.py", line 42, in set_output_facilities
+    self.output_correlator = g.corr_io.writer(corr_file)
+  File "/ccs/home/dbollweg/gpt/lib/gpt/core/io/corr_io.py", line 25, in __init__
+    self.f = open(fn, "w+b")
+FileNotFoundError: [Errno 2] No such file or directory: '/lustre/orion/proj-shared/nph159/data/64I/propagator/GSRC_Proton/corr_ex/1410'
+=============================================
+               Finalized GPT                 
+=============================================
+slurmstepd: error: *** STEP 1470159.0 ON frontier00402 CANCELLED AT 2023-10-11T14:04:51 ***
+slurmstepd: error: *** JOB 1470159 ON frontier00402 CANCELLED AT 2023-10-11T14:04:51 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.

@@ -1,0 +1,81 @@
+
+Lmod is automatically replacing "cce/16.0.0" with "gcc/12.2.0".
+
+
+Lmod is automatically replacing "PrgEnv-cray/8.3.3" with "PrgEnv-gnu/8.3.3".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.23     2) darshan-runtime/3.4.0
+
+The following have been reloaded with a version change:
+  1) rocm/5.4.0 => rocm/5.3.0
+
+srun: error: frontier06265: task 237: Killed
+srun: Terminating StepId=1533038.0
+slurmstepd: error: *** STEP 1533038.0 ON frontier00148 CANCELLED AT 2023-12-13T17:07:39 ***
+srun: error: frontier05197: task 28: Killed
+srun: error: frontier05197: tasks 24,26-27,29,31: Killed
+srun: error: frontier05197: tasks 25,30: Killed
+srun: error: frontier06265: tasks 232,235-236: Killed
+srun: error: frontier06265: tasks 233-234,238-239: Killed
+srun: error: frontier05359: tasks 56,58,61: Terminated
+srun: error: frontier05198: task 37: Terminated
+srun: error: frontier05500: tasks 74,77: Terminated
+srun: error: frontier05750: task 132: Terminated
+srun: error: frontier05502: tasks 82,85: Terminated
+srun: error: frontier06524: tasks 249,252-253,255: Terminated
+srun: error: frontier05192: tasks 18,21: Terminated
+srun: error: frontier05600: tasks 104,109-110: Terminated
+srun: error: frontier05997: tasks 185-189,191: Terminated
+srun: error: frontier05358: tasks 51,53-54: Terminated
+srun: error: frontier05751: tasks 136,140,142: Terminated
+srun: error: frontier06264: tasks 225-226: Terminated
+srun: error: frontier05503: tasks 90,93: Terminated
+srun: error: frontier00148: tasks 4,7: Terminated
+srun: error: frontier06129: tasks 216,221: Terminated
+srun: error: frontier05605: tasks 121,123,125,127: Terminated
+srun: error: frontier05878: tasks 169,173-174: Terminated
+srun: error: frontier05875: tasks 152,154: Terminated
+srun: error: frontier05598: tasks 97-98,101,103: Terminated
+srun: error: frontier06093: tasks 200,203-204: Terminated
+srun: error: frontier05604: tasks 112,115,117: Terminated
+srun: error: frontier05359: tasks 57,59-60,62-63: Terminated
+srun: error: frontier05367: tasks 64,69,71: Terminated
+srun: error: frontier05998: tasks 192-199: Terminated
+srun: error: frontier06266: tasks 240,245,247: Terminated
+srun: error: frontier05357: tasks 42,44,47: Terminated
+srun: error: frontier05750: tasks 128-131,133-135: Terminated
+srun: error: frontier05600: tasks 105-106,108,111: Terminated
+srun: error: frontier05996: tasks 178,182: Terminated
+srun: error: frontier05873: tasks 144,146-148,150: Terminated
+srun: error: frontier05191: tasks 9-11,13-14: Terminated
+srun: error: frontier06128: tasks 208,210,212,214: Terminated
+srun: error: frontier05997: tasks 184,190: Terminated
+srun: error: frontier06524: tasks 248,250-251,254: Terminated
+srun: error: frontier05192: tasks 16-17,19-20,22-23: Terminated
+srun: error: frontier05876: tasks 160-167: Terminated
+srun: error: frontier05600: task 107: Terminated
+srun: error: frontier05500: tasks 72-73,75-76,78-79: Terminated
+srun: error: frontier00148: tasks 0-3,5-6: Terminated
+srun: error: frontier05605: tasks 120,122,124,126: Terminated
+srun: error: frontier05502: tasks 80-81,83-84,86-87: Terminated
+srun: error: frontier06264: tasks 224,227-231: Terminated
+srun: error: frontier05358: tasks 48-50,52,55: Terminated
+srun: error: frontier05198: tasks 32-36,38-39: Terminated
+srun: error: frontier05598: tasks 96,99-100,102: Terminated
+srun: error: frontier05875: tasks 153,155-159: Terminated
+srun: error: frontier05503: tasks 88-89,91-92,94-95: Terminated
+srun: error: frontier06129: tasks 217-220,222-223: Terminated
+srun: error: frontier05878: tasks 168,170-172,175: Terminated
+srun: error: frontier06093: tasks 201-202,205-207: Terminated
+srun: error: frontier05357: tasks 40-41,43,45-46: Terminated
+srun: error: frontier05604: tasks 113-114,116,118-119: Terminated
+srun: error: frontier05751: tasks 137-139,141,143: Terminated
+srun: error: frontier06266: tasks 241-244,246: Terminated
+srun: error: frontier05367: tasks 65-68,70: Terminated
+srun: error: frontier05191: tasks 8,12,15: Terminated
+srun: error: frontier05873: tasks 145,149,151: Terminated
+srun: error: frontier05996: tasks 176-177,179-181,183: Terminated
+srun: error: frontier06128: tasks 209,211,213,215: Terminated
+srun: Force Terminated StepId=1533038.0
