@@ -198,13 +198,13 @@ for group, job, conf, jid, n in run_jobs:
             for WL_indices in W_index_list:
                 W = Measurement.create_TMD_Wilsonline(U_smear,WL_indices)
 
-                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_exact_f, W, WL_indices)
+                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_exact_f, [W], [WL_indices])
                 g.message("TMD forward prop done")
                 phases = Measurement.make_mom_phases(U[0].grid, pos)
                 #production tag should include more config/action details
-            
-                qtmd_tag_exact = "%s/%s/%s/%s_%s" % ("qtmd_exact", lat_tag, sm_tag, str(conf), str(pos))
 
+               # qtmd_tag_exact = "%s/%s/%s/%s_%s" % ("qtmd_exact", lat_tag, sm_tag, str(conf), str(pos))
+                qtmd_tag_exact = get_qTMD_file_tag(data_dir,lat_tag,conf,"ex", pos, sm_tag+'_'+contract_tag)
                 g.message("Starting TMD contractions")
                 proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases, WL_indices, qtmd_tag_exact)
                 proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases, WL_indices, qtmd_tag_exact)
@@ -266,8 +266,9 @@ for group, job, conf, jid, n in run_jobs:
                 g.message("TMD forward prop done")
                 phases = Measurement.make_mom_phases(U[0].grid, pos)
             
-                qtmd_tag_sloppy = "%s/%s/%s/%s_%s" % ("qtmd_sloppy", lat_tag, sm_tag, str(conf), str(pos))
-
+               # qtmd_tag_sloppy = "%s/%s/%s/%s_%s" % ("qtmd_sloppy", lat_tag, sm_tag, str(conf), str(pos))
+                qtmd_tag_sloppy = get_qTMD_file_tag(data_dir,lat_tag,conf,"sl", pos, sm_tag+'_'+contract_tag)
+              
                 g.message("Starting TMD contractions")
                 proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases, WL_indices, qtmd_tag_sloppy)
                 proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases, WL_indices, qtmd_tag_sloppy)

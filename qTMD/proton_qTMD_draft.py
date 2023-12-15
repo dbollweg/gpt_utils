@@ -2,6 +2,7 @@ from cmath import phase
 from math import gamma
 import gpt as g
 
+from io_corr import *
 import numpy as np
 from qTMD.gpt_proton_qTMD_utils import proton_measurement
 my_gammas = ["5", "T", "T5", "X", "X5", "Y", "Y5", "Z", "Z5", "I", "SXT", "SXY", "SXZ", "SYT", "SYZ", "SZT"]
@@ -108,7 +109,7 @@ class proton_TMD(proton_measurement):
         for pol_index,fixed_pol_bwprop in enumerate(prop_bw_seq):
             corr = g.slice_trQPDF(prop_f,fixed_pol_bwprop,phases,3)
             tag = tag + my_projections[pol_index]
-            save_qTMD_proton_hdf5(corr, tag, my_gammas, self.plist,W_index[2], W_index[0], W_index[1])
+            save_qTMD_proton_hdf5(corr, tag, my_gammas, self.plist,W_index[2], W_index[0], W_index[1], W_index[3])
         #return corr
     
     def create_TMD_Wilsonline_index_list(self):
