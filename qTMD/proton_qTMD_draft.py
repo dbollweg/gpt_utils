@@ -1,54 +1,72 @@
 from cmath import phase
 from math import gamma
 import gpt as g
-
 from io_corr import *
 import numpy as np
 from qTMD.gpt_proton_qTMD_utils import proton_measurement
+
+"""
+================================================================================
+                Gamma structures and Projection of nucleon states
+================================================================================
+"""
+### Gamma structures
 my_gammas = ["5", "T", "T5", "X", "X5", "Y", "Y5", "Z", "Z5", "I", "SXT", "SXY", "SXZ", "SYT", "SYZ", "SZT"]
 
-my_projections=["PpSzp", "PpSxp", "PpSxm"]
+### Projection of nucleon states
 Cg5 = (1j * g.gamma[1].tensor() * g.gamma[3].tensor()) * g.gamma[5].tensor()
-
-
 Pp = (g.gamma["I"].tensor() + g.gamma[3].tensor()) * 0.25
 Szp = (g.gamma["I"].tensor() - 1j*g.gamma[0].tensor()*g.gamma[1].tensor())
+Szm = (g.gamma["I"].tensor() + 1j*g.gamma[0].tensor()*g.gamma[1].tensor())
 Sxp = (g.gamma["I"].tensor() - 1j*g.gamma[1].tensor()*g.gamma[2].tensor())
 Sxm = (g.gamma["I"].tensor() + 1j*g.gamma[1].tensor()*g.gamma[2].tensor())
-
 PpSzp = Pp * Szp
+PpSzm = Pp * Szm
 PpSxp = Pp * Sxp
 PpSxm = Pp * Sxm
+#my_projections=["PpSzp", "PpSxp", "PpSxm"]
+#my_projections=["PpSzp", "PpSzm", "PpSxp"]
+#PolProjections = [PpSzp, PpSxp, PpSxm]
+#PolProjections = [PpSzp, PpSzm, PpSxp]
+PolProjections = {
+    "PpSzp": PpSzp,
+    "PpSzm": PpSzm,
+    "PpSxp": PpSxp,
+    "PpSxm": PpSxm,  
+}
 
-PolProjections = [PpSzp, PpSxp, PpSxm]
-
-
+"""
+================================================================================
+                                proton_TMD
+================================================================================
+"""
 class proton_TMD(proton_measurement):
+
     def __init__(self, parameters):
-        self.eta = parameters["eta"]
-        self.b_z = parameters["b_z"]
-        self.b_T = parameters["b_T"]
-        self.pzmin = parameters["pzmin"]
-        self.pzmax = parameters["pzmax"]
-        self.pf = parameters["pf"]
-        self.plist = [[0,0,pz,0] for pz in range(self.pzmin,self.pzmax)]
-        self.width = parameters["width"]
-        self.boost_in = parameters["boost_in"]
-        self.boost_out = parameters["boost_out"]
-        self.pos_boost = self.boost_in
-        self.pol_list = ["P+_Sz+","P+_Sx+","P+_Sx-"]
-        self.save_propagators = parameters["save_propagators"]
-        self.t_insert = parameters["t_insert"]
-        
+
+        self.eta = parameters["eta"] # list of eta
+        self.b_z = parameters["b_z"] # largest b_z
+        self.b_T = parameters["b_T"] # largest b_T
+
+        self.pf = parameters["pf"] # momentum of final nucleon state; pf - q = pi ??
+        self.plist = [[x,y,z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating momentum transfers
+
+        self.width = parameters["width"] # Gaussian smearing width
+        self.boost_in = parameters["boost_in"] # ?? Forward propagator boost smearing
+        self.boost_out = parameters["boost_out"] # ?? Backward propagator boost smearing
+        self.pos_boost = self.boost_in # Forward propagator boost smearing for 2pt
+
+        self.pol_list = parameters["pol"] # projection of nucleon state
+        self.t_insert = parameters["t_insert"] # time separation of three point function
+
+        self.save_propagators = parameters["save_propagators"] # if save propagators
     
-    
-        
     def create_fw_prop_TMD(self, prop_f, W, W_index_list):
         g.message("Creating list of W*prop_f")
         prop_list = [prop_f,]
         
         for i, idx in enumerate(W_index_list):
-        
+
             current_b_T = idx[0]
             current_bz = idx[1]
             current_eta = idx[2]
@@ -65,32 +83,29 @@ class proton_TMD(proton_measurement):
         
         pp = 2.0 * np.pi * np.array(self.pf) / prop.grid.fdimensions
         P = g.exp_ixp(pp)
-
         
-        src_seq = [g.mspincolor(prop.grid) for i in range(3)]
+        src_seq = [g.mspincolor(prop.grid) for i in range(len(self.pol_list))]
         dst_seq = []
         dst_tmp = g.mspincolor(prop.grid)
         
-#        g.qcd.baryon.proton_seq_src(prop, src_seq, self.t_insert, flavor)
-        for i in range(3):
+        #g.qcd.baryon.proton_seq_src(prop, src_seq, self.t_insert, flavor)
+        for i, pol in enumerate(self.pol_list):
 
             if (flavor == 1): 
                 g.message("starting diquark contractions for up quark insertion and Polarization ", i)
 
-                src_seq[i] = self.up_quark_insertion(prop, prop, Cg5, PolProjections[i])
+                src_seq[i] = self.up_quark_insertion(prop, prop, Cg5, PolProjections[pol])
             elif (flavor == 2):
                 g.message("starting diquark contractions for down quark insertion and Polarization ", i)
 
-                src_seq[i] = self.down_quark_insertion(prop, Cg5, PolProjections[i])
+                src_seq[i] = self.down_quark_insertion(prop, Cg5, PolProjections[pol])
             else: 
                 raise Exception("Unknown flavor for backward sequential src construction")
-            
         
             # sequential solve through t=t_insert
             src_seq_t = g.lattice(src_seq[i])
             src_seq_t[:] = 0
             src_seq_t[:, :, :, self.t_insert] = src_seq[i][:, :, :, self.t_insert]
-
 
             g.message("diquark contractions for Polarization ", i, " done")
         
@@ -104,12 +119,16 @@ class proton_TMD(proton_measurement):
         g.message("bw. seq propagator done")
         return dst_seq
     
-    def contract_TMD(self, prop_f, prop_bw_seq, phases, W_index, tag):
+    def contract_TMD(self, prop_f, prop_bw_seq, phases, W_index, tag, iW):
         
-        for pol_index,fixed_pol_bwprop in enumerate(prop_bw_seq):
+        for pol_index, fixed_pol_bwprop in enumerate(prop_bw_seq):
             corr = g.slice_trQPDF(prop_f,fixed_pol_bwprop,phases,3)
-            tag = tag + my_projections[pol_index]
-            save_qTMD_proton_hdf5(corr, tag, my_gammas, self.plist,W_index[2], W_index[0], W_index[1], W_index[3])
+            pol_tag = tag + self.pol_list[pol_index]
+            #save_qTMD_proton_hdf5(corr, tag, my_gammas, self.plist, W_index[2], W_index[0], W_index[1], W_index[3])
+            if g.rank() == 0:
+                print('g.rank():',g.rank(), ', pol_tag:', pol_tag)
+                save_qTMD_proton_hdf5_subset(corr, pol_tag, my_gammas, self.plist, [W_index], iW)
+
         #return corr
     
     def create_TMD_Wilsonline_index_list(self):
@@ -118,32 +137,25 @@ class proton_TMD(proton_measurement):
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
                 
-                for current_bz in range(0,min([self.b_z, current_eta])):
+                for current_bz in range(0, min([self.b_z, current_eta])):
                     for current_b_T in range(0, self.b_T):
                         
                         # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
                         index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
                         
                         # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
-                        #index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
+                        index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
                         
                         # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z+1)
                         #index_list.append([current_b_T, current_bz-0.5, current_eta+0.5, transverse_direction])
                         
                         # create Wilson lines from all to all - (eta+bz) + b_perp + (eta-b_z+1)
                         #index_list.append([current_b_T, -(current_bz-0.5), -(current_eta+0.5), transverse_direction])
-
-                # create Wilson lines from all to all +/- (eta+1+0) + b_perp - (eta+1-0)
-                current_eta += 1
-                current_bz = 0
-                for current_b_T in range(0, self.b_T):
-                    index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
-                    
-                   # index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
                     
         return index_list
     
     def create_TMD_Wilsonline(self, U, index_set):
+
         assert len(index_set) == 4
         bt_index = index_set[0]
         bz_index = index_set[1]
@@ -251,127 +263,3 @@ class proton_TMD(proton_measurement):
                 
         g.merge_color(R, D)
         return R
-    
-      
-    # def create_TMD_WL(self,U):
-    #     W = []
-    #     index_list = []
-
-    #     # positive direction
-    #     # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
-    #     for transverse_direction in [0,1]:
-    #         for current_eta in self.eta:
-
-    #             prv_link = g.qcd.gauge.unit(U[2].grid)[0]
-    #             current_link = prv_link
-    #             # FIXME: phase need to be corrected due to source position
-    #             for dz in range(0, current_eta-1):
-    #                 current_link=g.eval(prv_link * g.cshift(U[2],2, dz))
-    #                 prv_link=current_link
-    #             current_bz_link = current_link
-
-    #             for current_bz in range(0, min([self.b_z, current_eta])):
-
-    #                 current_bz_link=g.eval(current_bz_link * g.cshift(U[2],2, current_eta+current_bz-1))
-    #                 current_bT_link = current_bz_link
-
-    #                 for current_b_T in range (0, self.b_T):
-    #                     if current_b_T != 0:
-    #                         current_bT_link=g.eval(current_bT_link * g.cshift(g.cshift(U[transverse_direction], 2, current_eta+current_bz),transverse_direction, current_b_T-1))
-
-    #                     prv_link = current_bT_link
-    #                     for dz in range(0, current_eta-current_bz):
-    #                         current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-dz)))
-    #                         prv_link=current_link
-
-    #                     g.message("Appending link with current_eta: ", current_eta, " current_bz: ", current_bz, " current_b_T: ", current_b_T, " transverse_dir: ", transverse_direction)
-    #                     W.append(current_link)
-    #                     index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
-    #                     g.message("Appending successful")
-    #                     # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z+1)
-    #                     current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-(current_eta-current_bz))))
-    #                     W.append(current_link)
-    #                     index_list.append([current_b_T, current_bz-0.5, current_eta+0.5, transverse_direction])
-
-    #             # create Wilson lines from all to all + (eta+1+0) + b_perp - (eta+1-0)
-    #             current_eta += 1
-    #             current_bz = 0
-    #             for current_b_T in range (0, self.b_T):
-
-    #                 prv_link = g.qcd.gauge.unit(U[2].grid)[0]
-    #                 current_link = prv_link
-    #                 # FIXME: phase need to be corrected due to source position
-    #                 for dz in range(0, current_eta+current_bz):
-    #                     current_link=g.eval(prv_link * g.cshift(U[2],2, dz))
-    #                     prv_link=current_link
-
-    #                 for dx in range(0, current_b_T):
-    #                     current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction], 2, current_eta+current_bz),transverse_direction, dx))
-    #                     prv_link=current_link
-
-    #                 for dz in range(0, current_eta-current_bz):
-    #                     current_link=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, current_eta+current_bz-1), transverse_direction, current_b_T),2,-dz)))
-    #                     prv_link=current_link
-
-    #                 W.append(current_link)
-    #                 index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
-
-    #     # negative direction
-    #     # create Wilson lines from all to all - (eta+bz) + b_perp + (eta-b_z)
-    #     for transverse_direction in [0,1]:
-    #         for current_eta in self.eta:
-
-    #             prv_link = g.qcd.gauge.unit(U[2].grid)[0]
-    #             current_link = prv_link
-    #             # FIXME: phase need to be corrected due to source position
-    #             for dz in range(0, current_eta-1):
-    #                 current_link=g.eval(prv_link * g.adj(g.cshift(U[2],2, -dz-1)))
-    #                 prv_link=current_link
-    #             current_bz_link = current_link
-
-    #             for current_bz in range(0, min([self.b_z, current_eta])):
-
-    #                 current_bz_link=g.eval(current_bz_link * g.adj(g.cshift(U[2],2, -current_eta-current_bz)))
-    #                 current_bT_link = current_bz_link
-
-    #                 for current_b_T in range (0, self.b_T):
-    #                     if current_b_T != 0:
-    #                         current_bT_link=g.eval(current_bT_link * g.cshift(g.cshift(U[transverse_direction], 2, -current_eta-current_bz),transverse_direction, current_b_T-1))
-
-    #                     prv_link = current_bT_link
-    #                     for dz in range(0, current_eta-current_bz):
-    #                         current_link=g.eval(prv_link * g.cshift(g.cshift(g.cshift(U[2], 2, -current_eta-current_bz), transverse_direction, current_b_T),2,dz))
-    #                         prv_link=current_link
-
-    #                     W.append(current_link)
-    #                     index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
-
-    #                     # create Wilson lines from all to all - (eta+bz) + b_perp + (eta-b_z+1)
-    #                     current_link=g.eval(prv_link * g.cshift(g.cshift(g.cshift(U[2], 2, -current_eta-current_bz), transverse_direction, current_b_T),2,(current_eta-current_bz)))
-    #                     W.append(current_link)
-    #                     index_list.append([current_b_T, -(current_bz-0.5), -(current_eta+0.5), transverse_direction])
-
-    #             # create Wilson lines from all to all - (eta+1+0) + b_perp + (eta+1-0)
-    #             current_eta += 1
-    #             current_bz = 0
-    #             for current_b_T in range (0, self.b_T):
-
-    #                 prv_link = g.qcd.gauge.unit(U[2].grid)[0]
-    #                 current_link = prv_link
-    #                 # FIXME: phase need to be corrected due to source position
-    #                 for dz in range(0, current_eta+current_bz):
-    #                     current_link=g.eval(prv_link * g.adj(g.cshift(U[2],2, -dz-1)))
-    #                     prv_link=current_link
-
-    #                 for dx in range(0, current_b_T):
-    #                     current_link=g.eval(prv_link * g.cshift(g.cshift(U[transverse_direction], 2, -current_eta-current_bz),transverse_direction, dx))
-    #                     prv_link=current_link
-
-    #                 for dz in range(0, current_eta-current_bz):
-    #                     current_link=g.eval(prv_link * g.cshift(g.cshift(g.cshift(U[2], 2, -current_eta-current_bz), transverse_direction, current_b_T),2,dz))
-    #                     prv_link=current_link
-
-    #                 W.append(current_link)
-    #                 index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
-    #     return W, index_list
-    

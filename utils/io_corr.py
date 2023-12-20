@@ -161,9 +161,10 @@ def save_qTMD_proton_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z, tr_dir):
      
     f.close() 
 
+# W_index_list[bT, bz, eta, Tdir]
 def save_qTMD_proton_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub):
 
-    roll = -int(tag.split(".")[4].split('t')[1])
+    roll = -int(tag.split(".")[5].split('t')[1]) # 5: xyzt
     bT_list = ['b_X', 'b_Y']
 
     if g.rank() == 0:
@@ -174,7 +175,8 @@ def save_qTMD_proton_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_su
         f = h5py.File(save_h5, 'w')
     else:
         f = h5py.File(save_h5, 'a')
-    sm = f.require_group("SP")
+
+    sm = f.require_group("SS")
     for ig, gm in enumerate(gammalist):
         g_gm = sm.require_group(gm)
         for ip, p in enumerate(plist):
