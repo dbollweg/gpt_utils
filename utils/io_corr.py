@@ -69,6 +69,7 @@ def save_proton_c2pt_hdf5(corr, tag, gammalist, plist):
         g = sm.create_group(gm)
         for ip, p in enumerate(plist):
             dataset_tag = "PX"+str(p[0])+"PY"+str(p[1])+"PZ"+str(p[2])
+            #print('DEBUG:', np.shape(corr), np.shape(gammalist), ig, ip)
             g.create_dataset(dataset_tag, data=np.roll(corr[ig][ip], roll, axis=0))
     f.close()
 
@@ -146,7 +147,7 @@ def save_qTMDWF_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z):
 
 def save_qTMD_proton_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z, tr_dir):
     
-    roll = -int(tag.split(".")[4].split('t')[1])
+    roll = -int(tag.split(".")[4].split('t')[1]) # 4: xyzt
  
     tdir = tr_dir
     save_h5 = tag + ".h5"
@@ -164,7 +165,7 @@ def save_qTMD_proton_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z, tr_dir):
 # W_index_list[bT, bz, eta, Tdir]
 def save_qTMD_proton_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub):
 
-    roll = -int(tag.split(".")[5].split('t')[1]) # 5: xyzt
+    roll = -int(tag.split(".")[6].split('t')[1]) # 6: xyzt
     bT_list = ['b_X', 'b_Y']
 
     if g.rank() == 0:

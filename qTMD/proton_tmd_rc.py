@@ -14,9 +14,10 @@ src_shift = np.array([0,0,0,0]) + np.array([1,3,5,7])
 data_dir = "/ccs/home/xiangg/latwork/DWF/TEST/nucleon_TMD/data/"
 
 #smearing
-smear_list = [['flow', '05eps01', 5], ['flow', '10eps01', 10], ['flow', '20eps01', 20], ['flow', '30eps01', 30]]
+#smear_list = [['flow', '05eps01', 5], ['flow', '10eps01', 10], ['flow', '20eps01', 20], ['flow', '30eps01', 30]]
+smear_list = [['flow', '05eps01', 5], ['flow', '10eps01', 10]]
 # tags
-sm_tag = "GSRC_W80_k3"
+sm_tag = "GSRC_W80_kz3"
 lat_tag = "64I"
 
 parameters = {
@@ -24,15 +25,15 @@ parameters = {
     #"b_z": 24,
     #"b_T": 24,
 
-    "eta": [6, 8, 12],
+    "eta": [6],
     "b_z": 4,
-    "b_T": 4,
+    "b_T": 1,
 
     "qext": [-2, -1, 0, 1, 2],
     "pf": [0,0,6,0],
 
     "boost_in": [0,0,3],
-    "boost_out": [0,0,-3],
+    "boost_out": [0,0,3],
     "width" : 8.0,
 
     "pol": ["PpSzp", "PpSzm", "PpSxp"],
@@ -40,6 +41,8 @@ parameters = {
 
     "save_propagators": False,
 }
+pf = parameters["pf"]
+pf_tag = "PX"+str(pf[0]) + "PY"+str(pf[1]) + "PZ"+str(pf[2])
 
 #ADD: Add coulomb gauge version: set longitudinal links to one
 config_number = g.default.get_int("--config_num", 0)
@@ -59,7 +62,7 @@ groups = {
 jobs = {
     "proton_TMD_AMA": {
         "exact": 1,
-        "sloppy": 32,
+        "sloppy": 1,
         "low": 0,
     },
 }
@@ -137,6 +140,7 @@ prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
 pin = 0
 
 W_index_list = Measurement.create_TMD_Wilsonline_index_list()
+W_index_list_CG = Measurement.create_TMD_Wilsonline_index_list_CG(U[0].grid)
 
 # show available memory
 g.mem_report(details=False)
@@ -184,8 +188,6 @@ for group, job, conf, jid, n in run_jobs:
             #    os.makedirs(prop_dir)
         #Measurement.set_propagator_output_facilities(prop_dir)
 
-        phases = Measurement.make_mom_phases(U[0].grid, pos)
-
         g.message("Generatring boosted src's")
         srcDp = Measurement.create_src_2pt(pos, trafo, U[0].grid)
 
@@ -195,11 +197,12 @@ for group, job, conf, jid, n in run_jobs:
 
         g.message("Contraction: Starting 2pt (includes sink smearing)")
         tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "ex", pos, sm_tag)
-        Measurement.contract_2pt_SRC(prop_exact_f, phases, trafo, tag)
+        phases_2pt = Measurement.make_mom_phases_2pt(U[0].grid, pos)
+        Measurement.contract_2pt_TMD(prop_exact_f, phases_2pt, trafo, tag)
         g.message("Contraction: Done 2pt (includes sink smearing)")
 
-        sequential_bw_prop_down = Measurement.create_bw_seq(prop_exact, prop_exact_f, trafo, 2)
-        sequential_bw_prop_up = Measurement.create_bw_seq(prop_exact, prop_exact_f, trafo, 1)
+        sequential_bw_prop_down = Measurement.create_bw_seq(prop_exact, prop_exact_f, trafo, 2, pos)
+        sequential_bw_prop_up = Measurement.create_bw_seq(prop_exact, prop_exact_f, trafo, 1, pos)
         g.message("backward prop done")
 
         for ism, smear in enumerate(smear_list):
@@ -213,6 +216,7 @@ for group, job, conf, jid, n in run_jobs:
                     U_smear = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
             g.message("Gauge: Smearing/Flow finished")
             
+            # gauge invariant/traditional stape gauge link
             for iW, WL_indices in enumerate(W_index_list):
                 W = Measurement.create_TMD_Wilsonline(U_smear,WL_indices)
 
@@ -221,12 +225,51 @@ for group, job, conf, jid, n in run_jobs:
                 #production tag should include more config/action details
 
                # qtmd_tag_exact = "%s/%s/%s/%s_%s" % ("qtmd_exact", lat_tag, sm_tag, str(conf), str(pos))
-                qtmd_tag_exact_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"D.ex", pos, sm_tag+'_'+contract_tag)
-                qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"U.ex", pos, sm_tag+'_'+contract_tag)
+                qtmd_tag_exact_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"GI.D.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"GI.U.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
 
                 g.message("Starting TMD contractions")
-                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases, WL_indices, qtmd_tag_exact_D, iW)
-                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases, WL_indices, qtmd_tag_exact_U, iW)
+                phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases_3pt, WL_indices, qtmd_tag_exact_D, iW)
+                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases_3pt, WL_indices, qtmd_tag_exact_U, iW)
+
+                del tmd_forward_prop
+
+            # CG gauge links with Transverse link only
+            for iW, WL_indices in enumerate(W_index_list):
+                W = Measurement.create_TMD_Wilsonline_CG_Tlink(U_smear,WL_indices)
+
+                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_exact_f, [W], [WL_indices])
+                g.message("TMD forward prop done")
+                #production tag should include more config/action details
+
+               # qtmd_tag_exact = "%s/%s/%s/%s_%s" % ("qtmd_exact", lat_tag, sm_tag, str(conf), str(pos))
+                qtmd_tag_exact_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG_T.D.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG_T.U.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+
+                g.message("Starting TMD contractions")
+                phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases_3pt, WL_indices, qtmd_tag_exact_D, iW)
+                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases_3pt, WL_indices, qtmd_tag_exact_U, iW)
+
+                del tmd_forward_prop
+
+            # CG without links
+            for iW, WL_indices in enumerate(W_index_list_CG):
+                W = Measurement.create_TMD_Wilsonline_CG(U_smear,WL_indices)
+
+                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_exact_f, [W], [WL_indices])
+                g.message("TMD forward prop done")
+                #production tag should include more config/action details
+
+               # qtmd_tag_exact = "%s/%s/%s/%s_%s" % ("qtmd_exact", lat_tag, sm_tag, str(conf), str(pos))
+                qtmd_tag_exact_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG.D.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG.U.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+
+                g.message("Starting TMD contractions")
+                phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases_3pt, WL_indices, qtmd_tag_exact_D, iW)
+                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases_3pt, WL_indices, qtmd_tag_exact_U, iW)
 
                 del tmd_forward_prop
 
@@ -256,7 +299,6 @@ for group, job, conf, jid, n in run_jobs:
         #         os.makedirs(prop_dir)
         # Measurement.set_propagator_output_facilities(prop_dir)
 
-        phases = Measurement.make_mom_phases(U[0].grid, pos)
 
         g.message("Generatring boosted src's")
         srcDp = Measurement.create_src_2pt(pos, trafo, U[0].grid)
@@ -267,11 +309,12 @@ for group, job, conf, jid, n in run_jobs:
 
         g.message("Contraction: Starting 2pt (includes sink smearing)")
         tag = get_c2pt_file_tag(data_dir, lat_tag, conf, "sl", pos, sm_tag)
-        Measurement.contract_2pt_SRC(prop_sloppy_f, phases, trafo, tag)
+        phases_2pt = Measurement.make_mom_phases_2pt(U[0].grid, pos)
+        Measurement.contract_2pt_TMD(prop_sloppy_f, phases_2pt, trafo, tag)
         g.message("Contraction: Done 2pt (includes sink smearing)")
 
-        sequential_bw_prop_down = Measurement.create_bw_seq(prop_sloppy, prop_sloppy_f, trafo, 2)
-        sequential_bw_prop_up = Measurement.create_bw_seq(prop_sloppy, prop_sloppy_f, trafo, 1)
+        sequential_bw_prop_down = Measurement.create_bw_seq(prop_sloppy, prop_sloppy_f, trafo, 2, pos)
+        sequential_bw_prop_up = Measurement.create_bw_seq(prop_sloppy, prop_sloppy_f, trafo, 1, pos)
         g.message("backward prop done")
 
         for ism, smear in enumerate(smear_list):
@@ -285,22 +328,63 @@ for group, job, conf, jid, n in run_jobs:
                     U_smear = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
             g.message("Gauge: Smearing/Flow finished")
             
+            # gauge invariant/traditional stape gauge link
             for iW, WL_indices in enumerate(W_index_list):
-                W = Measurement.create_TMD_Wilsonline(U_smear, WL_indices)
-            
-                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_sloppy_f, W, WL_indices)
+                W = Measurement.create_TMD_Wilsonline(U_smear,WL_indices)
+
+                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_sloppy_f, [W], [WL_indices])
                 g.message("TMD forward prop done")
-            
+                #production tag should include more config/action details
+
                # qtmd_tag_sloppy = "%s/%s/%s/%s_%s" % ("qtmd_sloppy", lat_tag, sm_tag, str(conf), str(pos))
-                qtmd_tag_sloppy_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"D.sl", pos, sm_tag+'_'+contract_tag)
-                qtmd_tag_sloppy_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"U.sl", pos, sm_tag+'_'+contract_tag)
+                qtmd_tag_sloppy_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"GI.D.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                qtmd_tag_sloppy_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"GI.U.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
 
                 g.message("Starting TMD contractions")
-                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases, WL_indices, qtmd_tag_sloppy_D, iW)
-                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases, WL_indices, qtmd_tag_sloppy_U, iW)
+                phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases_3pt, WL_indices, qtmd_tag_sloppy_D, iW)
+                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases_3pt, WL_indices, qtmd_tag_sloppy_U, iW)
 
                 del tmd_forward_prop
 
+            # CG gauge links with Transverse link only
+            for iW, WL_indices in enumerate(W_index_list):
+                W = Measurement.create_TMD_Wilsonline_CG_Tlink(U_smear,WL_indices)
+
+                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_sloppy_f, [W], [WL_indices])
+                g.message("TMD forward prop done")
+                #production tag should include more config/action details
+
+               # qtmd_tag_sloppy = "%s/%s/%s/%s_%s" % ("qtmd_sloppy", lat_tag, sm_tag, str(conf), str(pos))
+                qtmd_tag_sloppy_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG_T.D.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                qtmd_tag_sloppy_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG_T.U.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+
+                g.message("Starting TMD contractions")
+                phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases_3pt, WL_indices, qtmd_tag_sloppy_D, iW)
+                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases_3pt, WL_indices, qtmd_tag_sloppy_U, iW)
+
+                del tmd_forward_prop
+
+            # CG without links
+            for iW, WL_indices in enumerate(W_index_list_CG):
+                W = Measurement.create_TMD_Wilsonline_CG(U_smear,WL_indices)
+
+                tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_sloppy_f, [W], [WL_indices])
+                g.message("TMD forward prop done")
+                #production tag should include more config/action details
+
+               # qtmd_tag_sloppy = "%s/%s/%s/%s_%s" % ("qtmd_sloppy", lat_tag, sm_tag, str(conf), str(pos))
+                qtmd_tag_sloppy_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG.D.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                qtmd_tag_sloppy_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG.U.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+
+                g.message("Starting TMD contractions")
+                phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+                proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases_3pt, WL_indices, qtmd_tag_sloppy_D, iW)
+                proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases_3pt, WL_indices, qtmd_tag_sloppy_U, iW)
+
+                del tmd_forward_prop
+                
         with open(sample_log_file, "a+") as f:
             if g.rank() == 0:
                 f.write(sample_log_tag+"\n")

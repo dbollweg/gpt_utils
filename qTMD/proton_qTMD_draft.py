@@ -37,6 +37,35 @@ PolProjections = {
 
 """
 ================================================================================
+                Used for proton two-point function contraction
+================================================================================
+"""
+ordered_list_of_gammas = [g.gamma[5], g.gamma["T"], g.gamma["T"]*g.gamma[5],
+                                      g.gamma["X"], g.gamma["X"]*g.gamma[5], 
+                                      g.gamma["Y"], g.gamma["Y"]*g.gamma[5],
+                                      g.gamma["Z"], g.gamma["Z"]*g.gamma[5], 
+                                      g.gamma["I"], g.gamma["SigmaXT"], 
+                                      g.gamma["SigmaXY"], g.gamma["SigmaXZ"], 
+                                      g.gamma["SigmaYT"], g.gamma["SigmaYZ"], 
+                                      g.gamma["SigmaZT"]
+                            ]
+def uud_two_point(Q1, Q2, kernel):
+    dq = g.qcd.baryon.diquark(g(Q1 * kernel), g(kernel * Q2))
+    return g(g.color_trace(g.spin_trace(dq) * Q1 + dq * Q1))
+
+def proton_contr(Q1, Q2):
+    C = 1j * g.gamma[1].tensor() * g.gamma[3].tensor()
+    Gamma = C * g.gamma[5].tensor()
+    #Pp = (g.gamma["I"].tensor() + g.gamma[3].tensor()) * 0.25
+    corr = []
+    for ig, gm in enumerate(ordered_list_of_gammas):
+        Pp = gm
+        corr += [g(g.trace(uud_two_point(Q1, Q2, Gamma) * Pp))]
+    return corr
+    #return g(g.trace(uud_two_point(Q1, Q2, Gamma) * Pp))
+
+"""
+================================================================================
                                 proton_TMD
 ================================================================================
 """
@@ -48,8 +77,9 @@ class proton_TMD(proton_measurement):
         self.b_z = parameters["b_z"] # largest b_z
         self.b_T = parameters["b_T"] # largest b_T
 
-        self.pf = parameters["pf"] # momentum of final nucleon state; pf - q = pi ??
+        self.pf = parameters["pf"] # momentum of final nucleon state; pf = pi + q
         self.plist = [[x,y,z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating momentum transfers
+        self.pilist = [[parameters["pf"][0]-x,parameters["pf"][1]-y,parameters["pf"][2]-z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating pi = pf - q
 
         self.width = parameters["width"] # Gaussian smearing width
         self.boost_in = parameters["boost_in"] # ?? Forward propagator boost smearing
@@ -61,6 +91,38 @@ class proton_TMD(proton_measurement):
 
         self.save_propagators = parameters["save_propagators"] # if save propagators
     
+    ############## make list of complex phases for momentum proj.
+    def make_mom_phases_2pt(self, grid, origin=None):    
+        one = g.identity(g.complex(grid))
+        pp = [-2 * np.pi * np.array(pi) / grid.fdimensions for pi in self.pilist] # plist is the q
+
+        P = g.exp_ixp(pp, origin)
+        mom = [g.eval(pp*one) for pp in P]
+        return mom
+    def make_mom_phases_3pt(self, grid, origin=None):    
+        one = g.identity(g.complex(grid))
+        pp = [2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist] # plist is the q
+
+        P = g.exp_ixp(pp, origin)
+        mom = [g.eval(pp*one) for pp in P]
+        return mom
+    
+    #function that does the contractions for the smeared-smeared pion 2pt function
+    def contract_2pt_TMD(self, prop_f, phases, trafo, tag):
+
+        g.message("Begin sink smearing")
+        tmp_trafo = g.convert(trafo, prop_f.grid.precision)
+
+        prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
+        g.message("Sink smearing completed")
+
+        proton1 = proton_contr(prop_f, prop_f)
+        corr = [[g.slice(g.eval(gm*pp),3) for pp in phases] for gm in proton1]
+        
+        if g.rank() == 0:
+            save_proton_c2pt_hdf5(corr, tag, my_gammas, self.pilist)
+        del corr 
+
     def create_fw_prop_TMD(self, prop_f, W, W_index_list):
         g.message("Creating list of W*prop_f")
         prop_list = [prop_f,]
@@ -76,13 +138,13 @@ class proton_TMD(proton_measurement):
         
         return prop_list
 
-    def create_bw_seq(self, inverter, prop, trafo, flavor):
+    def create_bw_seq(self, inverter, prop, trafo, flavor, origin=None):
         tmp_trafo = g.convert(trafo, prop.grid.precision) #Need later for mixed precision solver
         
         prop = g.create.smear.boosted_smearing(tmp_trafo, prop, w=self.width, boost=self.boost_out)
         
         pp = 2.0 * np.pi * np.array(self.pf) / prop.grid.fdimensions
-        P = g.exp_ixp(pp)
+        P = g.exp_ixp(pp, origin)
         
         src_seq = [g.mspincolor(prop.grid) for i in range(len(self.pol_list))]
         dst_seq = []
@@ -123,7 +185,7 @@ class proton_TMD(proton_measurement):
         
         for pol_index, fixed_pol_bwprop in enumerate(prop_bw_seq):
             corr = g.slice_trQPDF(prop_f,fixed_pol_bwprop,phases,3)
-            pol_tag = tag + self.pol_list[pol_index]
+            pol_tag = tag + "." + self.pol_list[pol_index]
             #save_qTMD_proton_hdf5(corr, tag, my_gammas, self.plist, W_index[2], W_index[0], W_index[1], W_index[3])
             if g.rank() == 0:
                 print('g.rank():',g.rank(), ', pol_tag:', pol_tag)
@@ -145,12 +207,22 @@ class proton_TMD(proton_measurement):
                         
                         # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
                         index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
-                        
-                        # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z+1)
-                        #index_list.append([current_b_T, current_bz-0.5, current_eta+0.5, transverse_direction])
-                        
-                        # create Wilson lines from all to all - (eta+bz) + b_perp + (eta-b_z+1)
-                        #index_list.append([current_b_T, -(current_bz-0.5), -(current_eta+0.5), transverse_direction])
+                    
+        return index_list
+
+    def create_TMD_Wilsonline_index_list_CG(self, grid):
+        index_list = []
+        
+        for transverse_direction in [0,1]:
+            for current_bz in range(0, grid.fdimensions[0]):
+                for current_b_T in range(0, grid.fdimensions[0]):
+            
+                    # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
+                    index_list.append([current_b_T, current_bz, 0, transverse_direction])
+                    
+                    # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
+                    if current_bz != 0:
+                        index_list.append([current_b_T, -current_bz, 0, transverse_direction])
                     
         return index_list
     
@@ -164,21 +236,60 @@ class proton_TMD(proton_measurement):
         
         prv_link = g.qcd.gauge.unit(U[2].grid)[0]
         WL = prv_link
+
+        if eta_index+bz_index >= 0:
+            for dz in range(0, eta_index+bz_index):
+                WL = g.eval(prv_link * g.cshift(U[2], 2, dz))
+                prv_link = WL
+        else:
+            for dz in range(0, abs(eta_index+bz_index)):
+                WL = g.eval(prv_link * g.adj(g.cshift(U[2],2, -dz-1)))
+                prv_link = WL
         
-        for dz in range(0, eta_index+bz_index):
-            WL = g.eval(prv_link * g.cshift(U[2], 2, dz))
-            prv_link = WL
-            
+        # dx and bt_index are >=0
         for dx in range(0, bt_index):
             WL=g.eval(prv_link * g.cshift(g.cshift(U[transverse_dir], 2, eta_index+bz_index),transverse_dir, dx))
             prv_link=WL
 
-        for dz in range(0, eta_index-bz_index):
-            WL=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, eta_index+bz_index-1), transverse_dir, bt_index),2,-dz)))
+        if eta_index-bz_index >= 0:
+            for dz in range(0, eta_index-bz_index):
+                WL=g.eval(prv_link * g.adj(g.cshift(g.cshift(g.cshift(U[2], 2, eta_index+bz_index-1), transverse_dir, bt_index),2,-dz)))
+                prv_link=WL
+        else:
+            for dz in range(0, abs(eta_index-bz_index)):
+                WL=g.eval(prv_link * g.cshift(g.cshift(g.cshift(U[2], 2, eta_index+bz_index), transverse_dir, bt_index),2,dz))
+                prv_link=WL
+
+        return WL
+
+    def create_TMD_Wilsonline_CG(self, U, index_set):
+
+        assert len(index_set) == 4
+        bt_index = index_set[0]
+        bz_index = index_set[1]
+        eta_index = index_set[2]
+        transverse_dir = index_set[3]
+
+        return g.qcd.gauge.unit(U[2].grid)[0]
+            
+    def create_TMD_Wilsonline_CG_Tlink(self, U, index_set):
+
+        assert len(index_set) == 4
+        bt_index = index_set[0]
+        bz_index = index_set[1]
+        eta_index = index_set[2]
+        transverse_dir = index_set[3]
+        
+        prv_link = g.qcd.gauge.unit(U[2].grid)[0]
+        WL = prv_link
+        
+        # dx and bt_index are >=0
+        for dx in range(0, bt_index):
+            WL=g.eval(prv_link * g.cshift(g.cshift(U[transverse_dir], 2, eta_index+bz_index),transverse_dir, dx))
             prv_link=WL
 
         return WL
-            
+    
     def down_quark_insertion(self, Q, Gamma, P):
         #eps_abc eps_a'b'c'Gamma_{beta alpha}Gamma_{beta'alpha'}P_{gamma gamma'}
         # * ( Q^beta'beta_b'b Q^gamma'gamma_{c'c} -  Q^beta'gamma_b'c Q^gamma'beta_{c'b} )

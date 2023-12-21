@@ -7,7 +7,7 @@ from io_corr import *
 #ordered list of gamma matrix identifiers, needed for the tag in the correlator output
 my_gammas = ["5", "T", "T5", "X", "X5", "Y", "Y5", "Z", "Z5", "I", "SXT", "SXY", "SXZ", "SYT", "SYZ", "SZT"]
 #my_proton_proj = ["P+","P+_Sz+","P+_Sx+","P+_Sx-"]
-my_proton_proj = ["P+"]
+#my_proton_proj = ["P+"]
 
 ordered_list_of_gammas = [g.gamma[5], g.gamma["T"], g.gamma["T"]*g.gamma[5],
                                       g.gamma["X"], g.gamma["X"]*g.gamma[5], 
@@ -25,8 +25,13 @@ def uud_two_point(Q1, Q2, kernel):
 def proton_contr(Q1, Q2):
     C = 1j * g.gamma[1].tensor() * g.gamma[3].tensor()
     Gamma = C * g.gamma[5].tensor()
-    Pp = (g.gamma["I"].tensor() + g.gamma[3].tensor()) * 0.25
-    return g(g.trace(uud_two_point(Q1, Q2, Gamma) * Pp))
+    #Pp = (g.gamma["I"].tensor() + g.gamma[3].tensor()) * 0.25
+    corr = []
+    for ig, gm in enumerate(ordered_list_of_gammas):
+        Pp = gm
+        corr += [g(g.trace(uud_two_point(Q1, Q2, Gamma) * Pp))]
+    return corr
+    #return g(g.trace(uud_two_point(Q1, Q2, Gamma) * Pp))
 
 class proton_measurement:
     def __init__(self, parameters):
@@ -323,7 +328,7 @@ class proton_measurement:
                 
         return W
 
-
+    '''
     #function that does the contractions for the smeared-smeared pion 2pt function
     def contract_2pt(self, prop_f, phases, trafo, tag):
 
@@ -338,6 +343,7 @@ class proton_measurement:
         if g.rank() == 0:
             save_proton_c2pt_hdf5(corr, tag, my_proton_proj, self.plist)
         del corr 
+    '''
 
 
 
@@ -351,18 +357,20 @@ class proton_measurement:
         g.message("Sink smearing completed")
 
         proton1 = proton_contr(prop_f, prop_f)
-        corr = [g.slice(g.eval(proton1*pp),3) for pp in phases]
+        corr = [[g.slice(g.eval(gm*pp),3) for pp in phases] for gm in proton1]
         
         if g.rank() == 0:
-            save_proton_c2pt_hdf5([corr], tag, my_proton_proj, self.plist)
+            save_proton_c2pt_hdf5(corr, tag, my_gammas, self.plist)
         del corr 
 
+    '''
     def contract_proton_2pt(self,prop_f,phases,trafo):
         proton1 = proton_contr(prop_f, prop_f)
         
         corr = [g.slice(g.eval(proton1*pp),3) for pp in phases]
         
         return corr
+    '''
 
     #function that creates boosted, smeared src.
     def create_src_2pt(self, pos, trafo, grid):
