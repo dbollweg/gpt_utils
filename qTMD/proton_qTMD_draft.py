@@ -125,7 +125,7 @@ class proton_TMD(proton_measurement):
 
     def create_fw_prop_TMD(self, prop_f, W, W_index_list):
         g.message("Creating list of W*prop_f")
-        prop_list = [prop_f,]
+        prop_list = []
         
         for i, idx in enumerate(W_index_list):
 
@@ -182,7 +182,7 @@ class proton_TMD(proton_measurement):
         return dst_seq
     
     def contract_TMD(self, prop_f, prop_bw_seq, phases, W_index, tag, iW):
-        corr = g.slice_trQPDF(prop_f, prop_bw_seq, phases,3)
+        corr = g.slice_trDA(prop_bw_seq, prop_f, phases,3)
         for pol_index in range(len(prop_bw_seq)):
             pol_tag = tag + "." + self.pol_list[pol_index]
             
