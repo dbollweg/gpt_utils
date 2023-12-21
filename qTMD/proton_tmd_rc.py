@@ -11,7 +11,7 @@ from io_corr import *
 
 root_output = "."
 src_shift = np.array([0,0,0,0]) + np.array([1,3,5,7])
-data_dir = "/ccs/home/xiangg/latwork/DWF/TEST/nucleon_TMD/data/"
+data_dir = "/lustre/orion/proj-shared/nph159/data/64I/propagator/GSRC_Proton"
 
 #smearing
 #smear_list = [['flow', '05eps01', 5], ['flow', '10eps01', 10], ['flow', '20eps01', 20], ['flow', '30eps01', 30]]
@@ -116,18 +116,18 @@ group = run_jobs[0][0]
 
 
 # loading gauge configuration
-#g.message("Loading ")
-#print(groups[group]["conf_fmt"] % conf)
-#U = g.load(groups[group]["conf_fmt"] % conf)
-#U_smear = g.copy(U)
-#g.message("finished loading gauge config")
+g.message("Loading ")
+print(groups[group]["conf_fmt"] % conf)
+U = g.load(groups[group]["conf_fmt"] % conf)
+U_smear = g.copy(U)
+g.message("finished loading gauge config")
 
 ##### small dummy used for testing
-Ls = 16
-Lt = 16
-grid = g.grid([Ls,Ls,Ls,Lt], g.double)
-rng = g.random("seed text")
-U = g.qcd.gauge.random(grid, rng)
+# Ls = 16
+# Lt = 16
+# grid = g.grid([Ls,Ls,Ls,Lt], g.double)
+# rng = g.random("seed text")
+# U = g.qcd.gauge.random(grid, rng)
 
 # do gauge fixing
 U_prime, trafo = g.gauge_fix(U, maxiter=5000)
@@ -135,9 +135,9 @@ del U_prime
 L = U[0].grid.fdimensions
 
 Measurement = proton_TMD(parameters)
-#prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
-prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
-pin = 0
+prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["evec_fmt"] % conf)
+#prop_exact, prop_sloppy = Measurement.make_debugging_inverter(U)
+#pin = 0
 
 W_index_list = Measurement.create_TMD_Wilsonline_index_list()
 W_index_list_CG = Measurement.create_TMD_Wilsonline_index_list_CG(U[0].grid)
@@ -190,7 +190,7 @@ for group, job, conf, jid, n in run_jobs:
 
         g.message("Generatring boosted src's")
         srcDp = Measurement.create_src_2pt(pos, trafo, U[0].grid)
-
+        
         g.message("Starting prop exact")
         prop_exact_f = g.eval(prop_exact * srcDp)
         g.message("forward prop done")
@@ -201,6 +201,7 @@ for group, job, conf, jid, n in run_jobs:
         Measurement.contract_2pt_TMD(prop_exact_f, phases_2pt, trafo, tag)
         g.message("Contraction: Done 2pt (includes sink smearing)")
 
+        phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
         sequential_bw_prop_down = Measurement.create_bw_seq(prop_exact, prop_exact_f, trafo, 2, pos)
         sequential_bw_prop_up = Measurement.create_bw_seq(prop_exact, prop_exact_f, trafo, 1, pos)
         g.message("backward prop done")
@@ -229,7 +230,7 @@ for group, job, conf, jid, n in run_jobs:
                 qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"GI.U.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
 
                 g.message("Starting TMD contractions")
-                phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+                #
                 proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases_3pt, WL_indices, qtmd_tag_exact_D, iW)
                 proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases_3pt, WL_indices, qtmd_tag_exact_U, iW)
 
@@ -248,7 +249,7 @@ for group, job, conf, jid, n in run_jobs:
                 qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG_T.U.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
 
                 g.message("Starting TMD contractions")
-                phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+                #phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
                 proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases_3pt, WL_indices, qtmd_tag_exact_D, iW)
                 proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases_3pt, WL_indices, qtmd_tag_exact_U, iW)
 
@@ -267,7 +268,7 @@ for group, job, conf, jid, n in run_jobs:
                 qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG.U.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
 
                 g.message("Starting TMD contractions")
-                phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+                #phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
                 proton_TMDs_down = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_down,phases_3pt, WL_indices, qtmd_tag_exact_D, iW)
                 proton_TMDs_up = Measurement.contract_TMD(tmd_forward_prop, sequential_bw_prop_up,phases_3pt, WL_indices, qtmd_tag_exact_U, iW)
 

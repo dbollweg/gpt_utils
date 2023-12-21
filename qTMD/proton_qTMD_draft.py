@@ -182,14 +182,15 @@ class proton_TMD(proton_measurement):
         return dst_seq
     
     def contract_TMD(self, prop_f, prop_bw_seq, phases, W_index, tag, iW):
-        
-        for pol_index, fixed_pol_bwprop in enumerate(prop_bw_seq):
-            corr = g.slice_trQPDF(prop_f,fixed_pol_bwprop,phases,3)
+        corr = g.slice_trQPDF(prop_f, prop_bw_seq, phases,3)
+        for pol_index in range(len(prop_bw_seq)):
             pol_tag = tag + "." + self.pol_list[pol_index]
+            
+            corr_write = [corr[pol_index]]  
             #save_qTMD_proton_hdf5(corr, tag, my_gammas, self.plist, W_index[2], W_index[0], W_index[1], W_index[3])
             if g.rank() == 0:
                 print('g.rank():',g.rank(), ', pol_tag:', pol_tag)
-                save_qTMD_proton_hdf5_subset(corr, pol_tag, my_gammas, self.plist, [W_index], iW)
+                save_qTMD_proton_hdf5_subset(corr_write, pol_tag, my_gammas, self.plist, [W_index], iW)
 
         #return corr
     
