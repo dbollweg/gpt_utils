@@ -134,7 +134,7 @@ class proton_TMD(proton_measurement):
             current_eta = idx[2]
             transverse_direction = idx[3]
             #prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[i] * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T),2,round(2*current_bz)))*g.gamma[5])))
-            prop_list.append(g.eval(W[i] * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T,),2,round(2*current_bz))))
+            prop_list.append(g.eval(g.adj(W[i]) * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T,),2,round(2*current_bz))))
         
         return prop_list
 
@@ -176,7 +176,7 @@ class proton_TMD(proton_measurement):
             tmp_prop = g.create.smear.boosted_smearing(trafo, smearing_input,w=self.width, boost=self.boost_out)
 
             dst_tmp = g.eval(inverter * tmp_prop)           
-            dst_seq.append(g.eval(g.gamma[5] * g.conj(dst_tmp)))
+            dst_seq.append(g.eval(g.conj(dst_tmp) * g.gamma[5]))
         
         g.message("bw. seq propagator done")
         return dst_seq
@@ -215,8 +215,8 @@ class proton_TMD(proton_measurement):
         index_list = []
         
         for transverse_direction in [0,1]:
-            for current_bz in range(0, grid.fdimensions[0]):
-                for current_b_T in range(0, grid.fdimensions[0]):
+            for current_bz in range(0, grid.fdimensions[0]//2):
+                for current_b_T in range(0, grid.fdimensions[0]//2):
             
                     # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
                     index_list.append([current_b_T, current_bz, 0, transverse_direction])
