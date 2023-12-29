@@ -94,7 +94,7 @@ class proton_TMD(proton_measurement):
     ############## make list of complex phases for momentum proj.
     def make_mom_phases_2pt(self, grid, origin=None):    
         one = g.identity(g.complex(grid))
-        pp = [-2 * np.pi * np.array(pi) / grid.fdimensions for pi in self.pilist] # plist is the q
+        pp = [-2 * np.pi * np.array(pi) / grid.fdimensions for pi in self.pilist] # pilist is the pf-q
 
         P = g.exp_ixp(pp, origin)
         mom = [g.eval(pp*one) for pp in P]
@@ -134,8 +134,7 @@ class proton_TMD(proton_measurement):
             current_eta = idx[2]
             transverse_direction = idx[3]
             #prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[i] * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T),2,round(2*current_bz)))*g.gamma[5])))
-            prop_list.append(g.eval(g.adj(W[i]) * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T,),2,round(2*current_bz))))
-        
+            prop_list.append(g.eval(W[i] * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T),2,round(2*current_bz)))) 
         return prop_list
 
     def create_bw_seq(self, inverter, prop, trafo, flavor, origin=None):
@@ -176,8 +175,9 @@ class proton_TMD(proton_measurement):
             tmp_prop = g.create.smear.boosted_smearing(trafo, smearing_input,w=self.width, boost=self.boost_out)
 
             dst_tmp = g.eval(inverter * tmp_prop)           
-            dst_seq.append(g.eval(g.conj(dst_tmp) * g.gamma[5]))
-        
+            # FIXME dst_seq.append(g.eval(g.gamma[5] * g.conj(dst_tmp)))
+            dst_seq.append(g.eval(g.adj(dst_tmp) * g.gamma[5]))
+
         g.message("bw. seq propagator done")
         return dst_seq
     
