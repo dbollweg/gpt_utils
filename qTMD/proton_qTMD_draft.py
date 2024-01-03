@@ -166,11 +166,12 @@ class proton_TMD(proton_measurement):
             # sequential solve through t=t_insert
             src_seq_t = g.lattice(src_seq[i])
             src_seq_t[:] = 0
-            src_seq_t[:, :, :, self.t_insert] = src_seq[i][:, :, :, self.t_insert]
+            src_seq_t[:, :, :, origin[3]+self.t_insert] = src_seq[i][:, :, :, origin[3]+self.t_insert]
 
             g.message("diquark contractions for Polarization ", i, " done")
         
-            smearing_input = g.eval(g.gamma[5]*P*g.conj(src_seq_t))
+            # FIXME smearing_input = g.eval(g.gamma[5]*P*g.conj(src_seq_t))
+            smearing_input = g.eval(g.gamma[5]*P*g.adj(src_seq_t))
 
             tmp_prop = g.create.smear.boosted_smearing(trafo, smearing_input,w=self.width, boost=self.boost_out)
 
@@ -187,7 +188,7 @@ class proton_TMD(proton_measurement):
             pol_tag = tag + "." + self.pol_list[pol_index]
             
             corr_write = [corr[pol_index]]  
-            #save_qTMD_proton_hdf5(corr, tag, my_gammas, self.plist, W_index[2], W_index[0], W_index[1], W_index[3])
+            
             if g.rank() == 0:
                 print('g.rank():',g.rank(), ', pol_tag:', pol_tag)
                 save_qTMD_proton_hdf5_subset(corr_write, pol_tag, my_gammas, self.plist, [W_index], iW)
@@ -200,8 +201,8 @@ class proton_TMD(proton_measurement):
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
                 
-                for current_bz in range(0, min([self.b_z, current_eta])):
-                    for current_b_T in range(0, self.b_T):
+                for current_bz in range(0, min([self.b_z+1, current_eta+1])):
+                    for current_b_T in range(0, min([self.b_T+1, current_eta+1])):
                         
                         # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
                         index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
@@ -319,59 +320,100 @@ class proton_TMD(proton_measurement):
             
         for i1, sign1 in eps:
             for i2, sign2 in eps:
-                D[i1[0], i2[0]] += sign1 * sign2 * g.transpose((PDu[i2[2], i1[2]] * GtDG[i2[1], i1[1]] - GtD[i2[1],i1[2]] * PDG[i2[2], i1[1]]))
+                D[i1[0], i2[0]] += -sign1 * sign2 * g.transpose((PDu[i2[2], i1[2]] * GtDG[i2[1], i1[1]] - GtD[i2[1],i1[2]] * PDG[i2[2], i1[1]]))
                 
         g.merge_color(R, D)
         return R
 
+    #Qlua definition, reproduce the results as Chroma difinition
     def up_quark_insertion(self, Qu, Qd, Gamma, P):
+
+        eps = g.epsilon(Qu.otype.shape[2])
+        R = g.lattice(Qu)
+
+        Du_sep = g.separate_color(Qu)
+        GDd = g.eval(Gamma * Qd)
+        GDd = g.separate_color(GDd)
+
+        PDu = g.eval(P*Qu)
+        PDu = g.separate_color(PDu)
+
+        # ut
+        DuP = g.eval(Qu * P)
+        DuP = g.separate_color(DuP)
+        TrDuP = g(g.spin_trace(Qu * P))
+        TrDuP = g.separate_color(TrDuP)
+        
+        # s2ds1b
+        GtDG = g.eval(g.transpose(Gamma)*Qd*Gamma)
+        GtDG = g.separate_color(GtDG)
+
+        #sum color indices
+        D = {x: g.lattice(GDd[x]) for x in GDd}
+        for d in D:
+            D[d][:] = 0
+
+        for i1, sign1 in eps:
+            for i2, sign2 in eps:
+                D[i2[2], i1[2]] += -sign1 * sign2 * (P * g.spin_trace(GtDG[i1[1],i2[1]]*g.transpose(Du_sep[i1[0],i2[0]]))
+                                    + g.transpose(TrDuP[i1[0],i2[0]] * GtDG[i1[1],i2[1]])
+                                    + PDu[i1[0],i2[0]] * g.transpose(GtDG[i1[1],i2[1]])
+                                    + g.transpose(GtDG[i1[0],i2[0]]) * DuP[i1[1],i2[1]])
+        
+        g.merge_color(R, D)
+
+        return R
+
+    # Chroma definition, reproduce the results as Qlua definition
+    '''
+    def up_quark_insertion(Qu, Qd, Gamma, P):
 
         eps = g.epsilon(Qu.otype.shape[2])
         R = g.lattice(Qu)
         Dut = g.lattice(Qu)
 
-        #first term    
-        GDdGt = g.eval(Gamma * Qd * g.transpose(Gamma))
-        GDdGt = g.separate_color(GDdGt)
-        
-        D = {x: g.lattice(GDdGt[x]) for x in GDdGt}
-        for d in D:
-            D[d][:] = 0
-            
+        Du_sep = g.separate_color(Qu)
+        GDd = g.eval(Gamma * Qd)
+        GDd = g.separate_color(GDd)
+
+        #first term & second term
+        GDd = g.eval(Gamma * Qd)
+        GDd = g.separate_color(GDd)
+
+        DuG = g.eval(Qu * Gamma)
+        DuG = g.separate_color(DuG)
+
+        #third term
         Du_sep = g.separate_color(Qu)
         Du_spintransposed = {x: g.lattice(Du_sep[x]) for x in Du_sep}
         for d in Du_spintransposed:
             Du_spintransposed[d] = g(g.transpose(Du_sep[d]))
         g.merge_color(Dut,Du_spintransposed)
-        
-        DuP = g(Dut*P)
-        DuP = g.separate_color(DuP)
-        
-        #second term
-        PDuG = g(P * Dut * Gamma)
-        PDuG = g.separate_color(PDuG)
-        DdGt = g(Qd * g.transpose(Gamma))
-        DdGt = g.separate_color(DdGt)    
-        
-        
-        #third term
-        GDd = g.eval(Gamma * Qd)
-        GDd = g.separate_color(GDd)
 
-        GtDut = g.eval(g.transpose(Gamma) * Dut)
-        GtDut = g.separate_color(GtDut)
-            
+        PDut = g.eval(g.transpose(P) * Dut)
+        PDut = g.separate_color(PDut)
+        GDuG = g.eval(Gamma * Qu * Gamma)
+        GDuG = g.separate_color(GDuG)    
+
         #fourth term
-        PDu_trace = g(g.spin_trace(P * Dut))
-        PDu_trace = g.separate_color(PDu_trace)
+        #GDuG = g.eval(Gamma * Qu * Gamma)
+        #GDuG = g.separate_color(GDuG)
+        DuP_trace = g(g.spin_trace(Qu * P))
+        DuP_trace = g.separate_color(DuP_trace)
 
         #sum color indices
+        D = {x: g.lattice(GDd[x]) for x in GDd}
+        for d in D:
+            D[d][:] = 0
+
         for i1, sign1 in eps:
             for i2, sign2 in eps:
-                D[i2[2], i1[2]] += sign1 * sign2 * (GDdGt[i1[1],i2[1]] * DuP[i1[0],i2[0]]
-                                                    + PDuG[i1[0],i2[0]] * DdGt[i1[1],i2[1]] 
-                                                    + P * g.spin_trace(GDd[i1[1],i2[1]] * GtDut[i1[0],i2[0]]) 
-                                                    +  GDdGt[i1[1],i2[1]] * PDu_trace[i1[0],i2[0]])
-                
+                tmp = -sign1 * sign2 * (GDd[i1[1],i2[1]] * g.transpose(DuG[i1[0],i2[0]]) * g.transpose(P)
+                                    + g.spin_trace(GDd[i1[1],i2[1]] * g.transpose(DuG[i1[0],i2[0]])) * g.transpose(P)
+                                    - PDut[i1[1],i2[1]] * GDuG[i1[0],i2[0]]
+                                    - DuP_trace[i1[0],i2[0]] * GDuG[i1[1],i2[1]])
+                D[i2[2], i1[2]] += g.transpose(tmp)
+        
         g.merge_color(R, D)
         return R
+    '''

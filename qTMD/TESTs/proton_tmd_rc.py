@@ -1,4 +1,3 @@
-# This is a example of testing the gauge invariance
 import gpt as g 
 import os
 import sys
