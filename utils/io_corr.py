@@ -163,13 +163,12 @@ def save_qTMD_proton_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z, tr_dir):
     f.close() 
 
 # W_index_list[bT, bz, eta, Tdir]
-def save_qTMD_proton_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub):
+def save_qTMD_proton_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub, tsep):
 
     roll = -int(tag.split(".")[6].split('t')[1]) # 6: xyzt
     bT_list = ['b_X', 'b_Y']
 
-    if g.rank() == 0:
-        print("-->>",W_index_list)
+    g.message("-->>",W_index_list)
 
     save_h5 = tag + ".h5"
     if i_sub == 0:
@@ -186,9 +185,6 @@ def save_qTMD_proton_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_su
             for i, idx in enumerate(W_index_list):
                 path = bT_list[idx[3]] + '/' + 'eta'+str(idx[2]) + '/' + 'bT'+str(idx[0])
                 g_data = g_p.require_group(path)
-                if g.rank() == 0 and ig == 0 and ip == 0:
-                    #g_p.keys()
-                    #g_data.keys()
-                    print("Want to save", path+'bz'+str(idx[1]))
-                g_data.create_dataset('bz'+str(idx[1]), data=np.roll(corr[i][ip][ig], roll, axis=0))
+                g.message("Want to save", path+'bz'+str(idx[1]))
+                g_data.create_dataset('bz'+str(idx[1]), data=np.roll(corr[i][ip][ig], roll, axis=0)[:tsep+2])
     f.close()

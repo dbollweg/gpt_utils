@@ -116,6 +116,26 @@ class proton_TMD(proton_measurement):
         prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
         g.message("Sink smearing completed")
 
+        dq = g.qcd.baryon.diquark(g(prop_f * Cg5), g(Cg5 * prop_f))
+        proton1 = g(g.spin_trace(dq) * prop_f + dq * prop_f)
+        prop_unit = g.mspincolor(prop_f.grid)
+        prop_unit = g.identity(prop_unit)
+        corr = g.slice_trDA([prop_unit], [proton1], phases,3)
+        corr = [[corr[0][i][j] for i in range(0, len(corr[0]))] for j in range(0, len(corr[0][0])) ]
+
+        if g.rank() == 0:
+            save_proton_c2pt_hdf5(corr, tag, my_gammas, self.pilist)
+        del corr
+
+    #function that does the contractions for the smeared-smeared pion 2pt function
+    def contract_2pt_TMD_old(self, prop_f, phases, trafo, tag):
+
+        g.message("Begin sink smearing")
+        tmp_trafo = g.convert(trafo, prop_f.grid.precision)
+
+        prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
+        g.message("Sink smearing completed")
+
         proton1 = proton_contr(prop_f, prop_f)
         corr = [[g.slice(g.eval(gm*pp),3) for pp in phases] for gm in proton1]
         
@@ -183,15 +203,17 @@ class proton_TMD(proton_measurement):
         return dst_seq
     
     def contract_TMD(self, prop_f, prop_bw_seq, phases, W_index, tag, iW):
+        
         corr = g.slice_trDA(prop_bw_seq, prop_f, phases,3)
+
         for pol_index in range(len(prop_bw_seq)):
             pol_tag = tag + "." + self.pol_list[pol_index]
             
             corr_write = [corr[pol_index]]  
             
-            if g.rank() == 0:
-                print('g.rank():',g.rank(), ', pol_tag:', pol_tag)
-                save_qTMD_proton_hdf5_subset(corr_write, pol_tag, my_gammas, self.plist, [W_index], iW)
+            if g.rank() == pol_index:
+                #print('g.rank():',g.rank(), ', pol_tag:', pol_tag)
+                save_qTMD_proton_hdf5_subset(corr_write, pol_tag, my_gammas, self.plist, [W_index], iW, self.t_insert)
 
         #return corr
     
