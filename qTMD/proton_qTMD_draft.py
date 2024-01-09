@@ -186,7 +186,7 @@ class proton_TMD(proton_measurement):
             # sequential solve through t=t_insert
             src_seq_t = g.lattice(src_seq[i])
             src_seq_t[:] = 0
-            src_seq_t[:, :, :, origin[3]+self.t_insert] = src_seq[i][:, :, :, origin[3]+self.t_insert]
+            src_seq_t[:, :, :, (origin[3]+self.t_insert)%prop.grid.fdimensions[3]] = src_seq[i][:, :, :, (origin[3]+self.t_insert)%prop.grid.fdimensions[3]]
 
             g.message("diquark contractions for Polarization ", i, " done")
         
@@ -238,8 +238,8 @@ class proton_TMD(proton_measurement):
         index_list = []
         
         for transverse_direction in [0,1]:
-            for current_bz in range(0, grid.fdimensions[0]//2):
-                for current_b_T in range(0, grid.fdimensions[0]//2):
+            for current_bz in range(0, grid.fdimensions[0]//3):
+                for current_b_T in range(0, grid.fdimensions[0]//3):
             
                     # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
                     index_list.append([current_b_T, current_bz, 0, transverse_direction])
