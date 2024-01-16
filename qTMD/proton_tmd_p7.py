@@ -11,7 +11,7 @@ from io_corr import *
 
 root_output = "."
 src_shift = np.array([0,0,0,0]) + np.array([1,3,5,7])
-data_dir = "/lustre/orion/nph159/proj-shared/xgao/prod/64I/qTMD/p0"
+data_dir = "/lustre/orion/nph159/proj-shared/xgao/prod/64I/qTMD/p7"
 
 #smearing
 #smear_list = [['flow', '05eps01', 5], ['flow', '10eps01', 10], ['flow', '20eps01', 20], ['flow', '40eps01', 40]]
@@ -35,15 +35,15 @@ parameters = {
 
     #"qext": [-2, -1, 0, 1, 2],
     "qext": [0],
-    #"pf": [0,0,6,0],
-    "pf": [0,0,0,0],
+    #"pf": [0,0,0,0],
+    "pf": [0,0,7,0],
 
-    #"boost_in": [0,0,3],
-    #"boost_out": [0,0,3],
-    #"width" : 8.0,
-    "boost_in": [0,0,0],
-    "boost_out": [0,0,0],
+    "boost_in": [0,0,3],
+    "boost_out": [0,0,3],
     "width" : 8.0,
+    #"boost_in": [0,0,0],
+    #"boost_out": [0,0,0],
+    #"width" : 8.0,
 
     "pol": ["PpSzp", "PpSzm", "PpSxp"],
     "t_insert": 10, #starting with 10 source sink separation

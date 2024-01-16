@@ -223,14 +223,19 @@ class proton_TMD(proton_measurement):
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
                 
-                for current_bz in range(0, min([self.b_z+1, current_eta+1])):
+                if current_eta <= 12:
+                    for current_bz in range(0, min([self.b_z+1, current_eta+1])):
+                        for current_b_T in range(0, min([self.b_T+1, current_eta+1])):
+                            
+                            # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
+                            index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
+                            
+                            # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
+                            index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
+                else:
+                    # create Wilson lines from all to all + (eta+0) + b_perp - (eta-0)
                     for current_b_T in range(0, min([self.b_T+1, current_eta+1])):
-                        
-                        # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
-                        index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
-                        
-                        # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
-                        index_list.append([current_b_T, -current_bz, -current_eta, transverse_direction])
+                        index_list.append([current_b_T, 0, current_eta, transverse_direction])
                     
         return index_list
 
@@ -238,8 +243,8 @@ class proton_TMD(proton_measurement):
         index_list = []
         
         for transverse_direction in [0,1]:
-            for current_bz in range(0, grid.fdimensions[0]//3):
-                for current_b_T in range(0, grid.fdimensions[0]//3):
+            for current_bz in range(0, grid.fdimensions[0]//4+1):
+                for current_b_T in range(0, grid.fdimensions[0]//4+1):
             
                     # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
                     index_list.append([current_b_T, current_bz, 0, transverse_direction])
