@@ -78,8 +78,10 @@ class proton_TMD(proton_measurement):
         self.b_T = parameters["b_T"] # largest b_T
 
         self.pf = parameters["pf"] # momentum of final nucleon state; pf = pi + q
-        self.plist = [[x,y,z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating momentum transfers
-        self.pilist = [[parameters["pf"][0]-x,parameters["pf"][1]-y,parameters["pf"][2]-z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating pi = pf - q
+        self.plist = [[x,y,z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating momentum transfers for TMD
+        self.qlist = [[x,y,z,0] for x in parameters["qext_PDF"] for y in parameters["qext_PDF"] for z in parameters["qext_PDF"]] # generating momentum transfers for PDF
+        #self.pilist = [[parameters["pf"][0]-x,parameters["pf"][1]-y,parameters["pf"][2]-z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating pi = pf - q
+        self.pilist = parameters["p_2pt"]  # 2pt momentum
 
         self.width = parameters["width"] # Gaussian smearing width
         self.boost_in = parameters["boost_in"] # ?? Forward propagator boost smearing
@@ -101,7 +103,14 @@ class proton_TMD(proton_measurement):
         return mom
     def make_mom_phases_3pt(self, grid, origin=None):    
         one = g.identity(g.complex(grid))
-        pp = [2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist] # plist is the q
+        pp = [2 * np.pi * np.array(p) / grid.fdimensions for p in self.plist] # plist is the q for TMD
+
+        P = g.exp_ixp(pp, origin)
+        mom = [g.eval(pp*one) for pp in P]
+        return mom
+    def make_mom_phases_PDF(self, grid, origin=None):    
+        one = g.identity(g.complex(grid))
+        pp = [2 * np.pi * np.array(p) / grid.fdimensions for p in self.qlist] # qlist is the q for PDF
 
         P = g.exp_ixp(pp, origin)
         mom = [g.eval(pp*one) for pp in P]
@@ -157,6 +166,23 @@ class proton_TMD(proton_measurement):
             prop_list.append(g.eval(W[i] * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T),2,round(2*current_bz)))) 
         return prop_list
 
+    def create_fw_prop_PDF(self, prop_f, W, W_index_list):
+        g.message("Creating list of W*prop_f")
+        prop_list = []
+        
+        for i, idx in enumerate(W_index_list):
+
+            current_b_T = idx[0]
+            current_bz = idx[1]
+            current_eta = idx[2]
+            transverse_direction = idx[3]
+            assert current_b_T == 0
+            assert current_eta == 0
+            assert transverse_direction == 0
+
+            prop_list.append(g.eval(W[i] * g.cshift(g.cshift(prop_f,0,0),2,round(current_bz)))) 
+        return prop_list
+    
     def create_bw_seq(self, inverter, prop, trafo, flavor, origin=None):
         tmp_trafo = g.convert(trafo, prop.grid.precision) #Need later for mixed precision solver
         
@@ -215,7 +241,31 @@ class proton_TMD(proton_measurement):
                 #print('g.rank():',g.rank(), ', pol_tag:', pol_tag)
                 save_qTMD_proton_hdf5_subset(corr_write, pol_tag, my_gammas, self.plist, [W_index], iW, self.t_insert)
 
-        #return corr
+    def contract_PDF(self, prop_f, prop_bw_seq, phases, W_index, tag, iW):
+        
+        corr = g.slice_trDA(prop_bw_seq, prop_f, phases,3)
+
+        for pol_index in range(len(prop_bw_seq)):
+            pol_tag = tag + "." + self.pol_list[pol_index]
+            
+            corr_write = [corr[pol_index]]  
+            
+            if g.rank() == pol_index:
+                #print('g.rank():',g.rank(), ', pol_tag:', pol_tag)
+                save_qTMD_proton_hdf5_subset(corr_write, pol_tag, my_gammas, self.qlist, [W_index], iW, self.t_insert)
+    
+    def create_PDF_Wilsonline_index_list(self, grid):
+        index_list = []
+        
+        for current_bz in range(0, grid.fdimensions[0]//4+1):
+            # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
+            index_list.append([0, current_bz, 0, 0])
+            
+            # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
+            #if current_bz != 0:
+            #    index_list.append([0, -current_bz, 0, 0])
+                    
+        return index_list
     
     def create_TMD_Wilsonline_index_list(self):
         index_list = []
@@ -254,6 +304,31 @@ class proton_TMD(proton_measurement):
                         index_list.append([current_b_T, -current_bz, 0, transverse_direction])
                     
         return index_list
+    
+    def create_PDF_Wilsonline(self, U, index_set):
+
+        assert len(index_set) == 4
+        bt_index = index_set[0]
+        bz_index = index_set[1]
+        eta_index = index_set[2]
+        transverse_dir = index_set[3]
+        assert bt_index == 0
+        assert eta_index == 0
+        assert transverse_dir == 0
+        
+        prv_link = g.qcd.gauge.unit(U[2].grid)[0]
+        WL = prv_link
+
+        if bz_index >= 0:
+            for dz in range(0, bz_index):
+                WL = g.eval(prv_link * g.cshift(U[2], 2, dz))
+                prv_link = WL
+        else:
+            for dz in range(0, abs(bz_index)):
+                WL = g.eval(prv_link * g.adj(g.cshift(U[2],2, -dz-1)))
+                prv_link = WL
+
+        return WL
     
     def create_TMD_Wilsonline(self, U, index_set):
 

@@ -11,14 +11,14 @@ from io_corr import *
 
 root_output = "."
 src_shift = np.array([0,0,0,0]) + np.array([1,3,5,7])
-data_dir = "/lustre/orion/nph159/proj-shared/xgao/prod/64I/qTMD/p7"
+data_dir = "/lustre/orion/nph159/proj-shared/xgao/prod/64I/qTMD_proton/p7"
 
 #smearing
 #smear_list = [['flow', '05eps01', 5], ['flow', '10eps01', 10], ['flow', '20eps01', 20], ['flow', '40eps01', 40]]
-smear_list = [['flow', '10eps01', 10]]
+smear_list = [['flow', '10eps01', 10], ['flow', '20eps01', 20]]
 
 # tags
-sm_tag = "GSRC_W80_k0"
+sm_tag = "GSRC_W80_k3"
 lat_tag = "64I"
 
 #(8*8+12*12+16*16+20*20) * 4 * 4
@@ -34,9 +34,11 @@ parameters = {
     "b_T": 10,
 
     #"qext": [-2, -1, 0, 1, 2],
-    "qext": [0],
+    "qext": [-2, -1, 0], # momentum transfer
+    "qext_PDF": [-2, -1, 0], # momentum transfer
     #"pf": [0,0,0,0],
     "pf": [0,0,7,0],
+    "p_2pt": [[x,y,z,0] for x in [-2, -1, 0] for y in [-2, -1, 0] for z in [5, 6, 7]], # 2pt momentum
 
     "boost_in": [0,0,3],
     "boost_out": [0,0,3],
@@ -46,7 +48,7 @@ parameters = {
     #"width" : 8.0,
 
     "pol": ["PpSzp", "PpSzm", "PpSxp"],
-    "t_insert": 10, #starting with 10 source sink separation
+    "t_insert": 8, #starting with 10 source sink separation
 
     "save_propagators": False,
 }
@@ -145,10 +147,13 @@ prop_exact, prop_sloppy, pin = Measurement.make_64I_inverter(U, groups[group]["e
 
 W_index_list = Measurement.create_TMD_Wilsonline_index_list()
 W_index_list_CG = Measurement.create_TMD_Wilsonline_index_list_CG(U[0].grid)
+W_index_list_PDF = Measurement.create_PDF_Wilsonline_index_list(U[0].grid)
 g.message("W_index_list:", np.shape(W_index_list))
 g.message(W_index_list)
 g.message("W_index_list_CG:", np.shape(W_index_list_CG))
 g.message(W_index_list_CG)
+g.message("W_index_list_PDF:", np.shape(W_index_list_PDF))
+g.message(W_index_list_PDF)
 
 # show available memory
 g.mem_report(details=False)
@@ -212,21 +217,39 @@ for group, job, conf, jid, n in run_jobs:
         g.message("backward prop done")
 
         phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+        phases_PDF = Measurement.make_mom_phases_PDF(U[0].grid, pos)
         for ism, smear in enumerate(smear_list):
             
+            U_smear = g.copy(U)
             contract_tag, n_sm = smear[0]+smear[1], smear[2]
             if smear[0] == 'hyp':
                 for i in range(n_sm):
-                    U_smear = g.qcd.gauge.smear.hyp(U, alpha = np.array([0.75, 0.6, 0.3]))
+                    U_smear = g.qcd.gauge.smear.hyp(U_smear, alpha = np.array([0.75, 0.6, 0.3]))
             if smear[0] == 'flow':
                 for i in range(n_sm):
-                    U_smear = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
+                    U_smear = g.qcd.gauge.smear.wilson_flow(U_smear, epsilon=0.1)
             g.message("Gauge: Smearing/Flow finished")
-            
+
+            g.message("\ncontract_PDF: GI")
+            # gauge invariant/traditional straight gauge link
+            for iW, WL_indices in enumerate(W_index_list_PDF):
+                W = Measurement.create_PDF_Wilsonline(U_smear, WL_indices)
+
+                tmd_forward_prop = Measurement.create_fw_prop_PDF(prop_exact_f, [W], [WL_indices])
+                g.message("TMD forward prop done")
+
+                qtmd_tag_exact_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"GI_PDF.D.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"GI_PDF.U.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                g.message("Starting TMD contractions")
+                proton_TMDs_down = Measurement.contract_PDF(tmd_forward_prop, sequential_bw_prop_down,phases_PDF, WL_indices, qtmd_tag_exact_D, iW)
+                proton_TMDs_up = Measurement.contract_PDF(tmd_forward_prop, sequential_bw_prop_up,phases_PDF, WL_indices, qtmd_tag_exact_U, iW)
+
+                del tmd_forward_prop
+
             g.message("\ncontract_TMD: GI")
             # gauge invariant/traditional stape gauge link
             for iW, WL_indices in enumerate(W_index_list):
-                W = Measurement.create_TMD_Wilsonline(U, WL_indices)
+                W = Measurement.create_TMD_Wilsonline(U_smear, WL_indices)
 
                 tmd_forward_prop = Measurement.create_fw_prop_TMD(prop_exact_f, [W], [WL_indices])
                 g.message("TMD forward prop done")
@@ -241,6 +264,22 @@ for group, job, conf, jid, n in run_jobs:
 
             # Only do once for CG
             if ism == 0:
+
+                g.message("\ncontract_PDF: CG")
+                # gauge invariant/traditional straight gauge link
+                for iW, WL_indices in enumerate(W_index_list_PDF):
+                    W = Measurement.create_TMD_Wilsonline_CG(U_smear, WL_indices)
+
+                    tmd_forward_prop = Measurement.create_fw_prop_PDF(prop_exact_f, [W], [WL_indices])
+                    g.message("TMD forward prop done")
+
+                    qtmd_tag_exact_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG_PDF.D.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                    qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG_PDF.U.ex", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                    g.message("Starting TMD contractions")
+                    proton_TMDs_down = Measurement.contract_PDF(tmd_forward_prop, sequential_bw_prop_down,phases_PDF, WL_indices, qtmd_tag_exact_D, iW)
+                    proton_TMDs_up = Measurement.contract_PDF(tmd_forward_prop, sequential_bw_prop_up,phases_PDF, WL_indices, qtmd_tag_exact_U, iW)
+
+                    del tmd_forward_prop
 
                 g.message("\ncontract_TMD: CG Tlink")
                 # CG gauge links with Transverse link only
@@ -315,16 +354,34 @@ for group, job, conf, jid, n in run_jobs:
         g.message("backward prop done")
 
         phases_3pt = Measurement.make_mom_phases_3pt(U[0].grid, pos)
+        phases_PDF = Measurement.make_mom_phases_PDF(U[0].grid, pos)
         for ism, smear in enumerate(smear_list):
             
+            U_smear = g.copy(U)
             contract_tag, n_sm = smear[0]+smear[1], smear[2]
             if smear[0] == 'hyp':
                 for i in range(n_sm):
-                    U_smear = g.qcd.gauge.smear.hyp(U, alpha = np.array([0.75, 0.6, 0.3]))
+                    U_smear = g.qcd.gauge.smear.hyp(U_smear, alpha = np.array([0.75, 0.6, 0.3]))
             if smear[0] == 'flow':
                 for i in range(n_sm):
-                    U_smear = g.qcd.gauge.smear.wilson_flow(U, epsilon=0.1)
+                    U_smear = g.qcd.gauge.smear.wilson_flow(U_smear, epsilon=0.1)
             g.message("Gauge: Smearing/Flow finished")
+
+            g.message("\ncontract_PDF: GI")
+            # gauge invariant/traditional straight gauge link
+            for iW, WL_indices in enumerate(W_index_list_PDF):
+                W = Measurement.create_PDF_Wilsonline(U_smear, WL_indices)
+
+                tmd_forward_prop = Measurement.create_fw_prop_PDF(prop_sloppy_f, [W], [WL_indices])
+                g.message("TMD forward prop done")
+
+                qtmd_tag_sloppy_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"GI_PDF.D.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                qtmd_tag_sloppy_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"GI_PDF.U.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                g.message("Starting TMD contractions")
+                proton_TMDs_down = Measurement.contract_PDF(tmd_forward_prop, sequential_bw_prop_down,phases_PDF, WL_indices, qtmd_tag_sloppy_D, iW)
+                proton_TMDs_up = Measurement.contract_PDF(tmd_forward_prop, sequential_bw_prop_up,phases_PDF, WL_indices, qtmd_tag_sloppy_U, iW)
+
+                del tmd_forward_prop
 
             g.message("\ncontract_TMD: GI")
             # gauge invariant/traditional stape gauge link
@@ -347,6 +404,22 @@ for group, job, conf, jid, n in run_jobs:
             # Only do once for CG
             if ism == 0:
 
+                g.message("\ncontract_PDF: CG")
+                # gauge invariant/traditional straight gauge link
+                for iW, WL_indices in enumerate(W_index_list_PDF):
+                    W = Measurement.create_TMD_Wilsonline_CG(U_smear, WL_indices)
+
+                    tmd_forward_prop = Measurement.create_fw_prop_PDF(prop_sloppy_f, [W], [WL_indices])
+                    g.message("TMD forward prop done")
+
+                    qtmd_tag_sloppy_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG_PDF.D.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                    qtmd_tag_sloppy_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG_PDF.U.sl", pos, sm_tag+'.'+pf_tag+"."+contract_tag)
+                    g.message("Starting TMD contractions")
+                    proton_TMDs_down = Measurement.contract_PDF(tmd_forward_prop, sequential_bw_prop_down,phases_PDF, WL_indices, qtmd_tag_sloppy_D, iW)
+                    proton_TMDs_up = Measurement.contract_PDF(tmd_forward_prop, sequential_bw_prop_up,phases_PDF, WL_indices, qtmd_tag_sloppy_U, iW)
+
+                    del tmd_forward_prop
+                    
                 # CG gauge links with Transverse link only
                 for iW, WL_indices in enumerate(W_index_list):
                     W = Measurement.create_TMD_Wilsonline_CG_Tlink(U_smear,WL_indices)
