@@ -56,14 +56,13 @@ def LatticeGaugeGPT(lattice: List[g.lattice], gen_simd_width: int, gauge: Lattic
                 .view("|u1")
                 .reshape(-1)
             )
-        return gauge
+        return lattice
 
 
 def LatticePropagatorGPT(lattice: g.lattice, gen_simd_width: int, propagator: LatticePropagator = None):
     latt_info, gpt_latt, gpt_simd, gpt_prec = LatticeInfoGPT(lattice.grid, gen_simd_width)
     Lx, Ly, Lz, Lt = latt_info.size
     Ns, Nc = latt_info.Ns, latt_info.Nc
-    print("Debug")
     assert lattice.describe().startswith(f"ot_matrix_spin_color({Ns},{Nc})")
     if propagator is None:
         value = cb2(
@@ -88,5 +87,4 @@ def LatticePropagatorGPT(lattice: g.lattice, gen_simd_width: int, propagator: La
             .view("|u1")
             .reshape(-1)
         )
-        print("Debug2")
         return lattice
