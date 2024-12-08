@@ -37,7 +37,6 @@ def get_qTMD_file_tag(data_dir, lat, cfg, ama,src, sm):
 
     return data_dir + "/qTMD/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + "." + sm_tag
     
-
 def get_qDA_file_tag(data_dir, lat, cfg, ama, src, sm):
 
     cfg_tag = str(cfg)
@@ -47,6 +46,18 @@ def get_qDA_file_tag(data_dir, lat, cfg, ama, src, sm):
     sm_tag  = str(sm)
 
     return data_dir + "/qDA/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + "." + sm_tag
+
+def get_softFF_file_tag(data_dir, lat, cfg, ama,src, sm, quark_mom, meson_mom):
+    
+    cfg_tag = str(cfg)
+    lat_tag = str(lat) + ".softFF"
+    ama_tag = str(ama)
+    src_tag = "x"+str(src[0]) + "y"+str(src[1]) + "z"+str(src[2]) + "t"+str(src[3])
+    qmom_tag = "qx"+str(quark_mom[0]) + "qy"+str(quark_mom[1]) + "qz"+str(quark_mom[2]) + "qt"+str(quark_mom[3])
+    mmom_tag = "px"+str(meson_mom[0]) + "py"+str(meson_mom[1]) + "pz"+str(meson_mom[2]) + "pt"+str(meson_mom[3])
+    sm_tag  = str(sm)
+
+    return data_dir + "/ff/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + "." + qmom_tag + "." + mmom_tag + "." + sm_tag
 
 def get_sample_log_tag(ama, src, sm):
 
@@ -85,6 +96,22 @@ def save_c2pt_hdf5(corr, tag, gammalist, plist):
         for ip, p in enumerate(plist):
             dataset_tag = "PX"+str(p[0])+"PY"+str(p[1])+"PZ"+str(p[2])
             g.create_dataset(dataset_tag, data=np.roll(corr[0][ip][ig], roll, axis=0))
+    f.close()
+
+def save_softFF_hdf5(corr, tag, bT, bdir, gamma1, gamma2):
+    """
+    bdir: direction of bT
+    bT: length of bT
+    """
+
+    roll = -int(tag.split(".")[4].split('t')[1])
+    bT_list = ['b_X', 'b_Y']
+
+    save_h5 = tag + ".h5"
+    f = h5py.File(save_h5, 'a')
+    g_gm = f.require_group(gamma1+'_'+gamma2)
+    g_bdir = g_gm.require_group(bT_list[bdir])
+    g_bdir.create_dataset(f'bT{bT}', data=np.roll(corr, roll, axis=0))
     f.close()
 
 def save_qTMDWF_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub):
