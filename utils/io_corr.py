@@ -7,6 +7,16 @@ import os
 import h5py
 import numpy as np
 
+def get_fwPropagator_file_tag(data_dir, lat, cfg, ama, src, sm):
+
+    cfg_tag = str(cfg)
+    lat_tag = str(lat)
+    ama_tag = str(ama)
+    src_tag = "x"+str(src[0]) + "y"+str(src[1]) + "z"+str(src[2]) + "t"+str(src[3])
+    sm_tag  = str(sm)
+
+    return data_dir + "/frw_prop/frw_prop" + "." + cfg_tag + "." + ama_tag + "." + lat_tag + "_" + sm_tag + "." + src_tag
+
 def get_c2pt_file_tag(data_dir, lat, cfg, ama, src, sm):
 
     cfg_tag = str(cfg)
@@ -68,6 +78,17 @@ def get_sample_log_tag(ama, src, sm):
     log_sample = ama_tag + "_" + src_tag + "_" + sm_tag
 
     return log_sample
+
+def save_fwPropagator_hdf5(prop, tag, sm="SP"):
+
+    save_h5 = tag + ".h5"
+    f = h5py.File(save_h5, 'w')
+    sm = f.create_group(f"prop/{sm}")
+    for c in range(0, 3):
+        for d in range(0, 4):
+            dataset_tag = f"d{d}_c{c}"
+            sm.create_dataset(dataset_tag, data=prop[:,:,:,:,:,d,:,c])
+    f.close()
 
 def save_proton_c2pt_hdf5(corr, tag, gammalist, plist):
 
