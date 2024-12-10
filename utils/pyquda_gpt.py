@@ -1,7 +1,8 @@
 from typing import List
 import numpy
 
-from pyquda import getSublatticeSize, getGridSize
+from pyquda import getGridSize
+from pyquda_utils.io.mpi_file import getSublatticeSize
 from pyquda.field import cb2, LatticeGauge, LatticeInfo, LatticePropagator
 
 import gpt as g
