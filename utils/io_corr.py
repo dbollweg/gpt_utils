@@ -15,7 +15,7 @@ def get_fwPropagator_file_tag(data_dir, lat, cfg, ama, src, sm):
     src_tag = "x"+str(src[0]) + "y"+str(src[1]) + "z"+str(src[2]) + "t"+str(src[3])
     sm_tag  = str(sm)
 
-    return data_dir + "/frw_prop/frw_prop" + "." + cfg_tag + "." + ama_tag + "." + lat_tag + "_" + sm_tag + "." + src_tag
+    return data_dir + "/frw_prop/frw_prop" + "." + cfg_tag + "." + ama_tag + "." + sm_tag + "." + src_tag
 
 def get_c2pt_file_tag(data_dir, lat, cfg, ama, src, sm):
 
