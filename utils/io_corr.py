@@ -57,17 +57,17 @@ def get_qDA_file_tag(data_dir, lat, cfg, ama, src, sm):
 
     return data_dir + "/qDA/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + "." + sm_tag
 
-def get_softFF_file_tag(data_dir, lat, cfg, ama,src, sm, quark_mom, meson_mom):
+def get_softFF_file_tag(data_dir, lat, cfg, ama, src, sm, quarkmom1, quarkmom2):
     
     cfg_tag = str(cfg)
     lat_tag = str(lat) + ".softFF"
     ama_tag = str(ama)
     src_tag = "x"+str(src[0]) + "y"+str(src[1]) + "z"+str(src[2]) + "t"+str(src[3])
-    qmom_tag = "qx"+str(quark_mom[0]) + "qy"+str(quark_mom[1]) + "qz"+str(quark_mom[2]) + "qt"+str(quark_mom[3])
-    mmom_tag = "px"+str(meson_mom[0]) + "py"+str(meson_mom[1]) + "pz"+str(meson_mom[2]) + "pt"+str(meson_mom[3])
+    mom1_tag = "qx"+str(quarkmom1[0]) + "qy"+str(quarkmom1[1]) + "qz"+str(quarkmom1[2])
+    mom2_tag = "qx"+str(quarkmom2[0]) + "qy"+str(quarkmom2[1]) + "qz"+str(quarkmom2[2])
     sm_tag  = str(sm)
 
-    return data_dir + "/ff/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + "." + qmom_tag + "." + mmom_tag + "." + sm_tag
+    return data_dir + "/ff/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + ".fw_" + mom1_tag + ".bw_" + mom2_tag
 
 def get_sample_log_tag(ama, src, sm):
 
@@ -119,20 +119,31 @@ def save_c2pt_hdf5(corr, tag, gammalist, plist, sm="SS"):
             g.create_dataset(dataset_tag, data=np.roll(corr[0][ip][ig], roll, axis=0))
     f.close()
 
-def save_softFF_hdf5(corr, tag, bT, bdir, gamma1, gamma2):
+def save_softFF_hdf5(corr, tag, pion_src, pion_sink, Gamma1, Gamma2, bT_dir, bT_length, tseplist):
     """
     bdir: direction of bT
     bT: length of bT
     """
 
     roll = -int(tag.split(".")[4].split('t')[1])
-    bT_list = ['b_X', 'b_Y']
+    bT_list = ['bX', 'bY']
 
     save_h5 = tag + ".h5"
-    f = h5py.File(save_h5, 'a')
-    g_gm = f.require_group(gamma1+'_'+gamma2)
-    g_bdir = g_gm.require_group(bT_list[bdir])
-    g_bdir.create_dataset(f'bT{bT}', data=np.roll(corr, roll, axis=0))
+    f = h5py.File(save_h5, 'w')
+
+    keys_src = list(pion_src.keys())
+    keys_sink = list(pion_sink.keys())
+    keys_gm1 = list(Gamma1.keys())
+    keys_gm2 = list(Gamma2.keys())
+    for i in range(len(keys_src)):  # both src and sink have the same number of keys
+        g_src = f.create_group(f"src{keys_src[i]}_sink{keys_sink[i]}")
+        for j in range(len(keys_gm1)):
+            g_gm = g_src.create_group(f"{keys_gm1[j]}_{keys_gm2[j]}")
+            for k, dir in enumerate(bT_dir):
+                for bT in range(0, bT_length+1):
+                    g_bT = g_gm.create_group(bT_list[dir]+'_'+str(bT))
+                    for ts in tseplist:
+                        g_bT.create_dataset(f'ts{str(ts)}', data=np.roll(corr[ts][i][j][k][bT], roll, axis=0))
     f.close()
 
 def save_qTMDWF_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub):
@@ -164,7 +175,7 @@ def save_qTMDWF_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub):
                 g_data.create_dataset('bz'+str(idx[1]), data=np.roll(corr[i][ip][ig], roll, axis=0))
     f.close()
 
-def save_qTMDWF_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z):
+def save_qTMDWF_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z, bT_dir = [0,1]):
 
     roll = -int(tag.split(".")[4].split('t')[1])
     td_offset = b_T*b_z*len(eta)
@@ -173,14 +184,14 @@ def save_qTMDWF_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z):
     bT_list = ['b_X', 'b_Y']
 
     save_h5 = tag + ".h5"
-    f = h5py.File(save_h5, 'a')
+    f = h5py.File(save_h5, 'w')
     sm = f.create_group("SP")
     for ig, gm in enumerate(gammalist):
         g_gm = sm.create_group(gm)
         for ip, p in enumerate(plist):
             p_tag = "PX"+str(p[0])+"PY"+str(p[1])+"PZ"+str(p[2])
             g_p = g_gm.create_group(p_tag)
-            for transverse_direction in [0,1]:
+            for transverse_direction in bT_dir:
                 g_T = g_p.create_group(bT_list[transverse_direction])
                 for eta_idx, current_eta in enumerate(eta):
                     g_eta = g_T.create_group('eta'+str(current_eta))
