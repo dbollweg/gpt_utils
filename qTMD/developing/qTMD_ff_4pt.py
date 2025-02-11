@@ -25,7 +25,7 @@ import subprocess
 '''          config and setup         '''
 ''' --------------------------------- '''
 # data output dir
-data_dir = "/home/gaox/latwork/gpt-pyquda/TEST_local_all/qTMD/data"
+data_dir = "/lustre1/pion3d/xgao/run/qTMD_softFF/data"
 
 # configuration number
 conf = g.default.get_int("--config_num", 0)
@@ -37,12 +37,12 @@ parameters = {
     "save_propagators": False,     # Whether to save propagators
 
     # Additional parameters needed for current_current_correlator class
-    "quark_mom": np.array([[0, 0, nz, 0] for nz in range(0, 2+1)]),   # Quark momentum, must be 4D array
+    "quark_mom": np.array([[0, 0, nz, 0] for nz in range(3, 4+1)]),   # Quark momentum, must be 4D array
 
     "bT_dir": [0],
-    "bT_length": 2,
+    "bT_length": 20,
 
-    "bz_length": 2,
+    "bz_length": 20,
 
     "pion_src": {
         "5": g.gamma[5],
@@ -75,7 +75,7 @@ parameters = {
 GEN_SIMD_WIDTH = 64
 
 # Configuration path and number
-conf_path = "/home/gaox/latwork/gpt-pyquda/TEST_local_all/qTMD/S8T32"
+conf_path = "/lustre1/pion3d/xgao/run/qTMD_softFF/S8T32"
 lat_tag = "l8c32"
 sm_tag = '1HYP'
 sample_log_file_prop = data_dir + "/sample_log/" + str(conf) + '_' + sm_tag + '_prop'
@@ -106,7 +106,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu_id)
 print(f"MPI Rank: {rank}, CUDA_VISIBLE_DEVICES: {os.environ['CUDA_VISIBLE_DEVICES']}, "
       f"GPU UUID: {gpu_uuids[gpu_id]}")
 
-mpi_geometry = [1, 1, 1, 1]
+mpi_geometry = [1, 1, 1, 4]
 init(mpi_geometry, enable_mps=True)
 
 
@@ -338,7 +338,8 @@ for ipos, pos in enumerate(poslist):
                                 # Contraction: Gamma2 * Gw_bperp * pion_sink * Gw_dagger * Gamma1 * Gw * pion_src * Gw_bperp_dagger
                                 temp_1 = pion_src[keys_src[i]] * g.gamma[5] * g.adj(g.cshift(Gw_bperp_dagger, bT_dir, bT)) * g.gamma[5] * Gamma2[keys_gm2[j]] * g.cshift(Gw_bperp, bT_dir, bT)
                                 temp_2 = pion_sink[keys_sink[i]] * g.gamma[5] * g.adj(Gw_dagger) * g.gamma[5] * Gamma1[keys_gm1[j]] * Gw
-                                corr_ff = g.slice(g.trace(temp_1*temp_2), 3)
+                                #corr_ff = g.slice(g.trace(temp_1*temp_2), 3)
+                                corr_ff = g.slice_trDA(temp_1, temp_2, [g.identity(g.complex(grid))], 3)[0][0][9]
                                 tsep_ff_list[i, j, k, bT, :] = corr_ff
                 corr_ff_list += [tsep_ff_list]
 
@@ -348,7 +349,8 @@ for ipos, pos in enumerate(poslist):
                 g.message(f"ff e^(m*a) tsep={tsep}: {check_ff_list[tsep-1][tsep//2].real/check_ff_list[tsep][tsep//2].real}")
             
             ff_tag = get_softFF_file_tag(data_dir, lat_tag, conf, f"ex_wall_{meson_mom_tag}_SP", pos, sm_tag, quark_mom_fw, -quark_mom_bw)
-            save_softFF_hdf5(corr_ff_list, ff_tag, pion_src, pion_sink, Gamma1, Gamma2, parameters["bT_dir"], parameters["bT_length"], [tsep for tsep in range(0, Lt//2)])
+            if g.rank() == 0:
+                save_softFF_hdf5(corr_ff_list, ff_tag, pion_src, pion_sink, Gamma1, Gamma2, parameters["bT_dir"], parameters["bT_length"], [tsep for tsep in range(0, Lt//2)])
             g.message(f"Contraction Done {meson_mom_tag}: ff for TMD soft factor")
     g.message(f"DONE SAMPLE {ipos}/{len(poslist)}: {sample_log_tag}")
 
