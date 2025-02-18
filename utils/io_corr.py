@@ -57,6 +57,18 @@ def get_qDA_file_tag(data_dir, lat, cfg, ama, src, sm):
 
     return data_dir + "/qDA/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + "." + sm_tag
 
+def get_qTMDWF_wallsrc_file_tag(data_dir, lat, cfg, ama, src, sm, quarkmom1, quarkmom2):
+
+    cfg_tag = str(cfg)
+    lat_tag = str(lat) + ".qTMDWF"
+    ama_tag = str(ama)
+    src_tag = "x"+str(src[0]) + "y"+str(src[1]) + "z"+str(src[2]) + "t"+str(src[3])
+    mom1_tag = "qx"+str(quarkmom1[0]) + "qy"+str(quarkmom1[1]) + "qz"+str(quarkmom1[2])
+    mom2_tag = "qx"+str(quarkmom2[0]) + "qy"+str(quarkmom2[1]) + "qz"+str(quarkmom2[2])
+    sm_tag  = str(sm)
+
+    return data_dir + "/qTMDWF/" + lat_tag + "." + cfg_tag + "." + ama_tag + "." + src_tag + "." + sm_tag + ".fw_" + mom1_tag + ".bw_" + mom2_tag
+
 def get_softFF_file_tag(data_dir, lat, cfg, ama, src, sm, quarkmom1, quarkmom2):
     
     cfg_tag = str(cfg)
