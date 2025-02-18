@@ -23,9 +23,9 @@ class pion_measurement:
     def __init__(self, parameters):
         self.save_propagators = parameters["save_propagators"]
 
-    def set_output_facilities(self, corr_file, prop_file):
+    def set_output_facilities(self, prop_file):
         """Set correlator and propagator output filenames."""
-        self.output_correlator = g.corr_io.writer(corr_file)
+        #self.output_correlator = g.corr_io.writer(corr_file)
         self.output = g.gpt_io.writer(prop_file)
         
         #if(self.save_propagators):
