@@ -154,8 +154,8 @@ def save_softFF_hdf5(corr, tag, pion_src, pion_sink, Gamma1, Gamma2, bT_dir, bT_
             for k, dir in enumerate(bT_dir):
                 for bT in range(0, bT_length+1):
                     g_bT = g_gm.create_group(bT_list[dir]+'_'+str(bT))
-                    for ts in tseplist:
-                        g_bT.create_dataset(f'ts{str(ts)}', data=np.roll(corr[ts][i][j][k][bT], roll, axis=0))
+                    for its, ts in enumerate(tseplist):
+                        g_bT.create_dataset(f'ts{str(ts)}', data=np.roll(corr[its][i][j][k][bT], roll, axis=0))
     f.close()
 
 def save_qTMDWF_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub):
