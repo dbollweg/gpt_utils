@@ -98,7 +98,8 @@ class current_current_correlator(pion_measurement):
 
         src_pyquda = gpt.LatticePropagatorGPT(src, GEN_SIMD_WIDTH)
         src_pyquda.toDevice()
-        prop_pyquda = core.invertPropagator(dirac, src_pyquda, 0)
+        #prop_pyquda = core.invertPropagator(dirac, src_pyquda, 0)
+        prop_pyquda = core.invertPropagator(dirac, src_pyquda, 1, 0)
         prop = g.mspincolor(grid)
         gpt.LatticePropagatorGPT(prop, GEN_SIMD_WIDTH, prop_pyquda)
 
