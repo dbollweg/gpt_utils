@@ -321,15 +321,22 @@ class pion_measurement:
 
         tmp_trafo = g.convert(trafo, prop_f.grid.precision)
 
-        prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
-        prop_b = g.create.smear.boosted_smearing(tmp_trafo, prop_b, w=self.width, boost=self.neg_boost)
+        prop_f_SS = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
+        prop_b_SS = g.create.smear.boosted_smearing(tmp_trafo, prop_b, w=self.width, boost=self.neg_boost)
 
-        #corr = g.slice_trDA(prop_f,g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]),phases, 3) 
-        corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b*g.gamma[5]), prop_f, phases, 3) 
-        #corr = g.slice_trDA(prop_f,g.adj(prop_b),phases, 3)
+        corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b_SS*g.gamma[5]), prop_f_SS, phases, 3) 
         if g.rank() == 0:
-            save_c2pt_hdf5(corr, tag, my_gammas, self.plist)
-        del corr 
+            save_c2pt_hdf5(corr, tag+'.src5', my_gammas, self.plist)
+
+        corr = g.slice_trDA(g.gamma["Z"]*g.gamma[5]*g.adj(g.gamma[5]*prop_b_SS*g.gamma[5]), prop_f_SS, phases, 3) 
+        if g.rank() == 0:
+            save_c2pt_hdf5(corr, tag+'.srcZ5', my_gammas, self.plist)
+
+        corr = g.slice_trDA(g.gamma["X"]*g.gamma[5]*g.adj(g.gamma[5]*prop_b_SS*g.gamma[5]), prop_f_SS, phases, 3) 
+        if g.rank() == 0:
+            save_c2pt_hdf5(corr, tag+'.srcX5', my_gammas, self.plist)
+
+        del corr, prop_f_SS, prop_b_SS
 
     #function that creates boosted, smeared src.
     def create_src_2pt(self, pos, trafo, grid):
@@ -430,6 +437,7 @@ class pion_TMDWF_measurement(pion_measurement):
             save_qTMDWF_hdf5_subset(corr, tag, my_gammas, self.plist, W_index_list, i_sub)
         del corr
 
+
     def create_src_TMD(self, pos, trafo, grid):
         
         srcD = g.mspincolor(grid)
@@ -453,6 +461,18 @@ class pion_TMDWF_measurement(pion_measurement):
             current_eta = idx[2]
             transverse_direction = idx[3]
             prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[i] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,round(2*current_bz)))*g.gamma[5])))
+        return prop_list
+
+    def constr_TMD_bprop_Z5X5(self, prop_b, W, W_index_list):
+
+        prop_list = []
+        # W_index_list[i] = [bT, bz, eta, Tdir]
+        for i, idx in enumerate(W_index_list):
+            current_b_T = idx[0]
+            current_bz = idx[1]
+            current_eta = idx[2]
+            transverse_direction = idx[3]
+            prop_list.append(g.eval((g.gamma["Z"]*g.gamma[5]-g.gamma["X"]*g.gamma[5])*g.adj(g.gamma[5]*g.eval(W[i] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,round(2*current_bz)))*g.gamma[5])))
         return prop_list
 
     def constr_TMD_bprop_TEST(self, prop_b, W, W_index_list):
@@ -481,16 +501,12 @@ class pion_TMDWF_measurement(pion_measurement):
         # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
-                if current_eta == 12:
-                    #b_z_min, b_z_max = 0, self.b_z
+                if current_eta == 20:
                     b_T_min, b_T_max = 0, self.b_T
                     bzlist = [i for i in range(0, self.b_z)]
                 else:
-                    #b_z_min, b_z_max = 8, 9
-                    b_T_min, b_T_max = 8, 9
-                    bzlist = [0, 8]
-                #for current_bz in range(0, self.b_z):
-                #for current_bz in range(b_z_min, b_z_max):
+                    b_T_min, b_T_max = 10, 11
+                    bzlist = [0, 10]
                 for current_bz in bzlist:
                     #for current_b_T in range (0, self.b_T):
                     for current_b_T in range (b_T_min, b_T_max):
@@ -511,9 +527,9 @@ class pion_TMDWF_measurement(pion_measurement):
 
                         W.append(current_link)
                         index_list.append([current_b_T, current_bz, current_eta, transverse_direction])
-                        if current_eta == 12:
-                            W.append(g.qcd.gauge.unit(U[2].grid)[0])
-                            index_list.append([current_b_T, current_bz, 0, transverse_direction])
+                        #if current_eta == 20:
+                        #    W.append(g.qcd.gauge.unit(U[2].grid)[0])
+                        #    index_list.append([current_b_T, current_bz, 0, transverse_direction])
         return W, index_list
     
     # This one include the odd z beyond z=2b_z. Also include a eta'=eta+1 with b_z=0.

@@ -376,12 +376,8 @@ class proton_measurement:
     def create_src_2pt(self, pos, trafo, grid):
         
         srcD = g.mspincolor(grid)
-        
         g.create.point(srcD, pos)
-        g.message("point src set")
-
         srcDp = g.create.smear.boosted_smearing(trafo, srcD, w=self.width, boost=self.pos_boost)
-        g.message("neg. boosted src done")
         
         return srcDp
 
