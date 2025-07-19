@@ -3,12 +3,15 @@ from math import gamma
 import gpt as g
 from io_corr import *
 import numpy as np
+import cupy as cp #! For PyQUDA
 from qTMD.gpt_proton_qTMD_utils import proton_measurement
 
 # load pyquda modules
 from pyquda import init, LatticeInfo
 from pyquda_utils import core, gpt, gamma
-import subprocess
+from pyquda_utils.core import X, Y, Z, T
+from opt_einsum import contract
+
 GEN_SIMD_WIDTH = 64
 
 """
@@ -18,9 +21,16 @@ GEN_SIMD_WIDTH = 64
 """
 ### Gamma structures
 my_gammas = ["5", "T", "T5", "X", "X5", "Y", "Y5", "Z", "Z5", "I", "SXT", "SXY", "SXZ", "SYT", "SYZ", "SZT"]
+#! Add PyQUDA gamma matrices by order
+my_pyquda_gammas = [gamma.gamma(15), gamma.gamma(8), gamma.gamma(7), gamma.gamma(1), gamma.gamma(14), gamma.gamma(2), gamma.gamma(13), gamma.gamma(4), gamma.gamma(11), gamma.gamma(0), gamma.gamma(9), gamma.gamma(3), gamma.gamma(5), gamma.gamma(10), gamma.gamma(6), gamma.gamma(12)]
+pyq_gamma_order = [15, 8, 7, 1, 14, 2, 13, 4, 11, 0, 9, 3, 5, 10, 6, 12]
 
 ### Projection of nucleon states
 Cg5 = (1j * g.gamma[1].tensor() * g.gamma[3].tensor()) * g.gamma[5].tensor()
+CgT5 = (1j * g.gamma[1].tensor() * g.gamma[3].tensor()) * g.gamma["T"].tensor() * g.gamma[5].tensor()
+CgZ5 = (1j * g.gamma[1].tensor() * g.gamma[3].tensor()) * g.gamma["Z"].tensor() * g.gamma[5].tensor()
+Cgplus5 = ( CgT5 + 1j * CgZ5 ) / np.sqrt(2)
+
 Pp = (g.gamma["I"].tensor() + g.gamma[3].tensor()) * 0.25
 Szp = (g.gamma["I"].tensor() - 1j*g.gamma[0].tensor()*g.gamma[1].tensor())
 Szm = (g.gamma["I"].tensor() + 1j*g.gamma[0].tensor()*g.gamma[1].tensor())
@@ -41,6 +51,34 @@ PolProjections = {
     "PpSxm": PpSxm,  
     "PpUnpol": Pp,  
 }
+
+#! PyQUDA matrices
+epsilon= cp.zeros((3,3,3))
+for a in range (3):
+    b = (a+1) % 3
+    c = (a+2) % 3
+    epsilon[a,b,c] = 1
+    epsilon[a,c,b] = -1
+    
+C = gamma.gamma(2) @ gamma.gamma(8)
+G5 = gamma.gamma(15)
+GZ5 = gamma.gamma(4) @ G5
+GT5 = gamma.gamma(8) @ G5
+
+pyquda_gamma_ls = cp.zeros((16, 4, 4), "<c16")
+for gamma_idx, gamma_pyq in enumerate(my_pyquda_gammas):
+    pyquda_gamma_ls[gamma_idx] = gamma_pyq
+    
+#! PyQUDA directions for shift
+# Xdir = 0
+# Ydir = 1
+# Zdir = 2
+# Tdir = 3
+# NXdir = 4
+# NYdir = 5
+# NZdir = 6
+# NTdir = 7
+
 
 """
 ================================================================================
@@ -127,7 +165,7 @@ class proton_TMD(proton_measurement):
         return mom
     
     #function that does the contractions for the smeared-smeared pion 2pt function
-    def contract_2pt_TMD(self, prop_f, phases, trafo, tag):
+    def contract_2pt_TMD(self, prop_f, phases, trafo, tag, interpolation = "5"):
 
         g.message("Begin sink smearing")
         tmp_trafo = g.convert(trafo, prop_f.grid.precision)
@@ -135,7 +173,18 @@ class proton_TMD(proton_measurement):
         prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
         g.message("Sink smearing completed")
 
-        dq = g.qcd.baryon.diquark(g(prop_f * Cg5), g(Cg5 * prop_f))
+        #TODO: Jinchen, new interpolation operator
+        if interpolation == "5":
+            dq = g.qcd.baryon.diquark(g(prop_f * Cg5), g(Cg5 * prop_f))
+        elif interpolation == "T5":
+            dq = g.qcd.baryon.diquark(g(prop_f * CgT5), g(CgT5 * prop_f)) 
+        elif interpolation == "Z5":
+            dq = g.qcd.baryon.diquark(g(prop_f * CgZ5), g(CgZ5 * prop_f)) 
+        elif interpolation == "+5":
+            dq = g.qcd.baryon.diquark(g(prop_f * Cgplus5), g(Cgplus5 * prop_f))
+        else:
+            raise ValueError("Invalid interpolation operator")
+        
         proton1 = g(g.spin_trace(dq) * prop_f + dq * prop_f)
         prop_unit = g.mspincolor(prop_f.grid)
         prop_unit = g.identity(prop_unit)
@@ -145,6 +194,52 @@ class proton_TMD(proton_measurement):
         if g.rank() == 0:
             save_proton_c2pt_hdf5(corr, tag, my_gammas, self.pilist)
         del corr
+        
+    #! PyQUDA: contract 2pt TMD
+    def contract_2pt_TMD_pyquda(self, prop_f, phases, trafo, tag, interpolation = "5"): 
+        if interpolation == "5":
+            interp_opt = C @ G5
+        elif interpolation == "T5":
+            interp_opt = C @ GT5
+        elif interpolation == "Z5":
+            interp_opt = C @ GZ5
+        else:
+            raise ValueError("Invalid interpolation operator")
+        
+        
+        g.message("Begin sink smearing")
+        tmp_trafo = g.convert(trafo, prop_f.grid.precision)
+
+        prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
+        g.message("Sink smearing completed")
+        
+        prop_f_pyq = gpt.LatticePropagatorGPT(prop_f, GEN_SIMD_WIDTH)
+        
+        Lt = np.shape(prop_f_pyq.data)[1]
+        
+        P_2pt_gamma = cp.zeros((16, Lt, 4, 4), "<c16")
+        for gamma_idx, gamma_pyq in enumerate(my_pyquda_gammas):
+            P_2pt = cp.zeros((Lt, 4, 4), "<c16")
+            P_2pt[:] = gamma_pyq
+            P_2pt_gamma[gamma_idx] = P_2pt
+        
+        corr = (
+                - contract(
+                "abc, def, pwtzyx, ij, kl, gtmn, wtzyxikad, wtzyxjlbe, wtzyxmncf->gpt",
+                epsilon,    epsilon,    phases,    interp_opt,    interp_opt,    P_2pt_gamma,
+                prop_f_pyq.data,  prop_f_pyq.data,  prop_f_pyq.data,
+                ) 
+                - contract(
+                    "abc, def, pwtzyx, ij, kl, gtmn, wtzyxikad, wtzyxjnbe, wtzyxmlcf->gpt",
+                    epsilon,    epsilon,    phases,    interp_opt,    interp_opt,    P_2pt_gamma,
+                    prop_f_pyq.data,  prop_f_pyq.data,  prop_f_pyq.data,
+                )
+            )
+        corr_collect = core.gatherLattice(corr.get(), [2, -1, -1, -1])
+        
+        if g.rank() == 0:
+            save_proton_c2pt_hdf5(corr_collect, tag, my_gammas, self.pilist)
+        del corr, corr_collect
 
     #function that does the contractions for the smeared-smeared pion 2pt function
     def contract_2pt_TMD_old(self, prop_f, phases, trafo, tag):
@@ -175,6 +270,26 @@ class proton_TMD(proton_measurement):
             #prop_list.append(g.eval(g.gamma[5]*g.adj(g.gamma[5]*g.eval(W[i] * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T),2,round(2*current_bz)))*g.gamma[5])))
             prop_list.append(g.eval(W[i] * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T),2,round(2*current_bz)))) 
         return prop_list
+    
+    #! PyQUDA: create forward propagator for CG TMD
+    def create_fw_prop_TMD_CG_pyquda(self, prop_f_pyq, W_index, WL_indices_previous):
+        current_b_T = W_index[0]
+        current_bz = W_index[1]
+        transverse_direction = W_index[3] # 0, 1
+        Zdir = 2
+        
+        previous_b_T = WL_indices_previous[0]
+        previous_bz = WL_indices_previous[1]
+        
+        if (current_b_T - previous_b_T) < 0:
+            transverse_direction = transverse_direction + 4
+        
+        if (current_bz - previous_bz) < 0:
+            Zdir = Zdir + 4
+                
+        prop_shift_pyq = prop_f_pyq.shift(abs(current_b_T - previous_b_T), transverse_direction).shift(round(abs(current_bz - previous_bz)), Zdir)
+        
+        return prop_shift_pyq
 
     def create_fw_prop_TMD_CG(self, prop_f, W_index_list):
         g.message("Creating list of prop_f with shift bT and bz")
@@ -208,7 +323,7 @@ class proton_TMD(proton_measurement):
             prop_list.append(g.eval(W[i] * g.cshift(g.cshift(prop_f,0,0),2,round(current_bz)))) 
         return prop_list
 
-    def create_bw_seq_Pyquda(self, dirac, prop, trafo, flavor, origin=None):
+    def create_bw_seq_Pyquda(self, dirac, prop, trafo, flavor, origin=None, interpolation = "5"):
         tmp_trafo = g.convert(trafo, prop.grid.precision) #Need later for mixed precision solver
         
         prop = g.create.smear.boosted_smearing(tmp_trafo, prop, w=self.width, boost=self.boost_out)
@@ -226,11 +341,32 @@ class proton_TMD(proton_measurement):
             if (flavor == 1): 
                 g.message("starting diquark contractions for up quark insertion and Polarization ", pol)
 
-                src_seq[i] = self.up_quark_insertion(prop, prop, Cg5, PolProjections[pol])
+                #TODO: Jinchen, new interpolation operator
+                if interpolation == "5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, Cg5, PolProjections[pol])
+                elif interpolation == "T5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, CgT5, PolProjections[pol]) 
+                elif interpolation == "Z5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, CgZ5, PolProjections[pol]) 
+                elif interpolation == "+5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, Cgplus5, PolProjections[pol]) 
+                else:
+                    raise ValueError("Invalid interpolation operator")
+                
             elif (flavor == 2):
                 g.message("starting diquark contractions for down quark insertion and Polarization ", pol)
 
-                src_seq[i] = self.down_quark_insertion(prop, Cg5, PolProjections[pol])
+                #TODO: Jinchen, new interpolation operator
+                if interpolation == "5":
+                    src_seq[i] = self.down_quark_insertion(prop, Cg5, PolProjections[pol])
+                elif interpolation == "T5":
+                    src_seq[i] = self.down_quark_insertion(prop, CgT5, PolProjections[pol]) 
+                elif interpolation == "Z5":
+                    src_seq[i] = self.down_quark_insertion(prop, CgZ5, PolProjections[pol])     
+                elif interpolation == "+5":
+                    src_seq[i] = self.down_quark_insertion(prop, Cgplus5, PolProjections[pol]) 
+                else:
+                    raise ValueError("Invalid interpolation operator")
             else: 
                 raise Exception("Unknown flavor for backward sequential src construction")
         
@@ -254,8 +390,73 @@ class proton_TMD(proton_measurement):
             dst_seq.append(g.eval(g.adj(dst_tmp) * g.gamma[5]))
 
         return dst_seq
+    
+    #! PyQUDA: get backward propagator through sequential source for U and D
+    def create_bw_seq_Pyquda_pyquda(self, dirac, prop, trafo, flavor, origin=None, interpolation = "5"):
+        tmp_trafo = g.convert(trafo, prop.grid.precision) #Need later for mixed precision solver
+        
+        prop = g.create.smear.boosted_smearing(tmp_trafo, prop, w=self.width, boost=self.boost_out)
+        
+        pp = 2.0 * np.pi * np.array(self.pf) / prop.grid.fdimensions
+        P = g.exp_ixp(pp, origin)
+        
+        src_seq = [g.mspincolor(prop.grid) for i in range(len(self.pol_list))]
+        dst_seq = []
+        
+        for i, pol in enumerate(self.pol_list):
 
-    def create_bw_seq(self, inverter, prop, trafo, flavor, origin=None):
+            if (flavor == 1): 
+                g.message("starting diquark contractions for up quark insertion and Polarization ", pol)
+
+                #TODO: Jinchen, new interpolation operator
+                if interpolation == "5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, Cg5, PolProjections[pol])
+                elif interpolation == "T5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, CgT5, PolProjections[pol]) 
+                elif interpolation == "Z5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, CgZ5, PolProjections[pol]) 
+                else:
+                    raise ValueError("Invalid interpolation operator")
+                
+            elif (flavor == 2):
+                g.message("starting diquark contractions for down quark insertion and Polarization ", pol)
+
+                #TODO: Jinchen, new interpolation operator
+                if interpolation == "5":
+                    src_seq[i] = self.down_quark_insertion(prop, Cg5, PolProjections[pol])
+                elif interpolation == "T5":
+                    src_seq[i] = self.down_quark_insertion(prop, CgT5, PolProjections[pol]) 
+                elif interpolation == "Z5":
+                    src_seq[i] = self.down_quark_insertion(prop, CgZ5, PolProjections[pol]) 
+                else:
+                    raise ValueError("Invalid interpolation operator")
+            else: 
+                raise Exception("Unknown flavor for backward sequential src construction")
+        
+            # sequential solve through t=t_insert
+            src_seq_t = g.lattice(src_seq[i])
+            src_seq_t[:] = 0
+            src_seq_t[:, :, :, (origin[3]+self.t_insert)%prop.grid.fdimensions[3]] = src_seq[i][:, :, :, (origin[3]+self.t_insert)%prop.grid.fdimensions[3]]
+
+            g.message("diquark contractions for Polarization ", i, pol, " done")
+        
+            smearing_input = g.eval(g.gamma[5]*P*g.adj(src_seq_t))
+
+            tmp_prop = g.create.smear.boosted_smearing(trafo, smearing_input,w=self.width, boost=self.boost_out)
+
+            src_pyquda = gpt.LatticePropagatorGPT(tmp_prop, GEN_SIMD_WIDTH)
+            prop_pyquda = core.invertPropagator(dirac, src_pyquda, 1, 0) # NOTE or "prop_pyquda = core.invertPropagator(dirac, src_pyquda, 0)" depends on the quda version
+            
+            prop_pyquda_contracted = contract( "wtzyxijfc, ik -> wtzyxjkcf", prop_pyquda.data.conj(), G5 )
+            del src_pyquda, prop_pyquda
+            
+            dst_seq.append(prop_pyquda_contracted)
+            
+        dst_seq = cp.asarray(dst_seq)
+
+        return dst_seq
+
+    def create_bw_seq(self, inverter, prop, trafo, flavor, origin=None, interpolation = "5"):
         tmp_trafo = g.convert(trafo, prop.grid.precision) #Need later for mixed precision solver
         
         prop = g.create.smear.boosted_smearing(tmp_trafo, prop, w=self.width, boost=self.boost_out)
@@ -273,11 +474,33 @@ class proton_TMD(proton_measurement):
             if (flavor == 1): 
                 g.message("starting diquark contractions for up quark insertion and Polarization ", pol)
 
-                src_seq[i] = self.up_quark_insertion(prop, prop, Cg5, PolProjections[pol])
+                #TODO: Jinchen, new interpolation operator
+                if interpolation == "5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, Cg5, PolProjections[pol])
+                elif interpolation == "T5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, CgT5, PolProjections[pol]) 
+                elif interpolation == "Z5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, CgZ5, PolProjections[pol]) 
+                elif interpolation == "+5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, Cgplus5, PolProjections[pol]) 
+                else:
+                    raise ValueError("Invalid interpolation operator")
+                
             elif (flavor == 2):
                 g.message("starting diquark contractions for down quark insertion and Polarization ", pol)
 
-                src_seq[i] = self.down_quark_insertion(prop, Cg5, PolProjections[pol])
+                #TODO: Jinchen, new interpolation operator
+                if interpolation == "5":
+                    src_seq[i] = self.down_quark_insertion(prop, Cg5, PolProjections[pol])
+                elif interpolation == "T5":
+                    src_seq[i] = self.down_quark_insertion(prop, CgT5, PolProjections[pol]) 
+                elif interpolation == "Z5":
+                    src_seq[i] = self.down_quark_insertion(prop, CgZ5, PolProjections[pol]) 
+                elif interpolation == "+5":
+                    src_seq[i] = self.down_quark_insertion(prop, Cgplus5, PolProjections[pol]) 
+                else:
+                    raise ValueError("Invalid interpolation operator")
+                
             else: 
                 raise Exception("Unknown flavor for backward sequential src construction")
         
@@ -376,6 +599,60 @@ class proton_TMD(proton_measurement):
                     #    index_list.append([current_b_T, -current_bz, 0, transverse_direction])
                     
         return index_list
+    
+    #! PyQUDA: create Wilson line index list for CG TMD
+    def create_TMD_Wilsonline_index_list_CG_pyquda(self):
+        index_list_trans0 = []
+        index_list_trans1 = []
+        
+        for current_bz in range(0, self.b_z+1):
+            for current_b_T in range(0, self.b_T+1):
+                # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
+                index_list_trans0.append([current_b_T, current_bz, 0, 0])
+                index_list_trans1.append([current_b_T, current_bz, 0, 1])
+                
+        # Reorder index lists to minimize differences between adjacent indices
+        def reorder_indices(index_list):
+            # Sort by bT first, then bz to minimize jumps
+            sorted_list = sorted(index_list, key=lambda x: (x[0], x[1]))
+            reordered = []
+            
+            # Process pairs of indices to minimize differences
+            i = 0
+            while i < len(sorted_list)-1:
+                curr = sorted_list[i]
+                next = sorted_list[i+1]
+                
+                # If difference is more than 1 in either bT or bz, try to find better match
+                if abs(curr[0] - next[0]) > 1 or abs(curr[1] - next[1]) > 1:
+                    # Look ahead for better match
+                    best_match = next
+                    best_diff = max(abs(curr[0] - next[0]), abs(curr[1] - next[1]))
+                    
+                    for j in range(i+2, len(sorted_list)):
+                        candidate = sorted_list[j]
+                        diff = max(abs(curr[0] - candidate[0]), abs(curr[1] - candidate[1]))
+                        if diff < best_diff:
+                            best_match = candidate
+                            best_diff = diff
+                    
+                    # Swap to get better ordering
+                    if best_match != next:
+                        idx = sorted_list.index(best_match)
+                        sorted_list[i+1], sorted_list[idx] = sorted_list[idx], sorted_list[i+1]
+                
+                reordered.append(curr)
+                i += 1
+                
+            if i < len(sorted_list):
+                reordered.append(sorted_list[-1])
+                
+            return reordered
+            
+        index_list_trans0 = reorder_indices(index_list_trans0)
+        index_list_trans1 = reorder_indices(index_list_trans1)
+                
+        return index_list_trans0, index_list_trans1
     
     def create_PDF_Wilsonline(self, U, index_set):
 

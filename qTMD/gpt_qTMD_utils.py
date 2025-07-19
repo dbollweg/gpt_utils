@@ -474,6 +474,18 @@ class pion_TMDWF_measurement(pion_measurement):
             transverse_direction = idx[3]
             prop_list.append(g.eval((g.gamma["Z"]*g.gamma[5]-g.gamma["X"]*g.gamma[5])*g.adj(g.gamma[5]*g.eval(W[i] * g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,round(2*current_bz)))*g.gamma[5])))
         return prop_list
+    
+    def constr_TMD_bprop_CG_Z5X5(self, prop_b, W_index_list):
+
+        prop_list = []
+        # W_index_list[i] = [bT, bz, eta, Tdir]
+        for i, idx in enumerate(W_index_list):
+            current_b_T = idx[0]
+            current_bz = idx[1]
+            current_eta = idx[2]
+            transverse_direction = idx[3]
+            prop_list.append(g.eval((g.gamma["Z"]*g.gamma[5]-g.gamma["X"]*g.gamma[5])*g.adj(g.gamma[5]*g.eval(g.cshift(g.cshift(prop_b,transverse_direction,current_b_T),2,round(current_bz)))*g.gamma[5])))
+        return prop_list
 
     def constr_TMD_bprop_TEST(self, prop_b, W, W_index_list):
 
@@ -493,6 +505,23 @@ class pion_TMDWF_measurement(pion_measurement):
             g.message(f"index: {idx}, step 4")
         return prop_list
 
+
+    def create_TMD_Wilsonline_index_list_CG(self, grid):
+        index_list = []
+        
+        for transverse_direction in [0,1]:
+            for current_bz in range(0, self.b_z+1):
+                for current_b_T in range(0, self.b_T+1):
+            
+                    # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
+                    index_list.append([current_b_T, current_bz, 0, transverse_direction])
+                    
+                    # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
+                    #if current_bz != 0:
+                    #    index_list.append([current_b_T, -current_bz, 0, transverse_direction])
+                    
+        return index_list
+    
     def create_TMD_WL(self, U):
 
         W = []
@@ -501,12 +530,14 @@ class pion_TMDWF_measurement(pion_measurement):
         # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
         for transverse_direction in [0,1]:
             for current_eta in self.eta:
-                if current_eta == 20:
-                    b_T_min, b_T_max = 0, self.b_T
-                    bzlist = [i for i in range(0, self.b_z)]
-                else:
-                    b_T_min, b_T_max = 10, 11
-                    bzlist = [0, 10]
+                b_T_min, b_T_max = 0, self.b_T + 1
+                bzlist = [i for i in range(0, self.b_z + 1)]
+                #if current_eta == 20:
+                #    b_T_min, b_T_max = 0, self.b_T
+                #    bzlist = [i for i in range(0, self.b_z)]
+                #else:
+                #    b_T_min, b_T_max = 10, 11
+                #    bzlist = [0, 10]
                 for current_bz in bzlist:
                     #for current_b_T in range (0, self.b_T):
                     for current_b_T in range (b_T_min, b_T_max):

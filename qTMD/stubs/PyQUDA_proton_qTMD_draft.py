@@ -5,6 +5,10 @@ from io_corr import *
 import numpy as np
 from qTMD.gpt_proton_qTMD_utils import proton_measurement
 
+# load pyquda modules
+from pyquda import init, LatticeInfo
+from pyquda_utils import core, gpt, gamma
+import subprocess
 GEN_SIMD_WIDTH = 64
 
 """
@@ -81,8 +85,11 @@ class proton_TMD(proton_measurement):
         self.b_T = parameters["b_T"] # largest b_T
 
         self.pf = parameters["pf"] # momentum of final nucleon state; pf = pi + q
-        self.plist = [[x,y,z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating momentum transfers for TMD
-        self.qlist = [[x,y,z,0] for x in parameters["qext_PDF"] for y in parameters["qext_PDF"] for z in parameters["qext_PDF"]] # generating momentum transfers for PDF
+        self.plist = parameters["qext"]
+        self.qlist = parameters["qext_PDF"]
+        #self.plist = [list(v + (0,)) for v in {tuple(sorted((x, y, z))) for x in parameters["qext"] for y in parameters["qext"] for z in [0]}]
+        #self.plist = [[x,y,z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating momentum transfers for TMD
+        #self.qlist = [[x,y,z,0] for x in parameters["qext_PDF"] for y in parameters["qext_PDF"] for z in parameters["qext_PDF"]] # generating momentum transfers for PDF
         #self.pilist = [[parameters["pf"][0]-x,parameters["pf"][1]-y,parameters["pf"][2]-z,0] for x in parameters["qext"] for y in parameters["qext"] for z in parameters["qext"]] # generating pi = pf - q
         self.pilist = parameters["p_2pt"]  # 2pt momentum
 
@@ -240,7 +247,7 @@ class proton_TMD(proton_measurement):
 
             src_pyquda = gpt.LatticePropagatorGPT(tmp_prop, GEN_SIMD_WIDTH)
             prop_pyquda = core.invertPropagator(dirac, src_pyquda, 1, 0) # NOTE or "prop_pyquda = core.invertPropagator(dirac, src_pyquda, 0)" depends on the quda version
-            dst_tmp = g.mspincolor(grid)
+            dst_tmp = g.mspincolor(prop.grid)
             gpt.LatticePropagatorGPT(dst_tmp, GEN_SIMD_WIDTH, prop_pyquda)
             del src_pyquda, prop_pyquda
 
@@ -358,15 +365,15 @@ class proton_TMD(proton_measurement):
         index_list = []
         
         for transverse_direction in [0,1]:
-            for current_bz in range(0, b_z+1):
-                for current_b_T in range(0, b_T+1):
+            for current_bz in range(0, self.b_z+1):
+                for current_b_T in range(0, self.b_T+1):
             
                     # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
                     index_list.append([current_b_T, current_bz, 0, transverse_direction])
                     
                     # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
-                    if current_bz != 0:
-                        index_list.append([current_b_T, -current_bz, 0, transverse_direction])
+                    #if current_bz != 0:
+                    #    index_list.append([current_b_T, -current_bz, 0, transverse_direction])
                     
         return index_list
     
