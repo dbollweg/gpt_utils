@@ -281,14 +281,15 @@ class proton_TMD(proton_measurement):
         previous_b_T = WL_indices_previous[0]
         previous_bz = WL_indices_previous[1]
         
-        if (current_b_T - previous_b_T) < 0:
-            transverse_direction = transverse_direction + 4
+        #if (current_b_T - previous_b_T) < 0:
+        #    transverse_direction = transverse_direction + 4
         
-        if (current_bz - previous_bz) < 0:
-            Zdir = Zdir + 4
+        #if (current_bz - previous_bz) < 0:
+        #    Zdir = Zdir + 4
                 
-        prop_shift_pyq = prop_f_pyq.shift(abs(current_b_T - previous_b_T), transverse_direction).shift(round(abs(current_bz - previous_bz)), Zdir)
-        
+        #prop_shift_pyq = prop_f_pyq.shift(abs(current_b_T - previous_b_T), transverse_direction).shift(round(abs(current_bz - previous_bz)), Zdir)
+        prop_shift_pyq = prop_f_pyq.shift(round(current_b_T - previous_b_T), transverse_direction).shift(round(current_bz - previous_bz), Zdir)
+
         return prop_shift_pyq
 
     def create_fw_prop_TMD_CG(self, prop_f, W_index_list):
