@@ -1,5 +1,5 @@
 from cmath import phase
-from math import gamma
+#from math import gamma
 import gpt as g
 from io_corr import *
 import numpy as np
@@ -271,7 +271,7 @@ class proton_TMD(proton_measurement):
             prop_list.append(g.eval(W[i] * g.cshift(g.cshift(prop_f,transverse_direction,current_b_T),2,round(2*current_bz)))) 
         return prop_list
     
-    #! PyQUDA: create forward propagator for CG TMD
+    #! PyQUDA: create forward propagator for CG TMD, support +- shift
     def create_fw_prop_TMD_CG_pyquda(self, prop_f_pyq, W_index, WL_indices_previous):
         current_b_T = W_index[0]
         current_bz = W_index[1]
@@ -281,13 +281,6 @@ class proton_TMD(proton_measurement):
         previous_b_T = WL_indices_previous[0]
         previous_bz = WL_indices_previous[1]
         
-        #if (current_b_T - previous_b_T) < 0:
-        #    transverse_direction = transverse_direction + 4
-        
-        #if (current_bz - previous_bz) < 0:
-        #    Zdir = Zdir + 4
-                
-        #prop_shift_pyq = prop_f_pyq.shift(abs(current_b_T - previous_b_T), transverse_direction).shift(round(abs(current_bz - previous_bz)), Zdir)
         prop_shift_pyq = prop_f_pyq.shift(round(current_b_T - previous_b_T), transverse_direction).shift(round(current_bz - previous_bz), Zdir)
 
         return prop_shift_pyq
@@ -611,6 +604,17 @@ class proton_TMD(proton_measurement):
                 # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
                 index_list_trans0.append([current_b_T, current_bz, 0, 0])
                 index_list_trans1.append([current_b_T, current_bz, 0, 1])
+
+                if current_bz != 0:
+                    index_list_trans0.append([current_b_T, -current_bz, 0, 0])
+                    index_list_trans1.append([current_b_T, -current_bz, 0, 1])
+
+                if current_b_T != 0:
+                    index_list_trans0.append([-current_b_T, current_bz, 0, 0])
+                    index_list_trans1.append([-current_b_T, current_bz, 0, 1])
+                    if current_bz != 0:
+                        index_list_trans0.append([-current_b_T, -current_bz, 0, 0])
+                        index_list_trans1.append([-current_b_T, -current_bz, 0, 1])
                 
         # Reorder index lists to minimize differences between adjacent indices
         def reorder_indices(index_list):

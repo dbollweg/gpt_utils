@@ -215,6 +215,30 @@ def save_qTMDWF_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z, bT_dir = [0,1])
                             g_bT.create_dataset(bz_tag, data=np.roll(corr[W_index][ip][ig], roll, axis=0))
     f.close() 
 
+# W_index_list[bT, bz, eta, Tdir]
+def save_qTMD_proton_hdf5_noRoll(corr, tag, gammalist, plist, W_index_list, tsep):
+
+    bT_list = ['b_X', 'b_Y']
+
+    #g.message("-->>",W_index_list)
+
+    save_h5 = tag + ".h5"
+    f = h5py.File(save_h5, 'w')
+
+    g.message(f"no roll")
+    g.message(f"corr.shape, {np.shape(corr)}")
+    g.message(f"plist.shape, {np.shape(plist)}")
+    sm = f.require_group("SS")
+    for ig, gm in enumerate(gammalist):
+        g_gm = sm.require_group(gm)
+        for ip, p in enumerate(plist):
+            p_tag = "PX"+str(p[0])+"PY"+str(p[1])+"PZ"+str(p[2])
+            g_p = g_gm.require_group(p_tag)
+            for i, idx in enumerate(W_index_list):
+                path = bT_list[idx[3]] + '/' + 'eta'+str(idx[2]) + '/' + 'bT'+str(idx[0])
+                g_data = g_p.require_group(path)
+                g_data.create_dataset('bz'+str(idx[1]), data=corr[i][ip][ig][:tsep+2])
+    f.close()
 
 # W_index_list[bT, bz, eta, Tdir]
 def save_qTMD_proton_hdf5(corr, tag, gammalist, plist, W_index_list, tsep):
@@ -222,7 +246,7 @@ def save_qTMD_proton_hdf5(corr, tag, gammalist, plist, W_index_list, tsep):
     roll = -int(tag.split(".")[6].split('t')[1]) # 6: xyzt
     bT_list = ['b_X', 'b_Y']
  
-    g.message("-->>",W_index_list)
+    #g.message("-->>",W_index_list)
 
     save_h5 = tag + ".h5"
     f = h5py.File(save_h5, 'w')
@@ -239,7 +263,8 @@ def save_qTMD_proton_hdf5(corr, tag, gammalist, plist, W_index_list, tsep):
             for i, idx in enumerate(W_index_list):
                 path = bT_list[idx[3]] + '/' + 'eta'+str(idx[2]) + '/' + 'bT'+str(idx[0])
                 g_data = g_p.require_group(path)
-                #g.message("Want to save", path+'bz'+str(idx[1]))
+                #if g.rank() == 0:
+                #    g.message("Want to save", path+'bz'+str(idx[1]))
                 g_data.create_dataset('bz'+str(idx[1]), data=np.roll(corr[i][ip][ig], roll, axis=0)[:tsep+2])
     f.close()
 

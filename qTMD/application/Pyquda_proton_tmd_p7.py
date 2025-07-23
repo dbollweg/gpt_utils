@@ -47,7 +47,7 @@ parameters = {
     # NOTE:
     "eta": [0],  # irrelavant for CG TMD
     "b_z": 20,
-    "b_T": 16,
+    "b_T": 20,
 
     "qext": [[x,y,z,0] for x in [-2,-1,0,1,2] for y in [-2,-1,0,1,2] for z in [-2,-1,0]], # momentum transfer for TMD, pf = pi + q
     #"qext": [list(v + (0,)) for v in {tuple(sorted((x, y, z))) for x in [-2,-1,0] for y in [-2,-1,0] for z in [0]}], # momentum transfer for TMD, pf = pi + q
@@ -118,7 +118,7 @@ g.mem_report(details=False)
 src_shift = np.array([0,0,0,0]) + np.array([7,11,13,23])
 src_origin = np.array([int(conf)%L[i] for i in range(4)]) + src_shift
 src_positions = srcLoc_distri_eq(L, src_origin) # create a list of source 4*4*4*4
-src_production = src_positions[0:2] # take the number of sources needed for this project NOTE
+src_production = src_positions[0:4] # take the number of sources needed for this project NOTE
 
 ###################### create multigrid inverter ######################
 latt_info = LatticeInfo([Ls, Ls, Ls, Lt], -1, 1.0)
@@ -143,7 +143,7 @@ if g.rank() == 0:
 
 #! Measurement
 ###################### loop over sources ######################
-for pos in src_production:
+for ipos, pos in enumerate(src_production):
     
     sample_log_tag = get_sample_log_tag(str(conf), pos, sm_tag + "_" + pf_tag)
     g.message(f"START: {sample_log_tag}")
@@ -171,7 +171,8 @@ for pos in src_production:
     g.message("TIME Pyquda-->GPT: Forward propagator inversion", time.time() - t0)
     
     #todo: test the .shift() method in PyQUDA and g.cshift() in GPT
-    test_shift(propag)
+    if ipos == 0:
+        test_shift(propag)
 
     #! GPT: contract 2pt TMD
     cp.cuda.runtime.deviceSynchronize()
@@ -218,7 +219,8 @@ for pos in src_production:
     
     cp.cuda.runtime.deviceSynchronize()
     g.message(f"TIME PyQUDA: contract bw prop with gamma_ls for U and D", time.time() - t0)
-    
+   
+    #! PyQUDA: contract TMD +X direction
     tmd_forward_prop_dir0 = propag.copy()
     for iW, WL_indices in enumerate(W_index_list_CG_dir0):
         cp.cuda.runtime.deviceSynchronize()
@@ -236,14 +238,14 @@ for pos in src_production:
         t0 = time.time()
         temp_down = []
         for seq in sequential_bw_prop_down_contracted_pyq:
-            temp1 = pycontract.mesonAllSinkTwoPoint(tmd_forward_prop_dir0, core.LatticePropagator(latt_info, seq), gamma.Gamma(0)).data
+            temp1 = pycontract.mesonAllSinkTwoPoint(tmd_forward_prop_dir0, core.LatticePropagator(latt_info, seq), gamma.Gamma(0)).data # loop over 16 gamma structure
             temp2 = core.gatherLattice(contract("qwtzyx, gwtzyx -> qgt", phases_3pt_pyq, temp1).get(), [2, -1, -1, -1])
             temp_down.append(temp2)
         proton_TMDs_down.append(temp_down)
         
         temp_up = []
         for seq in sequential_bw_prop_up_contracted_pyq:
-            temp1 = pycontract.mesonAllSinkTwoPoint(tmd_forward_prop_dir0, core.LatticePropagator(latt_info, seq), gamma.Gamma(0)).data
+            temp1 = pycontract.mesonAllSinkTwoPoint(tmd_forward_prop_dir0, core.LatticePropagator(latt_info, seq), gamma.Gamma(0)).data # loop over 16 gamma structure
             temp2 = core.gatherLattice(contract("qwtzyx, gwtzyx -> qgt", phases_3pt_pyq, temp1).get(), [2, -1, -1, -1])
             temp_up.append(temp2)
         proton_TMDs_up.append(temp_up)
@@ -251,6 +253,7 @@ for pos in src_production:
         g.message(f"TIME PyQUDA: contract TMD for U and D", time.time() - t0)
     del tmd_forward_prop_dir0
         
+    #! PyQUDA: contract TMD +Y direction
     tmd_forward_prop_dir1 = propag.copy()
     for iW, WL_indices in enumerate(W_index_list_CG_dir1):
         cp.cuda.runtime.deviceSynchronize()
@@ -285,23 +288,32 @@ for pos in src_production:
     proton_TMDs_down = np.array(proton_TMDs_down)
     proton_TMDs_up = np.array(proton_TMDs_up)
     g.message(f"contract_TMD over: proton_TMDs.shape {np.shape(proton_TMDs_down)} {time.time()-t0_contract}s")
-    
+
+    # save the TMD correlators
     for i, pol in enumerate(parameters["pol"]):
         cp.cuda.runtime.deviceSynchronize()
         t0 = time.time()
+
+        # reorder gamma, and cut useful tau in [src_t, src_t+tsep+2)
         if g.rank() == 0:
-            proton_TMDs_down = proton_TMDs_down[:,:,:,pyq_gamma_order,:]
-            proton_TMDs_up = proton_TMDs_up[:,:,:,pyq_gamma_order,:]
-        cp.cuda.runtime.deviceSynchronize()
+            proton_TMDs_down = proton_TMDs_down[:,:,:,pyq_gamma_order,pos[3]:pos[3]+parameters["t_insert"]+2]
+            proton_TMDs_up = proton_TMDs_up[:,:,:,pyq_gamma_order,pos[3]:pos[3]+parameters["t_insert"]+2]
         proton_TMDs_down = getMPIComm().bcast(proton_TMDs_down, root=0)
         proton_TMDs_up = getMPIComm().bcast(proton_TMDs_up, root=0)
-        if g.rank() < len(gammalist):
-            print(f"DEBUG: {g.rank()} proton_TMDs_down.shape {np.shape(proton_TMDs_down)}")
-            print(f"DEBUG: {g.rank()} proton_TMDs_up.shape {np.shape(proton_TMDs_up)}")
-            qtmd_tag_exact_D = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG.D.ex", pos, f"{sm_tag}.{pf_tag}.{pol}.{gammalist[g.rank()]}")
-            qtmd_tag_exact_U = get_qTMD_file_tag(data_dir,lat_tag,conf,"CG.U.ex", pos, f"{sm_tag}.{pf_tag}.{pol}.{gammalist[g.rank()]}")
-            save_qTMD_proton_hdf5(proton_TMDs_down[:,i,:,g.rank():g.rank()+1,:], qtmd_tag_exact_D, [gammalist[g.rank()]], parameters["qext"], W_index_list_CG, parameters["t_insert"])
-            save_qTMD_proton_hdf5(proton_TMDs_up[:,i,:,g.rank():g.rank()+1,:], qtmd_tag_exact_U, [gammalist[g.rank()]], parameters["qext"], W_index_list_CG, parameters["t_insert"])
+
+        #! parallel the io through flavor and gamma
+        tasks = []
+        for gidx in range(len(gammalist)):
+            tasks.append((gidx, 'D'))  # Down
+            tasks.append((gidx, 'U'))  # Up
+        rank = g.rank()
+        if rank < len(tasks):
+            gidx, flavor = tasks[rank]
+            gm = gammalist[gidx]
+            tag = get_qTMD_file_tag(data_dir, lat_tag, conf, f"CG.{flavor}.ex", pos, f"{sm_tag}.{pf_tag}.{pol}.{gm}")
+            print(f"DEBUG: rank {rank}, {tag}")
+            data = proton_TMDs_down[:, i, :, gidx:gidx+1, :] if flavor == 'D' else proton_TMDs_up[:, i, :, gidx:gidx+1, :]
+            save_qTMD_proton_hdf5_noRoll(data, tag, [gm], parameters["qext"], W_index_list_CG, parameters["t_insert"])
         cp.cuda.runtime.deviceSynchronize()
         g.message(f"TIME: save TMDs for {pol}", time.time() - t0)
 
