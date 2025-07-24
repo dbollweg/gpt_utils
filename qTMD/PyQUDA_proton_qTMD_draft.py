@@ -29,7 +29,9 @@ pyq_gamma_order = [15, 8, 7, 1, 14, 2, 13, 4, 11, 0, 9, 3, 5, 10, 6, 12]
 Cg5 = (1j * g.gamma[1].tensor() * g.gamma[3].tensor()) * g.gamma[5].tensor()
 CgT5 = (1j * g.gamma[1].tensor() * g.gamma[3].tensor()) * g.gamma["T"].tensor() * g.gamma[5].tensor()
 CgZ5 = (1j * g.gamma[1].tensor() * g.gamma[3].tensor()) * g.gamma["Z"].tensor() * g.gamma[5].tensor()
-Cgplus5 = ( CgT5 + 1j * CgZ5 ) / np.sqrt(2)
+displaceP = 1 + 0.00000000001
+displaceM = 1 - 0.00000000001
+Cgplus5 = ( CgT5 * displaceP + 1j * CgZ5 * displaceM ) / np.sqrt(2)
 
 Pp = (g.gamma["I"].tensor() + g.gamma[3].tensor()) * 0.25
 Szp = (g.gamma["I"].tensor() - 1j*g.gamma[0].tensor()*g.gamma[1].tensor())
@@ -408,7 +410,9 @@ class proton_TMD(proton_measurement):
                 elif interpolation == "T5":
                     src_seq[i] = self.up_quark_insertion(prop, prop, CgT5, PolProjections[pol]) 
                 elif interpolation == "Z5":
-                    src_seq[i] = self.up_quark_insertion(prop, prop, CgZ5, PolProjections[pol]) 
+                    src_seq[i] = self.up_quark_insertion(prop, prop, CgZ5, PolProjections[pol])
+                elif interpolation == "+5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, Cgplus5, PolProjections[pol])
                 else:
                     raise ValueError("Invalid interpolation operator")
                 
@@ -421,7 +425,9 @@ class proton_TMD(proton_measurement):
                 elif interpolation == "T5":
                     src_seq[i] = self.down_quark_insertion(prop, CgT5, PolProjections[pol]) 
                 elif interpolation == "Z5":
-                    src_seq[i] = self.down_quark_insertion(prop, CgZ5, PolProjections[pol]) 
+                    src_seq[i] = self.down_quark_insertion(prop, CgZ5, PolProjections[pol])
+                elif interpolation == "+5":
+                    src_seq[i] = self.down_quark_insertion(prop, Cgplus5, PolProjections[pol])
                 else:
                     raise ValueError("Invalid interpolation operator")
             else: 
@@ -609,12 +615,12 @@ class proton_TMD(proton_measurement):
                     index_list_trans0.append([current_b_T, -current_bz, 0, 0])
                     index_list_trans1.append([current_b_T, -current_bz, 0, 1])
 
-                if current_b_T != 0:
-                    index_list_trans0.append([-current_b_T, current_bz, 0, 0])
-                    index_list_trans1.append([-current_b_T, current_bz, 0, 1])
-                    if current_bz != 0:
-                        index_list_trans0.append([-current_b_T, -current_bz, 0, 0])
-                        index_list_trans1.append([-current_b_T, -current_bz, 0, 1])
+                #if current_b_T != 0:
+                #    index_list_trans0.append([-current_b_T, current_bz, 0, 0])
+                #    index_list_trans1.append([-current_b_T, current_bz, 0, 1])
+                #    if current_bz != 0:
+                #        index_list_trans0.append([-current_b_T, -current_bz, 0, 0])
+                #        index_list_trans1.append([-current_b_T, -current_bz, 0, 1])
                 
         # Reorder index lists to minimize differences between adjacent indices
         def reorder_indices(index_list):

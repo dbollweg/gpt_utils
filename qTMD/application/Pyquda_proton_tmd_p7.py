@@ -60,7 +60,7 @@ parameters = {
     "width" : 9.0,
 
     "pol": ["PpUnpol"],
-    "t_insert": 6, # time separation for TMD
+    "t_insert": 10, # time separation for TMD
 
     "save_propagators": False,
 }
@@ -118,7 +118,7 @@ g.mem_report(details=False)
 src_shift = np.array([0,0,0,0]) + np.array([7,11,13,23])
 src_origin = np.array([int(conf)%L[i] for i in range(4)]) + src_shift
 src_positions = srcLoc_distri_eq(L, src_origin) # create a list of source 4*4*4*4
-src_production = src_positions[0:4] # take the number of sources needed for this project NOTE
+src_production = src_positions[0:32] # take the number of sources needed for this project NOTE
 
 ###################### create multigrid inverter ######################
 latt_info = LatticeInfo([Ls, Ls, Ls, Lt], -1, 1.0)
@@ -296,8 +296,10 @@ for ipos, pos in enumerate(src_production):
 
         # reorder gamma, and cut useful tau in [src_t, src_t+tsep+2)
         if g.rank() == 0:
-            proton_TMDs_down = proton_TMDs_down[:,:,:,pyq_gamma_order,pos[3]:pos[3]+parameters["t_insert"]+2]
-            proton_TMDs_up = proton_TMDs_up[:,:,:,pyq_gamma_order,pos[3]:pos[3]+parameters["t_insert"]+2]
+            proton_TMDs_down = np.roll(proton_TMDs_down, -pos[3], axis=-1)
+            proton_TMDs_up = np.roll(proton_TMDs_up, -pos[3], axis=-1)
+            proton_TMDs_down = proton_TMDs_down[:,:,:,pyq_gamma_order,:parameters["t_insert"]+2]
+            proton_TMDs_up = proton_TMDs_up[:,:,:,pyq_gamma_order,:parameters["t_insert"]+2]
         proton_TMDs_down = getMPIComm().bcast(proton_TMDs_down, root=0)
         proton_TMDs_up = getMPIComm().bcast(proton_TMDs_up, root=0)
 
