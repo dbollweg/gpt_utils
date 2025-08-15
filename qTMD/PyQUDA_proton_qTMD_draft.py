@@ -32,6 +32,7 @@ CgZ5 = (1j * g.gamma[1].tensor() * g.gamma[3].tensor()) * g.gamma["Z"].tensor() 
 displaceP = 1 + 0.00000000001
 displaceM = 1 - 0.00000000001
 Cgplus5 = ( CgT5 * displaceP + 1j * CgZ5 * displaceM ) / np.sqrt(2)
+Cgminus5 = ( CgT5 * displaceP - 1j * CgZ5 * displaceM ) / np.sqrt(2)
 
 Pp = (g.gamma["I"].tensor() + g.gamma[3].tensor()) * 0.25
 Szp = (g.gamma["I"].tensor() - 1j*g.gamma[0].tensor()*g.gamma[1].tensor())
@@ -182,8 +183,9 @@ class proton_TMD(proton_measurement):
             dq = g.qcd.baryon.diquark(g(prop_f * CgT5), g(CgT5 * prop_f)) 
         elif interpolation == "Z5":
             dq = g.qcd.baryon.diquark(g(prop_f * CgZ5), g(CgZ5 * prop_f)) 
-        elif interpolation == "+5":
-            dq = g.qcd.baryon.diquark(g(prop_f * Cgplus5), g(Cgplus5 * prop_f))
+        elif interpolation == "p5":
+            dq = g.qcd.baryon.diquark(g(prop_f * Cgminus5), g(Cgplus5 * prop_f))
+            # dq = g.qcd.baryon.diquark(g(prop_f * Cgminus5), g(Cgminus5 * prop_f))
         else:
             raise ValueError("Invalid interpolation operator")
         
@@ -344,8 +346,6 @@ class proton_TMD(proton_measurement):
                     src_seq[i] = self.up_quark_insertion(prop, prop, CgT5, PolProjections[pol]) 
                 elif interpolation == "Z5":
                     src_seq[i] = self.up_quark_insertion(prop, prop, CgZ5, PolProjections[pol]) 
-                elif interpolation == "+5":
-                    src_seq[i] = self.up_quark_insertion(prop, prop, Cgplus5, PolProjections[pol]) 
                 else:
                     raise ValueError("Invalid interpolation operator")
                 
@@ -359,8 +359,6 @@ class proton_TMD(proton_measurement):
                     src_seq[i] = self.down_quark_insertion(prop, CgT5, PolProjections[pol]) 
                 elif interpolation == "Z5":
                     src_seq[i] = self.down_quark_insertion(prop, CgZ5, PolProjections[pol])     
-                elif interpolation == "+5":
-                    src_seq[i] = self.down_quark_insertion(prop, Cgplus5, PolProjections[pol]) 
                 else:
                     raise ValueError("Invalid interpolation operator")
             else: 
@@ -411,8 +409,8 @@ class proton_TMD(proton_measurement):
                     src_seq[i] = self.up_quark_insertion(prop, prop, CgT5, PolProjections[pol]) 
                 elif interpolation == "Z5":
                     src_seq[i] = self.up_quark_insertion(prop, prop, CgZ5, PolProjections[pol])
-                elif interpolation == "+5":
-                    src_seq[i] = self.up_quark_insertion(prop, prop, Cgplus5, PolProjections[pol])
+                elif interpolation == "p5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, Cgminus5, PolProjections[pol])
                 else:
                     raise ValueError("Invalid interpolation operator")
                 
@@ -426,8 +424,8 @@ class proton_TMD(proton_measurement):
                     src_seq[i] = self.down_quark_insertion(prop, CgT5, PolProjections[pol]) 
                 elif interpolation == "Z5":
                     src_seq[i] = self.down_quark_insertion(prop, CgZ5, PolProjections[pol])
-                elif interpolation == "+5":
-                    src_seq[i] = self.down_quark_insertion(prop, Cgplus5, PolProjections[pol])
+                elif interpolation == "p5":
+                    src_seq[i] = self.up_quark_insertion(prop, prop, Cgminus5, PolProjections[pol])
                 else:
                     raise ValueError("Invalid interpolation operator")
             else: 
@@ -481,8 +479,6 @@ class proton_TMD(proton_measurement):
                     src_seq[i] = self.up_quark_insertion(prop, prop, CgT5, PolProjections[pol]) 
                 elif interpolation == "Z5":
                     src_seq[i] = self.up_quark_insertion(prop, prop, CgZ5, PolProjections[pol]) 
-                elif interpolation == "+5":
-                    src_seq[i] = self.up_quark_insertion(prop, prop, Cgplus5, PolProjections[pol]) 
                 else:
                     raise ValueError("Invalid interpolation operator")
                 
@@ -496,8 +492,6 @@ class proton_TMD(proton_measurement):
                     src_seq[i] = self.down_quark_insertion(prop, CgT5, PolProjections[pol]) 
                 elif interpolation == "Z5":
                     src_seq[i] = self.down_quark_insertion(prop, CgZ5, PolProjections[pol]) 
-                elif interpolation == "+5":
-                    src_seq[i] = self.down_quark_insertion(prop, Cgplus5, PolProjections[pol]) 
                 else:
                     raise ValueError("Invalid interpolation operator")
                 
