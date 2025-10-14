@@ -304,6 +304,29 @@ class proton_TMD(proton_measurement):
 
         return prop_list
 
+    #! PyQUDA: create forward propagator for CG TMD, support +- shift
+    def create_fw_prop_PDF_GI_pyquda(self, gauge, prop_f_pyq, W_index, WL_indices_previous):
+
+        current_bz = W_index[1]
+        previous_bz = WL_indices_previous[1]
+
+        #! PyQUDA: forward prop
+        for spin in range(4):
+            for color in range(3):
+                fermion = prop_f_pyq.getFermion(spin, color)
+                if current_bz - previous_bz == 0:
+                    fermion_shift = fermion
+                elif current_bz - previous_bz == 1:
+                    fermion_shift = gauge.pure_gauge.covDev(fermion, 2)
+                elif current_bz - previous_bz == -1:
+                    fermion_shift = gauge.pure_gauge.covDev(fermion, 6) # -z direction
+                else:
+                    raise ValueError("Invalid shift for PDF Wilson line")
+                #\psi'(x)=U_\mu(x)\psi(x+\hat\mu)0,1,2,3 for x,y,z,t; 4,5,6,7 for -x,-y,-z,-t
+                prop_f_pyq.setFermion(fermion_shift, spin, color)
+
+        return prop_f_pyq
+    
     def create_fw_prop_PDF(self, prop_f, W, W_index_list):
         g.message("Creating list of W*prop_f")
         prop_list = []
@@ -546,13 +569,14 @@ class proton_TMD(proton_measurement):
     def create_PDF_Wilsonline_index_list(self, grid):
         index_list = []
         
-        for current_bz in range(0, grid.fdimensions[0]//4+1):
+        for current_bz in range(0, self.b_z + 1):
             # create Wilson lines from all to all + (eta+bz) + b_perp - (eta-b_z)
             index_list.append([0, current_bz, 0, 0])
             
+        for current_bz in range(0, self.b_z + 1):
             # create Wilson lines from all to all - (eta+bz) + b_perp - (eta-b_z)
-            #if current_bz != 0:
-            #    index_list.append([0, -current_bz, 0, 0])
+            if current_bz != 0:
+                index_list.append([0, -current_bz, 0, 0])
                     
         return index_list
     
