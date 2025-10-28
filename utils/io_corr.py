@@ -119,6 +119,7 @@ def save_proton_c2pt_hdf5(corr, tag, gammalist, plist):
 
 def save_c2pt_hdf5(corr, tag, gammalist, plist, sm="SS"):
 
+    # corr[link][plist][gammalist][t]
     roll = -int(tag.split(".")[4].split('t')[1])
 
     save_h5 = tag + ".h5"
@@ -185,6 +186,25 @@ def save_qTMDWF_hdf5_subset(corr, tag, gammalist, plist, W_index_list, i_sub):
                 #    #g_data.keys()
                 #    print("Want to save", path+'bz'+str(idx[1]))
                 g_data.create_dataset('bz'+str(idx[1]), data=np.roll(corr[i][ip][ig], roll, axis=0))
+    f.close()
+
+def save_qTMDWF_hdf5_noRoll(corr, tag, gammalist, plist, W_index_list):
+
+    bT_list = ['b_X', 'b_Y']
+
+    save_h5 = tag + ".h5"
+    f = h5py.File(save_h5, 'w')
+
+    sm = f.require_group("SP")
+    for ig, gm in enumerate(gammalist):
+        g_gm = sm.require_group(gm)
+        for ip, p in enumerate(plist):
+            p_tag = "PX"+str(p[0])+"PY"+str(p[1])+"PZ"+str(p[2])
+            g_p = g_gm.require_group(p_tag)
+            for i, idx in enumerate(W_index_list):
+                path = bT_list[idx[3]] + '/' + 'eta'+str(idx[2]) + '/' + 'bT'+str(idx[0])
+                g_data = g_p.require_group(path)
+                g_data.create_dataset('bz'+str(idx[1]), data=corr[i][ip][ig])
     f.close()
 
 def save_qTMDWF_hdf5(corr, tag, gammalist, plist, eta, b_T, b_z, bT_dir = [0,1]):

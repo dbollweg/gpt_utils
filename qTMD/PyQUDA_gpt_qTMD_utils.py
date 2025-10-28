@@ -1,11 +1,23 @@
+# load python modules
 from cmath import phase
-from math import gamma
-import gpt as g
+from opt_einsum import contract
 import numpy as np
+
+# load gpt modules
+import gpt as g
 from utils.io_corr import *
 
+# load pyquda modules
+from pyquda import init, LatticeInfo, getMPIComm
+from pyquda_utils import core, gpt, gamma, phase
+from pyquda_plugins import pycontract #todo: for PyQUDA contraction v2
+
+GEN_SIMD_WIDTH = 64
 #ordered list of gamma matrix identifiers, needed for the tag in the correlator output
 my_gammas = ["5", "T", "T5", "X", "X5", "Y", "Y5", "Z", "Z5", "I", "SXT", "SXY", "SXZ", "SYT", "SYZ", "SZT"]
+#! Add PyQUDA gamma matrices by order
+my_pyquda_gammas = [gamma.gamma(15), gamma.gamma(8), gamma.gamma(7), gamma.gamma(1), gamma.gamma(14), gamma.gamma(2), gamma.gamma(13), gamma.gamma(4), gamma.gamma(11), gamma.gamma(0), gamma.gamma(9), gamma.gamma(3), gamma.gamma(5), gamma.gamma(10), gamma.gamma(6), gamma.gamma(12)]
+pyq_gamma_order = [15, 8, 7, 1, 14, 2, 13, 4, 11, 0, 9, 3, 5, 10, 6, 12]
 
 ordered_list_of_gammas = [g.gamma[5], g.gamma["T"], g.gamma["T"]*g.gamma[5],
                                       g.gamma["X"], g.gamma["X"]*g.gamma[5], 
@@ -306,7 +318,7 @@ class pion_measurement:
        
         mom = [g.eval(pp*one) for pp in P]
         return mom
-
+    
     # create Wilson lines from all --> all + dz for all dz in 0,zmax
     def create_WL(self, U):
         W = []
@@ -319,30 +331,41 @@ class pion_measurement:
     #function that does the contractions for the smeared-smeared pion 2pt function
     def contract_2pt(self, prop_f, prop_b, phases, trafo, tag):
 
+        # prepare smeared-smeared propagators
         tmp_trafo = g.convert(trafo, prop_f.grid.precision)
-
         prop_f_SS = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
         prop_b_SS = g.create.smear.boosted_smearing(tmp_trafo, prop_b, w=self.width, boost=self.neg_boost)
+        prop_f_SS_pyquda = gpt.LatticePropagatorGPT(prop_f_SS, GEN_SIMD_WIDTH)
+        prop_b_SS_pyquda = gpt.LatticePropagatorGPT(prop_b_SS, GEN_SIMD_WIDTH)
 
-        corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b_SS*g.gamma[5]), prop_f_SS, phases, 3) 
+        #corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b_SS*g.gamma[5]), prop_f_SS, phases, 3) 
+        # gamma_i * prop_f_SS_pyquda * gamma_src * (gamma_5 * adj(prop_b_SS_pyquda) * gamma_5): i loop over 16 gamma structure
+        gamma_src, tag_src = gamma.Gamma(15), "src5"
+        temp1 = pycontract.mesonAllSinkTwoPoint(prop_f_SS_pyquda, prop_b_SS_pyquda, gamma_src).data
+        corr = np.array(core.gatherLattice(contract("qwtzyx, gwtzyx -> qgt", phases, temp1).get(), [2, -1, -1, -1]))
         if g.rank() == 0:
-            save_c2pt_hdf5(corr, tag+'.src5', my_gammas, self.plist)
+            save_c2pt_hdf5([corr[:,pyq_gamma_order,:]], tag+'.'+tag_src, my_gammas, self.plist)
 
-        corr = g.slice_trDA(g.gamma["Z"]*g.gamma[5]*g.adj(g.gamma[5]*prop_b_SS*g.gamma[5]), prop_f_SS, phases, 3) 
+        # srcZ5
+        gamma_src, tag_src = gamma.Gamma(11), "srcZ5"
+        temp1 = pycontract.mesonAllSinkTwoPoint(prop_f_SS_pyquda, prop_b_SS_pyquda, gamma_src).data
+        corr = np.array(core.gatherLattice(contract("qwtzyx, gwtzyx -> qgt", phases, temp1).get(), [2, -1, -1, -1]))
         if g.rank() == 0:
-            save_c2pt_hdf5(corr, tag+'.srcZ5', my_gammas, self.plist)
+            save_c2pt_hdf5([corr[:,pyq_gamma_order,:]], tag+'.'+tag_src, my_gammas, self.plist)
 
-        corr = g.slice_trDA(g.gamma["X"]*g.gamma[5]*g.adj(g.gamma[5]*prop_b_SS*g.gamma[5]), prop_f_SS, phases, 3) 
+        # srcX5
+        gamma_src, tag_src = gamma.Gamma(14), "srcX5"
+        temp1 = pycontract.mesonAllSinkTwoPoint(prop_f_SS_pyquda, prop_b_SS_pyquda, gamma_src).data
+        corr = np.array(core.gatherLattice(contract("qwtzyx, gwtzyx -> qgt", phases, temp1).get(), [2, -1, -1, -1]))
         if g.rank() == 0:
-            save_c2pt_hdf5(corr, tag+'.srcX5', my_gammas, self.plist)
+            save_c2pt_hdf5([corr[:,pyq_gamma_order,:]], tag+'.'+tag_src, my_gammas, self.plist)
 
-        del corr, prop_f_SS, prop_b_SS
+        del corr, prop_f_SS, prop_b_SS, prop_f_SS_pyquda, prop_b_SS_pyquda
 
     #function that creates boosted, smeared src.
     def create_src_2pt(self, pos, trafo, grid):
         
         srcD = g.mspincolor(grid)
-        
         
         g.create.point(srcD, pos)
         g.message("point src set")
@@ -370,7 +393,7 @@ class pion_DA_measurement(pion_measurement):
         self.pos_boost = parameters["pos_boost"]
         self.neg_boost = parameters["neg_boost"]
         self.save_propagators = parameters["save_propagators"]
-
+    
     # create Wilson lines from all --> all +- dz for all dz in 0,zmax
     def create_DA_WL(self, U):
 
@@ -427,7 +450,7 @@ class pion_TMDWF_measurement(pion_measurement):
         self.pos_boost = parameters["pos_boost"]
         self.neg_boost = parameters["neg_boost"]
         self.save_propagators = parameters["save_propagators"]
-
+    
     # if i_sub=0, will create a new .h5 file, elif i_sub != 0, will add data into exist .h5 file
     def contract_TMD(self, prop_f, prop_b, phases, tag, W_index_list, i_sub):
 
