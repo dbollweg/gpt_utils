@@ -186,6 +186,8 @@ class proton_TMD(proton_measurement):
         elif interpolation == "p5":
             dq = g.qcd.baryon.diquark(g(prop_f * Cgminus5), g(Cgplus5 * prop_f))
             # dq = g.qcd.baryon.diquark(g(prop_f * Cgminus5), g(Cgminus5 * prop_f))
+        elif interpolation == "5_T5":
+            dq = g.qcd.baryon.diquark(g(prop_f * Cg5), g(CgT5 * prop_f))
         else:
             raise ValueError("Invalid interpolation operator")
         
@@ -198,7 +200,45 @@ class proton_TMD(proton_measurement):
         if g.rank() == 0:
             save_proton_c2pt_hdf5(corr, tag, my_gammas, self.pilist)
         del corr
+
+    #function that does the contractions for the smeared-smeared pion 2pt function
+    def contract_2pt_TMD_TEST(self, prop_f, phases, trafo, tag, interpolation = "5"):
+
+        g.message("Begin sink smearing")
+        tmp_trafo = g.convert(trafo, prop_f.grid.precision)
+
+        prop_f = g.create.smear.boosted_smearing(tmp_trafo, prop_f, w=self.width, boost=self.pos_boost)
+        g.message("Sink smearing completed")
+
+        dq = g.qcd.baryon.diquark(g(prop_f * Cg5), g(Cg5 * prop_f))
+        proton1 = g(g.spin_trace(dq) * prop_f + dq * prop_f)
+        prop_unit = g.mspincolor(prop_f.grid)
+        prop_unit = g.identity(prop_unit)
+        corr = g.slice_trDA([prop_unit], [proton1], phases,3)
+        corr = [[corr[0][i][j] for i in range(0, len(corr[0]))] for j in range(0, len(corr[0][0])) ]
+        if g.rank() == 0:
+            save_proton_c2pt_hdf5(corr, tag+".src5_sink5", my_gammas, self.pilist)
         
+        dq = g.qcd.baryon.diquark(g(prop_f * CgT5), g(CgT5 * prop_f))
+        proton1 = g(g.spin_trace(dq) * prop_f + dq * prop_f)
+        prop_unit = g.mspincolor(prop_f.grid)
+        prop_unit = g.identity(prop_unit)
+        corr = g.slice_trDA([prop_unit], [proton1], phases,3)
+        corr = [[corr[0][i][j] for i in range(0, len(corr[0]))] for j in range(0, len(corr[0][0])) ]
+        if g.rank() == 0:
+            save_proton_c2pt_hdf5(corr, tag+".srcT5_sinkT5", my_gammas, self.pilist)
+
+        dq = g.qcd.baryon.diquark(g(prop_f * Cg5), g(CgT5 * prop_f))
+        proton1 = g(g.spin_trace(dq) * prop_f + dq * prop_f)
+        prop_unit = g.mspincolor(prop_f.grid)
+        prop_unit = g.identity(prop_unit)
+        corr = g.slice_trDA([prop_unit], [proton1], phases,3)
+        corr = [[corr[0][i][j] for i in range(0, len(corr[0]))] for j in range(0, len(corr[0][0])) ]
+        if g.rank() == 0:
+            save_proton_c2pt_hdf5(corr, tag+".src5_sinkT5", my_gammas, self.pilist)
+
+        del corr
+
     #! PyQUDA: contract 2pt TMD
     def contract_2pt_TMD_pyquda(self, prop_f, phases, trafo, tag, interpolation = "5"): 
         if interpolation == "5":
