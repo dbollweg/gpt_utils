@@ -54,6 +54,7 @@ def _get_Tmunu_symmetrized_P_Breit_slice(U_f: LatticeGauge, xi: LatticeFermion, 
 
     # t term
     Tmunu = np.zeros([4,4,n_max+1,n_max+1,n_max+1,Nt], dtype=np.complex128)
+    U_f.gauge_dirac.loadGauge(U_f)
     for mu in range(4):
         #\psi'(x)=U_\mu(x)\psi(x+\hat\mu)0,1,2,3 for x,y,z,t; 4,5,6,7 for -x,-y,-z,-t
         tmp = U_f.pure_gauge.covDev(eta, mu) - U_f.pure_gauge.covDev(eta, mu+4) 
