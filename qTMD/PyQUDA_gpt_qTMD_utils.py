@@ -369,6 +369,45 @@ class pion_measurement:
 
         del corr, prop_f_SS, prop_b_SS, prop_f_SS_pyquda, prop_b_SS_pyquda
 
+    #function that does the contractions for the smeared-smeared pion 2pt function
+    def contract_2pt_point(self, prop_f, prop_b, phases, trafo, tag):
+
+        # prepare smeared-smeared propagators
+        tmp_trafo = g.convert(trafo, prop_f.grid.precision)
+        prop_f_SS_pyquda = gpt.LatticePropagatorGPT(prop_f, GEN_SIMD_WIDTH)
+        prop_b_SS_pyquda = gpt.LatticePropagatorGPT(prop_b, GEN_SIMD_WIDTH)
+
+        #corr = g.slice_trDA(g.gamma[5]*g.adj(g.gamma[5]*prop_b_SS*g.gamma[5]), prop_f_SS, phases, 3)
+        # gamma_i * prop_f_SS_pyquda * gamma_src * (gamma_5 * adj(prop_b_SS_pyquda) * gamma_5): i loop over 16 gamma structure
+        gamma_src, tag_src = gamma.Gamma(15), "src5"
+        temp1 = pycontract.mesonAllSinkTwoPoint(prop_f_SS_pyquda, prop_b_SS_pyquda, gamma_src).data
+        corr = np.array(core.gatherLattice(contract("qwtzyx, gwtzyx -> qgt", phases, temp1).get(), [2, -1, -1, -1]))
+        if g.rank() == 0:
+            save_c2pt_hdf5([corr[:,pyq_gamma_order,:]], tag+'.'+tag_src, my_gammas, self.plist)
+
+        # srcZ5
+        gamma_src, tag_src = gamma.Gamma(11), "srcZ5"
+        temp1 = pycontract.mesonAllSinkTwoPoint(prop_f_SS_pyquda, prop_b_SS_pyquda, gamma_src).data
+        corr = np.array(core.gatherLattice(contract("qwtzyx, gwtzyx -> qgt", phases, temp1).get(), [2, -1, -1, -1]))
+        if g.rank() == 0:
+            save_c2pt_hdf5([corr[:,pyq_gamma_order,:]], tag+'.'+tag_src, my_gammas, self.plist)
+
+        # srcX5
+        gamma_src, tag_src = gamma.Gamma(14), "srcX5"
+        temp1 = pycontract.mesonAllSinkTwoPoint(prop_f_SS_pyquda, prop_b_SS_pyquda, gamma_src).data
+        corr = np.array(core.gatherLattice(contract("qwtzyx, gwtzyx -> qgt", phases, temp1).get(), [2, -1, -1, -1]))
+        if g.rank() == 0:
+            save_c2pt_hdf5([corr[:,pyq_gamma_order,:]], tag+'.'+tag_src, my_gammas, self.plist)
+
+        # srcT5
+        gamma_src, tag_src = gamma.Gamma(7), "srcT5"
+        temp1 = pycontract.mesonAllSinkTwoPoint(prop_f_SS_pyquda, prop_b_SS_pyquda, gamma_src).data
+        corr = np.array(core.gatherLattice(contract("qwtzyx, gwtzyx -> qgt", phases, temp1).get(), [2, -1, -1, -1]))
+        if g.rank() == 0:
+            save_c2pt_hdf5([corr[:,pyq_gamma_order,:]], tag+'.'+tag_src, my_gammas, self.plist)
+
+        del corr, prop_f_SS_pyquda, prop_b_SS_pyquda
+
     #function that creates boosted, smeared src.
     def create_src_2pt(self, pos, trafo, grid):
         

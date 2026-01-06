@@ -159,3 +159,71 @@ def flowed_gluonic_EMT_P_pyquda(
             np.save(datfile + suffix, Tmunu_t[mu, nu])
 
     return Tmunu_t
+
+
+# GPT code
+def traceless_F(U, mu, nu):
+    F = g.qcd.gauge.field_strength(U, mu, nu)
+    F @= (-1j) * g.qcd.gauge.project.traceless_anti_hermitian(F)
+    return F
+
+# GPT code
+def flowed_gluonic_EMT_P(U, stepsize=0.1, Nsteps=20, division=1, improve=False, datfile='', n_max=0):
+    assert len(U) == 4
+    grid = U[0].grid
+    Nlat = grid.fsites
+    Nt = grid.gdimensions[3]
+    Ns3 = int(Nlat/Nt)
+    g.message(Nt,Ns3,Nlat)
+    L = np.array(grid.fdimensions)
+
+    Tmunu_t = np.zeros([4,4,n_max+1,n_max+1,n_max+1,Nsteps+1,Nt],dtype=np.complex128)
+    for step in range(Nsteps+1):
+        g.message('step',step,'calculate F')
+        F = [ [ None for mu in range(4) ] for nu in range(4) ]
+        for mu in range(4):
+            for nu in range(mu+1,4):
+                F[mu][nu] = traceless_F(U, mu, nu)
+
+        for mu in range(4):
+            for nu in range(mu):
+                F[mu][nu] = -F[nu][mu]
+
+        tmp = g.complex(grid)
+        g.message('step',step,'calculate T')
+        for mu in range(4):
+            for nu in range(mu,4):
+                tmp[:] = 0
+                for rho in range(4):
+                    if rho != mu and rho != nu:
+                        tmp = g( tmp + g.color_trace(F[mu][rho]*F[nu][rho]) )
+
+                for nx in range(n_max+1):
+                    for ny in range(n_max+1):
+                        for nz in range(n_max+1):
+                            P = g.exp_ixp( 2.0*np.pi*np.array([2*nx,2*ny,2*nz,0]) / L )
+                            Tmunu_t[mu][nu][nx][ny][nz][step] += 2*np.array( g.slice( P*tmp , 3 ) )
+
+        if Nsteps > 0:
+            if improve:
+                if step == 0:
+                    U = g.qcd.gauge.smear.zeuthen_flow_gauge_fixedstepsize(U, epsilon=stepsize/(10*division), Nstep=10*division)
+                elif step < Nsteps:
+                    U = g.qcd.gauge.smear.zeuthen_flow_gauge_fixedstepsize(U, epsilon=stepsize/division, Nstep=division)
+            else:
+                if step == 0:
+                    for i in range(10*division):
+                        g.message('WF step =',step)
+                        U = g.qcd.gauge.smear.wilson_flow(U, epsilon=stepsize/(10*division))
+                elif step < Nsteps:
+                    for i in range(division):
+                        g.message('WF step =',step)
+                        U = g.qcd.gauge.smear.wilson_flow(U, epsilon=stepsize/division)
+
+
+    Tmunu_t /= Ns3
+    for mu in range(4):
+        for nu in range(mu,4):
+            tmp = '.T'+str(mu+1)+str(nu+1)+'.n_max'+str(n_max)
+            np.save(datfile+tmp+'.slice.npy', Tmunu_t[mu][nu])
+
