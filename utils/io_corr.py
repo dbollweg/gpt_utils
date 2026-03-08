@@ -260,6 +260,94 @@ def save_qTMD_proton_hdf5_noRoll(corr, tag, gammalist, plist, W_index_list, tsep
                 g_data.create_dataset('bz'+str(idx[1]), data=corr[i][ip][ig][:tsep+2])
     f.close()
 
+import h5py
+import numpy as np
+
+# W_index_list rows are [bT, bz, eta, Tdir] (per your comment)
+# In your original path, idx[3] indexes bT_list = ["b_X","b_Y"].
+
+def save_qTMD_proton_hdf5_noRoll_compact(
+    corr,
+    tag,
+    gammalist,
+    plist,
+    W_index_list,
+    tsep,
+    bT_list=("b_X", "b_Y"),
+    group_name="SS",
+):
+    """
+    Compact HDF5 writer that minimizes metadata/object creation:
+      - One main dataset: /SS/corr with shape (nW, nP, nG, Tkeep)
+      - Label datasets: gammalist, plist, W_index_list, W_tags, bT_list
+    Uses Scheme A: h5py.string_dtype('ascii') (vlen ASCII strings).
+
+    Parameters
+    ----------
+    corr : array-like
+        Expected shape (nW, nP, nG, T) (or anything broadcastable to this idea).
+    tag : str
+        Output file prefix; file is tag + ".h5".
+    gammalist : list[str]
+        E.g. ["5","T","T5",...]
+    plist : array-like
+        Momentum list, typically shape (nP, 3) ints.
+    W_index_list : array-like
+        Shape (nW, 4) ints, columns [bT, bz, eta, Tdir].
+    tsep : int
+        Keep t in [0, tsep+2).
+    bT_list : tuple/list[str]
+        Names for the idx[3] (Tdir) mapping, default ("b_X","b_Y").
+    group_name : str
+        Default "SS".
+    """
+    save_h5 = tag + ".h5"
+
+    corr = np.asarray(corr)
+    corr_t = corr[..., :tsep + 2]  # keep only needed t
+
+    W = np.asarray(W_index_list, dtype=np.int32)
+    if W.ndim != 2 or W.shape[1] != 4:
+        raise ValueError(f"W_index_list must have shape (nW,4), got {W.shape}")
+
+    #plist_arr = np.asarray(plist, dtype=np.int32)
+    plist_arr = np.asarray(plist, dtype=np.int32)[:, :3]
+    if plist_arr.ndim != 2 or plist_arr.shape[1] != 3:
+        raise ValueError(f"plist should look like (nP,3), got {plist_arr.shape}")
+
+    # Make human-readable tags for each W index entry
+    bT_list = list(bT_list)
+    W_tags = []
+    for (bT, bz, eta, Tdir) in W:
+        bt_name = bT_list[Tdir] if 0 <= Tdir < len(bT_list) else f"dir{Tdir}"
+        W_tags.append(f"{bt_name}/eta{eta}/bT{bT}/bz{bz}")
+
+    # HDF5 string dtype (Scheme A)
+    ascii_dt = h5py.string_dtype(encoding="ascii")
+
+    with h5py.File(save_h5, "w") as f:
+        grp = f.require_group(group_name)
+
+        # Main data: one dataset (minimize object count)
+        dset = grp.create_dataset(
+            "corr",
+            data=corr_t,
+            # Optional compression; remove if you want zero CPU overhead
+            compression="gzip",
+            compression_opts=1,
+            shuffle=True,
+        )
+        dset.attrs["layout"] = "corr[w, p, gamma, t]"
+        dset.attrs["tsep"] = int(tsep)
+
+        # Save decoding info / labels
+        grp.create_dataset("dim2_gammalist", data=np.array(gammalist, dtype=object), dtype=ascii_dt)
+        grp.create_dataset("dim1_plist", data=plist_arr)
+        wds = grp.create_dataset("W_index_list", data=W)
+        wds.attrs["columns"] = np.array(["bT", "bz", "eta", "Tdir"], dtype=object)
+        grp.create_dataset("dim0_W_tags", data=np.array(W_tags, dtype=object), dtype=ascii_dt)
+        #grp.create_dataset("bT_list", data=np.array(bT_list, dtype=object), dtype=ascii_dt)
+
 # W_index_list[bT, bz, eta, Tdir]
 def save_qTMD_proton_hdf5(corr, tag, gammalist, plist, W_index_list, tsep):
     
