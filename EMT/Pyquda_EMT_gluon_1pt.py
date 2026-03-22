@@ -69,10 +69,10 @@ def flowed_gluonic_EMT_P_pyquda(
     for all color traces and contractions.
 
     U: LatticeGauge (4D gauge field, with geometry in U.latt_info)
-    返回值: T_{mu nu}(n_x,n_y,n_z,flow_step,t) 的 numpy 数组
-           形状为 (4,4,n_max+1,n_max+1,n_max+1,Nsteps+1,Nt)
+    Return value: T_{mu nu}(n_x,n_y,n_z,flow_step,t) numpy array
+           Shape: (4,4,n_max+1,n_max+1,n_max+1,Nsteps+1,Nt)
     """
-    # --- 几何信息，从 PyQUDA 的 LatticeGauge 中取 ---
+    # --- Geometry information extracted from PyQUDA's LatticeGauge ---
     global_size = U.latt_info.global_size
     Lx, Ly, Lz, Lt = U.latt_info.size
     Ns3 = global_size[0] * global_size[1] * global_size[2]
@@ -85,25 +85,25 @@ def flowed_gluonic_EMT_P_pyquda(
         dtype=np.complex128,
     )
 
-    # 为了不修改输入的 U，可以复制一份（如果你不介意 in-place flow，可以直接用 U）
+    # To avoid modifying input U, create a copy (if in-place flow is acceptable, U can be used directly)
     U_flow = U.copy()
 
     for step in range(Nsteps + 1):
         g.message("step", step, "calculate F")
 
-        # --------- 1. 计算所有 F_{mu,nu}（clover + traceless） ---------
-        # _all_F_clover_traceless(U) 返回 F[mu][nu] = array(shape=(Nlat, Nc,Nc))
+        # --------- 1. Compute all F_{mu,nu} (clover + traceless) ---------
+        # _all_F_clover_traceless(U) returns F[mu][nu] = array(shape=(Nlat, Nc,Nc))
         F = _all_F_clover_traceless(U_flow)
 
         g.message("step", step, "calculate T")
 
-        # --------- 2. 用 F 构造 EMT T_{mu,nu}(x) 并做动量投影 ---------
-        # 原来是:
+        # --------- 2. Construct EMT T_{mu,nu}(x) from F and perform momentum projection ---------
+        # Original code:
         # tmp(x) = sum_{rho != mu,nu} tr_c [ F_{mu,rho}(x) * F_{nu,rho}(x) ]
-        # 然后做 P(p) * tmp 的三维和, slice over time
+        # Then perform 3D sum of P(p) * tmp, slice over time
         for mu in range(4):
             for nu in range(mu, 4):
-                # tmp: site 上的复数场，shape=(Nlat,)
+                # tmp: complex field on site, shape=(Nlat,)
                 tmp = arrayZeros((2, Lt, Lz, Ly, Lx // 2), U.data.dtype, U.location)       # (Nc, Nc)
 
                 for rho in range(4):
@@ -118,28 +118,28 @@ def flowed_gluonic_EMT_P_pyquda(
 
                     # color trace of matrix product:
                     # tr(F_mr * F_nr) = sum_{a,b} F_mr[a,b] * F_nr[b,a]
-                    # 直接用 einsum: '...ab,...ba->...'
+                    # Using einsum: '...ab,...ba->...'
                     tmp += contract("...ab,...ba->...", F_mr, F_nr)
 
-                # ---- 3. 对每个 (n_x,n_y,n_z) 做平面波投影并在空间上求和 ----
-                # 原始代码：P = g.exp_ixp(2π * [2nx,2ny,2nz,0]/L)，然后 g.slice(P*tmp, 3)
-                # 这里手动构造 P(x)=exp(i p·x)，再对 (x,y,z) 求和得到各个 t 的值
+                # ---- 3. Perform plane wave projection for each (n_x,n_y,n_z) and sum over space ----
+                # Original code: P = g.exp_ixp(2π * [2nx,2ny,2nz,0]/L), then g.slice(P*tmp, 3)
+                # Here P(x)=exp(i p·x) is constructed manually, then sum over (x,y,z) to get values for each t
                 for nx in range(n_max + 1):
                     for ny in range(n_max + 1):
                         for nz in range(n_max + 1):
-                            # p_mu = 2π * (2n_mu / L_mu) ，最后分量固定为 0
+                            # p_mu = 2π * (2n_mu / L_mu), last component is fixed to 0
                             qext_xyz = [[2 * nx, 2 * ny, 2 * nz]]
 
                             # phase(x) = p · x
                             phases_3pt = phase.MomentumPhase(U.latt_info).getPhases(qext_xyz, [0,0,0,0])
                             
-                            # 对 (x,y,z) 求和，保留 t 维度，shape=(Lt,)
+                            # Sum over (x,y,z), keep t dimension, shape=(Lt,)
                             slice_t = core.gatherLattice(contract("qwtzyx, wtzyx -> qt", phases_3pt, tmp).get(), [1, -1, -1, -1])
 
                             if U.latt_info.mpi_rank == 0:
                                 Tmunu_t[mu, nu, nx, ny, nz, step, :] += 2.0 * slice_t[0]
 
-        # --------- 4. 做 Wilson flow / Zeuthen flow 更新 U_flow ---------
+        # --------- 4. Update U_flow using Wilson flow / Zeuthen flow ---------
         # TODO add improve option
         if Nsteps > 0:
             if step == 0:
@@ -149,8 +149,8 @@ def flowed_gluonic_EMT_P_pyquda(
                 g.message("wilsonFlow step =", step)
                 energy = U_flow.wilsonFlow(1, epsilon=stepsize)
 
-    # --------- 5. 归一化 & 存盘 ---------
-    # 原代码最后除以 Ns3
+    # --------- 5. Normalize & save ---------
+    # Original code finally divides by Ns3
     Tmunu_t /= Ns3
 
     for mu in range(4):
@@ -225,5 +225,5 @@ def flowed_gluonic_EMT_P(U, stepsize=0.1, Nsteps=20, division=1, improve=False, 
     for mu in range(4):
         for nu in range(mu,4):
             tmp = '.T'+str(mu+1)+str(nu+1)+'.n_max'+str(n_max)
-            np.save(datfile+tmp+'.slice.npy', Tmunu_t[mu][nu])
+            np.save(datfile+tmp+'.GPT.npy', Tmunu_t[mu][nu])
 

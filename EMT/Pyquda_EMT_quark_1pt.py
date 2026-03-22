@@ -65,7 +65,7 @@ def _get_Tmunu_symmetrized_P_Breit_slice(U_f: LatticeGauge, xi: LatticeFermion, 
         pyquda_tmp = _impose_P_Breit_slice(U_f, pyquda_tmp, n_max, realize=True)
         g.message('Pyquda tmp.',mu,pyquda_tmp)
         for nu in range(4):
-            Y = contract('ab,...bc->...ac', D_gammas[nu], tmp.data)
+            Y = contract('ab,...bc->...ac', cp.asarray(D_gammas[nu]), tmp.data)
             complex_field = contract('...sc,...sc->...', xi.data.conj(), Y)
             Tmunu[nu,mu] += -0.5*_impose_P_Breit_slice(U_f, complex_field, n_max, realize=True)
             g.message('Pyquda Tmunu',mu,nu,Tmunu[mu,mu], Tmunu[nu,mu])
@@ -146,8 +146,8 @@ def flowed_fermionic_EMT_pyquda(
 
             if Nsteps > 0:
 
-                Multi_xi = core.MultiLatticeFermion(U.latt_info, 1, cp.array([xi.data]))
-                Multi_eta = core.MultiLatticeFermion(U.latt_info, 1, cp.array([eta.data]))
+                # Multi_xi = core.MultiLatticeFermion(U.latt_info, 1, cp.array([xi.data]))
+                # Multi_eta = core.MultiLatticeFermion(U.latt_info, 1, cp.array([eta.data]))
 
                 print(f'Pyquda step{step} with epsilon = {stepsize} data 0 U_f0',0,(U_f.lexico())[0,7,7,7,7])
                 print(f'Pyquda step{step} with epsilon = {stepsize} data 0 U_f1',0,(U_f.lexico())[1,7,7,7,7])
@@ -155,12 +155,16 @@ def flowed_fermionic_EMT_pyquda(
                 print(f'Pyquda step{step} with epsilon = {stepsize} data 0 U_f3',0,(U_f.lexico())[3,7,7,7,7])
                 print(f'Pyquda step{step} with epsilon = {stepsize} data 0 xi',0,(xi.lexico())[7,7,7,7])
 
-                Multi_xi = U_f.gradientFlow(Multi_xi, "wilson", 1, stepsize, True)
-                Multi_eta = U_f.gradientFlow(Multi_eta, "wilson", 1, stepsize, True)
-                energy = U_f.wilsonFlow(1, epsilon=stepsize)
+                temp = core.MultiLatticeFermion(U.latt_info, 2, cp.array([xi.data, eta.data]))
+                temp_flow = U_f.gradientFlow(temp, "wilson", 1, stepsize)
+                xi, eta = temp_flow[0], temp_flow[1]
 
-                xi = LatticeFermion(U.latt_info, Multi_xi.data[0, :, :, :, :, :, :, :])
-                eta = LatticeFermion(U.latt_info, Multi_eta.data[0, :, :, :, :, :, :, :])
+                # Multi_xi = U_f.gradientFlow(Multi_xi, "wilson", 1, stepsize, True)
+                # Multi_eta = U_f.gradientFlow(Multi_eta, "wilson", 1, stepsize, True)
+                # energy = U_f.wilsonFlow(1, epsilon=stepsize)
+
+                # xi = LatticeFermion(U.latt_info, Multi_xi.data[0, :, :, :, :, :, :, :])
+                # eta = LatticeFermion(U.latt_info, Multi_eta.data[0, :, :, :, :, :, :, :])
 
                 print(f'Pyquda step{step} with epsilon = {stepsize} data 1 U_f0',0,(U_f.lexico())[0,7,7,7,7])
                 print(f'Pyquda step{step} with epsilon = {stepsize} data 1 U_f1',0,(U_f.lexico())[1,7,7,7,7])
@@ -170,15 +174,15 @@ def flowed_fermionic_EMT_pyquda(
 
     g.message(Nv,"random vectors done.")
 
-    np.save(f'data/EMTc/cTmunu_pervec_pyquda.npy', Tmunu)
-    np.save(f'data/EMTc/cCHI_pervec_pyquda.npy', CHI)
+    np.save(f'{datfile}/cTmunu_pervec.pyquda.npy', Tmunu)
+    np.save(f'{datfile}/cCHI_pervec.pyquda.npy', CHI)
     
     Tmunu = np.mean(Tmunu,axis=0) / Ns3
     CHI = np.mean(CHI,axis=0) / Ns3
     for mu in range(4):
         for nu in range(mu,4):
-            np.save(f'data/EMTc/cT{mu+1}{nu+1}_pyquda.npy', Tmunu[mu,nu])
-    np.save(f'data/EMTc/cCHI_pyquda.npy', CHI)
+            np.save(f'{datfile}/cT{mu+1}{nu+1}.pyquda.npy', Tmunu[mu,nu])
+    np.save(f'{datfile}/cCHI.pyquda.npy', CHI)
 
 
 
@@ -236,7 +240,7 @@ def get_Tmunu_symmetrized_P_Breit_slice(U_f, xi, eta, n_max):
 
 
 
-def flowed_fermionic_EMT(gaugePara, randPara, invPara, flowPara, n_max):
+def flowed_fermionic_EMT(gaugePara, randPara, invPara, flowPara, datfile='', n_max = 0):
     a, conf_id, U = gaugePara
     Nv, n_input, randseed = randPara
     stepsize, Nsteps, improve, division = flowPara
@@ -286,14 +290,14 @@ def flowed_fermionic_EMT(gaugePara, randPara, invPara, flowPara, n_max):
 
     g.message(Nv,"random vectors done.")
 
-    np.save(f'cTmunu_{a}_{conf_id}_pervec.npy', Tmunu)
-    np.save(f'cCHI_{a}_{conf_id}_pervec.npy', CHI)
+    np.save(f'{datfile}/cTmunu_pervec.GPT.npy', Tmunu)
+    np.save(f'{datfile}/cCHI_pervec.GPT.npy', CHI)
     
     Tmunu = np.mean(Tmunu,axis=0) / Ns3
     CHI = np.mean(CHI,axis=0) / Ns3
     for mu in range(4):
         for nu in range(mu,4):
-            np.save(f'cT{mu+1}{nu+1}_{a}_{conf_id}.npy', Tmunu[mu,nu])
-    np.save(f'cCHI_{a}_{conf_id}.npy', CHI)
+            np.save(f'{datfile}/cT{mu+1}{nu+1}.GPT.npy', Tmunu[mu,nu])
+    np.save(f'{datfile}/cCHI.GPT.npy', CHI)
 
     
